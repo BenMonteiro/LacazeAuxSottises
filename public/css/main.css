@@ -1,0 +1,19 @@
+
+.landingPage {
+    margin:0;
+    padding:0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover; /* version standardisée */
+}
+
+.accessButton {
+    position: absolute;
+    bottom: 20%;
+    border-radius: 20px 5px 20px 5px;
+    background-color: #DA291C;
+    color: black;
+    font-weight: bold;
+    z-index: 999
+}

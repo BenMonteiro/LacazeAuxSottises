@@ -1,0 +1,39 @@
+.nav-link {
+    color: #DA291C !important;
+}
+
+.nav-link:hover {
+    color: black !important
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+.dropdown-menu {
+    border: none;
+    background-color: rgba(0,0,0,0.8);
+    float:none;
+}
+
+.dropdown-item {
+    display:inline-block;
+    margin: 0 10px 0 10px;
+    padding: 8px 15px;
+    color:  #DA291C;
+    font-weight: bold;
+}
+
+.dropdown-item:hover {
+    background-color: #DA291C;
+    border-radius:20px;
+    width:auto;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.logo {
+    width:100px;
+}
