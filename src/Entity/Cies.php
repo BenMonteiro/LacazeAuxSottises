@@ -78,6 +78,21 @@ class Cies
      */
     private $inCreation;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $inDiffusion;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $fest;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $season;
+
     public function __construct()
     {
         $this->dates = new ArrayCollection();
@@ -247,6 +262,42 @@ class Cies
     public function setInCreation(bool $inCreation): self
     {
         $this->inCreation = $inCreation;
+
+        return $this;
+    }
+
+    public function getInDiffusion(): ?bool
+    {
+        return $this->inDiffusion;
+    }
+
+    public function setInDiffusion(bool $inDiffusion): self
+    {
+        $this->inDiffusion = $inDiffusion;
+
+        return $this;
+    }
+
+    public function getFest(): ?bool
+    {
+        return $this->fest;
+    }
+
+    public function setFest(bool $fest): self
+    {
+        $this->fest = $fest;
+
+        return $this;
+    }
+
+    public function getSeason(): ?bool
+    {
+        return $this->season;
+    }
+
+    public function setSeason(bool $season): self
+    {
+        $this->season = $season;
 
         return $this;
     }
