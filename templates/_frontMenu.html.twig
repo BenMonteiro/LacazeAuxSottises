@@ -1,104 +1,110 @@
+<nav class="navbar navbar-expand-md navbar-light">
+    <a class="navbar-brand" href=''><img class='logo' src="{{asset('images/logo.jpg')}}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse nav-tabs nav d-md-flex flex-md-column" id="navbarNavAltMarkup" role="tablist">
+        <ul class="row navbar-nav  mr-2 ml-md-auto ml-2">
+            <li>
+                <a class="nav-item nav-link" id="nav-home-tab" href="#nav-home"><i class="fas fa-1x fa-home"></i></a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" href="http://p5" id="nav-association-tab" data-toggle="tab" data-target="#nav-association" role="tab" aria-controls="nav-association">
+                    L'Association
+                </a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" href="" id="nav-season-tab" data-toggle="tab" data-target="#nav-season" role="tab" aria-controls="nav-contact" aria-selected="false">
+                    La Saison
+                </a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" href="" id="nav-fest-tab" data-toggle="tab" data-target="#nav-fest" role="tab" aria-controls="nav-contact" aria-selected="false">
+                    Le Festival
+                </a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" href="" id="nav-place-tab" data-toggle="tab" data-target="#nav-place" role="tab" aria-controls="nav-contact" aria-selected="false">
+                    Le Tiers-Lieu
+                </a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" href="" id="nav-activity-tab" data-toggle="tab" data-target="#nav-activities" role="tab" aria-controls="nav-contact" aria-selected="false">
+                    Les activités du Lieu
+                </a>
+            </li>
+        </ul>
+        <ul class="row navbar-nav mr-md-5 ml-md-auto ml-4">
+            <li>
+                <a class="nav-item nav-link" href="" id="nav-rental-tab" data-toggle="tab" data-target="#nav-rental" role="tab" aria-controls="nav-contact" aria-selected="false">
+                    Les Locations
+                </a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" href="" id="nav-volunteering-tab" data-toggle="tab" data-target="#nav-volunteering" role="tab" aria-controls="nav-contact" aria-selected="false">
+                    Le Bénévolat
+                </a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" id="nav-partner-tab" href="#nav-partners">
+                    Nos Partenaires
+                </a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" id="nav-support-tab" href="#nav-support">
+                    Nous Soutenir
+                </a>
+            </li>
+            <li>
+                <a class="nav-item nav-link" id="nav-contact-tab" href="#nav-home">
+                    Contacts
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white py-0">
-        <a class="navbar-brand ml-4" href=''><img class='logo' src="{{asset('images/logo.jpg')}}"></a>
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse flex-column" id="collapsibleNavId">
-            <ul class="navbar-nav mr-0 ml-auto mt-2 mt-lg-0 pr-0">
-                <li class="nav-item">
-                    <a class="nav-link" href=""><i class="fas fa-1x fa-home"></i></a>
-                </li>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade" id="nav-association" role="tabpanel" aria-labelledby="nav-association-tab">
+        <a  href="http://p5">Présentation</a>
+        <a  href="">Projets Pluriels</a>
+        <a  href="">Coopération Térritoriale</a>
+        <a  href="">Équipe</a>
+        <a  href="">Adhésion</a>
+    </div>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="http://p5" id="navbarDropdown" aria-haspopup="true" aria-expanded="false">
-                        L'Association
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="http://p5">Présentation</a>
-                        <a class="dropdown-item" href="">Projets Pluriels</a>
-                        <a class="dropdown-item" href="">Coopération Térritoriale</a>
-                        <a class="dropdown-item" href="">Équipe</a>
-                        <a class="dropdown-item" href="">Adhésion</a>
-                    </div>
-                </li>
+    <div class="tab-pane fade" id="nav-season" role="tabpanel" aria-labelledby="nav-season-tab">
+        <a  href="http://p5">Programmation</a>
+        <a  href="">Cies en Diffusion</a>
+        <a  href="">Cies en Création</a>
+        <a  href="">Actions Culturelles</a>
+    </div>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://p5" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        La Saison
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Programmation</a>
-                        <a class="dropdown-item" href="">Cies en Diffusion</a>
-                        <a class="dropdown-item" href="">Cies en Création</a>
-                        <a class="dropdown-item" href="">Actions Culturelles</a>
-                    </div>
-                </li>
+    <div class="tab-pane fade" id="nav-fest" role="tabpanel" aria-labelledby="nav-fest-tab">
+        <a  href="http://p5">Présentation</a>
+        <a  href="http://p5">Programmation</a>
+        <a  href="http://p5">Billeterie Solidaire </a>
+        <a  href="">Cies en Diffusion</a>
+        <a  href="">Rencontres Pro</a>
+        <a class="tab-wrap" href="">Actions Culturelles</a>
+        <a  href="">Espace Ludique</a>
+        <a  href="">Les p'tits <i class="fas fa-plus-circle"></i></a>
+    </div>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Le Festival
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Programmation</a>
-                        <a class="dropdown-item" href="">Billeterie Solidaire</a>
-                        <a class="dropdown-item" href="">Cies en Diffusion</a>
-                        <a class="dropdown-item" href="">Rencontres Pro</a>
-                        <a class="dropdown-item" href="">Actions Culturelles</a>
-                        <a class="dropdown-item" href="">Espace Ludique</a>
-                        <a class="dropdown-item" href="">Les p'tits <i class="fas fa-plus-circle"></i></a>
-                    </div>
-                </li>
+    <div class="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">
+        <a  href="http://p5">Présentation</a>
+        <a  href="http://p5">Éco-Lieu</a>
+        <a  href="http://p5">Espaces Partagés</a>
+    </div>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Le Tiers-Lieu
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Éco-Lieu</a>
-                        <a class="dropdown-item" href="">Espaces Partagés</a>
-                    </div>
-                </li>
+    <div class="tab-pane fade" id="nav-activities" role="tabpanel" aria-labelledby="nav-activity-tab">
+        <a  href="http://p5">Spectacles Vivants</a>
+        <a  href="http://p5">Développement Durable</a>
+    </div>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Les Activitées du Lieu
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">Spectacles Vivants</a>
-                        <a class="dropdown-item" href="">Développement Durable</a>
-                    </div>
-                </li>
-            </ul>
+    <div class="tab-pane fade" id="nav-volunteering" role="tabpanel" aria-labelledby="nav-volunteering-tab">
+        <a  href="http://p5">A l'Année</a>
+        <a  href="http://p5">Durant le Festival</a>
+    </div>
+</div>
 
-            <ul class="navbar-nav mr-4 ml-auto mt-0 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link text-nowrap" href="">La Location</a>
-                </li>
-
-                
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Le Bénévolat
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="">A l'Année</a>
-                        <a class="dropdown-item" href="">Festival</a>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="">Partenaire</a>
-                </li>
-
-                <li class="nav-item nowrap">
-                    <a class="nav-link" href="">Nous Soutenir</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="">Contacts</a>
-                </li>
-            </ul>
-        </div>
-    </nav>

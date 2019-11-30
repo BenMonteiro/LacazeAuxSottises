@@ -1,37 +1,52 @@
 .nav-link {
     color: #DA291C !important;
+    font-size: 1.2em;
+    margin-right: 20px;
+    padding:5px 10px !important;
 }
 
-.nav-link:hover {
-    color: black !important
+.nav-link:hover{
+    border: solid black 1px !important;
+    border-bottom: none !important
 }
 
-.dropdown-toggle::after {
-    content: none;
+.nav-tabs {
+    border-bottom : solid black 1px !important
 }
 
-.dropdown-menu {
-    border: none;
-    background-color: rgba(0,0,0,0.8);
-    float:none;
+.nav-tabs .nav-link.active{
+    border: solid black 1px !important;
+    border-bottom: none !important;
+    padding:5px 10px;
 }
 
-.dropdown-item {
-    display:inline-block;
-    margin: 0 10px 0 10px;
-    padding: 8px 15px;
-    color:  #DA291C;
+ul {
+    list-style: none;
+}
+
+.tab-content > .active {
+    background-color: rgba(0, 0, 0, 1);
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab-pane a {
+    color: #DA291C;
+    margin:0 20px 0 0;
     font-weight: bold;
 }
 
-.dropdown-item:hover {
+.tab-pane a:hover {
+    color: black;
     background-color: #DA291C;
-    border-radius:20px;
-    width:auto;
+    border-radius:15px;
+    padding:5px 10px;
+    text-decoration: none;
 }
 
-.dropdown:hover>.dropdown-menu {
-    display: block;
+.tab-wrap {
+    white-space: nowrap;
 }
 
 .logo {

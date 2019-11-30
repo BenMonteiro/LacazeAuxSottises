@@ -1,0 +1,49 @@
+
+/*--------------------------------------------------------------------------Menu---------------------------------------------------------------------------------------------------*/
+
+@media all and (max-width: 1000px) 
+{
+    .nav-link {
+        font-size: 1em;
+        margin-right: 0px;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+    .tab-pane a {
+        margin:0 10px 0 0;
+        font-weight: bold;
+    }
+    
+    .tab-pane a:hover {
+        color: black;
+        background-color: #DA291C;
+        border-radius:15px;
+        padding:5px 10px;
+        text-decoration: none;
+    }
+    
+    .tab-wrap {
+        white-space: nowrap;
+    }
+    
+    .logo {
+        width:100px;
+    }
+}
+
+@media all and (max-width: 750px) 
+{
+    .tab-pane {
+        flex-wrap: wrap;
+    }
+}
+
+@media all and (max-width:450px)
+{
+    .nav-link {
+        padding: 0 !important
+    }
+}
