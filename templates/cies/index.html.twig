@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cies index{% endblock %}
+
+{% block body %}
+    <h1>Cies index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Theme</th>
+                <th>Image</th>
+                <th>Place</th>
+                <th>Duration</th>
+                <th>Audience</th>
+                <th>FurtherInfos</th>
+                <th>Description</th>
+                <th>WebSite</th>
+                <th>VideoLink</th>
+                <th>InCreation</th>
+                <th>InDiffusion</th>
+                <th>Fest</th>
+                <th>Season</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cy in cies %}
+            <tr>
+                <td>{{ cy.id }}</td>
+                <td>{{ cy.name }}</td>
+                <td>{{ cy.theme }}</td>
+                <td>{{ cy.image }}</td>
+                <td>{{ cy.place }}</td>
+                <td>{{ cy.duration }}</td>
+                <td>{{ cy.audience }}</td>
+                <td>{{ cy.furtherInfos }}</td>
+                <td>{{ cy.description }}</td>
+                <td>{{ cy.webSite }}</td>
+                <td>{{ cy.videoLink }}</td>
+                <td>{{ cy.inCreation ? 'Yes' : 'No' }}</td>
+                <td>{{ cy.inDiffusion ? 'Yes' : 'No' }}</td>
+                <td>{{ cy.fest ? 'Yes' : 'No' }}</td>
+                <td>{{ cy.season ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('cies_show', {'id': cy.id}) }}">show</a>
+                    <a href="{{ path('cies_edit', {'id': cy.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cies_new') }}">Create new</a>
+{% endblock %}

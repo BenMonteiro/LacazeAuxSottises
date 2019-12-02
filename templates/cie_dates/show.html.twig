@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CieDates{% endblock %}
+
+{% block body %}
+    <h1>CieDates</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cie_date.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ cie_date.date ? cie_date.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('cie_dates_index') }}">back to list</a>
+
+    <a href="{{ path('cie_dates_edit', {'id': cie_date.id}) }}">edit</a>
+
+    {{ include('cie_dates/_delete_form.html.twig') }}
+{% endblock %}

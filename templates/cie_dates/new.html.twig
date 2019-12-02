@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CieDates{% endblock %}
+
+{% block body %}
+    <h1>Create new CieDates</h1>
+
+    {{ include('cie_dates/_form.html.twig') }}
+
+    <a href="{{ path('cie_dates_index') }}">back to list</a>
+{% endblock %}

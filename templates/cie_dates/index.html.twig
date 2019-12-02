@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CieDates index{% endblock %}
+
+{% block body %}
+    <h1>CieDates index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cie_date in cie_dates %}
+            <tr>
+                <td>{{ cie_date.id }}</td>
+                <td>{{ cie_date.date ? cie_date.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('cie_dates_show', {'id': cie_date.id}) }}">show</a>
+                    <a href="{{ path('cie_dates_edit', {'id': cie_date.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cie_dates_new') }}">Create new</a>
+{% endblock %}

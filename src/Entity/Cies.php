@@ -69,11 +69,6 @@ class Cies
     private $videoLink;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Date", mappedBy="cies", orphanRemoval=true)
-     */
-    private $dates;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $inCreation;
@@ -92,6 +87,11 @@ class Cies
      * @ORM\Column(type="boolean")
      */
     private $season;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CieDates", mappedBy="cies", orphanRemoval=true)
+     */
+    private $dates;
 
     public function __construct()
     {
@@ -223,37 +223,6 @@ class Cies
         return $this;
     }
 
-    /**
-     * @return Collection|Date[]
-     */
-    public function getDates(): Collection
-    {
-        return $this->dates;
-    }
-
-    public function addDate(Date $date): self
-    {
-        if (!$this->dates->contains($date)) {
-            $this->dates[] = $date;
-            $date->setCies($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDate(Date $date): self
-    {
-        if ($this->dates->contains($date)) {
-            $this->dates->removeElement($date);
-            // set the owning side to null (unless already changed)
-            if ($date->getCies() === $this) {
-                $date->setCies(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getInCreation(): ?bool
     {
         return $this->inCreation;
@@ -300,5 +269,44 @@ class Cies
         $this->season = $season;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|CieDates[]
+     */
+    public function getDates(): Collection
+    {
+        return $this->dates;
+    }
+
+    public function addDate(CieDates $date): self
+    {
+        if (!$this->dates->contains($date)) {
+            $this->dates[] = $date;
+            $date->setCies($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDate(CieDates $date): self
+    {
+        if ($this->dates->contains($date)) {
+            $this->dates->removeElement($date);
+            // set the owning side to null (unless already changed)
+            if ($date->getCies() === $this) {
+                $date->setCies(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+    // to show the name of the Category in the select
+    return $this->name;
+    // to show the id of the Category in the select
+    // return $this->id;
     }
 }
