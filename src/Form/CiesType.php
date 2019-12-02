@@ -6,6 +6,7 @@ use App\Entity\Cies;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class CiesType extends AbstractType
 {
@@ -14,7 +15,15 @@ class CiesType extends AbstractType
         $builder
             ->add('name')
             ->add('theme')
-            ->add('image')
+            ->add('imageFile', VichImageType::class, 
+                [
+                    'required' => false,
+                    'allow_delete' => false,
+                    'download_label' => true,
+                    'download_uri' => true,
+                    'image_uri' => true,
+                    'asset_helper' => true,
+                ])
             ->add('place')
             ->add('duration')
             ->add('audience')

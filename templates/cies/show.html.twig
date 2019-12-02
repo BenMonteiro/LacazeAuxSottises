@@ -20,8 +20,8 @@
                 <td>{{ cy.theme }}</td>
             </tr>
             <tr>
-                <th>Image</th>
-                <td>{{ cy.image }}</td>
+                <th>ImageName</th>
+                <td><img class="cieImage" src="{{ asset('images/uploads/' ~ cy.image.name) }}"></td>
             </tr>
             <tr>
                 <th>Place</th>

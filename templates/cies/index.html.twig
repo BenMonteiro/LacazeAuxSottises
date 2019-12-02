@@ -11,7 +11,8 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Theme</th>
-                <th>Image</th>
+                <th>ImageName</th>
+                <th>ImageSize</th>
                 <th>Place</th>
                 <th>Duration</th>
                 <th>Audience</th>
@@ -32,7 +33,7 @@
                 <td>{{ cy.id }}</td>
                 <td>{{ cy.name }}</td>
                 <td>{{ cy.theme }}</td>
-                <td>{{ cy.image }}</td>
+                <td>{{ cy.image.name }}</td>
                 <td>{{ cy.place }}</td>
                 <td>{{ cy.duration }}</td>
                 <td>{{ cy.audience }}</td>
@@ -51,7 +52,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="16">no records found</td>
+                <td colspan="17">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
