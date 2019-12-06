@@ -20,6 +20,22 @@
                 <td>{{ company.description }}</td>
             </tr>
             <tr>
+                <th>Theme</th>
+                <td>{{ company.theme }}</td>
+            </tr>
+            <tr>
+                <th>Durée</th>
+                <td>{{ company.duration }}</td>
+            </tr>
+            <tr>
+                <th>Public</th>
+                <td>{{ company.audience }}</td>
+            </tr>
+            <tr>
+                <th>Plus d'infos</th>
+                <td>{{ company.moreInfos }}</td>
+            </tr>
+            <tr>
                 <th>Image</th>
                 <td><img class="companyImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>
             </tr>

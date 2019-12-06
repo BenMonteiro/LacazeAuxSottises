@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -76,9 +77,30 @@ class Company
     private $videoLink;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Performance", mappedBy="companyName")
+     * @ORM\OneToMany(targetEntity="App\Entity\Performance", mappedBy="companyName", cascade="all", orphanRemoval=true)
+     * @Assert\Valid()
      */
     private $performances;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $theme;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $audience;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $moreInfos;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $duration;
 
     public function __construct()
     {
@@ -209,10 +231,8 @@ class Company
 
     public function addPerformance(Performance $performance): self
     {
-        if (!$this->performances->contains($performance)) {
-            $this->performances[] = $performance;
-            $performance->setCompanyName($this);
-        }
+        $performance->setCompanyName($this);
+        $this->performances->add($performance);
 
         return $this;
     }
@@ -226,6 +246,54 @@ class Company
                 $performance->setCompanyName(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTheme(): ?string
+    {
+        return $this->theme;
+    }
+
+    public function setTheme(?string $theme): self
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    public function getAudience(): ?string
+    {
+        return $this->audience;
+    }
+
+    public function setAudience(string $audience): self
+    {
+        $this->audience = $audience;
+
+        return $this;
+    }
+
+    public function getMoreInfos(): ?string
+    {
+        return $this->moreInfos;
+    }
+
+    public function setMoreInfos(?string $moreInfos): self
+    {
+        $this->moreInfos = $moreInfos;
+
+        return $this;
+    }
+
+    public function getDuration(): ?int
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(int $duration): self
+    {
+        $this->duration = $duration;
 
         return $this;
     }

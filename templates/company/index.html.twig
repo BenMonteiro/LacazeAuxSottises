@@ -12,6 +12,10 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Image</th>
+                <th>Theme</th>
+                <th>Durée</th>
+                <th>Public</th>
+                <th>Plus d'infos</th>
                 <th>IsInDiffusion</th>
                 <th>IsInCreation</th>
                 <th>Website</th>
@@ -26,6 +30,10 @@
                 <td>{{ company.name }}</td>
                 <td>{{ company.description }}</td>
                 <td><img class="companyImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>
+                <td>{{ company.theme}}</td>
+                <td>{{ company.duration}}</td>
+                <td>{{ company.audience}}</td>
+                <td>{{ company.moreInfos}}</td>
                 <td>{{ company.isInDiffusion ? 'Yes' : 'No' }}</td>
                 <td>{{ company.isInCreation ? 'Yes' : 'No' }}</td>
                 <td>{{ company.website }}</td>

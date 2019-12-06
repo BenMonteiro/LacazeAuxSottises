@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Company;
+use App\Entity\Performance;
 use App\Form\CompanyType;
 use App\Repository\CompanyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,6 +32,8 @@ class CompanyController extends AbstractController
     public function new(Request $request): Response
     {
         $company = new Company();
+
+
         $form = $this->createForm(CompanyType::class, $company);
         $form->handleRequest($request);
 
@@ -63,6 +66,7 @@ class CompanyController extends AbstractController
      */
     public function edit(Request $request, Company $company): Response
     {
+
         $form = $this->createForm(CompanyType::class, $company);
         $form->handleRequest($request);
 

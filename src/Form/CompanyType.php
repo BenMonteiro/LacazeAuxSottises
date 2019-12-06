@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class CompanyType extends AbstractType
 {
@@ -23,10 +24,23 @@ class CompanyType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
             ])
+            ->add('theme')
+            ->add('duration')
+            ->add('audience')
+            ->add('moreInfos')
             ->add('isInDiffusion')
             ->add('isInCreation')
             ->add('website')
             ->add('videoLink')
+            ->add('performances', CollectionType::class, [
+                'attr' => ['class' => 'perfs'],
+                'entry_type' => PerformanceType::class,
+                'required' => false,
+                'entry_options' => ['label' => false,],
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ])
         ;
     }
 
