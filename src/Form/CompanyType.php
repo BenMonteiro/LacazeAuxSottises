@@ -16,6 +16,7 @@ class CompanyType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('showTitle')
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => true,

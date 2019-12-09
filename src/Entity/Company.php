@@ -102,6 +102,11 @@ class Company
      */
     private $duration;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $showTitle;
+
     public function __construct()
     {
         $this->performances = new ArrayCollection();
@@ -136,7 +141,6 @@ class Company
 
         return $this;
     }
-
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -300,5 +304,17 @@ class Company
 
     public function __toString() {
         return $this->name;
+    }
+
+    public function getShowTitle(): ?string
+    {
+        return $this->showTitle;
+    }
+
+    public function setShowTitle(?string $showTitle): self
+    {
+        $this->showTitle = $showTitle;
+
+        return $this;
     }
 }
