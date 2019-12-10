@@ -16,7 +16,7 @@
                 <th>Hours</th>
                 <th>ProgramPDF</th>
                 <th>ProgramImage</th>
-                <th>actions</th>
+                <th>events</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +30,8 @@
                 <td>{{ event.hours }}</td>
                 <td><a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}">Programme du festival</a></td>
                 <td><img src="{{ asset('images/uploads/eventProgram/' ~ event.programImage.name) }}"></td>
+                
+                <td>{{ event.performances }}</td>
 
                 <td>
                     <a href="{{ path('event_show', {'id': event.id}) }}">show</a>

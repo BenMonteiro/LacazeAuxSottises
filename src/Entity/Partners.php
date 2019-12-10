@@ -12,8 +12,16 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass="App\Repository\PartnersRepository")
  * @Vich\Uploadable
  */
-class Partners
+final class Partners
 {
+
+    const TYPES = [
+        self::TYPES_PROD_DIST => self::TYPES_PROD_DIST,
+        self::TYPES_PARTNER => self::TYPES_PARTNER
+    ];
+    const TYPES_PROD_DIST = 'prod_dist';
+    const TYPES_PARTNER = 'partner';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -50,9 +58,11 @@ class Partners
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string")
      */
     private $type;
+
+
 
     public function __construct()
     {
@@ -94,6 +104,8 @@ class Partners
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
         }
+
+        return $this;
     }
 
     public function getLogoFile(): ?File
@@ -104,6 +116,8 @@ class Partners
     public function setLogo(EmbeddedFile $logo)
     {
         $this->logo = $logo;
+
+        return $this;
     }
 
     public function getLogo(): ?EmbeddedFile
@@ -111,12 +125,12 @@ class Partners
         return $this->logo;
     }
 
-    public function getType(): ?bool
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(bool $type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
 

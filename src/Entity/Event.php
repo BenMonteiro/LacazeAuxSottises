@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -88,15 +89,15 @@ class Event
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Performance", mappedBy="belongToEvents")
+     * @ORM\OneToMany(targetEntity="App\Entity\Performance", mappedBy="event")
      */
     private $performances;
 
     public function __construct()
     {
-        $this->performances = new ArrayCollection();
         $this->programPDF = new EmbeddedFile();
         $this->programImage = new EmbeddedFile();
+        $this->performances = new ArrayCollection();
 
     }
 
@@ -233,6 +234,10 @@ class Event
         return $this->programImage;
     }
 
+    public function __toString() {
+        return $this->name;
+    }
+
     /**
      * @return Collection|Performance[]
      */
@@ -245,7 +250,7 @@ class Event
     {
         if (!$this->performances->contains($performance)) {
             $this->performances[] = $performance;
-            $performance->addBelongToEvent($this);
+            $performance->setEvent($this);
         }
 
         return $this;
@@ -255,13 +260,12 @@ class Event
     {
         if ($this->performances->contains($performance)) {
             $this->performances->removeElement($performance);
-            $performance->removeBelongToEvent($this);
+            // set the owning side to null (unless already changed)
+            if ($performance->getEvent() === $this) {
+                $performance->setEvent(null);
+            }
         }
 
         return $this;
-    }
-
-    public function __toString() {
-        return $this->name;
     }
 }

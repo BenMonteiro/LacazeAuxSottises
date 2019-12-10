@@ -16,10 +16,12 @@ class PartnersType extends AbstractType
         $builder
             ->add('name')
             ->add('type', ChoiceType::class, [
-                'choices' => [
-                    'Producteurs, Distributeurs' => false,
-                    'Partenaires' => true
-                ]
+                //'choices' => Partners::TYPES
+                'choices'   => array(
+                    'partner.label.prod_dist' =>'prod_dist', 
+                    'partner.label.partner' => 'partner',
+                ),
+                'choice_translation_domain' => 'partners'
             ])
             ->add('logoFile', VichImageType::class, [
                 'required' => false,

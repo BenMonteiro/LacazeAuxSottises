@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'partners' %}
 
 {% block title %}Partners index{% endblock %}
 
@@ -19,7 +20,7 @@
             <tr>
                 <td>{{ partner.id }}</td>
                 <td>{{ partner.name }}</td>
-                <td>{{ partner.type ? 'Partenaires' : 'Producteurs, Distributeurs'}}</td>
+                <td>{{ ('partner.label.' ~ partner.type)|trans }}</td>
                 <td><img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}"></td>
 
                 <td>

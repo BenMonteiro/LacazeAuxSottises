@@ -9,8 +9,8 @@ jQuery(document).ready(function() {
     $collectionHolder = $('div.perfs');
 
 
-     for (let $x = 0 ; $x < 20; $x++)
-    $collectionHolder.find('div > #company_performances_'+ $x).each(function() {
+     for (let $x = 0 ; $x < 10000; $x++)
+    $collectionHolder.find('div#company_performances_'+ $x).each(function() {
         addTagFormDeleteLink($(this));
     });
 

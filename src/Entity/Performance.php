@@ -30,11 +30,6 @@ class Performance
     private $companyName;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Event", inversedBy="performances")
-     */
-    private $belongToEvents;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $cityShow;
@@ -49,10 +44,11 @@ class Performance
      */
     private $date;
 
-    public function __construct()
-    {
-        $this->belongToEvents = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="performances")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $event;
 
     public function getId(): ?int
     {
@@ -79,32 +75,6 @@ class Performance
     public function setCompanyName(?Company $companyName): self
     {
         $this->companyName = $companyName;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Event[]
-     */
-    public function getBelongToEvents(): Collection
-    {
-        return $this->belongToEvents;
-    }
-
-    public function addBelongToEvent(Event $belongToEvent): self
-    {
-        if (!$this->belongToEvents->contains($belongToEvent)) {
-            $this->belongToEvents[] = $belongToEvent;
-        }
-
-        return $this;
-    }
-
-    public function removeBelongToEvent(Event $belongToEvent): self
-    {
-        if ($this->belongToEvents->contains($belongToEvent)) {
-            $this->belongToEvents->removeElement($belongToEvent);
-        }
 
         return $this;
     }
@@ -147,5 +117,17 @@ class Performance
 
     public function __toString() {
         return $this->name;
+    }
+
+    public function getEvent(): ?Event
+    {
+        return $this->event;
+    }
+
+    public function setEvent(?Event $event): self
+    {
+        $this->event = $event;
+
+        return $this;
     }
 }

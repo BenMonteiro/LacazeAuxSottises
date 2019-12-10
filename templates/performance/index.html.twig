@@ -9,23 +9,27 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>CompanyName</th>
                 <th>CityShow</th>
                 <th>PlaceShow</th>
                 <th>Date</th>
-                <th>actions</th>
+                <th>event</th>
             </tr>
         </thead>
         <tbody>
         {% for performance in performances %}
             <tr>
                 <td>{{ performance.id }}</td>
+                <td>{{ performance.CompanyName}}</td>
                 <td>{{ performance.cityShow }}</td>
                 <td>{{ performance.placeShow }}</td>
                 <td>{{ performance.date ? performance.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ performance.event}}</td>
                 <td>
                     <a href="{{ path('performance_show', {'id': performance.id}) }}">show</a>
                     <a href="{{ path('performance_edit', {'id': performance.id}) }}">edit</a>
                 </td>
+                
             </tr>
         {% else %}
             <tr>

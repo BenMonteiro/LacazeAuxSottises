@@ -34,7 +34,6 @@ class EventType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
             ])
-            ->add('performances')
         ;
     }
 

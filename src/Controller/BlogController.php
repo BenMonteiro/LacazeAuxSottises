@@ -5,14 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PagesController extends AbstractController
+class BlogController extends AbstractController
 {
     /**
      * @Route("/landingPage", name="pages")
      */
     public function index()
     {
-        return $this->render('pages/landingPage.html.twig', [
+        return $this->render('blog/landingPage.html.twig', [
             'controller_name' => 'PagesController',
         ]);
     }

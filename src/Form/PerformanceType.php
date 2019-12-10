@@ -16,7 +16,7 @@ class PerformanceType extends AbstractType
             ->add('cityShow')
             ->add('placeShow')
             ->add('date')
-            ->add('belongToEvents')
+            ->add('event')
         ;
     }
 
