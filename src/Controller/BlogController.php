@@ -8,13 +8,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/landingPage", name="pages")
+     * @Route("/", name="blog")
      */
     public function index()
     {
-        return $this->render('blog/landingPage.html.twig', [
-            'controller_name' => 'PagesController',
-        ]);
+        return $this->render('blog/landingPage.html.twig');
     }
 
      /**
@@ -22,7 +20,7 @@ class BlogController extends AbstractController
      */
     public function home()
     {
-        return $this->render('pages/home.html.twig');
+        return $this->render('blog/home.html.twig');
 
     }
 

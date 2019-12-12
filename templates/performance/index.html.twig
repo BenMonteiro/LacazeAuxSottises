@@ -1,43 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Performance index{% endblock %}
+{% block title %}{{'perf.index'|trans({}, 'perf')|title}}{% endblock %}
 
 {% block body %}
-    <h1>Performance index</h1>
+    <h1>{{'perf.index'|trans({}, 'perf')|title}}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>CompanyName</th>
-                <th>CityShow</th>
-                <th>PlaceShow</th>
+                <th>{{'company.label'|trans({}, 'company')|capitalize}}</th>
+                <th>{{'perf.show.city'|trans({}, 'perf')|capitalize}}</th>
+                <th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
                 <th>Date</th>
-                <th>event</th>
+                <th>{{'perf.show.event'|trans({}, 'perf')|capitalize}}</th>
+                <th>    <a href="{{ path('performance_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a></th>
             </tr>
         </thead>
         <tbody>
         {% for performance in performances %}
             <tr>
-                <td>{{ performance.id }}</td>
                 <td>{{ performance.CompanyName}}</td>
                 <td>{{ performance.cityShow }}</td>
                 <td>{{ performance.placeShow }}</td>
                 <td>{{ performance.date ? performance.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ performance.event}}</td>
                 <td>
-                    <a href="{{ path('performance_show', {'id': performance.id}) }}">show</a>
-                    <a href="{{ path('performance_edit', {'id': performance.id}) }}">edit</a>
+                    <a href="{{ path('performance_show', {'id': performance.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+                    <a href="{{ path('performance_edit', {'id': performance.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+                    {{ include('performance/_delete_form.html.twig') }}
                 </td>
                 
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="8">{{'general.noRecords'|trans({}, 'general')}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('performance_new') }}">Create new</a>
+    <a href="{{ path('performance_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
 {% endblock %}

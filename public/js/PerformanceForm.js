@@ -1,8 +1,8 @@
 var $collectionHolder;
 
 // setup an "add a tag" link
-var $addPerfButton = $('<button type="button" class="add_perf_link">Add a Performance</button>');
-var $newLinkLi = $('<li></li>').append($addPerfButton);
+var $addPerfButton = $('<button type="button" class="add_perf_link">Ajouter une représentation</button>');
+var $newLinkLi = $('<li class="list-unstyled"></li>').append($addPerfButton);
 
 jQuery(document).ready(function() {
     // Get the ul that holds the collection of tags
@@ -42,14 +42,14 @@ function addPerfForm($collectionHolder, $newLinkLi) {
     $collectionHolder.data('index', index + 1);
 
     // Display the form in the page in an li, before the "Add a tag" link li
-    var $newFormLi = $('<li></li>').append(newForm);
+    var $newFormLi = $('<li class="list-unstyled"></li>').append(newForm);
     $newLinkLi.before($newFormLi);
 
     addTagFormDeleteLink($newFormLi);
 }
 
 function addTagFormDeleteLink($tagFormLi) {
-    var $removeFormButton = $('<button type="button">Delete this tag</button>');
+    var $removeFormButton = $('<button type="button">Supprimer la représentation</button>');
     $tagFormLi.append($removeFormButton);
 
     $removeFormButton.on('click', function(e) {

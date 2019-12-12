@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Performance{% endblock %}
+{% block title %}{{'perf.create'|trans({}, 'perf')|title}}{% endblock %}
 
 {% block body %}
-    <h1>Create new Performance</h1>
+    <h1>{{'perf.create'|trans({}, 'perf')|title}}</h1>
 
     {{ include('performance/_form.html.twig') }}
 
-    <a href="{{ path('performance_index') }}">back to list</a>
+    <a href="{{ path('performance_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 {% endblock %}

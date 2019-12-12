@@ -33,7 +33,6 @@ class CompanyController extends AbstractController
     {
         $company = new Company();
 
-
         $form = $this->createForm(CompanyType::class, $company);
         $form->handleRequest($request);
 

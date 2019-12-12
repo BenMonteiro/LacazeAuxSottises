@@ -1,0 +1,30 @@
+front:
+    season: la saison
+    festival: le festival
+    place: le tiers-lieu
+    activities: les activités du lieu
+    rentals: les locations
+    volunteering: le bénévolat
+    partners: nos partenaires
+    support: nous soutenir
+    introduction: présentation
+    program: programmation
+    inDiffusion: cies en diffusion
+    inCreation: cies en creation
+    cultural: actions culturelles
+    tickets: billetterie solidaire
+    proMeeting: rencontres pro
+    funSpace: espace ludique
+    plus: les p'tits
+    ecoPlace: éco-lieu
+    sharedSpaces: espaces partagés
+    livingShows: spectacles vivants
+    sust_dev: développement durable 
+    onYear: à l'année
+    onFest: durant le festival
+    association:
+        label: l'association
+        projects: projets pluriels
+        coop: coopération territoriale
+        team: équipe
+        subscription: adhésion

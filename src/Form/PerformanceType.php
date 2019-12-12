@@ -13,6 +13,7 @@ class PerformanceType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('companyName')
             ->add('cityShow')
             ->add('placeShow')
             ->add('date')

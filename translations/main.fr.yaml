@@ -1,5 +1,0 @@
-main:
-    buttons:
-        new : ajouter
-        update: mettre à jour
-        delete: supprimer

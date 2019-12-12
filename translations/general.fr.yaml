@@ -1,0 +1,17 @@
+Save: Enregistrer
+Update: Mettre à jour
+general:
+    create: ajouter
+    delete: supprimer
+    show: voir
+    edit: modifier
+    back: retour
+    noRecords: Aucune donnée disponible
+    name: nom
+    more:
+        infos: plus d'infos
+    website: site web
+    videoLink: lien vidéo
+    home: accueil
+    welcome: bienvenu
+    siteAccess: accéder au site

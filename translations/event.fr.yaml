@@ -1,0 +1,12 @@
+event:
+    label: événement
+    edit: modifier un événement
+    create: créer un nouvel événement
+    index: liste des événements
+    start: date de début
+    end: date de fin
+    hours: horaires
+    program: programmation
+    prog:
+        PDF: programmation au format PDF
+        image: image de couverture du programme

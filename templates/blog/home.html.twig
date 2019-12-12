@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}{{ 'general.home'|trans({}, 'general')|title }}{% endblock %}
 
 {% block body %}
     {% include('_frontMenu.html.twig') %}

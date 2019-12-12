@@ -1,4 +1,7 @@
 partner:
-    label:
-        prod_dist: Prducteurs, Distributeurs
-        partner: partenaire
+    label: partenaire
+    prod_dist: producteurs, distributeurs
+    partners: partenaires
+    edit: modifier un partenaire
+    index: liste des partenaires
+    create: créer un nouveau partenaire

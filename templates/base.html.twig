@@ -11,8 +11,6 @@
         {% endblock %}
     </head>
     <body>
-        {% trans_default_domain 'partners' %}
-
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="https://kit.fontawesome.com/f0017cd750.js" crossorigin="anonymous"></script>
@@ -21,7 +19,6 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
             <script src="{{ asset('js/FrontMenu.js') }}"></script>
             <script src="{{ asset('js/PerformanceForm.js') }}"></script>
-
         {% endblock %}
     </body>
 </html>

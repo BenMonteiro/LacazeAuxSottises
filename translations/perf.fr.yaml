@@ -1,0 +1,11 @@
+perf:
+    label: représentation
+    add: ajouter une représentation
+    delete: supprimer la représentation
+    create: créer une nouvelle représentation
+    edit: modifier une représentation
+    index: liste des représentations
+    show:
+        city: ville
+        place: adresse
+        event: événement

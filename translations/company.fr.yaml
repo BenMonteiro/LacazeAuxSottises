@@ -1,0 +1,12 @@
+company:
+    label: compagnie
+    index: liste des compagnies
+    edit: modifier une compagnie
+    create: créer une nouvelle compagnie
+    isIn:
+        creation: En création 
+        diffusion: En diffusion
+    show:
+        title: titre du spectacle
+        audience: public
+        duration: durée

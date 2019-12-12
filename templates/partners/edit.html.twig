@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Partners{% endblock %}
+{% block title %}{{ 'partner.edit'|trans({}, 'partners')|title }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Partners</h1>
+    <h1>{{ 'partner.edit'|trans({}, 'partners')|title }}</h1>
 
     {{ include('partners/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('partners_index') }}">back to list</a>
+    <a href="{{ path('partners_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 
     {{ include('partners/_delete_form.html.twig') }}
 {% endblock %}
