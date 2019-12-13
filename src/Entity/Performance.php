@@ -115,10 +115,6 @@ class Performance
         return $this;
     }
 
-    public function __toString() {
-        return $this->name;
-    }
-
     public function getEvent(): ?Event
     {
         return $this->event;
@@ -129,5 +125,9 @@ class Performance
         $this->event = $event;
 
         return $this;
+    }
+
+    public function __toString() {
+        return $this->name;
     }
 }
