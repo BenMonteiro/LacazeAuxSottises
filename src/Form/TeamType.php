@@ -2,27 +2,30 @@
 
 namespace App\Form;
 
-use App\Entity\Partners;
+use App\Entity\Team;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class PartnersType extends AbstractType
+
+class TeamType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('name')
-            ->add('type', ChoiceType::class, [
+            ->add('firstName')
+            ->add('role', ChoiceType::class, [
                 'choices' => array(
-                    'partner.prod_dist' => 'prod_dist', 
-                    'partner.partners' => 'partners',
+                    'member.role.volunteer' => 'volunteer', 
+                    'member.role.gov_body' => 'gov_body',
+                    'member.role.pro' => 'pro', 
                 ),
-                'choice_translation_domain' => 'partners'
+                'choice_translation_domain' => 'team'
             ])
-            ->add('logoFile', VichImageType::class, [
+            ->add('photoFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => true,
                 'download_label' => true,
@@ -30,13 +33,14 @@ class PartnersType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
             ])
+            ->add('email')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Partners::class,
+            'data_class' => Team::class,
         ]);
     }
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="oibiEz2" resname="event.label">
+        <source>event.label</source>
+        <target>événement</target>
+      </trans-unit>
+      <trans-unit id="yMnAggV" resname="event.edit">
+        <source>event.edit</source>
+        <target>modifier un événement</target>
+      </trans-unit>
+      <trans-unit id="Zlm6g1n" resname="event.create">
+        <source>event.create</source>
+        <target>créer un nouvel événement</target>
+      </trans-unit>
+      <trans-unit id="6TJoGkJ" resname="event.index">
+        <source>event.index</source>
+        <target>liste des événements</target>
+      </trans-unit>
+      <trans-unit id="Kin4Jfz" resname="event.start">
+        <source>event.start</source>
+        <target>date de début</target>
+      </trans-unit>
+      <trans-unit id="yB0C214" resname="event.end">
+        <source>event.end</source>
+        <target>date de fin</target>
+      </trans-unit>
+      <trans-unit id="OXsqf64" resname="event.hours">
+        <source>event.hours</source>
+        <target>horaires</target>
+      </trans-unit>
+      <trans-unit id="jJ6SXYj" resname="event.program">
+        <source>event.program</source>
+        <target>programmation</target>
+      </trans-unit>
+      <trans-unit id="jm_BGTd" resname="event.prog.PDF">
+        <source>event.prog.PDF</source>
+        <target>programmation au format PDF</target>
+      </trans-unit>
+      <trans-unit id="z9VgUSt" resname="event.prog.image">
+        <source>event.prog.image</source>
+        <target>image de couverture du programme</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

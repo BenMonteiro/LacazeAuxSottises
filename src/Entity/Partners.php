@@ -14,14 +14,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 final class Partners
 {
-
-    const TYPES = [
-        self::TYPES_PROD_DIST => self::TYPES_PROD_DIST,
-        self::TYPES_PARTNER => self::TYPES_PARTNER
-    ];
-    const TYPES_PROD_DIST = 'prod_dist';
-    const TYPES_PARTNER = 'partner';
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

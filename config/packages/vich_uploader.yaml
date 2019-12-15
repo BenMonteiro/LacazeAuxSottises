@@ -14,3 +14,7 @@ vich_uploader:
             uri_prefix: /images/uploads/partnerLogo
             upload_destination: '%kernel.project_dir%/public/images/uploads/partnerLogo'
 
+        member_photo:
+            uri_prefix: /images/uploads/memberPhoto
+            upload_destination: '%kernel.project_dir%/public/images/uploads/memberPhoto'
+

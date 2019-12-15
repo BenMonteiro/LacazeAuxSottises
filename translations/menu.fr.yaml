@@ -23,7 +23,7 @@ front:
     onYear: à l'année
     onFest: durant le festival
     association:
-        label: l'association
+        label: L'Association
         projects: projets pluriels
         coop: coopération territoriale
         team: équipe

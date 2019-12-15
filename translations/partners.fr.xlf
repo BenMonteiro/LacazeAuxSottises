@@ -5,6 +5,30 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
+      <trans-unit id="3VTOq_w" resname="partner.label">
+        <source>partner.label</source>
+        <target>partenaire</target>
+      </trans-unit>
+      <trans-unit id="LM2UAXA" resname="partner.prod_dist">
+        <source>partner.prod_dist</source>
+        <target>prouducteurs, distributeurs</target>
+      </trans-unit>
+      <trans-unit id="JeQo6B2" resname="partner.partners">
+        <source>partner.partners</source>
+        <target>partenaires</target>
+      </trans-unit>
+      <trans-unit id="PwtfbtR" resname="partner.edit">
+        <source>partner.edit</source>
+        <target>modifier un partenaire</target>
+      </trans-unit>
+      <trans-unit id="EmWw2QH" resname="partner.index">
+        <source>partner.index</source>
+        <target>liste des partenaires</target>
+      </trans-unit>
+      <trans-unit id="5G8sGWw" resname="partner.create">
+        <source>partner.create</source>
+        <target>créer un nouveau partenaire</target>
+      </trans-unit>
       <trans-unit id="dV6waV6" resname="partner.label.prod_dist">
         <source>partner.label.prod_dist</source>
         <target>Prducteurs, Distributeurs</target>

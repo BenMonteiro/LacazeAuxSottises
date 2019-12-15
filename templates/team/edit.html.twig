@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'team.edit'|trans({}, 'team')|title }}{% endblock %}
+
+{% block body %}
+    <h1>{{'team.edit'|trans({}, 'team')|title }}</h1>
+
+    {{ include('team/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('team_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+
+    {{ include('team/_delete_form.html.twig') }}
+{% endblock %}

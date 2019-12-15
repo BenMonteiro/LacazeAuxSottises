@@ -18,7 +18,7 @@
         {% for partner in partners %}
             <tr>
                 <td>{{ partner.name }}</td>
-                <td>{{ ('partner.label.' ~ partner.type)|trans({},'partners') }}</td>
+                <td>{{ ('partner.' ~ partner.type)|trans({}, 'partners')|capitalize }}</td>
                 <td><img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}"></td>
                 <td>
                     <a href="{{ path('partners_show', {'id': partner.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>

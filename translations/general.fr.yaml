@@ -8,6 +8,7 @@ general:
     back: retour
     noRecords: Aucune donnée disponible
     name: nom
+    firstName: prénom
     more:
         infos: plus d'infos
     website: site web

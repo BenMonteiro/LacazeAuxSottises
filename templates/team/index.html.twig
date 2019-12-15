@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'team.index'|trans({}, 'team')}}{% endblock %}
+
+{% block body %}
+    <h1>{{'team.index'|trans({}, 'team')}}</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{'general.name'|trans({}, 'general')|capitalize}}</th>
+                <th>{{'general.firstName'|trans({}, 'general')|capitalize}}</th>
+                <th>{{'member.role.label'|trans({}, 'team')|capitalize}}</th>
+                <th>Photo</th>
+                <th>Email</th>
+                <th><a href="{{ path('team_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+            <tr>
+                <td>{{ team.name }}</td>
+                <td>{{ team.firstName }}</td>
+                <td>{{ ('member.role.' ~ team.role)|trans({}, 'team')|capitalize}}</td>
+                <td><img class="memberPhoto" src="{{ asset('images/uploads/memberPhoto/' ~ team.photo.name) }}"></td>
+                <td>{{ team.email }}</td>
+                <td>
+                    <a href="{{ path('team_show', {'id': team.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+                    <a href="{{ path('team_edit', {'id': team.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+                    {{ include('team/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">{{'general.noRecords'|trans({}, 'general')|capitalize}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('team_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+{% endblock %}

@@ -98,7 +98,6 @@ class Event
         $this->programPDF = new EmbeddedFile();
         $this->programImage = new EmbeddedFile();
         $this->performances = new ArrayCollection();
-
     }
 
     public function getId(): ?int

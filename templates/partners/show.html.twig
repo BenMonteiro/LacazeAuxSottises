@@ -8,6 +8,10 @@
     <table class="table">
         <tbody>
             <tr>
+                <th>Type</th>
+                <td>{{ ('partner.' ~ partner.type)|trans({}, 'partners')|capitalize }}</td>
+            </tr>
+            <tr>
                 <th>Logo</th>
                 <td><img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}"></td>
             </tr>

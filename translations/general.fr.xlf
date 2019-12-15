@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="FQn1YfJ" resname="Save">
+        <source>Save</source>
+        <target>Enregistrer</target>
+      </trans-unit>
+      <trans-unit id="wcEAnT8" resname="Update">
+        <source>Update</source>
+        <target>Mettre à jour</target>
+      </trans-unit>
+      <trans-unit id="wP0ECXz" resname="general.create">
+        <source>general.create</source>
+        <target>ajouter</target>
+      </trans-unit>
+      <trans-unit id="wM.AJXq" resname="general.delete">
+        <source>general.delete</source>
+        <target>supprimer</target>
+      </trans-unit>
+      <trans-unit id="IeKzjUN" resname="general.show">
+        <source>general.show</source>
+        <target>voir</target>
+      </trans-unit>
+      <trans-unit id="XJKOBIo" resname="general.edit">
+        <source>general.edit</source>
+        <target>modifier</target>
+      </trans-unit>
+      <trans-unit id="qdGDk9Z" resname="general.back">
+        <source>general.back</source>
+        <target>retour</target>
+      </trans-unit>
+      <trans-unit id="YBuh_cj" resname="general.noRecords">
+        <source>general.noRecords</source>
+        <target>Aucune donnée disponible</target>
+      </trans-unit>
+      <trans-unit id="LZdT.Ud" resname="general.name">
+        <source>general.name</source>
+        <target>nom</target>
+      </trans-unit>
+      <trans-unit id="8lqqwwo" resname="general.firstName">
+        <source>general.firstName</source>
+        <target>prénom</target>
+      </trans-unit>
+      <trans-unit id="8JXZjZF" resname="general.more.infos">
+        <source>general.more.infos</source>
+        <target>plus d'infos</target>
+      </trans-unit>
+      <trans-unit id="nnizhiJ" resname="general.website">
+        <source>general.website</source>
+        <target>site web</target>
+      </trans-unit>
+      <trans-unit id="wMo.Ztn" resname="general.videoLink">
+        <source>general.videoLink</source>
+        <target>lien vidéo</target>
+      </trans-unit>
+      <trans-unit id="OJHGMA3" resname="general.home">
+        <source>general.home</source>
+        <target>accueil</target>
+      </trans-unit>
+      <trans-unit id="_wwbx6p" resname="general.welcome">
+        <source>general.welcome</source>
+        <target>bienvenu</target>
+      </trans-unit>
+      <trans-unit id="WzY4L76" resname="general.siteAccess">
+        <source>general.siteAccess</source>
+        <target>accéder au site</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

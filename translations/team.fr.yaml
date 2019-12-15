@@ -1,0 +1,11 @@
+member:
+    role:
+        label: rôle
+        volunteer: bénévole
+        gov_body: conseil d'administration
+        pro: professionnel associatif
+team:
+    label: équipe
+    index: L'Équipe
+    edit: modifier un membre
+    create: ajouter un nouveau membre
