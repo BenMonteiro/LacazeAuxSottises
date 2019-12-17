@@ -33,6 +33,8 @@ final class Partners
      * 
      * @Vich\UploadableField(mapping="partner_logo", fileNameProperty="logo.name", size="logo.size", mimeType="logo.mimeType", originalName="logo.originalName")
      * 
+     * @Assert\Image
+     * 
      * @var File
      */
     private $logoFile;

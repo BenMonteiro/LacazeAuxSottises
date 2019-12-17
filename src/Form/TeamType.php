@@ -26,6 +26,7 @@ class TeamType extends AbstractType
                 'choice_translation_domain' => 'team'
             ])
             ->add('photoFile', VichImageType::class, [
+                'label' => 'Photo',
                 'required' => false,
                 'allow_delete' => true,
                 'download_label' => true,
@@ -41,6 +42,7 @@ class TeamType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Team::class,
+            'translation_domain' => 'form'
         ]);
     }
 }

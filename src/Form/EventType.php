@@ -20,6 +20,7 @@ class EventType extends AbstractType
             ->add('endingDate')
             ->add('hours')
             ->add('programPDFFile', VichFileType::class, [
+                'label' => 'Programme (format PDF)',
                 'required' => false,
                 'allow_delete' => true,
                 'download_label' => true,
@@ -27,6 +28,7 @@ class EventType extends AbstractType
                 'asset_helper' => true,
             ])
             ->add('programImageFile', VichImageType::class, [
+                'label' => 'Image du programme',
                 'required' => false,
                 'allow_delete' => true,
                 'download_label' => true,
@@ -41,6 +43,7 @@ class EventType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Event::class,
+            'translation_domain' => 'form'
         ]);
     }
 }

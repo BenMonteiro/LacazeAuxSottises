@@ -50,6 +50,8 @@ class Team
      * 
      * @Vich\UploadableField(mapping="member_photo", fileNameProperty="photo.name", size="photo.size", mimeType="photo.mimeType", originalName="photo.originalName", dimensions="photo.dimensions")
      * 
+     * @Assert\Image
+     * 
      * @var File
      */
     private $photoFile;

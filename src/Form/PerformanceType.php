@@ -12,8 +12,6 @@ class PerformanceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('companyName')
             ->add('cityShow')
             ->add('placeShow')
             ->add('date')
@@ -25,6 +23,7 @@ class PerformanceType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Performance::class,
+            'translation_domain' => 'form'
         ]);
     }
 }

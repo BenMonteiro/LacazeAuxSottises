@@ -23,6 +23,7 @@ class PartnersType extends AbstractType
                 'choice_translation_domain' => 'partners'
             ])
             ->add('logoFile', VichImageType::class, [
+                'label' => 'Logo',
                 'required' => false,
                 'allow_delete' => true,
                 'download_label' => true,
@@ -37,6 +38,7 @@ class PartnersType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Partners::class,
+            'translation_domain' => 'form'
         ]);
     }
 }

@@ -55,7 +55,11 @@ class Event
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="program_file", fileNameProperty="programPDF.name", size="programPDF.size", mimeType="programPDF.mimeType", originalName="programPDF.originalName")
-     * 
+     *
+     * @Assert\File(
+     *     mimeTypes = {"application/pdf", "application/x-pdf"}
+     * )
+     *
      * @var File
      */
     private $programPDFFile;
@@ -71,6 +75,8 @@ class Event
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="program_file", fileNameProperty="programImage.name", size="programImage.size", mimeType="programImage.mimeType", originalName="programImage.originalName")
+     * 
+     * @Assert\Image
      * 
      * @var File
      */
