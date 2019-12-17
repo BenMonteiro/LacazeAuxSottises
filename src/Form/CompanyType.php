@@ -14,7 +14,10 @@ class CompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', null, [
+                'label' => 'general.name',
+                'translation_domain' => 'general'
+            ])
             ->add('description')
             ->add('showTitle')
             ->add('imageFile', VichImageType::class, [
@@ -49,6 +52,7 @@ class CompanyType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Company::class,
+            'translation_domain' => 'company'
         ]);
     }
 }

@@ -1,4 +1,7 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save')|trans({}, 'general') }}</button>
+    <div class="offset-3 col-6">
+        {{ form_widget(form) }}
+    </div>
+    <button class="btn">{{ button_label|default('Save')|trans({}, 'general') }}</button>   
+    <p class="text-danger">* {{'general.required'|trans({}, 'general')|capitalize}}</p>
 {{ form_end(form) }}

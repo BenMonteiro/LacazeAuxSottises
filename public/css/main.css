@@ -19,9 +19,15 @@
 }
 
 .companyImage {
-    width:100px
+    border-radius:80px;
+    width:200px;
+    height:150px;
 }
 
 .partnerLogo {
     width: 100px
+}
+
+label.required:before {
+    content: "* ";
 }

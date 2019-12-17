@@ -27,7 +27,27 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="company_new", methods={"GET","POST"})
+     * @Route("/inDiffusion", name="company_inDiffusion", methods={"GET"})
+     */
+    public function inDiffusion(CompanyRepository $companyRepository): Response
+    {
+        return $this->render('company/inDiffusion.html.twig', [
+            'inDiffusionCompanies' => $companyRepository->findBy(['isInDiffusion' => 1])
+        ]);
+    }
+    
+    /**
+     * @Route("/inCreation", name="company_inCreation", methods={"GET"})
+     */
+    public function inCreation(CompanyRepository $companyRepository): Response
+    {
+        return $this->render('company/inCreation.html.twig', [
+            'inCreationCompanies' => $companyRepository->findBy(['isInCreation' => 1])
+        ]);
+    }
+
+    /**
+     * @Route("/admin/new", name="company_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -94,4 +114,18 @@ class CompanyController extends AbstractController
 
         return $this->redirectToRoute('company_index');
     }
+    /**
+     * @Route("/page/{slug}", name="page-voir", methods={"GET"})
+    
+    *public function pageVoir(Request $request, Page $page)
+    *{
+     *   $defaultTemplate = 'default_page.html.twig';
+
+      *  if($page->isCustomTemplate()){
+       *     $defaultTemplate = $page->getSlug(). '.html.twig';
+        *}
+
+    *    $this->render($defaultTemplate);
+    *}
+    */
 }

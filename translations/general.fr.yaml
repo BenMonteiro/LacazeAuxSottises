@@ -9,6 +9,7 @@ general:
     noRecords: Aucune donnée disponible
     name: nom
     firstName: prénom
+    required: champs obligatoires
     more:
         infos: plus d'infos
     website: site web
