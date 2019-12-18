@@ -12,6 +12,7 @@ class PerformanceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('companyName')
             ->add('cityShow')
             ->add('placeShow')
             ->add('date')

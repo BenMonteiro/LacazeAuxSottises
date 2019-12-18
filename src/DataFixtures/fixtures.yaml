@@ -1,0 +1,46 @@
+App\Entity\Company:
+    company{1..10}:
+        name: '<company()>'
+        description: '<paragraph(3, true)>'
+        showTitle: '<sentence(4, true)>'
+        theme: '<word()>'
+        duration: '<numberBetween(15, 120)>'
+        audience: '<sentence(3, true)>'
+        moreInfos: '<sentence(15, true)>'
+        isInDiffusion: '<boolean(50)>'
+        isInCreation: '<boolean(50)>'
+        website: '<domainName()>'
+        videoLink: '<domainName()>'
+
+App\Entity\Partners:
+    partner{1..30}:
+        name: '<company()>'
+        type: '<randomElement(["prod_dist", "partners"])>'
+
+App\Entity\Event:
+    event{1..7}:
+        name: '<word()>'
+        description: '<paragraph(3, true)>'
+        startingDate: '<dateTimeBetween("-200 days", "now")>'
+        endingDate: '90%? <dateTimeBetween($startingDate, "now")>'
+
+App\Entity\Team:
+    team{1..15}:
+        name: '<lastName()>'
+        firstName: '<firstName()>'
+        role: '<randomElement(["volunteer", "gov_body", "pro"])>'
+        email: '<email()>'
+
+App\Entity\Performance:
+    performance{1..50}:
+        companyName: '@company*'
+        cityShow: '<city()>'
+        placeShow: '<streetAddress()>'
+        date: '<dateTimeBetween("-200 days", "now")>'
+        event: '@event*'
+
+
+
+
+
+
