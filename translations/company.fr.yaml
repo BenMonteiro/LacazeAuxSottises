@@ -4,9 +4,9 @@ company:
     edit: modifier une compagnie
     create: créer une nouvelle compagnie
     isIn:
-        creation: En création 
-        diffusion: En diffusion
+        creation: compagnies en création 
+        diffusion: compagnies en diffusion
     show:
         title: titre du spectacle
         audience: public
-Duration: durée
+        duration: durée

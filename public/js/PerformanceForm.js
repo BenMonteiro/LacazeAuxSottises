@@ -9,10 +9,11 @@ jQuery(document).ready(function() {
     $collectionHolder = $('div.perfs');
 
 
-     for (let $x = 0 ; $x < 10000; $x++)
-    $collectionHolder.find('div#company_performances_'+ $x).each(function() {
-        addTagFormDeleteLink($(this));
-    });
+    for (let $x = 0 ; $x < 10000; $x++) {
+        $collectionHolder.find('div#company_performances_'+ $x).each(function() {
+            addTagFormDeleteLink($(this));
+        });
+    }
 
     // add the "add a tag" anchor and li to the tags ul
     $collectionHolder.append($newLinkLi);

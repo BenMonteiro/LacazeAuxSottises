@@ -31,3 +31,7 @@
 label.required:before {
     content: "* ";
 }
+
+div[id^="company_performances_"] > div:first-child {
+    display: none;
+}

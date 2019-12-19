@@ -23,5 +23,18 @@ class BlogController extends AbstractController
         return $this->render('blog/home.html.twig');
 
     }
+    /**
+     * @Route("/page/{slug}", name="page_voir", methods={"GET"})
+    
+    *public function pageVoir(Request $request, Page $page)
+    *{
+     *   $defaultTemplate = 'default_page.html.twig';
 
+      *  if($page->isCustomTemplate()){
+       *     $defaultTemplate = $page->getSlug(). '.html.twig';
+        *}
+
+    *    $this->render($defaultTemplate);
+    *}
+    */
 }

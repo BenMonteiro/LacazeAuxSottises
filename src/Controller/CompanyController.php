@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Company;
-use App\Entity\Performance;
 use App\Form\CompanyType;
 use App\Repository\CompanyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -114,18 +113,4 @@ class CompanyController extends AbstractController
 
         return $this->redirectToRoute('company_index');
     }
-    /**
-     * @Route("/page/{slug}", name="page-voir", methods={"GET"})
-    
-    *public function pageVoir(Request $request, Page $page)
-    *{
-     *   $defaultTemplate = 'default_page.html.twig';
-
-      *  if($page->isCustomTemplate()){
-       *     $defaultTemplate = $page->getSlug(). '.html.twig';
-        *}
-
-    *    $this->render($defaultTemplate);
-    *}
-    */
 }
