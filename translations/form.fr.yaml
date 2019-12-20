@@ -22,3 +22,46 @@ Hours: horaires
 First name: Prénom
 Role: Rôle
 Email: Email
+Page slug: Page
+Title: Titre
+Sub title: Sous-titre
+Appearance order: Ordre d'apparition dans la page
+Content: Texte du paragraph
+
+page:
+    presentation: Présentation
+    inDiffusion: Cies en Diffusion
+    prog: Programmation
+    culturalActions: Actions Culturelles
+    association:
+        label: L'Association
+        projects: Projets Pluriels
+        coop: Coopération Térritoriale
+        team: Équipe
+        subscription: Adhésion
+    season:
+        label: La Saison
+        inCreation: Cies en Création
+    fest:
+        label: Le Festival
+        tickets: Billeterie Solidaire
+        proMeeting: Rencontres Pro
+        funSpace: Espace Ludique
+        plus: Les P'tits +
+    place:
+        label: Le Tiers-Lieu
+        ecoPlace: Éco-Lieu
+        sharedSpaces: espaces partagés
+    activities:
+        label: Les Activités du Lieu
+        livingShows: spectacles vivants
+        sust_dev: développement durable
+    rentals: Les Locations
+    volunteering:
+        label: Le Bénévolat
+        onYear: À l'année
+        onFest: Durant Le Festival
+    partners: Nos Partenaires
+    support: nous soutenir
+    contact: Contacts
+

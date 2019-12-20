@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'section.index'|trans({}, 'section')|title}}{% endblock %}
+
+{% block body %}
+    <h1>{{'section.index'|trans({}, 'section')|title}}</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{'general.name'|trans({}, 'general')|capitalize}}</th>
+                <th>{{'section.pageSlug'|trans({}, 'section')|capitalize}}</th>
+                <th>{{'section.title'|trans({}, 'section')|capitalize}}</th>
+                <th>{{'section.subTitle'|trans({}, 'section')|capitalize}}</th>
+                <th>{{'section.appearanceOrder'|trans({}, 'section')|capitalize}}</th>
+                <th>{{'section.content'|trans({}, 'section')|capitalize}}</th>
+                <th>{{'section.image'|trans({}, 'section')|capitalize}}</th>
+                <th><a href="{{ path('section_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for section in sections %}
+            <tr>
+                <td>{{ section.name }}</td>
+                <td>{{ section.pageSlug }}</td>
+                <td>{{ section.title }}</td>
+                <td>{{ section.subTitle }}</td>
+                <td>{{ section.appearanceOrder }}</td>
+                <td>{{ section.content }}</td>
+                <td>{{ section.image.name }}</td>
+                <td>
+                    <a href="{{ path('section_show', {'id': section.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+                    <a href="{{ path('section_edit', {'id': section.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+                    {{ include('section/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">{{'general.noRecords'|trans({}, 'general')}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('section_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+{% endblock %}

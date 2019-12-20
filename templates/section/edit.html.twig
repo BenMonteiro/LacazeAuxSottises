@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'section.edit'|trans({}, 'section')|title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'section.edit'|trans({}, 'section')|title }}</h1>
+
+    {{ include('section/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('section_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+
+    {{ include('section/_delete_form.html.twig') }}
+{% endblock %}

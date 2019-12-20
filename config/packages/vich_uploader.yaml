@@ -18,3 +18,7 @@ vich_uploader:
             uri_prefix: /images/uploads/memberPhoto
             upload_destination: '%kernel.project_dir%/public/images/uploads/memberPhoto'
 
+        paragraph_image:
+            uri_prefix: /images/uploads/paragraphImage
+            upload_destination: '%kernel.project_dir%/public/images/uploads/paragraphImage'
+

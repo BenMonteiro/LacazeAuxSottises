@@ -1,0 +1,33 @@
+section:
+      season: La Saison
+      festival: Le Festival
+      place: Le Tiers-Lieu
+      activities: Les Activités du Lieu
+      rentals: Les Locations
+      volunteering: Le Bénévolat
+      partners: Nos Partenaires
+      support: Nous Soutenir
+      association: L'Association
+
+page:
+      introduction: présentation
+      program: programmation
+      inDiffusion: cies en diffusion
+      inCreation: cies en creation
+      cultural: actions culturelles
+      tickets: billetterie solidaire
+      proMeeting: rencontres pro
+      funSpace: espace ludique
+      plus: les p'tits
+      ecoPlace: éco-lieu
+      sharedSpaces: espaces partagés
+      livingShows: spectacles vivants
+      sust_dev: développement durable 
+      onYear: à l'année
+      onFest: durant le festival
+      association:
+          label: L'Association
+          projects: projets pluriels
+          coop: coopération territoriale
+          team: équipe
+          subscription: adhésion
