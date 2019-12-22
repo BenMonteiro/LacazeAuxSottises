@@ -3,9 +3,9 @@
 {% block title %}{{'partner.create'|trans({}, 'partners')|title}}{% endblock %}
 
 {% block body %}
-    <h1>{{'partner.create'|trans({}, 'partners')|title}}</h1>
+<h1>{{'partner.create'|trans({}, 'partners')|title}}</h1>
 
-    {{ include('partners/_form.html.twig') }}
+{{ include('partners/_form.html.twig') }}
 
-    <a href="{{ path('partners_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+<a href="{{ path('partners_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 {% endblock %}

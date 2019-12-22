@@ -16,8 +16,7 @@ class PerformanceType extends AbstractType
             ->add('cityShow')
             ->add('placeShow')
             ->add('date')
-            ->add('event')
-        ;
+            ->add('event');
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -3,57 +3,59 @@
 {% block title %}{{ company.name}}{% endblock %}
 
 {% block body %}
-    <h1>{{ company.name}}</h1>
+<h1>{{ company.name}}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ company.description }}</td>
-            </tr>
-            <tr>
-                <th>Theme</th>
-                <td>{{ company.theme }}</td>
-            </tr>
-            <tr>
-                <th>{{'company.show.duration'|trans({}, 'company')|capitalize}}</th>
-                <td>{{ company.duration }}</td>
-            </tr>
-            <tr>
-                <th>{{'company.show.audience'|trans({}, 'company')|capitalize}}</th>
-                <td>{{ company.audience }}</td>
-            </tr>
-            <tr>
-                <th>{{'general.more.infos'|trans({}, 'general')|capitalize}}</th>
-                <td>{{ company.moreInfos }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td><img class="companyImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>
-            </tr>
-            <tr>
-                <th>{{'company.isIn.diffusion'|trans({}, 'company')|capitalize}}</th>
-                <td>{{ company.isInDiffusion ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
-            </tr>
-            <tr>
-                <th>{{'company.isIn.creation'|trans({}, 'company')|capitalize}}</th>
-                <td>{{ company.isInCreation ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
-            </tr>
-            <tr>
-                <th>{{'general.website'|trans({}, 'general')|capitalize}}</th>
-                <td>{{ company.website }}</td>
-            </tr>
-            <tr>
-                <th>{{'general.videoLink'|trans({}, 'general')|capitalize}}</th>
-                <td>{{ company.videoLink }}</td>
-            </tr>
-        </tbody>
-    </table>
+<table class="table">
+    <tbody>
+        <tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ company.description }}</td>
+        </tr>
+        <tr>
+            <th>Theme</th>
+            <td>{{ company.theme }}</td>
+        </tr>
+        <tr>
+            <th>{{'company.show.duration'|trans({}, 'company')|capitalize}}</th>
+            <td>{{ company.duration }}</td>
+        </tr>
+        <tr>
+            <th>{{'company.show.audience'|trans({}, 'company')|capitalize}}</th>
+            <td>{{ company.audience }}</td>
+        </tr>
+        <tr>
+            <th>{{'general.more.infos'|trans({}, 'general')|capitalize}}</th>
+            <td>{{ company.moreInfos }}</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td><img class="companyImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>
+        </tr>
+        <tr>
+            <th>{{'company.isIn.diffusion'|trans({}, 'company')|capitalize}}</th>
+            <td>{{ company.isInDiffusion ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}
+            </td>
+        </tr>
+        <tr>
+            <th>{{'company.isIn.creation'|trans({}, 'company')|capitalize}}</th>
+            <td>{{ company.isInCreation ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}
+            </td>
+        </tr>
+        <tr>
+            <th>{{'general.website'|trans({}, 'general')|capitalize}}</th>
+            <td>{{ company.website }}</td>
+        </tr>
+        <tr>
+            <th>{{'general.videoLink'|trans({}, 'general')|capitalize}}</th>
+            <td>{{ company.videoLink }}</td>
+        </tr>
+    </tbody>
+</table>
 
-    <a href="{{ path('company_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+<a href="{{ path('company_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 
-    <a href="{{ path('company_edit', {'id': company.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+<a href="{{ path('company_edit', {'id': company.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
 
-    {{ include('company/_delete_form.html.twig') }}
+{{ include('company/_delete_form.html.twig') }}
 {% endblock %}

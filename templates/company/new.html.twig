@@ -3,9 +3,9 @@
 {% block title %}{{'company.create'|trans({}, 'company')|title}}{% endblock %}
 
 {% block body %}
-    <h1>{{'company.create'|trans({}, 'company')|title}}</h1>
+<h1>{{'company.create'|trans({}, 'company')|title}}</h1>
 
-    {{ include('company/_form.html.twig') }}
+{{ include('company/_form.html.twig') }}
 
-    <a href="{{ path('company_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+<a href="{{ path('company_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 {% endblock %}

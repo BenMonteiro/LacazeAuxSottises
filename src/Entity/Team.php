@@ -56,7 +56,7 @@ class Team
      */
     private $photoFile;
 
-        /**
+    /**
      * @ORM\Embedded(class="Vich\UploaderBundle\Entity\File")
      *
      * @var EmbeddedFile
@@ -72,7 +72,7 @@ class Team
 
     public function __construct()
     {
-        $this->photo= new EmbeddedFile();
+        $this->photo = new EmbeddedFile();
     }
 
     public function getId(): ?int
@@ -128,7 +128,7 @@ class Team
         return $this;
     }
 
-        /**
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the  update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter

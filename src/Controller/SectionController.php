@@ -83,7 +83,7 @@ class SectionController extends AbstractController
      */
     public function delete(Request $request, Section $section): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$section->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $section->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($section);
             $entityManager->flush();
@@ -100,7 +100,7 @@ class SectionController extends AbstractController
         $defaultTemplate = 'section/association-index.html.twig';
 
         return $this->render($defaultTemplate, [
-           'sections' => $sectionRepository->findBy(['pageSlug' => $section->getPageSlug()])
-       ]);
+            'sections' => $sectionRepository->findBy(['pageSlug' => $section->getPageSlug()])
+        ]);
     }
 }

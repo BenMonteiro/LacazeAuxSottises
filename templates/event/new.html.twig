@@ -3,9 +3,9 @@
 {% block title %}{{'event.create'|trans({}, 'event')|title}}{% endblock %}
 
 {% block body %}
-    <h1>{{'event.create'|trans({}, 'event')|title}}</h1>
+<h1>{{'event.create'|trans({}, 'event')|title}}</h1>
 
-    {{ include('event/_form.html.twig') }}
+{{ include('event/_form.html.twig') }}
 
-    <a href="{{ path('event_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+<a href="{{ path('event_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 {% endblock %}

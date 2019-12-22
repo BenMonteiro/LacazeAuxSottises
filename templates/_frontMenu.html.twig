@@ -1,47 +1,54 @@
 <nav class="navbar navbar-expand-md navbar-light">
     <a class="navbar-brand" href=''><img class='logo' src="{{asset('images/logo.jpg')}}"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse nav-tabs nav d-md-flex flex-md-column" id="navbarNavAltMarkup" role="tablist">
         <ul class="row navbar-nav  mr-2 ml-md-auto ml-2">
             <li>
-                <a class="nav-link"  href="http://p5/accueil" role="link"><i class="fas fa-1x fa-home"></i></a>
+                <a class="nav-link" href="http://p5/accueil" role="link"><i class="fas fa-1x fa-home"></i></a>
             </li>
             <li>
-                <a class="nav-item nav-link" href="" id="nav-association-tab" data-toggle="tab" data-target="#nav-association" role="tab" aria-controls="nav-association">
+                <a class="nav-item nav-link" href="" id="nav-association-tab" data-toggle="tab"
+                    data-target="#nav-association" role="tab" aria-controls="nav-association">
                     {{'front.association.label'|trans({}, 'menu')}}
                 </a>
             </li>
             <li>
-                <a class="nav-item nav-link" href="" id="nav-season-tab" data-toggle="tab" data-target="#nav-season" role="tab" aria-controls="nav-contact" aria-selected="false">
+                <a class="nav-item nav-link" href="" id="nav-season-tab" data-toggle="tab" data-target="#nav-season"
+                    role="tab" aria-controls="nav-contact" aria-selected="false">
                     {{'front.season'|trans({}, 'menu')|title}}
                 </a>
             </li>
             <li>
-                <a class="nav-item nav-link" href="" id="nav-fest-tab" data-toggle="tab" data-target="#nav-fest" role="tab" aria-controls="nav-contact" aria-selected="false">
+                <a class="nav-item nav-link" href="" id="nav-fest-tab" data-toggle="tab" data-target="#nav-fest"
+                    role="tab" aria-controls="nav-contact" aria-selected="false">
                     {{'front.festival'|trans({}, 'menu')|title}}
                 </a>
             </li>
             <li>
-                <a class="nav-item nav-link" href="" id="nav-place-tab" data-toggle="tab" data-target="#nav-place" role="tab" aria-controls="nav-contact" aria-selected="false">
+                <a class="nav-item nav-link" href="" id="nav-place-tab" data-toggle="tab" data-target="#nav-place"
+                    role="tab" aria-controls="nav-contact" aria-selected="false">
                     {{'front.place'|trans({}, 'menu')|title}}
                 </a>
             </li>
             <li>
-                <a class="nav-item nav-link" href="" id="nav-activity-tab" data-toggle="tab" data-target="#nav-activities" role="tab" aria-controls="nav-contact" aria-selected="false">
+                <a class="nav-item nav-link" href="" id="nav-activity-tab" data-toggle="tab"
+                    data-target="#nav-activities" role="tab" aria-controls="nav-contact" aria-selected="false">
                     {{'front.activities'|trans({}, 'menu')|title}}
                 </a>
             </li>
         </ul>
         <ul class="row navbar-nav mr-md-5 ml-md-auto ml-4">
             <li>
-                <a href="/section/locations" class="nav-link" >
+                <a href="/section/locations" class="nav-link">
                     {{'front.rentals'|trans({}, 'menu')|title}}
                 </a>
             </li>
             <li>
-                <a class="nav-item nav-link" href="" id="nav-volunteering-tab" data-toggle="tab" data-target="#nav-volunteering" role="tab" aria-controls="nav-contact" aria-selected="false">
+                <a class="nav-item nav-link" href="" id="nav-volunteering-tab" data-toggle="tab"
+                    data-target="#nav-volunteering" role="tab" aria-controls="nav-contact" aria-selected="false">
                     {{'front.volunteering'|trans({}, 'menu')|title}}
                 </a>
             </li>
@@ -66,45 +73,45 @@
 
 <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade" id="nav-association" role="tabpanel" aria-labelledby="nav-association-tab">
-        <a  href="/section/association-index">{{'front.introduction'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/association-projets-pluriels">{{'front.association.projects'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/association-coop-territoriale">{{'front.association.coop'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/association-equipe">{{'front.association.team'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/association-adhésion">{{'front.association.subscription'|trans({}, 'menu')|title}}</a>
+        <a href="/section/association-index">{{'front.introduction'|trans({}, 'menu')|title}}</a>
+        <a href="/section/association-projets-pluriels">{{'front.association.projects'|trans({}, 'menu')|title}}</a>
+        <a href="/section/association-coop-territoriale">{{'front.association.coop'|trans({}, 'menu')|title}}</a>
+        <a href="/section/association-equipe">{{'front.association.team'|trans({}, 'menu')|title}}</a>
+        <a href="/section/association-adhésion">{{'front.association.subscription'|trans({}, 'menu')|title}}</a>
     </div>
 
     <div class="tab-pane fade" id="nav-season" role="tabpanel" aria-labelledby="nav-season-tab">
-        <a  href="/section/saison-programmation">{{'front.program'|trans({}, 'menu')|title}}</a>
-        <a  href="/company/inDiffusion">{{'front.inDiffusion'|trans({}, 'menu')|title}}</a>
-        <a  href="/company/inCreation">{{'front.inCreation'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/saison-actions-culturelles">{{'front.cultural'|trans({}, 'menu')|title}}</a>
+        <a href="/section/saison-programmation">{{'front.program'|trans({}, 'menu')|title}}</a>
+        <a href="/company/inDiffusion">{{'front.inDiffusion'|trans({}, 'menu')|title}}</a>
+        <a href="/company/inCreation">{{'front.inCreation'|trans({}, 'menu')|title}}</a>
+        <a href="/section/saison-actions-culturelles">{{'front.cultural'|trans({}, 'menu')|title}}</a>
     </div>
 
     <div class="tab-pane fade" id="nav-fest" role="tabpanel" aria-labelledby="nav-fest-tab">
-        <a  href="/section/festival-index">{{'front.introduction'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/festival-programmation">{{'front.program'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/festival-billeterie">{{'front.tickets'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/festival-cies-en-diffusion">{{'front.inDiffusion'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/festival-rencontres-pro">{{'front.proMeeting'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/festival-actions-culturelles">{{'front.cultural'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/festival-espace-ludique">{{'front.funSpace'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/festival-infos-complémentaires">{{'front.plus'|trans({}, 'menu')|title}} <i class="fas fa-plus-circle"></i></a>
+        <a href="/section/festival-index">{{'front.introduction'|trans({}, 'menu')|title}}</a>
+        <a href="/section/festival-programmation">{{'front.program'|trans({}, 'menu')|title}}</a>
+        <a href="/section/festival-billeterie">{{'front.tickets'|trans({}, 'menu')|title}}</a>
+        <a href="/section/festival-cies-en-diffusion">{{'front.inDiffusion'|trans({}, 'menu')|title}}</a>
+        <a href="/section/festival-rencontres-pro">{{'front.proMeeting'|trans({}, 'menu')|title}}</a>
+        <a href="/section/festival-actions-culturelles">{{'front.cultural'|trans({}, 'menu')|title}}</a>
+        <a href="/section/festival-espace-ludique">{{'front.funSpace'|trans({}, 'menu')|title}}</a>
+        <a href="/section/festival-infos-complémentaires">{{'front.plus'|trans({}, 'menu')|title}} <i
+                class="fas fa-plus-circle"></i></a>
     </div>
 
     <div class="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">
-        <a  href="/section/tiers-lieu-index">{{'front.introduction'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/tiers-lieu-eco-lieu">{{'front.ecoPlace'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/tiers-lieu-espaces-partages">{{'front.sharedSpaces'|trans({}, 'menu')|title}}</a>
+        <a href="/section/tiers-lieu-index">{{'front.introduction'|trans({}, 'menu')|title}}</a>
+        <a href="/section/tiers-lieu-eco-lieu">{{'front.ecoPlace'|trans({}, 'menu')|title}}</a>
+        <a href="/section/tiers-lieu-espaces-partages">{{'front.sharedSpaces'|trans({}, 'menu')|title}}</a>
     </div>
 
     <div class="tab-pane fade" id="nav-activities" role="tabpanel" aria-labelledby="nav-activity-tab">
-        <a  href="/section/activites-du-lieu-spectacles-vivants">{{'front.livingShows'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/activites-du-lieu-developpement-durable">{{'front.sust_dev'|trans({}, 'menu')|title}}</a>
+        <a href="/section/activites-du-lieu-spectacles-vivants">{{'front.livingShows'|trans({}, 'menu')|title}}</a>
+        <a href="/section/activites-du-lieu-developpement-durable">{{'front.sust_dev'|trans({}, 'menu')|title}}</a>
     </div>
 
     <div class="tab-pane fade" id="nav-volunteering" role="tabpanel" aria-labelledby="nav-volunteering-tab">
-        <a  href="/section/benevolat-annuel">{{'front.onYear'|trans({}, 'menu')|title}}</a>
-        <a  href="/section/benevolat-durant-le-festival">{{'front.onFest'|trans({}, 'menu')|title}}</a>
+        <a href="/section/benevolat-annuel">{{'front.onYear'|trans({}, 'menu')|title}}</a>
+        <a href="/section/benevolat-durant-le-festival">{{'front.onFest'|trans({}, 'menu')|title}}</a>
     </div>
 </div>
-

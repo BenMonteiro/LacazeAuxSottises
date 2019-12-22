@@ -19,9 +19,9 @@ class TeamType extends AbstractType
             ->add('firstName')
             ->add('role', ChoiceType::class, [
                 'choices' => array(
-                    'member.role.volunteer' => 'volunteer', 
+                    'member.role.volunteer' => 'volunteer',
                     'member.role.gov_body' => 'gov_body',
-                    'member.role.pro' => 'pro', 
+                    'member.role.pro' => 'pro',
                 ),
                 'choice_translation_domain' => 'team'
             ])
@@ -34,8 +34,7 @@ class TeamType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
             ])
-            ->add('email')
-        ;
+            ->add('email');
     }
 
     public function configureOptions(OptionsResolver $resolver)

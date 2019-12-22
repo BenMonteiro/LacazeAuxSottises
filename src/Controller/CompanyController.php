@@ -34,7 +34,7 @@ class CompanyController extends AbstractController
             'inDiffusionCompanies' => $companyRepository->findBy(['isInDiffusion' => 1])
         ]);
     }
-    
+
     /**
      * @Route("/inCreation", name="company_inCreation", methods={"GET"})
      */
@@ -105,7 +105,7 @@ class CompanyController extends AbstractController
      */
     public function delete(Request $request, Company $company): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$company->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $company->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($company);
             $entityManager->flush();

@@ -3,9 +3,9 @@
 {% block title %}{{'perf.create'|trans({}, 'perf')|title}}{% endblock %}
 
 {% block body %}
-    <h1>{{'perf.create'|trans({}, 'perf')|title}}</h1>
+<h1>{{'perf.create'|trans({}, 'perf')|title}}</h1>
 
-    {{ include('performance/_form.html.twig') }}
+{{ include('performance/_form.html.twig') }}
 
-    <a href="{{ path('performance_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+<a href="{{ path('performance_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 {% endblock %}

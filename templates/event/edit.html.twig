@@ -3,11 +3,11 @@
 {% block title %}{{ 'event.edit'|trans({}, 'event')|title }}{% endblock %}
 
 {% block body %}
-    <h1>{{ 'event.edit'|trans({}, 'event')|title }}</h1>
+<h1>{{ 'event.edit'|trans({}, 'event')|title }}</h1>
 
-    {{ include('event/_form.html.twig', {'button_label': 'Update'}) }}
+{{ include('event/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('event_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+<a href="{{ path('event_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 
-    {{ include('event/_delete_form.html.twig') }}
+{{ include('event/_delete_form.html.twig') }}
 {% endblock %}

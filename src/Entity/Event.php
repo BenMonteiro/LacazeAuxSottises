@@ -89,7 +89,7 @@ class Event
      */
     private $programImage;
 
-        /**
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
@@ -207,7 +207,7 @@ class Event
         return $this->programPDF;
     }
 
-        /**
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the  update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -241,7 +241,8 @@ class Event
         return $this->programImage;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->name;
     }
 

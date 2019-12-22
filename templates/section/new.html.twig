@@ -3,9 +3,9 @@
 {% block title %}{{'section.create'|trans({}, 'section')|title}}{% endblock %}
 
 {% block body %}
-    <h1>{{'section.create'|trans({}, 'section')|title}}</h1>
+<h1>{{'section.create'|trans({}, 'section')|title}}</h1>
 
-    {{ include('section/_form.html.twig') }}
+{{ include('section/_form.html.twig') }}
 
-    <a href="{{ path('section_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+<a href="{{ path('section_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 {% endblock %}

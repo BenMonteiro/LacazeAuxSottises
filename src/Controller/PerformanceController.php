@@ -83,7 +83,7 @@ class PerformanceController extends AbstractController
      */
     public function delete(Request $request, Performance $performance): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$performance->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $performance->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($performance);
             $entityManager->flush();

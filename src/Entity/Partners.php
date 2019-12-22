@@ -28,7 +28,7 @@ final class Partners
      */
     private $name;
 
-        /**
+    /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="partner_logo", fileNameProperty="logo.name", size="logo.size", mimeType="logo.mimeType", originalName="logo.originalName")
@@ -46,7 +46,7 @@ final class Partners
      */
     private $logo;
 
-        /**
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
@@ -82,7 +82,7 @@ final class Partners
         return $this;
     }
 
-       /**
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the  update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -132,5 +132,4 @@ final class Partners
 
         return $this;
     }
-
 }

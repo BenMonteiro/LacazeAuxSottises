@@ -17,7 +17,7 @@ class PartnersType extends AbstractType
             ->add('name')
             ->add('type', ChoiceType::class, [
                 'choices' => array(
-                    'partner.prod_dist' => 'prod_dist', 
+                    'partner.prod_dist' => 'prod_dist',
                     'partner.partners' => 'partners',
                 ),
                 'choice_translation_domain' => 'partners'
@@ -30,8 +30,7 @@ class PartnersType extends AbstractType
                 'download_uri' => true,
                 'image_uri' => true,
                 'asset_helper' => true,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
