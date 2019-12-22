@@ -49,7 +49,7 @@ class SectionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="section_show", methods={"GET"})
+     * @Route("/{id<\d+>}", name="section_show", methods={"GET"})
      */
     public function show(Section $section): Response
     {
@@ -90,5 +90,17 @@ class SectionController extends AbstractController
         }
 
         return $this->redirectToRoute('section_index');
+    }
+
+    /**
+     * @Route("/{pageSlug}", name="show_page", methods={"GET"})
+     */
+    public function showPage(SectionRepository $sectionRepository, Section $section): Response
+    {
+        $defaultTemplate = 'section/association-index.html.twig';
+
+        return $this->render($defaultTemplate, [
+           'sections' => $sectionRepository->findBy(['pageSlug' => $section->getPageSlug()])
+       ]);
     }
 }

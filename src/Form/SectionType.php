@@ -19,41 +19,41 @@ class SectionType extends AbstractType
             ->add('pageSlug', ChoiceType::class, [
                 'choices' => [
                     'page.association.label' => [
-                        'page.presentation' => 'association/index',
-                        'page.association.projects' => 'association/projets-pluriels',
-                        'page.association.coop' => 'association/coop-territoriale',
-                        'page.association.team' => 'association/equipe',
-                        'page.association.subscription' => 'association/adhésion'
+                        'page.presentation' => 'association-index',
+                        'page.association.projects' => 'association-projets-pluriels',
+                        'page.association.coop' => 'association-coop-territoriale',
+                        'page.association.team' => 'association-equipe',
+                        'page.association.subscription' => 'association-adhésion'
                     ],
                     'page.season.label' => [
-                        'page.prog' => 'saison/programmation',
-                        'page.inDiffusion' => 'saison/cies-en-diffusion',
-                        'page.season.inCreation' => 'saison/cies-en-creation',
-                        'page.culturalActions' => 'saison/actions-culturelles'
+                        'page.prog' => 'saison-programmation',
+                        'page.inDiffusion' => 'saison-cies-en-diffusion',
+                        'page.season.inCreation' => 'saison-cies-en-creation',
+                        'page.culturalActions' => 'saison-actions-culturelles'
                     ],
                     'page.fest.label' => [
-                        'page.presentation' => 'festival/index',
-                        'page.prog' => 'festival/programmation',
-                        'page.fest.tickets' => 'festival/billeterie',
-                        'page.inDiffusion' => 'festival/cies-en-diffusion',
-                        'page.fest.proMeeting' => 'festival/rencontres-pro',
-                        'page.culturalActions' => 'festival/actions-culturelles',
-                        'page.fest.funSpace' => 'festival/espace-ludique',
-                        'page.fest.plus' => 'festival/infos-complémentaires'
+                        'page.presentation' => 'festival-index',
+                        'page.prog' => 'festival-programmation',
+                        'page.fest.tickets' => 'festival-billeterie',
+                        'page.inDiffusion' => 'festival-cies-en-diffusion',
+                        'page.fest.proMeeting' => 'festival-rencontres-pro',
+                        'page.culturalActions' => 'festival-actions-culturelles',
+                        'page.fest.funSpace' => 'festival-espace-ludique',
+                        'page.fest.plus' => 'festival-infos-complémentaires'
                     ],
                     'page.place.label' => [
-                        'page.presentation' => 'tiers-lieu/index',
-                        'page.place.ecoPlace' => 'tiers-lieu/eco-lieu',
-                        'page.place.sharedSpaces' => 'tiers-lieu/espaces-partages'
+                        'page.presentation' => 'tiers-lieu-index',
+                        'page.place.ecoPlace' => 'tiers-lieu-eco-lieu',
+                        'page.place.sharedSpaces' => 'tiers-lieu-espaces-partages'
                     ],
                     'page.activities.label' => [
-                        'page.activities.livingShows' => 'activites-du-lieu/spectacles-vivants',
-                        'page.activities.sust_dev' => 'activites-du-lieu/developpement-durable',
+                        'page.activities.livingShows' => 'activites-du-lieu-spectacles-vivants',
+                        'page.activities.sust_dev' => 'activites-du-lieu-developpement-durable',
                     ],
                     'page.rentals' => 'locations',
                     'page.volunteering.label' => [
-                        'page.volunteering.onYear' => 'benevolat/annuel',
-                        'page.volunteering.onFest' => 'benevolat/durant-le-festival'
+                        'page.volunteering.onYear' => 'benevolat-annuel',
+                        'page.volunteering.onFest' => 'benevolat-durant-le-festival'
                     ],
                     'page.partners' => 'partenaires',
                     'page.support' => 'nous-soutenir',

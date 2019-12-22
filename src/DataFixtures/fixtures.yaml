@@ -7,8 +7,8 @@ App\Entity\Company:
         duration: '<numberBetween(15, 120)>'
         audience: '<sentence(3, true)>'
         moreInfos: '<sentence(15, true)>'
-        isInDiffusion: '<boolean(50)>'
-        isInCreation: '<boolean(50)>'
+        isInDiffusion: '<boolean(75)>'
+        isInCreation: '<boolean(25)>'
         website: '<domainName()>'
         videoLink: '<domainName()>'
 
@@ -38,6 +38,46 @@ App\Entity\Performance:
         placeShow: '<streetAddress()>'
         date: '<dateTimeBetween("-200 days", "now")>'
         event: '@event*'
+
+App\Entity\Section:
+    section{1..100}:
+        name: '<sentence(3, true)>'
+        pageSlug: '<randomElement([
+            "association-index", 
+            "association-projets-pluriels",
+            "association-coop-territoriale",
+            "association-equipe",
+            "association-adhésion",
+            "saison-programmation",
+            "saison-cies-en-diffusion",
+            "saison-cies-en-creation",
+            "saison-actions-culturelles",
+            "festival-index",
+            "festival-programmation",
+            "festival-billeterie",
+            "festival-cies-en-diffusion",
+            "festival-rencontres-pro",
+            "festival-actions-culturelles",
+            "festival-espace-ludique",
+            "festival-infos-complémentaires",
+            "tiers-lieu-index",
+            "tiers-lieu-eco-lieu",
+            "tiers-lieu-espaces-partages",
+            "activites-du-lieu-spectacles-vivants",
+            "activites-du-lieu-developpement-durable",
+            "locations",
+            "benevolat-annuel",
+            "benevolat-durant-le-festival",
+            "partenaires",
+            "nous-soutenir",
+            "contact"
+            ])>'
+        title: <sentence(3, true)>
+        subTitle: <sentence(3, true)>
+        appearanceOrder: '<numberBetween(1, 10)>'
+        content: '<paragraph(2, true)>'
+
+
 
 
 
