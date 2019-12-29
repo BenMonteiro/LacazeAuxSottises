@@ -27,6 +27,11 @@ Title: Titre
 Sub title: Sous-titre
 Appearance order: Ordre d'apparition dans la page
 Content: Texte du paragraph
+Year: Année
+Month: Mois
+Day: Jour
+Hour: Heure
+Minute: Minute
 
 page:
     presentation: Présentation

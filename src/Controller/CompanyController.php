@@ -46,7 +46,7 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * @Route("/admin/new", name="company_new", methods={"GET","POST"})
+     * @Route("/new", name="company_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
