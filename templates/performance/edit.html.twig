@@ -4,10 +4,11 @@
 
 {% block body %}
 <h1>{{ 'perf.edit'|trans({}, 'perf')|title }}</h1>
-
+<div class="ml-3">
 {{ include('performance/_form.html.twig', {'button_label': 'Update'}) }}
 
-<a href="{{ path('performance_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+<a class="badge badge-secondary p-2" href="{{ path('performance_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 
 {{ include('performance/_delete_form.html.twig') }}
+</div>
 {% endblock %}

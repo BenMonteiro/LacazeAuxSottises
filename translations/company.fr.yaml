@@ -1,12 +1,16 @@
 company:
     label: compagnie
+    name: nom de la compagnie
     index: liste des compagnies
     edit: modifier une compagnie
     create: créer une nouvelle compagnie
+    status: statut
+    performances: représentations de la compagnie
     isIn:
-        creation: compagnies en création 
-        diffusion: compagnies en diffusion
+        creation: en création 
+        diffusion: en diffusion
     show:
+        theme: thème
         title: titre du spectacle
         audience: public
         duration: durée

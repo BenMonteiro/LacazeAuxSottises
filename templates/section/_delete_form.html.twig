@@ -2,5 +2,5 @@
     onsubmit="return confirm('Are you sure you want to delete this item?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ section.id) }}">
-    <button class="btn">{{'general.delete'|trans({}, 'general')|capitalize}}</button>
+    <button class="btn badge badge-danger btn my-2 p-2">{{'general.delete'|trans({}, 'general')|capitalize}}</button>
 </form>

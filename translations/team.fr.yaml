@@ -1,4 +1,6 @@
 member:
+    photo: photo
+    email: email
     role:
         label: rôle
         volunteer: bénévole

@@ -4,8 +4,10 @@
 
 {% block body %}
 <h1>{{'company.create'|trans({}, 'company')|title}}</h1>
+<div class="ml-3">
+    {{ include('company/_form.html.twig') }}
 
-{{ include('company/_form.html.twig') }}
-
-<a href="{{ path('company_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+    <a class="badge badge-secondary p-2 mb-5"
+        href="{{ path('company_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+</div>
 {% endblock %}

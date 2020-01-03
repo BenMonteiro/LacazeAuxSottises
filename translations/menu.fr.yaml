@@ -1,12 +1,14 @@
+association: L'Association
+season: la saison
+festival: le festival
+place: le tiers-lieu
+activities: les activités du lieu
+rentals: les locations
+volunteering: le bénévolat
+partners: nos partenaires
+support: nous soutenir
+contact: contact
 front:
-    season: la saison
-    festival: le festival
-    place: le tiers-lieu
-    activities: les activités du lieu
-    rentals: les locations
-    volunteering: le bénévolat
-    partners: nos partenaires
-    support: nous soutenir
     introduction: présentation
     program: programmation
     inDiffusion: cies en diffusion
@@ -19,7 +21,7 @@ front:
     ecoPlace: éco-lieu
     sharedSpaces: espaces partagés
     livingShows: spectacles vivants
-    sust_dev: développement durable 
+    sust_dev: développement durable
     onYear: à l'année
     onFest: durant le festival
     association:
@@ -28,3 +30,11 @@ front:
         coop: coopération territoriale
         team: équipe
         subscription: adhésion
+
+back:
+    companies: compagnies
+    events: Événements
+    performances: représentations
+    partners: partenaires
+    team: équipe
+    sections: pages

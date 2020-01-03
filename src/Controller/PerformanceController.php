@@ -39,6 +39,9 @@ class PerformanceController extends AbstractController
             $entityManager->persist($performance);
             $entityManager->flush();
 
+            if ($_GET['company_id']) {
+                return $this->redirectToRoute('company_show', ['id' => $_GET['company_id']]);
+            }
             return $this->redirectToRoute('performance_index');
         }
 

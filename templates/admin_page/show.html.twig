@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{page.tab}}/{{page.name}}{% endblock %}
+
+{% block body %}
+<div>
+    <div class="btn-showView offset-10 col-2 mt-5">
+        <a class="badge badge-secondary p-2 "
+            href="{{ path('admin_tab', {'id': page.tabId}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+    </div>
+    <h1>{{'section.index'|trans({}, 'section')|title}} de la page :</br> {{ page.tab}} / {{page.name}}</h1>
+</div>
+<table class="table table-sm table-striped table-bordered text-center">
+    <thead>
+        <tr>
+            <th>{{'section.name'|trans({}, 'section')|capitalize}}</th>
+            <th>{{'section.title'|trans({}, 'section')|capitalize}}</th>
+            <th>{{'section.subTitle'|trans({}, 'section')|capitalize}}</th>
+            <th>{{'section.appearanceOrder'|trans({}, 'section')|capitalize}}</th>
+            <th>{{'section.content'|trans({}, 'section')|capitalize}}</th>
+            <th>{{'section.image'|trans({}, 'section')|capitalize}}</th>
+            <th><a href="{{ path('section_new', {'id': page.id}) }}">{{'general.create'|trans({}, 'general')|capitalize}}</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for section in page.pageSections %}
+        <tr>
+            <td>{{ section.name }}</td>
+            <td>{{ section.title}}</td>
+            <td>{{ section.subTitle }}</td>
+            <td>{{ section.appearanceOrder }}</td>
+            <td>{{ section.content }}</td>
+            <td>{{ section.image.name }}</td>
+            <td>
+                <a class="badge badge-secondary my-2 p-2"
+                    href="{{ path('section_show', {'id': section.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+                <a class="badge badge-primary my-2 p-2"
+                    href="{{ path('section_edit', {'id': section.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+                {{ include('section/_delete_form.html.twig') }}
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="9">{{'general.noRecords'|trans({}, 'general')|capitalize}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

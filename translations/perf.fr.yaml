@@ -5,6 +5,7 @@ perf:
     create: créer une nouvelle représentation
     edit: modifier une représentation
     index: liste des représentations
+    companyName: Nom de la compagnie
     show:
         city: ville
         place: adresse

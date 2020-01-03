@@ -4,8 +4,11 @@
 
 {% block body %}
 <h1>{{'section.create'|trans({}, 'section')|title}}</h1>
+<div class="ml-3">
 
-{{ include('section/_form.html.twig') }}
+    {{ include('section/_form.html.twig') }}
 
-<a href="{{ path('section_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+    <a class="badge badge-secondary p-2 mb-5"
+        href="{{ path('section_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+</div>
 {% endblock %}

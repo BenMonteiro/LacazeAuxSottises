@@ -28,11 +28,6 @@ class Section
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $pageSlug;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $title;
@@ -49,7 +44,7 @@ class Section
     private $appearanceOrder;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
     private $content;
 
@@ -77,6 +72,17 @@ class Section
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\FrontPage", inversedBy="pageSections")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $belongToPage;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $belongToPageId;
+
     public function __construct()
     {
         $this->image = new EmbeddedFile();
@@ -85,18 +91,6 @@ class Section
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPageSlug(): ?string
-    {
-        return $this->pageSlug;
-    }
-
-    public function setPageSlug(string $pageSlug): self
-    {
-        $this->pageSlug = $pageSlug;
-
-        return $this;
     }
 
     public function getTitle(): ?string
@@ -192,5 +186,29 @@ class Section
     public function getImage(): ?EmbeddedFile
     {
         return $this->image;
+    }
+
+    public function getBelongToPage(): ?FrontPage
+    {
+        return $this->belongToPage;
+    }
+
+    public function setBelongToPage(?FrontPage $belongToPage): self
+    {
+        $this->belongToPage = $belongToPage;
+
+        return $this;
+    }
+
+    public function getBelongToPageId(): ?int
+    {
+        return $this->belongToPageId;
+    }
+
+    public function setBelongToPageId(int $belongToPage): self
+    {
+        $this->belongToPageId = $belongToPage; 
+
+        return $this;
     }
 }

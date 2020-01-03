@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Section;
 use App\Form\SectionType;
 use App\Repository\SectionRepository;
+use App\Entity\FrontPage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -93,14 +94,14 @@ class SectionController extends AbstractController
     }
 
     /**
-     * @Route("/{pageSlug}", name="show_page", methods={"GET"})
+     * @Route("/{pageSlug}", name="show_page", requirements={"pageSlug"=".+"}, methods={"GET"})
      */
-    public function showPage(SectionRepository $sectionRepository, Section $section): Response
+    public function showPage(FrontPage $frontPage): Response
     {
         $defaultTemplate = 'section/association-index.html.twig';
 
         return $this->render($defaultTemplate, [
-            'sections' => $sectionRepository->findBy(['pageSlug' => $section->getPageSlug()])
+            'page' => $frontPage
         ]);
     }
 }

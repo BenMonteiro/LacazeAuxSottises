@@ -1,4 +1,7 @@
 partner:
+    name: nom du partenaire
+    type: type
+    logo: logo
     label: partenaire
     prod_dist: producteurs, distributeurs
     partners: partenaires

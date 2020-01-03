@@ -3,48 +3,51 @@
 {% block title %}{{'company.index'|trans({}, 'company')|title}}{% endblock %}
 
 {% block body %}
+
+{% include('_backMenu.html.twig') %}
+
 <div>
     <h1>{{'company.index'|trans({}, 'company')|title}}</h1>
 </div>
-<table class="table table-sm table-striped text-center">
-    <thead class="sticky-top thead-dark">
+<table class="table table-sm text-align-center table-striped text-center mb-5 pb-5">
+    <thead class="index">
         <tr>
-            <th>{{'general.name'|trans({}, 'general')|capitalize}}</th>
+            <th>Image</th>
+            <th>{{'company.name'|trans({}, 'company')|capitalize}}</th>
             <th>{{'company.show.title'|trans({}, 'company')|capitalize}}</th>
             <th>Description</th>
-            <th>Image</th>
             <th>Theme</th>
             <th>{{'company.show.duration'|trans({}, 'company')|capitalize}}</th>
             <th>{{'company.show.audience'|trans({}, 'company')|capitalize}}</th>
-            <th>{{'general.more.infos'|trans({}, 'general')|capitalize}}</th>
             <th>{{'company.isIn.diffusion'|trans({}, 'company')|capitalize}}</th>
             <th>{{'company.isIn.creation'|trans({}, 'company')|capitalize}}</th>
             <th>{{'general.website'|trans({}, 'general')|capitalize}}</th>
             <th>{{'general.videoLink'|trans({}, 'general')|capitalize}}</th>
+            <th>{{'general.more.infos'|trans({}, 'general')|capitalize}}</th>
             <th><a href="{{ path('company_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="index">
         {% for company in companies %}
         <tr>
+            <td><img class="miniImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>
             <td>{{ company.name }}</td>
             <td>{{ company.showTitle}}</td>
             <td>{{ company.description|slice(0,100)}}...</td>
-            <td><img class="companyImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>
             <td>{{ company.theme}}</td>
             <td>{{ company.duration}}</td>
             <td>{{ company.audience}}</td>
-            <td>{{ company.moreInfos}}</td>
             <td>{{ company.isInDiffusion ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}
             </td>
             <td>{{ company.isInCreation ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}
             </td>
             <td>{{ company.website }}</td>
             <td>{{ company.videoLink }}</td>
+            <td>{{ company.moreInfos}}</td>
             <td>
-                <a
+                <a class="badge badge-secondary my-2 p-2"
                     href="{{ path('company_show', {'id': company.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
-                <a
+                <a class="badge badge-primary my-2 p-2"
                     href="{{ path('company_edit', {'id': company.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
                 {{ include('company/_delete_form.html.twig') }}
             </td>
@@ -56,6 +59,4 @@
         {% endfor %}
     </tbody>
 </table>
-
-<a href="{{ path('company_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
 {% endblock %}

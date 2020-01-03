@@ -1,11 +1,11 @@
-
 .landingPage {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    background-size: cover; /* version standardisée */
+    background-size: cover;
+    /* version standardisée */
 }
 
 .accessButton {
@@ -18,10 +18,35 @@
     z-index: 999
 }
 
-.companyImage {
-    border-radius:80px;
-    width:200px;
-    height:150px;
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #DA291C;
+    margin: 1rem auto;
+    text-decoration: underline;
+}
+
+h4, h3 {
+    text-decoration: underline;
+}
+
+h5 {
+    color: #DA291C
+}
+
+form label,
+form legend {
+    font-weight: bold;
+}
+
+.btn-showView {
+    font-size: 1.3rem;
+}
+
+.miniImage {
+    border-radius: 80px;
+    width: 200px;
+    height: 150px;
 }
 
 .partnerLogo {
@@ -32,6 +57,32 @@ label.required:before {
     content: "* ";
 }
 
-div[id^="company_performances_"] > div:first-child {
+div[id^="company_performances_"]>div:first-child {
     display: none;
+}
+
+thead.index {
+    position: sticky;
+    top: 140px;
+    background-color: black;
+    z-index: 10;
+    color: #DA291C;
+}
+
+tbody.index {
+    position: relative;
+    top: 60px;
+}
+
+thead {
+    background-color: black;
+    z-index: 10;
+    color: #DA291C
+}
+
+.table td,
+.table th {
+    border: none;
+    vertical-align: middle;
+    padding: 0.8rem 0.3rem;
 }

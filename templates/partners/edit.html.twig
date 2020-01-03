@@ -4,10 +4,12 @@
 
 {% block body %}
 <h1>{{ 'partner.edit'|trans({}, 'partners')|title }}</h1>
+<div class="ml-3">
+    {{ include('partners/_form.html.twig', {'button_label': 'Update'}) }}
 
-{{ include('partners/_form.html.twig', {'button_label': 'Update'}) }}
+    <a class="badge badge-secondary p-2"
+        href="{{ path('partners_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 
-<a href="{{ path('partners_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
-
-{{ include('partners/_delete_form.html.twig') }}
+    {{ include('partners/_delete_form.html.twig') }}
+</div>
 {% endblock %}

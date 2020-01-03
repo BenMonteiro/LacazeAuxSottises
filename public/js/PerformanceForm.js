@@ -4,13 +4,13 @@ var $collectionHolder;
 var $addPerfButton = $('<button type="button" class="add_perf_link">Ajouter une représentation</button>');
 var $newLinkLi = $('<li class="list-unstyled"></li>').append($addPerfButton);
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
     // Get the ul that holds the collection of tags
     $collectionHolder = $('div.perfs');
 
 
-    for (let $x = 0 ; $x < 10000; $x++) {
-        $collectionHolder.find('div#company_performances_'+ $x).each(function() {
+    for (let $x = 0; $x < 10000; $x++) {
+        $collectionHolder.find('div#company_performances_' + $x).each(function () {
             addTagFormDeleteLink($(this));
         });
     }
@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
     // index when inserting a new item (e.g. 2)
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
-    $addPerfButton.on('click', function(e) {
+    $addPerfButton.on('click', function (e) {
         // add a new tag form (see next code block)
         addPerfForm($collectionHolder, $newLinkLi);
     });
@@ -53,7 +53,7 @@ function addTagFormDeleteLink($tagFormLi) {
     var $removeFormButton = $('<button type="button">Supprimer la représentation</button>');
     $tagFormLi.append($removeFormButton);
 
-    $removeFormButton.on('click', function(e) {
+    $removeFormButton.on('click', function (e) {
         // remove the li for the tag form
         $tagFormLi.remove();
     });

@@ -2,6 +2,6 @@
 <div class="offset-3 col-6">
     {{ form_widget(form) }}
 </div>
-<button class="btn">{{ button_label|default('Save')|trans({}, 'general') }}</button>
 <p class="text-danger">* {{'general.required'|trans({}, 'general')|capitalize}}</p>
+<button class="btn badge badge-primary p-2 my-2">{{ button_label|default('Save')|trans({}, 'general') }}</button>
 {{ form_end(form) }}

@@ -8,3 +8,4 @@ section:
     appearanceOrder: Ordre d'apparition
     content: contenu
     image: image
+    name: nom du paragraphe

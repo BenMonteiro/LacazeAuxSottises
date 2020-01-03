@@ -4,8 +4,11 @@
 
 {% block body %}
 <h1>{{'event.create'|trans({}, 'event')|title}}</h1>
+<div class="ml-3">
 
-{{ include('event/_form.html.twig') }}
+    {{ include('event/_form.html.twig') }}
 
-<a href="{{ path('event_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+    <a class="badge badge-secondary p-2 mb-5"
+        href="{{ path('event_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+</div>
 {% endblock %}

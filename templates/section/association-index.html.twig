@@ -20,10 +20,9 @@
         </tr>
     </thead>
     <tbody>
-        {% for section in sections %}
+        {% for section in page.pageSections %}
         <tr>
             <td>{{ section.name }}</td>
-            <td>{{ section.pageSlug }}</td>
             <td>{{ section.title }}</td>
             <td>{{ section.subTitle }}</td>
             <td>{{ section.appearanceOrder }}</td>

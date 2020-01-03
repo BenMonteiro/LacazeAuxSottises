@@ -1,5 +1,5 @@
 App\Entity\Company:
-    company{1..10}:
+    company{1..20}:
         name: '<company()>'
         description: '<paragraph(3, true)>'
         showTitle: '<sentence(4, true)>'
@@ -39,39 +39,13 @@ App\Entity\Performance:
         date: '<dateTimeBetween("-200 days", "now")>'
         event: '@event*'
 
+App/Entity/FrontMenuPage:
+    frontMenuPage:
+
 App\Entity\Section:
     section{1..100}:
         name: '<sentence(3, true)>'
-        pageSlug: '<randomElement([
-            "association-index", 
-            "association-projets-pluriels",
-            "association-coop-territoriale",
-            "association-equipe",
-            "association-adhésion",
-            "saison-programmation",
-            "saison-cies-en-diffusion",
-            "saison-cies-en-creation",
-            "saison-actions-culturelles",
-            "festival-index",
-            "festival-programmation",
-            "festival-billeterie",
-            "festival-cies-en-diffusion",
-            "festival-rencontres-pro",
-            "festival-actions-culturelles",
-            "festival-espace-ludique",
-            "festival-infos-complémentaires",
-            "tiers-lieu-index",
-            "tiers-lieu-eco-lieu",
-            "tiers-lieu-espaces-partages",
-            "activites-du-lieu-spectacles-vivants",
-            "activites-du-lieu-developpement-durable",
-            "locations",
-            "benevolat-annuel",
-            "benevolat-durant-le-festival",
-            "partenaires",
-            "nous-soutenir",
-            "contact"
-            ])>'
+        belongToPage: '@frontMenuPage*'
         title: <sentence(3, true)>
         subTitle: <sentence(3, true)>
         appearanceOrder: '<numberBetween(1, 10)>'

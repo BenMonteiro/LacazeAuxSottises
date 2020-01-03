@@ -4,8 +4,11 @@
 
 {% block body %}
 <h1>{{'partner.create'|trans({}, 'partners')|title}}</h1>
+<div class="ml-3">
 
-{{ include('partners/_form.html.twig') }}
+    {{ include('partners/_form.html.twig') }}
 
-<a href="{{ path('partners_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+    <a class="badge badge-secondary p-2 mb-5"
+        href="{{ path('partners_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+</div>
 {% endblock %}

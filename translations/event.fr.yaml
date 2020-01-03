@@ -7,6 +7,8 @@ event:
     end: date de fin
     hours: horaires
     program: programmation
+    name: événement
     prog:
         PDF: programmation au format PDF
         image: image de couverture du programme
+        upload: Programme du festival à télécharger
