@@ -3,9 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\FrontTab;
-use App\Repository\FrontTabRepository;
 use App\Entity\FrontPage;
-use App\Repository\FrontPageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +21,7 @@ class AdminPageController extends AbstractController
             'tab' => $frontTab,
         ]);
     }
+
     /**
      * @Route("/admin/page/{id}", name="page_show")
      */

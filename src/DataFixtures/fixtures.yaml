@@ -21,8 +21,8 @@ App\Entity\Event:
     event{1..7}:
         name: '<word()>'
         description: '<paragraph(3, true)>'
-        startingDate: '<dateTimeBetween("-200 days", "now")>'
-        endingDate: '90%? <dateTimeBetween($startingDate, "now")>'
+        startingDate: '<dateTimeBetween("now", "+ 300 days")>'
+        endingDate: '90%? <dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
 
 App\Entity\Team:
     team{1..15}:
@@ -39,22 +39,57 @@ App\Entity\Performance:
         date: '<dateTimeBetween("-200 days", "now")>'
         event: '@event*'
 
-App/Entity/FrontMenuPage:
-    frontMenuPage:
+App\Entity\FrontTab:
+    tab_{association, saison, festival, tiers-lieu, activités-du-lieu, locations, bénévolat, partenaires, soutient, contact}:
+        name: '<current()>'
+
+App\Entity\FrontPage:
+    page_{présentation, projets-pluriels, coopération-territoriale, équipe, adhésion}:
+        tab: '@tab_association'
+        name: '<current()>'
+        pageSlug: $tab/$name
+    page_{programmation, cies-en-diffusion, cies-en-création, actions-culturelles}:
+        tab: '@tab_saison'
+        name: '<current()>'
+        pageSlug: $tab/$name
+    page_{présentation, programmation, billetterie-solidaire, cies-en-diffusion, rencontres-pro, actions-culturelles, espace-ludique, les-ptits-plus}:
+        tab: '@tab_festival'
+        name: '<current()>'
+        pageSlug: $tab/$name
+    page_{présentation, éco-lieu, espaces-partagés}:
+        tab: '@tab_tiers-lieu'
+        name: '<current()>'
+        pageSlug: $tab/$name
+    page_{spectacles_vivants, développement-durable}:
+        tab: '@tab_activités-du-lieu'
+        name: '<current()>'
+        pageSlug: $tab/$name
+    page_{locations}:
+        tab: '@tab_locations'
+        name: '<current()>'
+        pageSlug: $tab/$name
+    page_{annuel, festival}:
+        tab: '@tab_bénévolat'
+        name: '<current()>'
+        pageSlug: $tab/$name
+    page_{partenaires}:
+        tab: '@tab_partenaires'
+        name: '<current()>'
+        pageSlug: $tab/$name
+    page_{soutient}:
+        tab: '@tab_soutient'
+        name: '<current()>'
+        pageSlug: $tab/$name
+    page_{contact}:
+        tab: '@tab_contact'
+        name: '<current()>'
+        pageSlug: $tab/$name
 
 App\Entity\Section:
     section{1..100}:
-        name: '<sentence(3, true)>'
-        belongToPage: '@frontMenuPage*'
-        title: <sentence(3, true)>
-        subTitle: <sentence(3, true)>
-        appearanceOrder: '<numberBetween(1, 10)>'
-        content: '<paragraph(2, true)>'
-
-
-
-
-
-
-
-
+        name: '<sentence(4, true)>'
+        title: '<sentence(3, true)>'
+        subTitle: '<sentence(3, true)>'
+        appearanceOrder: '<randomDigit()>'
+        content: '<paragraph(3, true)>'
+        belongToPage: '@page*'

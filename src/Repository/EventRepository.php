@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Event;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -17,6 +18,20 @@ class EventRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Event::class);
+    }
+
+    public function findNextEvent()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT * 
+        FROM event
+        WHERE starting_date > NOW()
+        ORDER BY starting_date ASC
+        LIMIT 1
+            ';
+        
+        return $conn->query($sql)->fetch();
     }
 
     // /**

@@ -26,7 +26,8 @@ h1 {
     text-decoration: underline;
 }
 
-h4, h3 {
+h4,
+h3 {
     text-decoration: underline;
 }
 
@@ -85,4 +86,28 @@ thead {
     border: none;
     vertical-align: middle;
     padding: 0.8rem 0.3rem;
+}
+
+.admin-dashboard .stat {
+    font-size: 3em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px black;
+}
+
+.stat-bis {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px black;
+}
+
+.admin-dashboard p {
+    font-size: 1.2em;
+}
+
+.card-body-icon {
+    position: absolute;
+    right: 0.1em;
+    top: -0.2em;
+    font-size: 5rem;
+    opacity: 0.5;
 }
