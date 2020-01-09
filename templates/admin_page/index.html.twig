@@ -19,7 +19,7 @@
         <tr>
             <td>{{ page.pageSlug}}</td>
             <td><a class="badge badge-secondary my-2 p-2"
-                    href="{{ path('page_show', {'id': page.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+                    href="{{ path('page_list_show', {'id': page.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
             </td>
         </tr>
         {% else %}

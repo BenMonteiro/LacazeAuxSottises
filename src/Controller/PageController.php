@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\FrontPage;
+use App\Entity\FrontPage; 
 use App\Repository\FrontPageRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class PageController extends AbstractController
 {
 
     protected $pages;
@@ -37,9 +37,9 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/{pageSlug}", name="show_page", requirements={"pageSlug"=".+"}, methods={"GET"})
+     * @Route("page/{pageSlug}", name="page_show", requirements={"pageSlug"=".+?"}, methods={"GET"})
      */
-    public function showPage(FrontPage $frontPage): Response
+    public function displayPage(FrontPage $frontPage): Response
     {
         $defaultTemplate = 'home/association_index.html.twig';
 

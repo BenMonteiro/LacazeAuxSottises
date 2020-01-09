@@ -53,7 +53,7 @@ class PerformanceController extends AdminController
     }
 
     /**
-     * @Route("/{id}", name="performance_show", methods={"GET"})
+     * @Route("/{id<\d+>}", name="performance_show", methods={"GET"})
      */
     public function show(Performance $performance): Response
     {

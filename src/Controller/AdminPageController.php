@@ -24,7 +24,7 @@ class AdminPageController extends AdminController
     }
 
     /**
-     * @Route("/admin/page/{id}", name="page_show")
+     * @Route("/admin/page/{id}", name="page_list_show")
      */
     public function show(FrontPage $frontPage): Response
     {

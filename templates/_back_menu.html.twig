@@ -7,7 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav  mr-5 ml-auto">
             <li class="nav-item">
-                <a class="nav-link back-nav-link" href="{{path('admin_dashboard')}}"><i class="fas fa-1x fa-home"></i></a>
+                <a class="nav-link back-nav-link" href="{{ path('admin_dashboard') }}">
+                    <i class="fas fa-1x fa-home"></i>
+                </a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle back-nav-link" href="#" id="navbarDropdownMenuLink" role="button"
@@ -17,25 +19,35 @@
                 <div class="dropdown-menu mr-3" aria-labelledby="navbarDropdownMenuLink">
                     {% for tab in tabs %}
                     <a class="dropdown-item"
-                        href="{{ path('admin_tab', {'id': tab.id }) }}">{{tab.name|trans({}, 'menu')}}</a>
+                        href="{{ path('admin_tab', {'id': tab.id }) }}">{{tab.name|trans({}, 'menu')}}
+                    </a>
                     {% endfor %}
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link back-nav-link" href="{{ path('company_index') }}">{{'back.companies'|trans({}, 'menu')|capitalize }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link back-nav-link" href="{{ path('event_index') }}">{{'back.events'|trans({}, 'menu')|capitalize }}</a>
+                <a class="nav-link back-nav-link"
+                    href="{{ path('company_index') }}">{{'back.companies'|trans({}, 'menu')|capitalize }}
+                </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link back-nav-link"
-                    href="{{ path('performance_index') }}">{{'back.performances'|trans({}, 'menu')|capitalize }}</a>
+                    href="{{ path('event_index') }}">{{'back.events'|trans({}, 'menu')|capitalize }}
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link back-nav-link" href="{{ path('partners_index') }}">{{'back.partners'|trans({}, 'menu')|capitalize }}</a>
+                <a class="nav-link back-nav-link"
+                    href="{{ url('performance_index') }}">{{'back.performances'|trans({}, 'menu')|capitalize }}
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link back-nav-link" href="{{ path('team_index') }}">{{'back.team'|trans({}, 'menu')|capitalize }}</a>
+                <a class="nav-link back-nav-link"
+                    href="{{ path('partners_index') }}">{{'back.partners'|trans({}, 'menu')|capitalize }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link back-nav-link"
+                    href="{{ path('team_index') }}">{{'back.team'|trans({}, 'menu')|capitalize }}
+                </a>
             </li>
         </ul>
     </div>

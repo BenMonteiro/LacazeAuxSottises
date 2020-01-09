@@ -23,7 +23,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/dashboard", name="admin_dashboard", methods={"GET"})
+     * @Route("/admin", name="admin_dashboard")
      */
     public function dashboard(CompanyRepository $companyRepository, TeamRepository $teamRepository, EventRepository $eventRepository): Response
     {
