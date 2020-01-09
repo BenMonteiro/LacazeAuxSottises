@@ -5,13 +5,13 @@ namespace App\Controller;
 use App\Entity\FrontTab;
 use App\Entity\FrontPage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\AdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AdminPageController extends AbstractController
+class AdminPageController extends AdminController
 {
-
     /**
      * @Route("/admin/tab/{id}", name="admin_tab")
      */
@@ -19,6 +19,7 @@ class AdminPageController extends AbstractController
     {
         return $this->render('admin_page/index.html.twig', [
             'tab' => $frontTab,
+            'tabs' => $this->tabList,
         ]);
     }
 

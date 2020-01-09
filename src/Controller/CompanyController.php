@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Company;
 use App\Form\CompanyType;
 use App\Repository\CompanyRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\AdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/company")
  */
-class CompanyController extends AbstractController
+class CompanyController extends AdminController
 {
     /**
      * @Route("/", name="company_index", methods={"GET"})
@@ -21,26 +21,27 @@ class CompanyController extends AbstractController
     public function index(CompanyRepository $companyRepository): Response
     {
         return $this->render('company/index.html.twig', [
-            'companies' => $companyRepository->findBy(array(), array('name' => 'ASC'))
+            'companies' => $companyRepository->findBy(array(), array('name' => 'ASC')),
+            'tabs' =>$this->tabList
         ]);
     }
 
     /**
-     * @Route("/inDiffusion", name="company_inDiffusion", methods={"GET"})
+     * @Route("/inDiffusion", name="company_in_diffusion", methods={"GET"})
      */
     public function inDiffusion(CompanyRepository $companyRepository): Response
     {
-        return $this->render('company/inDiffusion.html.twig', [
+        return $this->render('company/in_diffusion.html.twig', [
             'inDiffusionCompanies' => $companyRepository->findBy(['isInDiffusion' => 1])
         ]);
     }
 
     /**
-     * @Route("/inCreation", name="company_inCreation", methods={"GET"})
+     * @Route("/inCreation", name="company_in_creation", methods={"GET"})
      */
     public function inCreation(CompanyRepository $companyRepository): Response
     {
-        return $this->render('company/inCreation.html.twig', [
+        return $this->render('company/in_creation.html.twig', [
             'inCreationCompanies' => $companyRepository->findBy(['isInCreation' => 1])
         ]);
     }

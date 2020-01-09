@@ -44,19 +44,19 @@ App\Entity\FrontTab:
         name: '<current()>'
 
 App\Entity\FrontPage:
-    page_{présentation, projets-pluriels, coopération-territoriale, équipe, adhésion}:
+    page_{presentation, projets-pluriels, coopération-territoriale, équipe, adhésion}:
         tab: '@tab_association'
         name: '<current()>'
         pageSlug: $tab/$name
-    page_{programmation, cies-en-diffusion, cies-en-création, actions-culturelles}:
+    page_{programmation, cies-en-diffusion, cies-en-création, action-culturelles}:
         tab: '@tab_saison'
         name: '<current()>'
         pageSlug: $tab/$name
-    page_{présentation, programmation, billetterie-solidaire, cies-en-diffusion, rencontres-pro, actions-culturelles, espace-ludique, les-ptits-plus}:
+    page_{présentation, programation, billetterie-solidaire, cie-en-diffusion, rencontres-pro, actions-culturelles, espace-ludique, les-ptits-plus}:
         tab: '@tab_festival'
         name: '<current()>'
         pageSlug: $tab/$name
-    page_{présentation, éco-lieu, espaces-partagés}:
+    page_{prsentation, éco-lieu, espaces-partagés}:
         tab: '@tab_tiers-lieu'
         name: '<current()>'
         pageSlug: $tab/$name

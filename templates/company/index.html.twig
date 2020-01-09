@@ -4,13 +4,13 @@
 
 {% block body %}
 
-{% include('_backMenu.html.twig') %}
+{% include('_back_menu.html.twig') %}
 
 <div>
     <h1>{{'company.index'|trans({}, 'company')|title}}</h1>
 </div>
-<table class="table table-sm text-align-center table-striped text-center mb-5 pb-5">
-    <thead class="index">
+<table class="table table-sm text-align-center table-striped index text-center mb-5 pb-5">
+    <thead>
         <tr>
             <th>Image</th>
             <th>{{'company.name'|trans({}, 'company')|capitalize}}</th>
@@ -27,7 +27,7 @@
             <th><a href="{{ path('company_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a></th>
         </tr>
     </thead>
-    <tbody class="index">
+    <tbody>
         {% for company in companies %}
         <tr>
             <td><img class="miniImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>

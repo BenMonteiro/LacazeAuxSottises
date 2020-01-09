@@ -5,15 +5,15 @@ namespace App\Controller;
 use App\Entity\Performance;
 use App\Form\PerformanceType;
 use App\Repository\PerformanceRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use App\Controller\AdminController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/performance")
  */
-class PerformanceController extends AbstractController
+class PerformanceController extends AdminController
 {
     /**
      * @Route("/", name="performance_index", methods={"GET"})
@@ -22,6 +22,7 @@ class PerformanceController extends AbstractController
     {
         return $this->render('performance/index.html.twig', [
             'performances' => $performanceRepository->findAll(),
+            'tabs' => $this->tabList,
         ]);
     }
 
@@ -39,7 +40,7 @@ class PerformanceController extends AbstractController
             $entityManager->persist($performance);
             $entityManager->flush();
 
-            if ($_GET['company_id']) {
+            if (isset($_GET['company_id'])) {
                 return $this->redirectToRoute('company_show', ['id' => $_GET['company_id']]);
             }
             return $this->redirectToRoute('performance_index');

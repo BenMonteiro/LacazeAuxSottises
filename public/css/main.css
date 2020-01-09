@@ -62,17 +62,19 @@ div[id^="company_performances_"]>div:first-child {
     display: none;
 }
 
-thead.index {
+table.index thead{
     position: sticky;
     top: 140px;
+    height: 40px;
+    width: 100%;
     background-color: black;
     z-index: 10;
     color: #DA291C;
 }
 
-tbody.index {
+table.index tbody{
     position: relative;
-    top: 60px;
+    top:60px;
 }
 
 thead {

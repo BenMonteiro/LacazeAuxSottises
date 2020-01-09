@@ -19,17 +19,6 @@ class TeamRepository extends ServiceEntityRepository
         parent::__construct($registry, Team::class);
     }
 
-    public function count()
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = 'SELECT COUNT(*) 
-            FROM team
-            ';
-
-        return $conn->query($sql)->fetchColumn();
-    }
-
     // /**
     //  * @return Team[] Returns an array of Team objects
     //  */

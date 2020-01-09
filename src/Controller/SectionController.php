@@ -6,7 +6,8 @@ use App\Entity\Section;
 use App\Form\SectionType;
 use App\Repository\SectionRepository;
 use App\Entity\FrontPage;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\FrontPageRepository;
+use App\Controller\AdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/section")
  */
-class SectionController extends AbstractController
+class SectionController extends AdminController
 {
     /**
      * @Route("/", name="section_index", methods={"GET"})
@@ -23,6 +24,7 @@ class SectionController extends AbstractController
     {
         return $this->render('section/index.html.twig', [
             'sections' => $sectionRepository->findAll(),
+            'tabs' => $this->tabList,
         ]);
     }
 
@@ -91,17 +93,5 @@ class SectionController extends AbstractController
         }
 
         return $this->redirectToRoute('section_index');
-    }
-
-    /**
-     * @Route("/{pageSlug}", name="show_page", requirements={"pageSlug"=".+"}, methods={"GET"})
-     */
-    public function showPage(FrontPage $frontPage): Response
-    {
-        $defaultTemplate = 'section/association-index.html.twig';
-
-        return $this->render($defaultTemplate, [
-            'page' => $frontPage
-        ]);
     }
 }

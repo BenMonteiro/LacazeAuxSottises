@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Partners;
 use App\Form\PartnersType;
 use App\Repository\PartnersRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\AdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/partners")
  */
-class PartnersController extends AbstractController
+class PartnersController extends AdminController
 {
     /**
      * @Route("/", name="partners_index", methods={"GET"})
@@ -22,6 +22,7 @@ class PartnersController extends AbstractController
     {
         return $this->render('partners/index.html.twig', [
             'partners' => $partnersRepository->findAll(),
+            'tabs' => $this->tabList,
         ]);
     }
 

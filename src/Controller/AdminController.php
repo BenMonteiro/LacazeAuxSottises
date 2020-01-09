@@ -2,28 +2,38 @@
 
 namespace App\Controller;
 
-use App\Entity\Company;
-use App\Repository\CompanyRepository;
-use App\Entity\Team;
-use App\Repository\TeamRepository;
-use App\Entity\Event;
-use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\FrontTabRepository;
+use App\Repository\CompanyRepository;
+use App\Repository\EventRepository;
+use App\Repository\TeamRepository;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/admin")
+ */
 class AdminController extends AbstractController
 {
+    protected $tabList;
+
+    public function __construct(FrontTabRepository $frontTabRepository)
+    {
+        $this->tabList = $frontTabRepository->findAll();
+    }
+
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/dashboard", name="admin_dashboard", methods={"GET"})
      */
-    public function index(CompanyRepository $companyRepository, TeamRepository $teamRepository, EventRepository $eventRepository)
+    public function dashboard(CompanyRepository $companyRepository, TeamRepository $teamRepository, EventRepository $eventRepository): Response
     {
         return $this->render('admin/dashboard.html.twig', [
             'controller_name' => 'AdminController',
-            'companyNb' => $companyRepository->count(),
-            'companyInDiffusionNb' => $companyRepository->countBy(['isInDiffusion' => 1]),
-            'teamNb' => $teamRepository->count(),
-            'nextEvent' => $eventRepository->findNextEvent()
+            'companyNb' => $companyRepository->count([]),
+            'companyInDiffusionNb' => $companyRepository->count(['isInDiffusion' => 1]),
+            'teamNb' => $teamRepository->count([]),
+            'nextEvent' => $eventRepository->findNextEvent(),
+            'tabs' => $this->tabList,
         ]);
     }
 }

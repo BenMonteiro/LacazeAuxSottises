@@ -3,6 +3,8 @@
 {% block title %}{{'section.index'|trans({}, 'section')|title}}{% endblock %}
 
 {% block body %}
+{% include('_back_menu.html.twig') %}
+
 <h1>{{'section.index'|trans({}, 'section')|title}}</h1>
 
 <table class="table">

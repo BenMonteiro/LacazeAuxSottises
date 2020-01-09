@@ -3,11 +3,27 @@
 namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Entity\Company;
 
 class CompanyControllerTest extends WebTestCase
 {
+
     /**
-     * @dataProvider provideUrls
+     * @var \Doctrine\ORM\EntityManager
+     */
+    private $entityManager;
+
+    protected function setUp(): void
+    {
+        $kernel = self::bootKernel();
+
+        $this->entityManager = $kernel->getContainer()
+            ->get('doctrine')
+            ->getManager();
+    }
+
+    /**
+     * @dataProvider provideCompanyUrls
      */
     public function testPageIsSuccessful($url)
     {
@@ -15,10 +31,9 @@ class CompanyControllerTest extends WebTestCase
         $client->request('GET', $url);
 
         echo $this->assertTrue($client->getResponse()->isSuccessful());
-
     }
 
-    public function provideUrls()
+    public function provideCompanyUrls()
     {
         return array(
             array('/'),
@@ -27,29 +42,11 @@ class CompanyControllerTest extends WebTestCase
             array('/company/inDiffusion'),
             array('/company/inCreation'),
             array('/company/new'),
-            array('/company/238'),
-            array('/company/238/edit'),
-            array('/event/'),
-            array('/event/new'),
-            array('/event/171'),
-            array('/event/171/edit'),
-            array('/partners/'),
-            array('/partners/new'),
-            array('/partners/298'),
-            array('/partners/298/edit'),
-            array('/performance/'),
-            array('/performance/new'),
-            array('/performance/211'),
-            array('/performance/211/edit'),
-            array('/section/'),
-            array('/section/new'),
-            array('/section/196'),
-            array('/section/196/edit'),
-            array('/section/association-index'),
+            array('/company/478'),
+            array('/company/478/edit'),
             array('/team/'),
             array('/team/new'),
-            array('/team/79'),
-            array('/team/79/edit'),
+            array('/team/257/edit'),
         );
     }
 
@@ -68,13 +65,24 @@ class CompanyControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Compagnies');
+
+        $company = $this->entityManager
+            ->getRepository(Company::class)
+            ->findOneBy(['name' => 'x']);
+
+        $this->assertSame('x', $company->getName());
+
+        return $companyId = $company->getId();
     }
 
-    public function testEditCompany()
+    /**
+     * @depends testAddCompany
+     */
+    public function testEditCompany($companyId)
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/company/{id}/edit');
+        $crawler = $client->request('GET', '/company/' . $companyId . '/edit');
 
         $form = $crawler->selectButton('Mettre à jour')->form();
         $form['company[name]'] = 'xxx';
@@ -85,13 +93,24 @@ class CompanyControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Compagnies');
+
+        $company = $this->entityManager
+            ->getRepository(Company::class)
+            ->findOneBy(['name' => 'xxx']);
+
+        $this->assertSame('xxx', $company->getName());
+
+        return $companyId = $company->getId();
     }
 
-    public function testDeleteCompany()
+    /**
+     * @depends testEditCompany
+     */
+    public function testDeleteCompany($companyId)
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/company/{id}');
+        $crawler = $client->request('GET', '/company/' . $companyId);
 
         $form = $crawler->selectButton('Supprimer')->form();
         $crawler = $client->submit($form);
@@ -99,5 +118,14 @@ class CompanyControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Compagnies');
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        // doing this is recommended to avoid memory leaks
+        $this->entityManager->close();
+        $this->entityManager = null;
     }
 }

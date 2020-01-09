@@ -5,7 +5,7 @@
 {% block body %}
 
 <body class="landingPage" style="background-image: url('{{ asset('images/landingPagePic.jpg') }}')">
-    <a href="/accueil">
+    <a href="{{path('home')}}">
         <button
             class=" accessButton offset-xl-5 col-xl-2 offset-md-4 col-md-4 offset-3 col-6 btn btn-danger btn-lg py-3">{{'general.siteAccess'|trans({}, 'general')|capitalize}}</button>
     </a>

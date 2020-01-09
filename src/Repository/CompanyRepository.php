@@ -25,16 +25,6 @@ class CompanyRepository extends ServiceEntityRepository
         return $persister->count($criteria);
     }
 
-    public function count()
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = 'SELECT COUNT(*) 
-            FROM company
-            ';
-
-        return $conn->query($sql)->fetchColumn();
-    }
 
     // /**
     //  * @return Company[] Returns an array of Company objects

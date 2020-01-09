@@ -3,12 +3,12 @@
 {% block title %}{{'perf.index'|trans({}, 'perf')|title}}{% endblock %}
 
 {% block body %}
-{% include('_backMenu.html.twig') %}
+{% include('_back_menu.html.twig') %}
 
 <h1>{{'perf.index'|trans({}, 'perf')|title}}</h1>
 
-<table class="table table-sm text-align-center table-striped text-center mb-5 pb-5">
-    <thead class="index py-3">
+<table class="table table-sm index text-align-center table-striped text-center mb-5 pb-5">
+    <thead class="py-3">
         <tr>
             <th>{{'company.label'|trans({}, 'company')|capitalize}}</th>
             <th>{{'perf.show.city'|trans({}, 'perf')|capitalize}}</th>
@@ -18,7 +18,7 @@
             <th><a href="{{ path('performance_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a></th>
         </tr>
     </thead>
-    <tbody class="index">
+    <tbody>
         {% for performance in performances %}
         <tr>
             <td>{{ performance.CompanyName}}</td>
