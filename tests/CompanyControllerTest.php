@@ -39,14 +39,12 @@ class CompanyControllerTest extends WebTestCase
             array('/'),
             array('/accueil'),
             array('/company/'),
-            array('/company/inDiffusion'),
-            array('/company/inCreation'),
             array('/company/new'),
-            array('/company/478'),
-            array('/company/478/edit'),
+            array('/company/20'),
+            array('/company/20/edit'),
             array('/team/'),
             array('/team/new'),
-            array('/team/257/edit'),
+            array('/team/10/edit'),
         );
     }
 

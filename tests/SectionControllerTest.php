@@ -22,28 +22,6 @@ class SectionControllerTest extends WebTestCase
             ->getManager();
     }
 
-    /**
-     * @dataProvider providePerfUrls
-     */
-    public function testPageIsSuccessful($url)
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-
-        echo $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
-    public function providePerfUrls()
-    {
-        return array(
-            array('/section/'),
-            array('/section/new'),
-            array('/section/605'),
-            array('/section/605/edit'),
-            array('/section/association/presentation'),
-        );
-    }
-
     public function testAddSection()
     {
         $client = static::createClient();
@@ -52,7 +30,7 @@ class SectionControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Enregistrer')->form();
         $form['section[name]'] = 'test';
-        $form['section[belongToPage]'] = 'association/adhésion';
+        $form['section[belongToPage]'] = 5;
         $form['section[appearanceOrder]'] = 1;
         $form['section[content]'] = 'test';
         $crawler = $client->submit($form);
@@ -81,7 +59,7 @@ class SectionControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Mettre à jour')->form();
         $form['section[name]'] = 'testEdit';
-        $form['section[belongToPage]'] = 'association/adhésion';
+        $form['section[belongToPage]'] = 2;
         $form['section[appearanceOrder]'] = 2;
         $form['section[content]'] = 'testEdit';
         $crawler = $client->submit($form);
@@ -106,7 +84,7 @@ class SectionControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/section/' . $sectionId);
+        $crawler = $client->request('GET',  '/section/' . $sectionId . '/edit');
 
         $form = $crawler->selectButton('Supprimer')->form();
         $crawler = $client->submit($form);
@@ -123,5 +101,26 @@ class SectionControllerTest extends WebTestCase
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();
         $this->entityManager = null;
+    }
+
+    /**
+     * @dataProvider provideSectionUrls
+     */
+    public function testPageIsSuccessful($url)
+    {
+        $client = static::createClient();
+        $client->request('GET', $url);
+
+        echo $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
+    public function provideSectionUrls()
+    {
+        return array(
+            array('/section/'),
+            array('/section/new'),
+            array('/section/10/edit'),
+            array('/page/association/presentation'),
+        );
     }
 }

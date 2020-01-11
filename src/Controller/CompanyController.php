@@ -27,26 +27,6 @@ class CompanyController extends AdminController
     }
 
     /**
-     * @Route("/inDiffusion", name="company_in_diffusion", methods={"GET"})
-     */
-    public function inDiffusion(CompanyRepository $companyRepository): Response
-    {
-        return $this->render('company/in_diffusion.html.twig', [
-            'inDiffusionCompanies' => $companyRepository->findBy(['isInDiffusion' => 1])
-        ]);
-    }
-
-    /**
-     * @Route("/inCreation", name="company_in_creation", methods={"GET"})
-     */
-    public function inCreation(CompanyRepository $companyRepository): Response
-    {
-        return $this->render('company/in_creation.html.twig', [
-            'inCreationCompanies' => $companyRepository->findBy(['isInCreation' => 1])
-        ]);
-    }
-
-    /**
      * @Route("/new", name="company_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

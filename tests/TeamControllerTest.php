@@ -2,20 +2,47 @@
 
 namespace App\Tests;
 
+use App\Entity\Team;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class TeamControllerTest extends WebTestCase
 {
-    public function testAddTeam()
+
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    private $entityManager;
+
+    protected function setUp(): void
     {
+        $kernel = self::bootKernel();
+
+        $this->entityManager = $kernel->getContainer()
+            ->get('doctrine')
+            ->getManager();
+    }
+
+    /**
+     * @dataProvider provideTeamData
+     */
+    public function testTeamActions($searchField, $searchedValue, $button, $formDatas, $defaultUrl = '/team/new')
+    {
+        if (null !== $searchField) {
+            $team = $this->entityManager
+                ->getRepository(Team::class)
+                ->findOneBy([$searchField => $searchedValue]);
+
+            $this->assertSame($searchedValue, $team->getFirstName());
+
+            $teamId = $team->getId();
+            $defaultUrl = '/team/' . $teamId . '/edit';
+        }
+
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/team/new');
+        $crawler = $client->request('GET', $defaultUrl);
 
-        $form = $crawler->selectButton('Enregistrer')->form();
-        $form['team[name]'] = 'Michelle';
-        $form['team[firstName]'] = 'Martin';
-        $form['team[role]'] = 'volunteer';
+        $form = $crawler->selectButton($button)->form($formDatas);
         $crawler = $client->submit($form);
 
         $crawler = $client->followRedirect();
@@ -23,34 +50,45 @@ class TeamControllerTest extends WebTestCase
         $this->assertSelectorTextContains('h1', 'L\'Équipe');
     }
 
-    public function testEditTeam()
+    /***
+     * @depends testTeamActions
+     */
+    public function provideTeamData($teamId)
     {
-        $client = static::createClient();
+        return array(
+            'add' => array(null, null, 'Enregistrer', 'team' => array('team[name]' => 'Michelle', 'team[firstName]' => 'Martin', 'team[role]' => 'volunteer')),
+            'edit' => array('firstName', 'Martin', 'Mettre à jour', 'team' => array('team[name]' => 'Gérard', 'team[firstName]' => 'Chirard', 'team[role]' => 'gov_body')),
+            'delete' => array('firstName', 'Chirard', 'Supprimer', null)
 
-        $crawler = $client->request('GET', '/team/{id}/edit');
-
-        $form = $crawler->selectButton('Mettre à jour')->form();
-        $form['team[name]'] = 'Michelle';
-        $form['team[firstName]'] = 'Chirard';
-        $form['team[role]'] = 'gov-body';
-        $crawler = $client->submit($form);
-
-        $crawler = $client->followRedirect();
-
-        $this->assertSelectorTextContains('h1', 'L\'Équipe');
+        );
     }
 
-    public function testDeleteTeam()
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        // doing this is recommended to avoid memory leaks
+        $this->entityManager->close();
+        $this->entityManager = null;
+    }
+
+    /**
+     * @dataProvider provideTeamUrls
+     */
+    public function testPageIsSuccessful($url)
     {
         $client = static::createClient();
+        $client->request('GET', $url);
 
-        $crawler = $client->request('GET', '/team/{id}');
+        echo $this->assertTrue($client->getResponse()->isSuccessful());
+    }
 
-        $form = $crawler->selectButton('Supprimer')->form();
-        $crawler = $client->submit($form);
-
-        $crawler = $client->followRedirect();
-
-        $this->assertSelectorTextContains('h1', 'L\'Équipe');
+    public function provideTeamUrls()
+    {
+        return array(
+            array('/team/'),
+            array('/team/new'),
+            array('/team/10/edit'),
+        );
     }
 }

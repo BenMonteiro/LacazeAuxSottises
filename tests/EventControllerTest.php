@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class EventControllerTest extends WebTestCase
 {
-
     /**
      * @var \Doctrine\ORM\EntityManager
      */
@@ -22,27 +21,6 @@ class EventControllerTest extends WebTestCase
             ->getManager();
     }
 
-    /**
-     * @dataProvider provideUrls
-     */
-    public function testPageIsSuccessful($url)
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-
-        echo $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
-    public function provideUrls()
-    {
-
-        return array(
-            array('/event/'),
-            array('/event/new'),
-            array('/event/284'),
-            array('/event/284/edit'),
-        );
-    }
     public function testAddEvent()
     {
         $client = static::createClient();
@@ -51,18 +29,15 @@ class EventControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Enregistrer')->form();
         $form['event[name]'] = 'x';
-        $form['event[startingDate][day]'] = '15';
-        $form['event[startingDate][month]'] = '2';
-        $form['event[startingDate][year]'] = '2020';
-        $form['event[endingDate][day]'] = '15';
-        $form['event[endingDate][month]'] = '2';
-        $form['event[endingDate][year]'] = '2020';
         $crawler = $client->submit($form);
 
         $crawler = $client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Événements');
+    }
 
+    public function testSearchAddedEvent()
+    {
         $event = $this->entityManager
             ->getRepository(Event::class)
             ->findOneBy(['name' => 'x']);
@@ -73,7 +48,7 @@ class EventControllerTest extends WebTestCase
     }
 
     /**
-     * @depends testAddEvent
+     * @depends testSearchAddedEvent
      */
     public function testEditEvent($eventId)
     {
@@ -83,11 +58,16 @@ class EventControllerTest extends WebTestCase
 
         $form = $crawler->selectButton('Mettre à jour')->form();
         $form['event[name]'] = 'xxx';
+
         $crawler = $client->submit($form);
 
         $crawler = $client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Événements');
+    }
+
+    public function testSearchEditedEvent()
+    {
 
         $event = $this->entityManager
             ->getRepository(Event::class)
@@ -99,7 +79,7 @@ class EventControllerTest extends WebTestCase
     }
 
     /**
-     * @depends testEditEvent
+     * @depends testSearchEditedEvent
      */
     public function testDeleteEvent($eventId)
     {
@@ -122,5 +102,26 @@ class EventControllerTest extends WebTestCase
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();
         $this->entityManager = null;
+    }
+
+    /**
+     * @dataProvider provideEventUrls
+     */
+    public function testEventPageIsSuccessful($url)
+    {
+        $client = static::createClient();
+        $client->request('GET', $url);
+
+        echo $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
+    public function provideEventUrls()
+    {
+        return array(
+            array('/event/'),
+            array('/event/new'),
+            array('/event/5'),
+            array('/event/5/edit'),
+        );
     }
 }

@@ -37,7 +37,7 @@ class PartnerControllerTest extends WebTestCase
         return array(
             array('/partners/'),
             array('/partners/new'),
-            array('/partners/661/edit'),
+            array('/partners/10/edit'),
         );
     }
 

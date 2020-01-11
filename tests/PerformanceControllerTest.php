@@ -22,26 +22,6 @@ class PerformanceControllerTest extends WebTestCase
             ->getManager();
     }
 
-    /**
-     * @dataProvider providePerfUrls
-     */
-    public function testPageIsSuccessful($url)
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-
-        echo $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
-    public function providePerfUrls()
-    {
-        return array(
-            array('/performance/'),
-            array('/performance/new'),
-            array('/performance/773/edit'),
-        );
-    }
-
     public function testAddPerformance()
     {
         $client = static::createClient();
@@ -49,7 +29,7 @@ class PerformanceControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/performance/new');
 
         $form = $crawler->selectButton('Enregistrer')->form();
-        $form['performance[companyName]'] = 480;
+        $form['performance[companyName]'] = 10;
         $form['performance[cityShow]'] = 'TestAdd';
         $form['performance[placeShow]'] = 'TestAdd';
         $crawler = $client->submit($form);
@@ -122,5 +102,25 @@ class PerformanceControllerTest extends WebTestCase
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();
         $this->entityManager = null;
+    }
+
+        /**
+     * @dataProvider providePerfUrls
+     */
+    public function testPageIsSuccessful($url)
+    {
+        $client = static::createClient();
+        $client->request('GET', $url);
+
+        echo $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
+    public function providePerfUrls()
+    {
+        return array(
+            array('/performance/'),
+            array('/performance/new'),
+            array('/performance/10/edit'),
+        );
     }
 }
