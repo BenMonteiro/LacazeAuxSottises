@@ -77,6 +77,23 @@ table.index tbody{
     top:60px;
 }
 
+
+table.sectionList thead {
+    position: sticky;
+    top: 200px;
+    height: 40px;
+    width: 100%;
+    background-color: black;
+    z-index: 10;
+    color: #DA291C;
+}
+table.sectionList tbody{
+    position: relative;
+    top:200px;
+}
+
+
+
 thead {
     background-color: black;
     z-index: 10;

@@ -3,14 +3,14 @@
 {% block title %}{{page.tab}}/{{page.name}}{% endblock %}
 
 {% block body %}
-<div>
+<div class="fixed-top bg-light">
     <div class="btn-showView offset-10 col-2 mt-5">
         <a class="badge badge-secondary p-2 "
             href="{{ path('admin_tab', {'id': page.tabId}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
     </div>
     <h1>{{'section.index'|trans({}, 'section')|title}} de la page :</br> {{ page.tab}} / {{page.name}}</h1>
 </div>
-<table class="table table-sm table-striped table-bordered text-center">
+<table class="table table-sm table-striped sectionList text-align-center">
     <thead>
         <tr>
             <th>{{'section.name'|trans({}, 'section')|capitalize}}</th>
@@ -29,7 +29,7 @@
             <td>{{ section.title}}</td>
             <td>{{ section.subTitle }}</td>
             <td>{{ section.appearanceOrder }}</td>
-            <td>{{ section.content }}</td>
+            <td>{{ section.content|slice(0,100)}}...</td>
             <td>{{ section.image.name }}</td>
             <td>
                 <a class="badge badge-secondary my-2 p-2"

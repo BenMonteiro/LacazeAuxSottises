@@ -7,8 +7,8 @@
  
 <h1>{{'partner.index'|trans({},'partners')|title}}</h1>
 
-<table class="table table-sm text-align-center table-striped text-center mb-5 pb-5">
-    <thead class="index">
+<table class="table table-sm text-align-center index table-striped text-center mb-5 pb-5">
+    <thead>
         <tr>
             <th>{{'partner.logo'|trans({}, 'partners')|capitalize}}</th>
             <th>{{'partner.name'|trans({}, 'partners')|capitalize}}</th>
@@ -16,7 +16,7 @@
             <th> <a href="{{ path('partners_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</th>
         </tr>
     </thead>
-    <tbody class="index">
+    <tbody>
         {% for partner in partners %}
         <tr>
             <td><img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}"></td>

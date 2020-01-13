@@ -7,14 +7,14 @@
 <div>
     <h1>{{'page.name'|trans({}, 'adminPage')|title}}</h1>
 </div>
-<table class="table table-sm text-align-center table-striped text-center mb-5 pb-5">
-    <thead class="index">
+<table class="table table-sm text-align-center index table-striped text-center mb-5 pb-5">
+    <thead>
         <tr>
             <th>{{'page.name'|trans({}, 'adminPage')|capitalize}}</th>
             <th>{{'page.content'|trans({}, 'adminPage')|capitalize}}</th>
         </tr>
     </thead>
-    <tbody class="index">
+    <tbody>
         {% for page in tab.pages %}
         <tr>
             <td>{{ page.pageSlug}}</td>

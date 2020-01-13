@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/performance")
+ * @Route("admin/performance")
  */
 class PerformanceController extends AdminController
 {

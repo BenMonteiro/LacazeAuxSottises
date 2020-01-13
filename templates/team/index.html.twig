@@ -7,8 +7,8 @@
 
 <h1>{{'team.index'|trans({}, 'team')}}</h1>
 
-<table class="table table-sm text-align-center table-striped text-center mb-5 pb-5">
-    <thead class="index">
+<table class="table table-sm text-align-center index table-striped text-center mb-5 pb-5">
+    <thead>
         <tr>
             <th>{{'member.photo'|trans({}, 'team')|capitalize}}</th>
             <th>{{'general.name'|trans({}, 'general')|capitalize}}</th>
@@ -18,7 +18,7 @@
             <th><a href="{{ path('team_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a></th>
         </tr>
     </thead>
-    <tbody class="index">
+    <tbody>
         {% for team in teams %}
         <tr>
             <td><img class="memberPhoto" src="{{ asset('images/uploads/memberPhoto/' ~ team.photo.name) }}"></td>
