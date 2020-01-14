@@ -7,7 +7,7 @@
 
 <div class="example-wrapper mt-5 pt-5">
 
-    <h1 class=" text-left ml-3 pt-5">Hello {{ controller_name }} !</h1>
+    <h1 class=" text-left ml-3 pt-5">{{'general.hello'|trans({}, 'general')|capitalize}} {{ app.user.username }} !</h1>
     <div class=" container-fluid">
         <div class="row">
             <div class="row col-8 mt-5">

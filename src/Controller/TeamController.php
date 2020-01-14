@@ -50,16 +50,6 @@ class TeamController extends AdminController
     }
 
     /**
-     * @Route("/{id<\d+>}", name="team_show", methods={"GET"})
-     */
-    public function show(Team $team): Response
-    {
-        return $this->render('team/show.html.twig', [
-            'team' => $team,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="team_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Team $team): Response

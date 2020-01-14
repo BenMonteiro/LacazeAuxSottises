@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse nav-tabs nav d-md-flex flex-md-column" id="navbarNavAltMarkup" role="tablist">
-        <ul class="row navbar-nav  mr-2 ml-md-auto ml-2">
+        <ul class="row navbar-nav mr-2 ml-md-auto ml-2">
             <li>
                 <a class="nav-link" href="{{path('home')}}" role="link"><i class="fas fa-1x fa-home"></i></a>
             </li>
@@ -41,12 +41,13 @@
             </li>
         </ul>
         <ul class="row navbar-nav mr-md-5 ml-md-auto ml-4">
-            {% for page in pages %}
-            {% if page.tab == 'locations' %}
-            <a class="nav-link"
-                href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">{{page.name|trans({}, 'menu')|title}}</a>
-            {% endif %}
-            {% endfor %}
+            <li>
+                {% for page in pages %}
+                {% if page.tab == 'locations' %}
+                <a class="nav-link"
+                    href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">{{page.name|trans({}, 'menu')|title}}</a>
+                {% endif %}
+                {% endfor %}
             </li>
             <li>
                 <a class="nav-item nav-link" href="" id="nav-volunteering-tab" data-toggle="tab"

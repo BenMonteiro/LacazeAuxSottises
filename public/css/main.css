@@ -1,4 +1,5 @@
-.landingPage {
+#landingPage {
+    background-image: url('images/landingPagePic.jpg');
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;

@@ -25,7 +25,7 @@ class TeamControllerTest extends WebTestCase
     /**
      * @dataProvider provideTeamData
      */
-    public function testTeamActions($searchField, $searchedValue, $button, $formDatas, $defaultUrl = '/team/new')
+    public function testTeamActions($searchField, $searchedValue, $button, $formDatas, $defaultUrl = '/admin/team/new')
     {
         if (null !== $searchField) {
             $team = $this->entityManager
@@ -35,12 +35,20 @@ class TeamControllerTest extends WebTestCase
             $this->assertSame($searchedValue, $team->getFirstName());
 
             $teamId = $team->getId();
-            $defaultUrl = '/team/' . $teamId . '/edit';
+            $defaultUrl = '/admin/team/' . $teamId . '/edit';
         }
 
-        $client = static::createClient();
+        $client = static::createClient(
+            [],
+            [
+                'PHP_AUTH_USER' => 'test',
+                'PHP_AUTH_PW' => 'test2020',
+            ]
+        );
 
         $crawler = $client->request('GET', $defaultUrl);
+
+        $this->assertTrue($client->getResponse()->isSuccessful());
 
         $form = $crawler->selectButton($button)->form($formDatas);
         $crawler = $client->submit($form);
@@ -50,17 +58,13 @@ class TeamControllerTest extends WebTestCase
         $this->assertSelectorTextContains('h1', 'L\'Équipe');
     }
 
-    /***
-     * @depends testTeamActions
-     */
-    public function provideTeamData($teamId)
+    public function provideTeamData()
     {
-        return array(
-            'add' => array(null, null, 'Enregistrer', 'team' => array('team[name]' => 'Michelle', 'team[firstName]' => 'Martin', 'team[role]' => 'volunteer')),
-            'edit' => array('firstName', 'Martin', 'Mettre à jour', 'team' => array('team[name]' => 'Gérard', 'team[firstName]' => 'Chirard', 'team[role]' => 'gov_body')),
-            'delete' => array('firstName', 'Chirard', 'Supprimer', null)
-
-        );
+        return [
+            'add' => [null, null, 'Enregistrer', 'team' => ['team[name]' => 'Michelle', 'team[firstName]' => 'Martin', 'team[role]' => 'volunteer']],
+            'edit' => ['firstName', 'Martin', 'Mettre à jour', 'team' => ['team[name]' => 'Gérard', 'team[firstName]' => 'Chirard', 'team[role]' => 'gov_body']],
+            'delete' => ['firstName', 'Chirard', 'Supprimer', null]
+        ];
     }
 
     protected function tearDown(): void
@@ -70,25 +74,5 @@ class TeamControllerTest extends WebTestCase
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();
         $this->entityManager = null;
-    }
-
-    /**
-     * @dataProvider provideTeamUrls
-     */
-    public function testPageIsSuccessful($url)
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-
-        echo $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
-    public function provideTeamUrls()
-    {
-        return array(
-            array('/team/'),
-            array('/team/new'),
-            array('/team/10/edit'),
-        );
     }
 }

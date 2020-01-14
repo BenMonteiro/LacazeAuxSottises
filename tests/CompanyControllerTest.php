@@ -22,37 +22,11 @@ class CompanyControllerTest extends WebTestCase
             ->getManager();
     }
 
-    /**
-     * @dataProvider provideCompanyUrls
-     */
-    public function testPageIsSuccessful($url)
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-
-        echo $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
-    public function provideCompanyUrls()
-    {
-        return array(
-            array('/'),
-            array('/accueil'),
-            array('/company/'),
-            array('/company/new'),
-            array('/company/20'),
-            array('/company/20/edit'),
-            array('/team/'),
-            array('/team/new'),
-            array('/team/10/edit'),
-        );
-    }
-
-    public function testAddCompany()
+    public function AddCompany()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/company/new');
+        $crawler = $client->request('GET', '/admin/company/new');
 
         $form = $crawler->selectButton('Enregistrer')->form();
         $form['company[name]'] = 'x';
@@ -74,13 +48,13 @@ class CompanyControllerTest extends WebTestCase
     }
 
     /**
-     * @depends testAddCompany
+     * @depends AddCompany
      */
-    public function testEditCompany($companyId)
+    public function EditCompany($companyId)
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/company/' . $companyId . '/edit');
+        $crawler = $client->request('GET', '/admin/company/' . $companyId . '/edit');
 
         $form = $crawler->selectButton('Mettre à jour')->form();
         $form['company[name]'] = 'xxx';
@@ -102,13 +76,13 @@ class CompanyControllerTest extends WebTestCase
     }
 
     /**
-     * @depends testEditCompany
+     * @depends EditCompany
      */
     public function testDeleteCompany($companyId)
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/company/' . $companyId);
+        $crawler = $client->request('GET', '/admin/company/' . $companyId);
 
         $form = $crawler->selectButton('Supprimer')->form();
         $crawler = $client->submit($form);

@@ -54,6 +54,10 @@
                     href="{{ path('user_index') }}">{{'back.user'|trans({}, 'menu')|capitalize }}
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link back-nav-link"
+                    href="{{ path('app_logout') }}">{{'log.logout'|trans({}, 'security')|capitalize}}</a>
+            </li>
         </ul>
     </div>
 </nav>
