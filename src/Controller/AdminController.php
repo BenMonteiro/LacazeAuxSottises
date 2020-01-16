@@ -9,11 +9,7 @@ use App\Repository\EventRepository;
 use App\Repository\TeamRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-/**
- * @Route("/admin")
- */
 class AdminController extends AbstractController
 {
     protected $tabList;
@@ -24,12 +20,11 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin", name="admin_dashboard")
+     * @Route("/admin/dashboard", name="admin_dashboard", methods={"GET"})
      */
     public function dashboard(CompanyRepository $companyRepository, TeamRepository $teamRepository, EventRepository $eventRepository): Response
     {
         return $this->render('admin/dashboard.html.twig', [
-            'controller_name' => 'AdminController',
             'companyNb' => $companyRepository->count([]),
             'companyInDiffusionNb' => $companyRepository->count(['isInDiffusion' => 1]),
             'teamNb' => $teamRepository->count([]),

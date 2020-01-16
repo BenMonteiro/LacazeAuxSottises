@@ -4,4 +4,5 @@ log:
     logout: déconnexion
     sign_in: connexion
     remember_me: se souvenir de moi
+    dashboard: aller à l'accueil d'administration
     

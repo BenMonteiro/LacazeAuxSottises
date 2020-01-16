@@ -7,7 +7,6 @@ use App\Entity\Company;
 
 class CompanyControllerTest extends WebTestCase
 {
-
     /**
      * @var \Doctrine\ORM\EntityManager
      */

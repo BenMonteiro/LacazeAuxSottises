@@ -1,13 +1,13 @@
 association: L'Association
-season: la saison
-festival: le festival
-place: le tiers-lieu
-activities: les activités du lieu
-rentals: les locations
-volunteering: le bénévolat
-partners: nos partenaires
-support: nous soutenir
-contact: contact
+saison: La Saison
+festival: Le Festival
+tiers-lieu: Le Tiers-Lieu
+activités-du-lieu: Les Activités du Lieu
+locations: Les Locations
+bénévolat: Le Bénévolat
+partenaires: Nos Partenaires
+soutient: Nous Noutenir
+contact: Contact
 front:
     presentation: présentation
     program: programmation

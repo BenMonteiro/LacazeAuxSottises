@@ -2,22 +2,26 @@
 
 namespace App\Controller;
 
-use App\Entity\FrontPage; 
+use App\Entity\FrontPage;
 use App\Repository\FrontPageRepository;
+use App\Entity\FrontTab;
+use App\Repository\FrontTabRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PageController extends AbstractController
 {
-
     protected $pages;
     protected $page;
+    protected $tabs;
 
-    public function __construct(FrontPageRepository $frontPageRepository)
+    public function __construct(FrontPageRepository $frontPageRepository, FrontTabRepository $frontTabRepository)
     {
         $this->pages = $frontPageRepository->findAll();
+        $this->tabs = $frontTabRepository->findAll();
     }
+
     /**
      * @Route("/", name="blog")
      */
@@ -32,6 +36,7 @@ class PageController extends AbstractController
     public function home()
     {
         return $this->render('home/home.html.twig', [
+            'tabs' => $this->tabs,
             'pages' => $this->pages,
         ]);
     }
@@ -45,7 +50,8 @@ class PageController extends AbstractController
 
         return $this->render($defaultTemplate, [
             'page' => $frontPage,
-            'pages' => $this->pages
+            'pages' => $this->pages,
+            'tabs' => $this->tabs,
         ]);
     }
 }
