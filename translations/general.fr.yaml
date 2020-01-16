@@ -20,3 +20,6 @@ general:
     siteAccess: accéder au site
     actions: actions
     hello: bonjour
+    image: image
+    theme: theme
+    description: description

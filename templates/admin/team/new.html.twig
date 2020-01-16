@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ 'team.create'|trans({}, 'team')|title }}
+{% endblock %}
+
+{% block body %}
+	<h1>{{ 'team.create'|trans({}, 'team')|title }}</h1>
+	<div class="ml-3">
+
+		{{ include('admin/team/_form.html.twig') }}
+
+		<a class="badge badge-secondary p-2 mb-5" href="{{ path('team_index') }}">{{ 'general.back'|trans({}, 'general')|capitalize }}</a>
+	</div>
+
+{% endblock %}

@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\FrontPage;
 use App\Repository\FrontPageRepository;
-use App\Entity\FrontTab;
 use App\Repository\FrontTabRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

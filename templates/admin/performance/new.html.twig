@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{'perf.create'|trans({}, 'perf')|title}}
+{% endblock %}
+
+{% block body %}
+	<h1>{{'perf.create'|trans({}, 'perf')|title}}</h1>
+	<div class="ml-3">
+		{{ include('admin/performance/_form.html.twig') }}
+
+		<a class="badge badge-secondary p-2 mb-5" href="{{ path('performance_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+	</div>
+{% endblock %}

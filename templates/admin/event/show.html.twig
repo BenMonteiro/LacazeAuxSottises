@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ event.name }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="offset-9 col-4 mt-5 mr-5 text-center ">
+		<div class="d-flex justify-content-center ">
+
+			<div class="btn-showView mr-1">
+				<a class="badge badge-secondary p-2 " href="{{ path('event_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+			</div>
+			<div class="btn-showView ml-1">
+				<a class="badge badge-primary p-2" href="{{ path('event_edit', {'id': event.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+			</div>
+		</div>
+
+		<div class="btn-showView">{{ include('admin/event/_delete_form.html.twig') }}</div>
+	</div>
+	<h1>{{ event.name }}</h1>
+	<div class="d-flex my-5">
+		<img class="miniImage offset-3 col-5 " src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}">
+		<div class="offset-1 col-2 ">
+			{% if event.startingDate != null %}
+				<h4>{{'event.start'|trans({}, 'event')|capitalize}}</h4>
+				<p class="ml-3">{{ event.startingDate ? event.startingDate|date('d-m-Y') : '' }}</p>
+				<h4>{{'event.end'|trans({}, 'event')|capitalize}}</h4>
+				<p class="ml-3">{{ event.endingDate ? event.endingDate|date('d-m-Y') : '' }}</p>
+			{% endif %}
+			{% if event.hours != null %}
+				<h4>{{'event.hours'|trans({}, 'event')|capitalize}}</h4>
+				<p>{{ event.hours }}</p>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="text-center offset-1 col-10">{{ event.description }}</div>
+	<div class="text-center mt-5">
+		<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
+	</div>
+
+	<div class="row offset-1 col-10 mt-5 pt-5">
+		<h2 class=" ml-5 mb-3 font-weight-bold">{{ 'event.performances'|trans({}, 'event')|capitalize}}
+		</h2>
+		<table class="table table-sm table-striped table-bordered text-center">
+			<thead>
+				<tr>
+					<th>{{'perf.companyName'|trans({}, 'perf')|capitalize}}</th>
+					<th>{{'perf.show.city'|trans({}, 'perf')|capitalize}}</th>
+					<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
+					<th>Date</th>
+					<th>
+						<a href="{{ path('performance_new', {'event_id': event.id}) }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for performance in event.performances %}
+					<tr>
+						<td>{{ performance.companyName}}</td>
+						<td>{{ performance.cityShow }}</td>
+						<td>{{ performance.placeShow }}</td>
+						<td>{{ performance.date ? performance.date|date('d-m-Y H:i') : '' }}</td>
+						<td>
+							<a class="badge badge-secondary my-2 p-2" href="{{ path('performance_show', {'id': performance.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+							<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit', {'id': performance.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+							{{ include('admin/performance/_delete_form.html.twig') }}
+						</td>
+
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="8">{{'general.noRecords'|trans({}, 'general')}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

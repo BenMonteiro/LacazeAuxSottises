@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{'company.isIn.diffusion'|trans({}, 'company')|title}}
+{% endblock %}
+
+{% block body %}
+
+	{% block header %}
+		{% include('menu/_front_menu.html.twig') %}
+	{% endblock %}
+
+	<div class="d-flex justify-content-around flex-wrap">
+
+		{% for inDiffusionCompany in inDiffusionCompanies %}
+			<div class="col-3 text-center my-3">
+				<a href="{{ path('company_show', {'id': inDiffusionCompany.id}) }}">
+					<h3>{{inDiffusionCompany.name}}</h3>
+					<img class="companyImage" src="{{ asset('images/uploads/company/' ~ inDiffusionCompany.image.name) }}">
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

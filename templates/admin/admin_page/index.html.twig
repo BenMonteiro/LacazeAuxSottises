@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{tab.name}}
+{% endblock %}
+
+{% block body %}
+	{% include('menu/_back_menu.html.twig') %}
+	<div>
+		<h1>{{'page.name'|trans({}, 'adminPage')|title}}</h1>
+	</div>
+	<table class="table table-sm text-align-center index table-striped text-center mb-5 pb-5">
+		<thead>
+			<tr>
+				<th>{{'page.name'|trans({}, 'adminPage')|capitalize}}</th>
+				<th>{{'page.content'|trans({}, 'adminPage')|capitalize}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for page in tab.pages %}
+				<tr>
+					<td>{{ page.pageSlug}}</td>
+					<td>
+						<a class="badge badge-secondary my-2 p-2" href="{{ path('page_list_show', {'id': page.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="9">{{'general.noRecords'|trans({}, 'general')|capitalize}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

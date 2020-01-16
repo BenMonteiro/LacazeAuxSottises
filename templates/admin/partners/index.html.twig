@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{'partner.index'|trans({},'partners')|title}}
+{% endblock %}
+
+{% block body %}
+	{% include('menu/_back_menu.html.twig') %}
+
+	<h1>{{'partner.index'|trans({},'partners')|title}}</h1>
+
+	<table class="table table-sm text-align-center index table-striped text-center mb-5 pb-5">
+		<thead>
+			<tr>
+				<th>{{'partner.logo'|trans({}, 'partners')|capitalize}}</th>
+				<th>{{'partner.name'|trans({}, 'partners')|capitalize}}</th>
+				<th>{{'partner.type'|trans({}, 'partners')|capitalize}}</th>
+				<th>
+					<a href="{{ path('partners_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</th>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for partner in partners %}
+				<tr>
+					<td><img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}"></td>
+					<td>{{ partner.name }}</td>
+					<td>{{ ('partner.' ~ partner.type)|trans({}, 'partners')|capitalize }}</td>
+					<td>
+						<a class="badge badge-primary my-2 p-2" href="{{ path('partners_edit', {'id': partner.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+						{{ include('admin/partners/_delete_form.html.twig') }}
+
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">{{'general.noRecords'|trans({}, 'general')}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

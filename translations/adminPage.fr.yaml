@@ -1,3 +1,11 @@
 page: 
     name: page
     content: contenu de la page
+dashboard:
+    created_companies: compagnies crées dont 
+    handle_companies: aller à la gestion des compagnies
+    next_event: prochain événement
+    from_date: à partir du
+    handle_event: aller à la gestion des événements
+    team_members: membres au sein de l'équipe
+    handle_members: Aller à la gestuion de l'équipe

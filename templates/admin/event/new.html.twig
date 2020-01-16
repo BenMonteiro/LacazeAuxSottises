@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{'event.create'|trans({}, 'event')|title}}
+{% endblock %}
+
+{% block body %}
+	<h1>{{'event.create'|trans({}, 'event')|title}}</h1>
+	<div class="ml-3">
+
+		{{ include('admin/event/_form.html.twig') }}
+
+		<a class="badge badge-secondary p-2 mb-5" href="{{ path('event_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+	</div>
+{% endblock %}
