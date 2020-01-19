@@ -44,6 +44,13 @@ form legend {
     font-size: 1.3rem;
 }
 
+.assoIntroImage {
+    border-radius: 10px;
+    width: 400px;
+    height: 350px;
+}
+
+
 .miniImage {
     border-radius: 80px;
     width: 200px;
@@ -62,37 +69,29 @@ div[id^="company_performances_"]>div:first-child {
     display: none;
 }
 
-table.index thead{
+table.index thead {
     position: sticky;
     top: 140px;
     height: 40px;
     width: 100%;
-    background-color: black;
-    z-index: 10;
-    color: #DA291C;
 }
 
-table.index tbody{
+table.index tbody {
     position: relative;
-    top:60px;
+    top: 60px;
 }
 
 
 table.sectionList thead {
     position: sticky;
     top: 200px;
-    height: 40px;
     width: 100%;
-    background-color: black;
-    z-index: 10;
-    color: #DA291C;
 }
-table.sectionList tbody{
+
+table.sectionList tbody {
     position: relative;
-    top:200px;
+    top: 200px;
 }
-
-
 
 thead {
     background-color: black;
@@ -129,4 +128,36 @@ thead {
     top: -0.2em;
     font-size: 5rem;
     opacity: 0.5;
+}
+
+.pageTitle {
+    position: relative;
+    text-align: center;
+    font-size: 3em;
+    width: 20%;
+    left: 40%;
+    z-index: 3;
+    background-color: white;
+}
+
+#titleLines {
+    position: absolute;
+    z-index: 2;
+    top: 200px;
+    width: 95%;
+    left: 2.5%
+}
+
+hr {
+    border-top: solid;
+    height: 3px !important;
+    margin: 0.5px 10px 0.5px 10px;
+}
+
+hr#blackline {
+    color: black
+}
+
+hr#redline {
+    color: #DA291C;
 }

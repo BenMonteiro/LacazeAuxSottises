@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\FrontPage;
 use App\Repository\FrontPageRepository;
 use App\Repository\FrontTabRepository;
+use App\Repository\SectionRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,7 +27,7 @@ class PageController extends AbstractController
      */
     public function index()
     {
-        return $this->render('home/landing_page.html.twig');
+        return $this->render('front/landing_page.html.twig');
     }
 
     /**
@@ -34,7 +35,7 @@ class PageController extends AbstractController
      */
     public function home()
     {
-        return $this->render('home/home.html.twig', [
+        return $this->render('front/home.html.twig', [
             'tabs' => $this->tabs,
             'pages' => $this->pages,
         ]);
@@ -43,14 +44,19 @@ class PageController extends AbstractController
     /**
      * @Route("page/{pageSlug}", name="page_show", requirements={"pageSlug"=".+?"}, methods={"GET"})
      */
-    public function displayPage(FrontPage $frontPage): Response
+    public function displayPage(FrontPage $frontPage, SectionRepository $sectionRepository): Response
     {
-        $defaultTemplate = 'home/association_index.html.twig';
+        $pageFolder = $frontPage->getTab();
+        $pageTemplate = $frontPage->getTemplate();
+        $defaultTemplate = 'front/page_default.html.twig';
 
-        return $this->render($defaultTemplate, [
+        $template = ($pageTemplate === null) ? $defaultTemplate : 'front/' . $pageFolder . '/' . $pageTemplate . '.html.twig';
+
+        return $this->render($template, [
             'page' => $frontPage,
             'pages' => $this->pages,
             'tabs' => $this->tabs,
+            'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC'])
         ]);
     }
 }

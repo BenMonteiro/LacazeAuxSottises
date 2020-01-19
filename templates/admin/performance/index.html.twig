@@ -12,10 +12,11 @@
 	<table class="table table-sm index text-align-center table-striped text-center mb-5 pb-5">
 		<thead class="py-3">
 			<tr>
+				<th>Date</th>
+				<th>Heure</th>
 				<th>{{'company.label'|trans({}, 'company')|capitalize}}</th>
 				<th>{{'perf.show.city'|trans({}, 'perf')|capitalize}}</th>
 				<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
-				<th>Date</th>
 				<th>{{'perf.show.event'|trans({}, 'perf')|capitalize}}</th>
 				<th>
 					<a href="{{ path('performance_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
@@ -25,10 +26,11 @@
 		<tbody>
 			{% for performance in performances %}
 				<tr>
+					<td>{{ performance.date ? performance.date|date('d-M-Y') : '' }}</td>
+					<td>{{ performance.date ? performance.date|date('H:i') : '' }}</td>
 					<td>{{ performance.CompanyName}}</td>
 					<td>{{ performance.cityShow }}</td>
 					<td>{{ performance.placeShow }}</td>
-					<td>{{ performance.date ? performance.date|date('d-m-Y H:i') : '' }}</td>
 					<td>{{ performance.event}}</td>
 					<td>
 						<a class="badge badge-primary my-2 p-2 text-center" href="{{ path('performance_edit', {'id': performance.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>

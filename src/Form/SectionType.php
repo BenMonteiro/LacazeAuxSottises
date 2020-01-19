@@ -19,10 +19,10 @@ class SectionType extends AbstractType
             ->add('name')
             ->add('belongToPage', EntityType::class, [
                 'class' => FrontPage::class,
-                'choice_label' => 'name', 
-                'group_by' => 'tab', 
+                'choice_label' => 'name',
+                'group_by' => 'tab',
                 'choice_attr' => function ($choice, $key, $value) {
-                    if (isset($_GET['id']) && $value === $_GET['id']) {
+                    if (isset($_GET['page_id']) && $value === $_GET['page_id']) {
 
                         return ['selected' => ''];
                     } else {

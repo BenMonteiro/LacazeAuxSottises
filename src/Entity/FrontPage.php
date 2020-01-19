@@ -44,6 +44,11 @@ class FrontPage
      */
     private $pageSections;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $template;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
@@ -137,5 +142,17 @@ class FrontPage
     public function __toString()
     {
         return $this->pageSlug;
+    }
+
+    public function getTemplate(): ?string
+    {
+        return $this->template;
+    }
+
+    public function setTemplate(?string $template): self
+    {
+        $this->template = $template;
+
+        return $this;
     }
 }

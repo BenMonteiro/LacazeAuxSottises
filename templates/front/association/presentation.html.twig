@@ -1,0 +1,28 @@
+{% extends "front_base.html.twig" %}
+
+{% block title %}
+	{{ page.pageSlug }}
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex justify-content-around mb-5">
+		{% for section in sections %}
+			{% if section.image.name %}
+				<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+			{% endif %}
+		{% endfor %}
+	</div>
+	<div class="offset-1 col-10">
+		{% for section in sections %}
+			<article class="mb-5">
+				{% if section.title %}
+					<h3>{{ section.title }}</h3>
+				{% endif %}
+				{% if section.subTitle %}
+					<h4>{{ section.subTitle }}</h4>
+				{% endif %}
+				<p class="text-justify">{{ section.content|raw}}</p>
+			</article>
+		{% endfor %}
+	</div>
+{% endblock %}

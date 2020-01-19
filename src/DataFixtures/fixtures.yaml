@@ -1,95 +1,90 @@
 App\Entity\Company:
     company{1..20}:
-        name: '<company()>'
-        description: '<paragraph(3, true)>'
-        showTitle: '<sentence(4, true)>'
-        theme: '<word()>'
-        duration: '<numberBetween(15, 120)>'
-        audience: '<sentence(3, true)>'
-        moreInfos: '<sentence(15, true)>'
-        isInDiffusion: '<boolean(75)>'
-        isInCreation: '<boolean(25)>'
-        website: '<domainName()>'
-        videoLink: '<domainName()>'
+        name: "<company()>"
+        description: "<paragraph(3, true)>"
+        showTitle: "<sentence(4, true)>"
+        theme: "<word()>"
+        duration: "<numberBetween(15, 120)>"
+        audience: "<sentence(3, true)>"
+        moreInfos: "<sentence(15, true)>"
+        isInDiffusion: "<boolean(75)>"
+        isInCreation: "<boolean(25)>"
+        website: "<domainName()>"
+        videoLink: "<domainName()>"
 
 App\Entity\Partners:
     partner{1..30}:
-        name: '<company()>'
+        name: "<company()>"
         type: '<randomElement(["prod_dist", "partners"])>'
 
 App\Entity\Event:
     event{1..7}:
-        name: '<word()>'
-        description: '<paragraph(3, true)>'
+        name: "<word()>"
+        description: "<paragraph(3, true)>"
         startingDate: '<dateTimeBetween("now", "+ 300 days")>'
         endingDate: '90%? <dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
 
 App\Entity\Team:
     team{1..15}:
-        name: '<lastName()>'
-        firstName: '<firstName()>'
+        name: "<lastName()>"
+        firstName: "<firstName()>"
         role: '<randomElement(["volunteer", "gov_body", "pro"])>'
-        email: '<email()>'
+        email: "<email()>"
 
 App\Entity\Performance:
     performance{1..50}:
-        companyName: '@company*'
-        cityShow: '<city()>'
-        placeShow: '<streetAddress()>'
+        companyName: "@company*"
+        cityShow: "<city()>"
+        placeShow: "<streetAddress()>"
         date: '<dateTimeBetween("-200 days", "now")>'
-        event: '@event*'
+        event: "@event*"
 
 App\Entity\FrontTab:
-    tab_{association, saison, festival, tiers-lieu, activités-du-lieu, locations, bénévolat, partenaires, soutient, contact}:
-        name: '<current()>'
-
+    tab_{association, saison, festival, tiers-lieu, locations, benevolat, partenaires, soutient, contact}:
+        name: "<current()>"
 App\Entity\FrontPage:
-    page_{presentation, projets-pluriels, coopération-territoriale, équipe, adhésion}:
-        tab: '@tab_association'
-        name: '<current()>'
+    page_{pres, projets-pluriels, coopération-territoriale, équipe, adhésion}:
+        tab: "@tab_association"
+        name: "<current()>"
         pageSlug: $tab/$name
-    page_{programmation, cies-en-diffusion, cies-en-création, action-culturelles}:
-        tab: '@tab_saison'
-        name: '<current()>'
+    page_{intoduction, calendrier, cies-accueillies, projet-de-territoire, action-culturelles}:
+        tab: "@tab_saison"
+        name: "<current()>"
         pageSlug: $tab/$name
-    page_{présentation, programation, billetterie-solidaire, cie-en-diffusion, rencontres-pro, actions-culturelles, espace-ludique, les-ptits-plus}:
-        tab: '@tab_festival'
-        name: '<current()>'
+    page_{presentation, calendar, cie-accueillies, rencontres-pro, aux-arts-etc, actions-culturelles, infos-pratiques}:
+        tab: "@tab_festival"
+        name: "<current()>"
         pageSlug: $tab/$name
-    page_{prsentation, éco-lieu, espaces-partagés}:
-        tab: '@tab_tiers-lieu'
-        name: '<current()>'
-        pageSlug: $tab/$name
-    page_{spectacles_vivants, développement-durable}:
-        tab: '@tab_activités-du-lieu'
-        name: '<current()>'
+    page_{prsentation, espaces-et-services-partages, les-rendez-vous, les-ateliers-de-curiosites}:
+        tab: "@tab_tiers-lieu"
+        name: "<current()>"
         pageSlug: $tab/$name
     page_{locations}:
-        tab: '@tab_locations'
-        name: '<current()>'
+        tab: "@tab_locations"
+        name: "<current()>"
         pageSlug: $tab/$name
-    page_{annuel, festival}:
-        tab: '@tab_bénévolat'
-        name: '<current()>'
+    page_{benevolat}:
+        tab: "@tab_benevolat"
+        name: "<current()>"
         pageSlug: $tab/$name
     page_{partenaires}:
-        tab: '@tab_partenaires'
-        name: '<current()>'
+        tab: "@tab_partenaires"
+        name: "<current()>"
         pageSlug: $tab/$name
     page_{soutient}:
-        tab: '@tab_soutient'
-        name: '<current()>'
+        tab: "@tab_soutient"
+        name: "<current()>"
         pageSlug: $tab/$name
     page_{contact}:
-        tab: '@tab_contact'
-        name: '<current()>'
+        tab: "@tab_contact"
+        name: "<current()>"
         pageSlug: $tab/$name
 
 App\Entity\Section:
     section{1..100}:
-        name: '<sentence(4, true)>'
-        title: '<sentence(3, true)>'
-        subTitle: '<sentence(3, true)>'
-        appearanceOrder: '<randomDigit()>'
-        content: '<paragraph(3, true)>'
-        belongToPage: '@page*'
+        name: "<sentence(4, true)>"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page*"

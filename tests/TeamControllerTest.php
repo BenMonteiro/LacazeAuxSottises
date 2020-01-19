@@ -4,6 +4,7 @@ namespace App\Tests;
 
 use App\Entity\Team;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class TeamControllerTest extends WebTestCase
 {
@@ -25,7 +26,7 @@ class TeamControllerTest extends WebTestCase
     /**
      * @dataProvider provideTeamData
      */
-    public function testTeamActions($searchField, $searchedValue, $button, $formDatas, $defaultUrl = '/admin/team/new')
+    public function testTeamActions($searchField, $searchedValue, $button, $formDatas, $defaultUrl = 'team_new', $urlParams = [])
     {
         if (null !== $searchField) {
             $team = $this->entityManager
@@ -35,7 +36,8 @@ class TeamControllerTest extends WebTestCase
             $this->assertSame($searchedValue, $team->getFirstName());
 
             $teamId = $team->getId();
-            $defaultUrl = '/admin/team/' . $teamId . '/edit';
+            $defaultUrl = 'team_edit';
+            $urlParams = ['id' => $teamId];
         }
 
         $client = static::createClient(
@@ -46,7 +48,7 @@ class TeamControllerTest extends WebTestCase
             ]
         );
 
-        $crawler = $client->request('GET', $defaultUrl);
+        $crawler = $client->request('GET', $defaultUrl, $urlParams);
 
         $this->assertTrue($client->getResponse()->isSuccessful());
 

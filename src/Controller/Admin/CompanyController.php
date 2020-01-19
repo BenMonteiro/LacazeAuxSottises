@@ -21,7 +21,7 @@ class CompanyController extends AdminController
     public function index(CompanyRepository $companyRepository): Response
     {
         return $this->render('admin/company/index.html.twig', [
-            'companies' => $companyRepository->findBy(array(), array('name' => 'ASC')),
+            'companies' => $companyRepository->findBy([], ['name' => 'ASC']),
             'tabs' => $this->tabList
         ]);
     }

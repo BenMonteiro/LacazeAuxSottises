@@ -21,7 +21,7 @@ class PerformanceController extends AdminController
     public function index(PerformanceRepository $performanceRepository): Response
     {
         return $this->render('admin/performance/index.html.twig', [
-            'performances' => $performanceRepository->findAll(),
+            'performances' => $performanceRepository->findBy([], ['date' => 'ASC']),
             'tabs' => $this->tabList,
         ]);
     }
@@ -73,7 +73,7 @@ class PerformanceController extends AdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('performance_index');
+            return $this->redirectToRoute('company_show', ['id' => $performance->getCompanyNameId()]);
         }
 
         return $this->render('admin/performance/edit.html.twig', [
@@ -93,6 +93,6 @@ class PerformanceController extends AdminController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('performance_index');
+        return $this->redirectToRoute('company_show', ['id' => $performance->getCompanyNameId()]);
     }
 }

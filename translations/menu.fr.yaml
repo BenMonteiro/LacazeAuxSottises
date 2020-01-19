@@ -4,11 +4,12 @@ festival: Le Festival
 tiers-lieu: Le Tiers-Lieu
 activités-du-lieu: Les Activités du Lieu
 locations: Les Locations
-bénévolat: Le Bénévolat
+benevolat: Le Bénévolat
 partenaires: Nos Partenaires
 soutient: Nous Noutenir
 contact: Contact
 front:
+    asso: L'Asso
     presentation: présentation
     program: programmation
     inDiffusion: cies en diffusion
