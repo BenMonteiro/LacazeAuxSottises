@@ -64,7 +64,6 @@
 						<td>{{ performance.placeShow }}</td>
 						<td>{{ performance.date ? performance.date|date('d-m-Y H:i') : '' }}</td>
 						<td>
-							<a class="badge badge-secondary my-2 p-2" href="{{ path('performance_show', {'id': performance.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
 							<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit', {'id': performance.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
 							{{ include('admin/performance/_delete_form.html.twig') }}
 						</td>

@@ -4,15 +4,14 @@ namespace App\Tests;
 
 use App\Entity\Team;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class TeamControllerTest extends WebTestCase
 {
-
     /**
      * @var \Doctrine\ORM\EntityManager
      */
     private $entityManager;
+    private $client;
 
     protected function setUp(): void
     {
@@ -23,49 +22,141 @@ class TeamControllerTest extends WebTestCase
             ->getManager();
     }
 
-    /**
-     * @dataProvider provideTeamData
-     */
-    public function testTeamActions($searchField, $searchedValue, $button, $formDatas, $defaultUrl = 'team_new', $urlParams = [])
+    protected function dbConnect()
     {
-        if (null !== $searchField) {
-            $team = $this->entityManager
-                ->getRepository(Team::class)
-                ->findOneBy([$searchField => $searchedValue]);
-
-            $this->assertSame($searchedValue, $team->getFirstName());
-
-            $teamId = $team->getId();
-            $defaultUrl = 'team_edit';
-            $urlParams = ['id' => $teamId];
-        }
-
-        $client = static::createClient(
+        $this->client = static::createClient(
             [],
             [
                 'PHP_AUTH_USER' => 'test',
                 'PHP_AUTH_PW' => 'test2020',
             ]
         );
-
-        $crawler = $client->request('GET', $defaultUrl, $urlParams);
-
-        $this->assertTrue($client->getResponse()->isSuccessful());
-
-        $form = $crawler->selectButton($button)->form($formDatas);
-        $crawler = $client->submit($form);
-
-        $crawler = $client->followRedirect();
-
-        $this->assertSelectorTextContains('h1', 'L\'Équipe');
     }
 
-    public function provideTeamData()
+    /**
+     * @dataProvider urlProvider
+     */
+    public function testPageIsSuccessful($url)
+    {
+        $this->dbConnect();
+        $this->client->request('GET', $url);
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+    }
+
+    public function urlProvider()
+    {
+        $id = 67;
+        yield ['/admin/team/'];
+        yield ['/admin/team/new'];
+        yield ['/admin/team/' . $id . '/edit'];
+    }
+
+    /**
+     * @dataProvider provideAddTeamData
+     */
+    public function testAddTeam($entry, $formDatas)
+    {
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/team/new');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Enregistrer')->form($formDatas);
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
+
+        $this->assertSelectorTextContains('h1', 'L\'Équipe');
+
+        $this->assertSelectorTextContains('table', $entry);
+    }
+
+    /**
+     * @dataProvider provideEditTeamData
+     */
+    public function testEditTeam($entry, $formDatas)
+    {
+
+        $team = $this->entityManager
+            ->getRepository(Team::class)
+            ->findOneBy(['firstName' => 'Martin']);
+
+        $this->assertSame('Martin', $team->getFirstName());
+
+        $teamId = $team->getId();
+
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/team/' . $teamId . '/edit');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Mettre à jour')->form($formDatas);
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
+
+        $this->assertSelectorTextContains('h1', 'L\'Équipe');
+
+
+        $this->assertSelectorTextNotContains('table', $team->getFirstName());
+
+        $this->assertSelectorTextContains('table', $entry);
+    }
+
+    public function testDeleteTeam()
+    {
+        $team = $this->entityManager
+            ->getRepository(Team::class)
+            ->findOneBy(['firstName' => 'Chirard']);
+
+        $this->assertSame('Chirard', $team->getFirstName());
+
+        $teamId = $team->getId();
+
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/team/' . $teamId . '/edit');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Supprimer')->form();
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
+
+        $this->assertSelectorTextContains('h1', 'L\'Équipe');
+
+        $this->assertSelectorTextNotContains('table', $team->getFirstName());
+    }
+
+    public function provideAddTeamData()
     {
         return [
-            'add' => [null, null, 'Enregistrer', 'team' => ['team[name]' => 'Michelle', 'team[firstName]' => 'Martin', 'team[role]' => 'volunteer']],
-            'edit' => ['firstName', 'Martin', 'Mettre à jour', 'team' => ['team[name]' => 'Gérard', 'team[firstName]' => 'Chirard', 'team[role]' => 'gov_body']],
-            'delete' => ['firstName', 'Chirard', 'Supprimer', null]
+            'add' => [
+                'Martin',
+                'team' =>
+                [
+                    'team[name]' => 'Michelle',
+                    'team[firstName]' => 'Martin',
+                    'team[role]' => 'volunteer'
+                ]
+            ],
+        ];
+    }
+
+    public function provideEditTeamData()
+    {
+        return [
+            'edit' => [
+                'Chirard',
+                'team' => [
+                    'team[name]' => 'Gérard',
+                    'team[firstName]' => 'Chirard'
+                ]
+            ],
         ];
     }
 

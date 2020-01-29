@@ -2,7 +2,7 @@
     color: #DA291C !important;
     font-size: 1.2em;
     margin-right: 20px;
-    padding:5px 10px !important;
+    padding: 5px 10px !important;
 }
 
 .nav-link:hover {
@@ -11,20 +11,20 @@
 }
 
 .nav-tabs {
-    border-bottom : solid black 1px !important
+    border-bottom: solid black 1px !important
 }
 
 .nav-tabs .nav-link.active {
     border: solid black 1px !important;
     border-bottom: none !important;
-    padding:5px 10px;
+    padding: 5px 10px;
 }
 
-ul {
+nav>ul {
     list-style: none;
 }
 
-.tab-content > .active {
+.tab-content>.active {
     background-color: rgba(0, 0, 0, 1);
     padding: 20px;
     display: flex;
@@ -33,15 +33,15 @@ ul {
 
 .tab-pane a {
     color: #DA291C;
-    margin:0 20px 0 0;
+    margin: 0 20px 0 0;
     font-weight: bold;
+    padding: 5px 10px;
 }
 
 .tab-pane a:hover {
     color: black;
     background-color: #DA291C;
-    border-radius:15px;
-    padding:5px 10px;
+    border-radius: 15px;
     text-decoration: none;
 }
 
@@ -50,5 +50,5 @@ ul {
 }
 
 .logo {
-    width:100px;
+    width: 100px;
 }

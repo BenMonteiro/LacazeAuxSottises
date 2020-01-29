@@ -17,10 +17,18 @@
 		<header>
 			{% block header %}
 				{% include( "menu/_front_menu.html.twig") %}
-				<p class="mb-5 mt-3 pageTitle">{{ ('front.'~page.name)|trans({}, 'menu')}}</p>
-				<div id="titleLines">
-					<hr id="blackline">
-					<hr id="redline">
+				<div>
+					<div class="d-flex justify-content-center">
+						<p class="mb-5 mt-3 pageTitle px-2">
+							{% block pageTitle %}
+								{{ ('front.'~ page.name)|trans({}, 'menu')}}
+							{% endblock %}
+						</p>
+					</div>
+					<div id="titleLines">
+						<hr id="blackline">
+						<hr id="redline">
+					</div>
 				</div>
 			{% endblock %}
 		</header>

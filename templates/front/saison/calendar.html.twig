@@ -1,0 +1,41 @@
+{% extends "front_base.html.twig" %}
+
+{% block title %}
+	{{ page.pageSlug }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="offset-1 col-10">
+		{% for section in sections %}
+			<article class="mb-5">
+				{% if section.title %}
+					<h3>{{ section.title }}</h3>
+				{% endif %}
+				{% if section.subTitle %}
+					<h4>{{ section.subTitle }}</h4>
+				{% endif %}
+				<p class="text-justify">{{ section.content|raw}}</p>
+			</article>
+		{% endfor %}
+	</div>
+	<div>
+		<h1>{{'seasonCalendar'|trans({}, 'general')}}</h1>
+		{% set months = ['Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+		{% for month in months %}
+			<h2>{{month}}</h2>
+			{% for event in events %}
+				{% if event.starting_date|date('M') == month %}
+					<h3>{{ event.starting_date|date('D, d')}}</h3>
+					<h4>{{event.name}}</h4>
+				{% endif %}
+				{% for perf in perfs %}
+					{% if perf.date|date('M') == month %}
+						<h3>{{ perf.date|date('D, d')}}</h3>
+						<h4>{{perf.companyName}}</h4>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		{% endfor %}
+	</div>
+{% endblock %}

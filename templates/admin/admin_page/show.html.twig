@@ -12,7 +12,7 @@
 		<h1>
 			{{'section.index'|trans({}, 'section')|title}}
 			de la page :<br/>
-			{{ page.tab}}/{{page.name}}
+			{{ page.tab|trans({}, 'menu')}}/{{('front.'~page.name)|trans({}, 'menu')}}
 		</h1>
 	</div>
 	<table class="table table-sm table-striped sectionList text-align-center">

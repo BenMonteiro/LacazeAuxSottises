@@ -53,16 +53,6 @@ class PerformanceController extends AdminController
     }
 
     /**
-     * @Route("/{id<\d+>}", name="performance_show", methods={"GET"})
-     */
-    public function show(Performance $performance): Response
-    {
-        return $this->render('admin/performance/show.html.twig', [
-            'performance' => $performance,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="performance_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Performance $performance): Response

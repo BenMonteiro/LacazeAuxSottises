@@ -12,6 +12,7 @@ class SectionControllerTest extends WebTestCase
      * @var \Doctrine\ORM\EntityManager
      */
     private $entityManager;
+    private $client;
 
     protected function setUp(): void
     {
@@ -22,76 +23,148 @@ class SectionControllerTest extends WebTestCase
             ->getManager();
     }
 
-    public function testAddSection()
+    protected function dbConnect()
     {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', '/section/new');
-
-        $form = $crawler->selectButton('Enregistrer')->form();
-        $form['section[name]'] = 'test';
-        $form['section[belongToPage]'] = 5;
-        $form['section[appearanceOrder]'] = 1;
-        $form['section[content]'] = 'test';
-        $crawler = $client->submit($form);
-
-        $crawler = $client->followRedirect();
-
-        $this->assertSelectorTextContains('h1', 'Liste Des Paragraphes');
-
-        $section = $this->entityManager
-            ->getRepository(Section::class)
-            ->findOneBy(['name' => 'test']);
-
-        $this->assertSame('test', $section->getName());
-
-        return $sectionId = $section->getId();
+        $this->client = static::createClient(
+            [],
+            [
+                'PHP_AUTH_USER' => 'test',
+                'PHP_AUTH_PW' => 'test2020',
+            ]
+        );
     }
 
     /**
-     * @depends testAddSection
+     * @dataProvider urlProvider
      */
-    public function testEditSection($sectionId)
+    public function testPageIsSuccessful($url)
     {
-        $client = static::createClient();
+        $this->dbConnect();
+        $this->client->request('GET', $url);
 
-        $crawler = $client->request('GET', '/section/' . $sectionId . '/edit');
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+    }
 
-        $form = $crawler->selectButton('Mettre à jour')->form();
-        $form['section[name]'] = 'testEdit';
-        $form['section[belongToPage]'] = 2;
-        $form['section[appearanceOrder]'] = 2;
-        $form['section[content]'] = 'testEdit';
-        $crawler = $client->submit($form);
+    public function urlProvider()
+    {
+        $id = 405;
+        yield ['/admin/section/'];
+        yield ['/admin/section/new'];
+        yield ['/admin/section/' . $id];
+        yield ['/admin/section/' . $id . '/edit'];
+    }
 
-        $crawler = $client->followRedirect();
+    /**
+     * @dataProvider provideAddSectionData
+     */
+    public function testAddSection($entry, $formDatas)
+    {
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/section/new');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Enregistrer')->form($formDatas);
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Paragraphes');
 
+        $this->assertSelectorTextContains('table', $entry);
+    }
+
+    /**
+     * @dataProvider provideEditSectionData
+     */
+    public function testEditSection($entry, $formDatas)
+    {
         $section = $this->entityManager
             ->getRepository(Section::class)
-            ->findOneBy(['name' => 'testEdit']);
+            ->findOneBy(['name' => 'SectionAdd']);
 
-        $this->assertSame('testEdit', $section->getName());
+        $this->assertSame('SectionAdd', $section->getName());
 
-        return $sectionId = $section->getId();
+        $sectionId = $section->getId();
+
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/section/' . $sectionId . '/edit');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Mettre à jour')->form($formDatas);
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
+
+        $this->assertSelectorTextContains('h1', 'Liste Des Paragraphes');
+
+        $this->assertSelectorTextNotContains('table', $section->getName());
+
+        $this->assertSelectorTextContains('table', $entry);
     }
 
     /**
      * @depends testEditSection
      */
-    public function testDeleteSection($sectionId)
+    public function testDeleteSection()
     {
-        $client = static::createClient();
+        $section = $this->entityManager
+            ->getRepository(Section::class)
+            ->findOneBy(['name' => 'SectionEdit']);
 
-        $crawler = $client->request('GET',  '/section/' . $sectionId . '/edit');
+        $this->assertSame('SectionEdit', $section->getName());
+
+        $sectionId = $section->getId();
+
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET',  '/admin/section/' . $sectionId . '/edit');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
 
         $form = $crawler->selectButton('Supprimer')->form();
-        $crawler = $client->submit($form);
+        $crawler = $this->client->submit($form);
 
-        $crawler = $client->followRedirect();
+        $crawler = $this->client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Paragraphes');
+
+        $this->assertSelectorTextNotContains('table', $section->getName());
+    }
+
+    public function provideAddSectionData()
+    {
+        return [
+            'add' => [
+                'SectionAdd',
+                'section' =>
+                [
+                    'section[name]' => 'SectionAdd',
+                    'section[belongToPage]' => 112,
+                    'section[appearanceOrder]' => 1,
+                    'section[content]' => 'test'
+                ]
+            ],
+        ];
+    }
+
+    public function provideEditSectionData()
+    {
+        return [
+            'edit' => [
+                'SectionEdit',
+                'section' =>
+                [
+                    'section[name]' => 'SectionEdit',
+                    'section[belongToPage]' => 112,
+                    'section[appearanceOrder]' => 5,
+                    'section[content]' => 'testtest'
+                ]
+            ],
+        ];
     }
 
     protected function tearDown(): void
@@ -101,26 +174,5 @@ class SectionControllerTest extends WebTestCase
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();
         $this->entityManager = null;
-    }
-
-    /**
-     * @dataProvider provideSectionUrls
-     */
-    public function testPageIsSuccessful($url)
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-
-        echo $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
-    public function provideSectionUrls()
-    {
-        return array(
-            array('/section/'),
-            array('/section/new'),
-            array('/section/10/edit'),
-            array('/page/association/presentation'),
-        );
     }
 }

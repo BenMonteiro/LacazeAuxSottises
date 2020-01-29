@@ -2,15 +2,17 @@
 
 namespace App\Tests;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Entity\Company;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CompanyControllerTest extends WebTestCase
 {
+
     /**
      * @var \Doctrine\ORM\EntityManager
      */
     private $entityManager;
+    private $client;
 
     protected function setUp(): void
     {
@@ -21,74 +23,151 @@ class CompanyControllerTest extends WebTestCase
             ->getManager();
     }
 
-    public function AddCompany()
+    protected function dbConnect()
     {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', '/admin/company/new');
-
-        $form = $crawler->selectButton('Enregistrer')->form();
-        $form['company[name]'] = 'x';
-        $form['company[duration]'] = 20;
-        $form['company[audience]'] = 'Tout Public';
-        $crawler = $client->submit($form);
-
-        $crawler = $client->followRedirect();
-
-        $this->assertSelectorTextContains('h1', 'Liste Des Compagnies');
-
-        $company = $this->entityManager
-            ->getRepository(Company::class)
-            ->findOneBy(['name' => 'x']);
-
-        $this->assertSame('x', $company->getName());
-
-        return $companyId = $company->getId();
+        $this->client = static::createClient(
+            [],
+            [
+                'PHP_AUTH_USER' => 'test',
+                'PHP_AUTH_PW' => 'test2020',
+            ]
+        );
     }
 
     /**
-     * @depends AddCompany
+     * @dataProvider urlProvider
      */
-    public function EditCompany($companyId)
+    public function testPageIsSuccessful($url)
     {
-        $client = static::createClient();
+        $this->dbConnect();
+        $this->client->request('GET', $url);
 
-        $crawler = $client->request('GET', '/admin/company/' . $companyId . '/edit');
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+    }
 
-        $form = $crawler->selectButton('Mettre à jour')->form();
-        $form['company[name]'] = 'xxx';
-        $form['company[duration]'] = 50;
-        $form['company[audience]'] = 'Tout Public';
-        $crawler = $client->submit($form);
+    public function urlProvider()
+    {
+        $id = 86;
 
-        $crawler = $client->followRedirect();
-
-        $this->assertSelectorTextContains('h1', 'Liste Des Compagnies');
-
-        $company = $this->entityManager
-            ->getRepository(Company::class)
-            ->findOneBy(['name' => 'xxx']);
-
-        $this->assertSame('xxx', $company->getName());
-
-        return $companyId = $company->getId();
+        yield ['/login'];
+        yield ['/admin/page/112'];
+        yield ['/admin/dashboard'];
+        yield ['/'];
+        yield ['/accueil'];
+        yield ['/company/' . $id];
+        yield ['/admin/company/'];
+        yield ['/admin/company/new'];
+        yield ['/admin/company/' . $id];
+        yield ['/admin/company/' . $id . '/edit'];
     }
 
     /**
-     * @depends EditCompany
+     * @dataProvider provideAddCompanyData
      */
-    public function testDeleteCompany($companyId)
+    public function testAddCompany($entry, $formDatas)
     {
-        $client = static::createClient();
+        $this->dbConnect();
 
-        $crawler = $client->request('GET', '/admin/company/' . $companyId);
+        $crawler = $this->client->request('GET', '/admin/company/new');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Enregistrer')->form($formDatas);
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
+
+        $this->assertSelectorTextContains('h1', 'Liste Des Compagnies');
+
+        $this->assertSelectorTextContains('table', $entry);
+    }
+
+    /**
+     * @dataProvider provideEditCompanyData
+     */
+    public function testEditCompany($entry, $formDatas)
+    {
+
+        $company = $this->entityManager
+            ->getRepository(Company::class)
+            ->findOneBy(['name' => 'Jack']);
+
+        $this->assertSame('Jack', $company->getName());
+
+        $companyId = $company->getId();
+
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/company/' . $companyId . '/edit');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Mettre à jour')->form($formDatas);
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
+
+        $this->assertSelectorTextContains('h1', 'Liste Des Compagnies');
+
+        $this->assertSelectorTextNotContains('table', $company->getName());
+
+        $this->assertSelectorTextContains('table', $entry);
+    }
+
+    public function testDeleteCompany()
+    {
+        $company = $this->entityManager
+            ->getRepository(Company::class)
+            ->findOneBy(['name' => 'Chirard']);
+
+        $this->assertSame('Chirard', $company->getName());
+
+        $companyId = $company->getId();
+
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/company/' . $companyId . '/edit');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
 
         $form = $crawler->selectButton('Supprimer')->form();
-        $crawler = $client->submit($form);
+        $crawler = $this->client->submit($form);
 
-        $crawler = $client->followRedirect();
+        $crawler = $this->client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Compagnies');
+
+        $this->assertSelectorTextNotContains('table', $company->getName());
+    }
+
+    public function provideAddCompanyData()
+    {
+        return [
+            'add' => [
+                'Jack',
+                'company' =>
+                [
+                    'company[name]' => 'Jack',
+                    'company[duration]' => 20,
+                    'company[audience]' => 'Tout Public'
+                ]
+            ],
+        ];
+    }
+
+    public function provideEditCompanyData()
+    {
+        return [
+            'edit' => [
+                'Chirard',
+                'company' =>
+                [
+                    'company[name]' => 'Chirard',
+                    'company[duration]' => 80,
+                    'company[audience]' => 'Tout Public'
+                ]
+            ],
+        ];
     }
 
     protected function tearDown(): void

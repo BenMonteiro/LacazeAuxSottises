@@ -73,7 +73,7 @@ class SectionController extends AdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('page_list_show', ['id' => $section->getBelongToPageId()]);
+            return $this->redirectToRoute('section_index');
         }
 
         return $this->render('admin/section/edit.html.twig', [
@@ -93,6 +93,6 @@ class SectionController extends AdminController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('page_list_show', ['id' => $section->getBelongToPageId()]);
+        return $this->redirectToRoute('section_index');
     }
 }

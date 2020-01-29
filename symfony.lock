@@ -1,7 +1,4 @@
 {
-    "behat/transliterator": {
-        "version": "v1.2.0"
-    },
     "composer/xdebug-handler": {
         "version": "1.4.0"
     },
@@ -404,11 +401,17 @@
             "./tests/.gitignore"
         ]
     },
+    "symfony/polyfill-intl-grapheme": {
+        "version": "v1.13.1"
+    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.12.0"
     },
     "symfony/polyfill-intl-idn": {
         "version": "v1.12.0"
+    },
+    "symfony/polyfill-intl-normalizer": {
+        "version": "v1.13.1"
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.12.0"
@@ -481,8 +484,8 @@
     "symfony/stopwatch": {
         "version": "v4.4.0"
     },
-    "symfony/templating": {
-        "version": "v4.4.0"
+    "symfony/string": {
+        "version": "v5.0.3"
     },
     "symfony/test-pack": {
         "version": "v1.0.6"

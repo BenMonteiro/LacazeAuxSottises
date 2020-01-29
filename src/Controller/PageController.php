@@ -6,6 +6,10 @@ use App\Entity\FrontPage;
 use App\Repository\FrontPageRepository;
 use App\Repository\FrontTabRepository;
 use App\Repository\SectionRepository;
+use App\Repository\EventRepository;
+use App\Repository\PerformanceRepository;
+use App\Repository\CompanyRepository;
+use App\Entity\Company;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +17,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
     protected $pages;
-    protected $page;
     protected $tabs;
 
     public function __construct(FrontPageRepository $frontPageRepository, FrontTabRepository $frontTabRepository)
@@ -44,19 +47,58 @@ class PageController extends AbstractController
     /**
      * @Route("page/{pageSlug}", name="page_show", requirements={"pageSlug"=".+?"}, methods={"GET"})
      */
-    public function displayPage(FrontPage $frontPage, SectionRepository $sectionRepository): Response
+    public function displayPage(FrontPage $frontPage, SectionRepository $sectionRepository, EventRepository $eventRepository, PerformanceRepository $performanceRepository, CompanyRepository $companyRepository): Response
     {
         $pageFolder = $frontPage->getTab();
         $pageTemplate = $frontPage->getTemplate();
         $defaultTemplate = 'front/page_default.html.twig';
 
-        $template = ($pageTemplate === null) ? $defaultTemplate : 'front/' . $pageFolder . '/' . $pageTemplate . '.html.twig';
+        $template = (empty($pageTemplate)) ? $defaultTemplate : 'front/' . $pageFolder . '/' . $pageTemplate . '.html.twig';
 
-        return $this->render($template, [
-            'page' => $frontPage,
+        if ($frontPage->getPageSlug() === 'saison/calendrier') {
+
+            $seasonEvents = $eventRepository->findSeasonEvents();
+            $seasonPerformances = $performanceRepository->findBy(['event' => 29], ['date' => 'ASC']);
+
+            return $this->render($template, [
+                'page' => $frontPage,
+                'pages' => $this->pages,
+                'tabs' => $this->tabs,
+                'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
+                'events' => $seasonEvents,
+                'perfs' => $seasonPerformances
+            ]);
+        } elseif ($pageTemplate === 'calendar' and $pageFolder === 'festival') {
+
+            $festPerformances = $performanceRepository->findBy(['event' => 'festival'], ['date' => 'ASC']);
+
+            return $this->render($template, [
+                'page' => $frontPage,
+                'pages' => $this->pages,
+                'tabs' => $this->tabs,
+                'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
+                'perfs' => $festPerformances
+            ]);
+        } else {
+            return $this->render($template, [
+                'page' => $frontPage,
+                'pages' => $this->pages,
+                'tabs' => $this->tabs,
+                'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
+                'companies' => $companyRepository->findBy([], ['name' => 'ASC']),
+            ]);
+        }
+    }
+
+    /**
+     * @Route("company/{id<\d+>}", name="display_company", methods={"GET"})
+     */
+    public function displayCompanyCard(Company $company): Response
+    {
+        return $this->render('front/display_company.html.twig', [
             'pages' => $this->pages,
             'tabs' => $this->tabs,
-            'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC'])
+            'company' => $company,
         ]);
     }
 }

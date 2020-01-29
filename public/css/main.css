@@ -1,3 +1,7 @@
+p {
+    text-align: inherit;
+}
+
 #landingPage {
     background-image: url(/images/landingPagePic.jpg);
     margin: 0;
@@ -29,11 +33,13 @@ h1 {
 h4,
 h3 {
     text-decoration: underline;
+    text-align: inherit;
 }
 
-h5 {
+.colored {
     color: #DA291C
 }
+
 
 form label,
 form legend {
@@ -132,18 +138,17 @@ thead {
 
 .pageTitle {
     position: relative;
-    text-align: center;
     font-size: 3em;
-    width: 20%;
-    left: 40%;
+    display: inline-block;
+    align-content: center;
     z-index: 3;
     background-color: white;
 }
 
 #titleLines {
-    position: absolute;
+    position: relative;
     z-index: 2;
-    top: 200px;
+    top: -80px;
     width: 95%;
     left: 2.5%
 }
@@ -160,4 +165,32 @@ hr#blackline {
 
 hr#redline {
     color: #DA291C;
+}
+
+#coopLeftArticle {
+    padding: 30px;
+    border: dotted 2px;
+    border-radius: 20px;
+}
+
+#coopRightArticle {
+    padding: 30px;
+    border: dotted 2px #DA291C;
+    border-radius: 20px;
+}
+
+#coopBottomArticle {
+    padding: 30px;
+    border: solid 2px;
+    border-radius: 20px;
+}
+
+#coopLastArticle {
+    padding: 30px;
+    border: dashed 2px;
+    border-radius: 20px;
+}
+
+#projectContainer {
+    border-radius: 20px;
 }

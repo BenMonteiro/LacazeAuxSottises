@@ -7,11 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class PerformanceControllerTest extends WebTestCase
 {
-
     /**
      * @var \Doctrine\ORM\EntityManager
      */
     private $entityManager;
+    private $client;
 
     protected function setUp(): void
     {
@@ -22,78 +22,143 @@ class PerformanceControllerTest extends WebTestCase
             ->getManager();
     }
 
-    public function testAddPerformance()
+    protected function dbConnect()
     {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', '/performance/new');
-
-        $form = $crawler->selectButton('Enregistrer')->form();
-        $form['performance[companyName]'] = 10;
-        $form['performance[cityShow]'] = 'TestAdd';
-        $form['performance[placeShow]'] = 'TestAdd';
-        $crawler = $client->submit($form);
-
-        $crawler = $client->followRedirect();
-
-        $this->assertSelectorTextContains('h1', 'Liste Des Représentations');
-    }
-
-    public function testSearchBy()
-    {
-
-        $perf = $this->entityManager
-            ->getRepository(Performance::class)
-            ->findOneBy(['cityShow' => 'TestAdd']);
-
-        $this->assertSame('TestAdd', $perf->getCityShow());
-
-        return $perfId = $perf->getId();
+        $this->client = static::createClient(
+            [],
+            [
+                'PHP_AUTH_USER' => 'test',
+                'PHP_AUTH_PW' => 'test2020',
+            ]
+        );
     }
 
     /**
-     * @depends testSearchBy
+     * @dataProvider urlProvider
      */
-    public function testEditPerformance($perfId)
+    public function testPageIsSuccessful($url)
     {
-        $client = static::createClient();
+        $this->dbConnect();
+        $this->client->request('GET', $url);
 
-        $crawler = $client->request('GET', '/performance/' . $perfId . '/edit');
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+    }
 
-        $form = $crawler->selectButton('Mettre à jour')->form();
-        $form['performance[cityShow]'] = 'testEdit';
-        $form['performance[placeShow]'] = 'testEdit';
-        $crawler = $client->submit($form);
+    public function urlProvider()
+    {
+        $id = 208;
+        yield ['/admin/performance/'];
+        yield ['/admin/performance/new'];
+        yield ['/admin/performance/' . $id . '/edit'];
+    }
 
-        $crawler = $client->followRedirect();
+    /**
+     * @dataProvider provideAddPerfData
+     */
+    public function testAddPerformance($entry, $formDatas)
+    {
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/performance/new');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Enregistrer')->form($formDatas);
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Représentations');
 
+        $this->assertSelectorTextContains('table', $entry);
+    }
+
+    /**
+     * @dataProvider provideEditPerfData
+     */
+    public function testEditPerformance($entry, $formDatas)
+    {
+        $perf = $this->entityManager
+            ->getRepository(Performance::class)
+            ->findOneBy(['cityShow' => 'testAdd']);
+
+        $this->assertSame('testAdd', $perf->getCityShow());
+
+        $perfId = $perf->getId();
+
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/performance/' . $perfId . '/edit');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Mettre à jour')->form($formDatas);
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
+
+        $this->assertSelectorTextContains('h1', $perf->getCompanyName());
+
+        $this->assertSelectorTextNotContains('table', $perf->getCityShow());
+
+        $this->assertSelectorTextContains('table', $entry);
+    }
+
+    public function testDeletePerformance()
+    {
         $perf = $this->entityManager
             ->getRepository(Performance::class)
             ->findOneBy(['cityShow' => 'testEdit']);
 
         $this->assertSame('testEdit', $perf->getCityShow());
 
-        return $perfId = $perf->getId();
-    }
+        $perfId = $perf->getId();
 
-    /**
-     * @depends testEditPerformance
-     */
-    public function testDeletePerformance($perfId)
-    {
-        $client = static::createClient();
+        $this->dbConnect();
 
-        $crawler = $client->request('GET', '/performance/' . $perfId . '/edit');
+        $crawler = $this->client->request('GET', '/admin/performance/' . $perfId . '/edit');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
 
         $form = $crawler->selectButton('Supprimer')->form();
-        $crawler = $client->submit($form);
+        $crawler = $this->client->submit($form);
 
-        $crawler = $client->followRedirect();
+        $crawler = $this->client->followRedirect();
 
-        $this->assertSelectorTextContains('h1', 'Liste Des Représentations');
+        $this->assertSelectorTextContains('h1', $perf->getCompanyName());
+
+        $this->assertSelectorTextNotContains('table', $perf->getCityShow());
     }
+
+    public function provideAddPerfData()
+    {
+        return [
+            'add' => [
+                'testAdd',
+                'performance' =>
+                [
+                    'performance[companyName]' => 81,
+                    'performance[cityShow]' => 'testAdd',
+                    'performance[placeShow]' => 'place du marché'
+                ]
+            ],
+        ];
+    }
+
+    public function provideEditPerfData()
+    {
+        return [
+            'edit' => [
+                'testEdit',
+                'performance' =>
+                [
+                    'performance[cityShow]' => 'testEdit',
+                    'performance[placeShow]' => 'port de peche'
+                ]
+            ],
+        ];
+    }
+
 
     protected function tearDown(): void
     {
@@ -102,25 +167,5 @@ class PerformanceControllerTest extends WebTestCase
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();
         $this->entityManager = null;
-    }
-
-        /**
-     * @dataProvider providePerfUrls
-     */
-    public function testPageIsSuccessful($url)
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-
-        echo $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
-    public function providePerfUrls()
-    {
-        return array(
-            array('/performance/'),
-            array('/performance/new'),
-            array('/performance/10/edit'),
-        );
     }
 }

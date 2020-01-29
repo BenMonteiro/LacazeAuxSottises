@@ -10,11 +10,11 @@ soutient: Nous Noutenir
 contact: Contact
 front:
     asso: L'Asso
-    presentation: présentation
-    program: programmation
-    inDiffusion: cies en diffusion
-    inCreation: cies en creation
-    cultural: actions culturelles
+    presentation: Présentation
+    prog: Programmation
+    hostedCompanies: Cies Accueillies
+    area-project: Projet de Territoire
+    cultural-actions: Actions Culturelles
     tickets: billetterie solidaire
     proMeeting: rencontres pro
     funSpace: espace ludique
@@ -25,12 +25,11 @@ front:
     sust_dev: développement durable
     onYear: à l'année
     onFest: durant le festival
-    association:
-        label: L'Association
-        projects: projets pluriels
-        coop: coopération territoriale
-        team: équipe
-        subscription: adhésion
+    plural-projects: Projets Pluriels
+    coop: Coopération Territoriale
+    team: Équipe
+    subscription: Adhésion
+    calendar: Calendrier
 
 back:
     companies: compagnies

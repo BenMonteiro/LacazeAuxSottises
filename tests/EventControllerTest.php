@@ -12,6 +12,8 @@ class EventControllerTest extends WebTestCase
      */
     private $entityManager;
 
+    private $client;
+
     protected function setUp(): void
     {
         $kernel = self::bootKernel();
@@ -21,78 +23,139 @@ class EventControllerTest extends WebTestCase
             ->getManager();
     }
 
-    public function testAddEvent()
+    protected function dbConnect()
     {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', '/event/new');
-
-        $form = $crawler->selectButton('Enregistrer')->form();
-        $form['event[name]'] = 'x';
-        $crawler = $client->submit($form);
-
-        $crawler = $client->followRedirect();
-
-        $this->assertSelectorTextContains('h1', 'Liste Des Événements');
-    }
-
-    public function testSearchAddedEvent()
-    {
-        $event = $this->entityManager
-            ->getRepository(Event::class)
-            ->findOneBy(['name' => 'x']);
-
-        $this->assertSame('x', $event->getName());
-
-        return $eventId = $event->getId();
+        $this->client = static::createClient(
+            [],
+            [
+                'PHP_AUTH_USER' => 'test',
+                'PHP_AUTH_PW' => 'test2020',
+            ]
+        );
     }
 
     /**
-     * @depends testSearchAddedEvent
+     * @dataProvider urlProvider
      */
-    public function testEditEvent($eventId)
+    public function testPageIsSuccessful($url)
     {
-        $client = static::createClient();
+        $this->dbConnect();
+        $this->client->request('GET', $url);
 
-        $crawler = $client->request('GET', '/event/' . $eventId . '/edit');
-
-        $form = $crawler->selectButton('Mettre à jour')->form();
-        $form['event[name]'] = 'xxx';
-
-        $crawler = $client->submit($form);
-
-        $crawler = $client->followRedirect();
-
-        $this->assertSelectorTextContains('h1', 'Liste Des Événements');
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
     }
 
-    public function testSearchEditedEvent()
+    public function urlProvider()
     {
-
-        $event = $this->entityManager
-            ->getRepository(Event::class)
-            ->findOneBy(['name' => 'xxx']);
-
-        $this->assertSame('xxx', $event->getName());
-
-        return $eventId = $event->getId();
+        $id = 33;
+        yield ['/admin/event/'];
+        yield ['/admin/event/new'];
+        yield ['/admin/event/' . $id];
+        yield ['/admin/event/' . $id . '/edit'];
     }
 
     /**
-     * @depends testSearchEditedEvent
+     * @dataProvider provideAddEventData
      */
-    public function testDeleteEvent($eventId)
+    public function testAddEvent($entry, $formDatas)
     {
-        $client = static::createClient();
+        $this->dbConnect();
 
-        $crawler = $client->request('GET', '/event/' . $eventId);
+        $crawler = $this->client->request('GET', '/admin/event/new');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Enregistrer')->form($formDatas);
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
+
+        $this->assertSelectorTextContains('h1', 'Liste Des Événements');
+
+        $this->assertSelectorTextContains('table', $entry);
+    }
+
+    /**
+     * @dataProvider provideEditEventData
+     */
+    public function testEditEvent($entry, $formDatas)
+    {
+        $event = $this->entityManager
+            ->getRepository(Event::class)
+            ->findOneBy(['name' => 'AddEvent']);
+
+        $this->assertSame('AddEvent', $event->getName());
+
+        $eventId = $event->getId();
+
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/event/' . $eventId . '/edit');
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
+
+        $form = $crawler->selectButton('Mettre à jour')->form($formDatas);
+        $crawler = $this->client->submit($form);
+
+        $crawler = $this->client->followRedirect();
+
+        $this->assertSelectorTextContains('h1', 'Liste Des Événements');
+
+        $this->assertSelectorTextNotContains('table', $event->getName());
+
+        $this->assertSelectorTextContains('table', $entry);
+    }
+
+    public function testDeleteEvent()
+    {
+        $event = $this->entityManager
+            ->getRepository(Event::class)
+            ->findOneBy(['name' => 'EditEvent']);
+
+        $this->assertSame('EditEvent', $event->getName());
+
+        $eventId = $event->getId();
+
+        $this->dbConnect();
+
+        $crawler = $this->client->request('GET', '/admin/event/' . $eventId);
+
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
 
         $form = $crawler->selectButton('Supprimer')->form();
-        $crawler = $client->submit($form);
+        $crawler = $this->client->submit($form);
 
-        $crawler = $client->followRedirect();
+        $crawler = $this->client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Événements');
+
+        $this->assertSelectorTextNotContains('table', $event->getName());
+    }
+
+    public function provideAddEventData()
+    {
+        return [
+            'add' => [
+                'AddEvent',
+                'event' =>
+                [
+                    'event[name]' => 'AddEvent',
+                ]
+            ],
+        ];
+    }
+
+    public function provideEditEventData()
+    {
+        return [
+            'add' => [
+                'EditEvent',
+                'event' =>
+                [
+                    'event[name]' => 'EditEvent'
+                ]
+            ],
+        ];
     }
 
     protected function tearDown(): void
@@ -102,26 +165,5 @@ class EventControllerTest extends WebTestCase
         // doing this is recommended to avoid memory leaks
         $this->entityManager->close();
         $this->entityManager = null;
-    }
-
-    /**
-     * @dataProvider provideEventUrls
-     */
-    public function testEventPageIsSuccessful($url)
-    {
-        $client = static::createClient();
-        $client->request('GET', $url);
-
-        echo $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
-    public function provideEventUrls()
-    {
-        return array(
-            array('/event/'),
-            array('/event/new'),
-            array('/event/5'),
-            array('/event/5/edit'),
-        );
     }
 }

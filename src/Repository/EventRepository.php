@@ -30,8 +30,21 @@ class EventRepository extends ServiceEntityRepository
         ORDER BY starting_date ASC
         LIMIT 1
             ';
-        
+
         return $conn->query($sql)->fetch();
+    }
+
+    public function findSeasonEvents()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT * 
+        FROM event
+        WHERE starting_date > NOW()
+        ORDER BY starting_date ASC
+            ';
+
+        return $conn->query($sql)->fetchAll();
     }
 
     // /**
