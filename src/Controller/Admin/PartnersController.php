@@ -40,6 +40,11 @@ class PartnersController extends AdminController
             $entityManager->persist($partner);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'Le partenaire ' . $partner->getName() . ' a été ajouté avec succès !'
+            );
+
             return $this->redirectToRoute('partners_index');
         }
 
@@ -70,6 +75,11 @@ class PartnersController extends AdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'notice',
+                'Le partenaire ' . $partner->getName() . ' a été mis à jour avec succès !'
+            );
+
             return $this->redirectToRoute('partners_index');
         }
 
@@ -88,6 +98,11 @@ class PartnersController extends AdminController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($partner);
             $entityManager->flush();
+
+            $this->addFlash(
+                'notice',
+                'Le partenaire ' . $partner->getName() . ' a été supprimé avec succès !'
+            );
         }
 
         return $this->redirectToRoute('partners_index');

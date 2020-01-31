@@ -10,7 +10,11 @@
 		<h1>{{'section.index'|trans({}, 'section')|title}}</h1>
 	</div>
 
-	<table class="table table-sm index table-striped text-center mb-5 pb-5">
+	{% set classDisplay = 'index' %}
+	{% if sections|length <= 1  %}
+		{% set classDisplay = 'oneElement' %}
+	{% endif %}
+	<table class="table table-sm {{classDisplay}} table-striped text-center mb-5 pb-5">
 		<thead>
 			<tr>
 				<th>{{'general.name'|trans({}, 'general')|capitalize}}</th>

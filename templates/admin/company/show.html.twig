@@ -4,6 +4,7 @@
 	{{ company.name}}
 {% endblock %}
 
+{% block header %}{% endblock %}
 {% block body %}
 	<div class="offset-9 col-4 mt-5 mr-5 text-center ">
 		<div class="d-flex justify-content-center ">
@@ -47,7 +48,7 @@
 			<div>
 				<h4>{{'general.more.infos'|trans({}, 'general')|capitalize}}
 					:</h4>
-				<p class="ml-3">{{ company.moreInfos }}</p>
+				<p class="ml-3">{{ company.moreInfos|raw }}</p>
 			</div>
 			{% if company.isInDiffusion != 0 or company.isInCreation != 0 %}
 				<div>
@@ -89,7 +90,7 @@
 		<div class="col-9 flex-column">
 			<div class="col-12 mb-5 ">
 				<img class="miniImage col-4 mt-5 mx-3 float-left" src="{{ asset('images/uploads/company/' ~ company.image.name) }}">
-				<div class="col-12 text-justify my-5 pt-5">{{ company.description }}</div>
+				<div class="col-12 text-justify my-5 pt-5">{{ company.description|raw }}</div>
 			</div>
 
 			<div class="row offset-1 col-11 mt-5 pt-5">
@@ -115,8 +116,12 @@
 								<td>{{ performance.date ? performance.date|date('d-m-Y H:i') : '' }}</td>
 								<td>{{ performance.event}}</td>
 								<td>
-									<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit', {'id': performance.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
-									{{ include('admin/performance/_delete_form.html.twig') }}
+									<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit',{'id': performance.id, 'company_id': company.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+									<form method="post" action="{{ path('performance_delete', {'id': performance.id, 'company_id': company.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+										<input type="hidden" name="_method" value="DELETE">
+										<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ performance.id) }}">
+										<button class="btn badge badge-danger my-2 p-2">{{'general.delete'|trans({}, 'general')|capitalize}}</button>
+									</form>
 								</td>
 
 							</tr>

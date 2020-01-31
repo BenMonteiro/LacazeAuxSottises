@@ -48,39 +48,60 @@ div[id^="company_performances_"]>div:first-child {
     display: none;
 }
 
+.flash-message {
+    position: fixed;
+    top: 120px;
+    height: 50px;
+    text-align: center;
+    z-index: 3;
+    padding-top: 20px;
+}
+
+.flash-notice {
+    color: green
+}
+
+.flash-error {
+    color: red
+}
+
 #adminPageTitle {
     position: fixed;
     text-align: center;
-    margin-top: 120px;
+    top: 170px;
     width: 100%;
     z-index: 20;
     background-color: white;
-
 }
 
 table.index thead {
     position: sticky;
-    top: 200px;
+    top: 250px;
 }
 
 table.index tbody {
     position: relative;
-    top: 200px;
+    top: 250px;
+}
+
+table.oneElement {
+    position: relative;
+    top: 250px;
 }
 
 table.oneSection {
     position: relative;
-    top: 250px;
+    top: 300px;
 }
 
 table.sectionList thead {
     position: sticky;
-    top: 250px;
+    top: 300px;
 }
 
 table.sectionList tbody {
     position: relative;
-    top: 250px;
+    top: 300px;
 }
 
 thead {

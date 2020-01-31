@@ -5,10 +5,8 @@
 {% endblock %}
 
 {% block body %}
-	{% include('menu/_back_menu.html.twig') %}
-
 	<div id="adminPageTitle">
-		<h1>{{'page.name'|trans({}, 'adminPage')|title}}</h1>
+		<h1>{{tab.name|trans({}, 'adminPage')|title}}</h1>
 	</div>
 
 	<table class="table table-sm index table-striped text-center mb-5 pb-5">

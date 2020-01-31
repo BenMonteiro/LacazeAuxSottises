@@ -40,6 +40,11 @@ class SectionController extends AdminController
             $entityManager->persist($section);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'Le paragraphe ' . $section->getName() . ' a été ajouté avec succès !'
+            );
+
             if (isset($_GET['page_id'])) {
                 return $this->redirectToRoute('page_list_show', ['id' => $_GET['page_id']]);
             }
@@ -73,6 +78,14 @@ class SectionController extends AdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'notice',
+                'Le paragraphe ' . $section->getName() . ' a été mis à jour avec succès !'
+            );
+
+            if (isset($_GET['page_id'])) {
+                return $this->redirectToRoute('page_list_show', ['id' => $_GET['page_id']]);
+            }
             return $this->redirectToRoute('section_index');
         }
 
@@ -91,8 +104,16 @@ class SectionController extends AdminController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($section);
             $entityManager->flush();
+
+            $this->addFlash(
+                'notice',
+                'Le paragraphe ' . $section->getName() . ' a été supprimé avec succès !'
+            );
         }
 
+        if (isset($_GET['page_id'])) {
+            return $this->redirectToRoute('page_list_show', ['id' => $_GET['page_id']]);
+        }
         return $this->redirectToRoute('section_index');
     }
 }

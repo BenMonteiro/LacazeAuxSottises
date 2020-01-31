@@ -4,13 +4,27 @@
 	{{'partner.index'|trans({},'partners')|title}}
 {% endblock %}
 
+{% block flashMessage %}
+	<div class="flash-message col-12 text-center bg-white">
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="flash-{{ label }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+{% endblock %}
 {% block body %}
-
 	<div id="adminPageTitle">
 		<h1>{{'partner.index'|trans({},'partners')|title}}</h1>
 	</div>
 
-	<table class="table table-sm index table-striped text-center mb-5 pb-5">
+	{% set classDisplay = 'index' %}
+	{% if partners|length <= 1  %}
+		{% set classDisplay = 'oneElement' %}
+	{% endif %}
+	<table class="table table-sm {{classDisplay}} table-striped text-center mb-5 pb-5">
 		<thead>
 			<tr>
 				<th>{{'partner.logo'|trans({}, 'partners')|capitalize}}</th>

@@ -4,11 +4,18 @@
 	{{'perf.create'|trans({}, 'perf')|title}}
 {% endblock %}
 
+{% block header %}{% endblock %}
 {% block body %}
 	<h1>{{'perf.create'|trans({}, 'perf')|title}}</h1>
 	<div class="ml-3">
 		{{ include('admin/performance/_form.html.twig') }}
 
-		<a class="badge badge-secondary p-2 mb-5" href="{{ path('performance_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		{% if event_id is not null %}
+			<a class="badge badge-secondary p-2" href="{{ path('event_show', {'id': event_id}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		{% elseif company_id is not null %}
+			<a class="badge badge-secondary p-2" href="{{ path('company_show', {'id': company_id}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		{% else %}
+			<a class="badge badge-secondary p-2" href="{{ path('performance_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		{% endif %}
 	</div>
 {% endblock %}

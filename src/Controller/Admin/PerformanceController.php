@@ -15,6 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PerformanceController extends AdminController
 {
+    protected $companyId = null;
+    protected $eventId = null;
+
     /**
      * @Route("/", name="performance_index", methods={"GET"})
      */
@@ -40,15 +43,29 @@ class PerformanceController extends AdminController
             $entityManager->persist($performance);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'La nouvelle représentation a été ajoutée avec succès !'
+            );
+
             if (isset($_GET['company_id'])) {
                 return $this->redirectToRoute('company_show', ['id' => $_GET['company_id']]);
+            } elseif (isset($_GET['event_id'])) {
+                return $this->redirectToRoute('event_show', ['id' => $_GET['event_id']]);
             }
             return $this->redirectToRoute('performance_index');
         }
 
+        if (isset($_GET['company_id'])) {
+            $this->companyId = $_GET['company_id'];
+        } elseif (isset($_GET['event_id'])) {
+            $this->eventId = $_GET['event_id'];
+        }
         return $this->render('admin/performance/new.html.twig', [
             'performance' => $performance,
             'form' => $form->createView(),
+            'event_id' => $this->eventId,
+            'company_id' => $this->companyId
         ]);
     }
 
@@ -63,12 +80,31 @@ class PerformanceController extends AdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('company_show', ['id' => $performance->getCompanyNameId()]);
+            $this->addFlash(
+                'notice',
+                'La représentation a été mise à jour avec succès !'
+            );
+
+            if (isset($_GET['company_id'])) {
+                $this->companyId = $_GET['company_id'];
+                return $this->redirectToRoute('company_show', ['id' => $this->companyId]);
+            } elseif (isset($_GET['event_id'])) {
+                $this->eventId = $_GET['event_id'];
+                return $this->redirectToRoute('event_show', ['id' => $this->eventId]);
+            }
+            return $this->redirectToRoute('performance_index');
         }
 
+        if (isset($_GET['company_id'])) {
+            $this->companyId = $_GET['company_id'];
+        } elseif (isset($_GET['event_id'])) {
+            $this->eventId = $_GET['event_id'];
+        }
         return $this->render('admin/performance/edit.html.twig', [
             'performance' => $performance,
             'form' => $form->createView(),
+            'event_id' => $this->eventId,
+            'company_id' => $this->companyId
         ]);
     }
 
@@ -81,8 +117,20 @@ class PerformanceController extends AdminController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($performance);
             $entityManager->flush();
+
+            $this->addFlash(
+                'notice',
+                'La représentation a été supprimée avec succès !'
+            );
         }
 
-        return $this->redirectToRoute('company_show', ['id' => $performance->getCompanyNameId()]);
+        if (isset($_GET['company_id'])) {
+            $this->companyId = $_GET['company_id'];
+            return $this->redirectToRoute('company_show', ['id' => $this->companyId]);
+        } elseif (isset($_GET['event_id'])) {
+            $this->eventId = $_GET['event_id'];
+            return $this->redirectToRoute('event_show', ['id' => $this->eventId]);
+        }
+        return $this->redirectToRoute('performance_index');
     }
 }

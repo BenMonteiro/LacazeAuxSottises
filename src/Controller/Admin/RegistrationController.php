@@ -36,6 +36,11 @@ class RegistrationController extends AdminController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'L\'utilisateur ' . $user->getUsername() . ' a été ajouté avec succès !'
+            );
+
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute('user_index');

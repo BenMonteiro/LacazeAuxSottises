@@ -41,6 +41,11 @@ class CompanyController extends AdminController
             $entityManager->persist($company);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'La compagnie ' . $company->getName() . ' a été ajoutée avec succès !'
+            );
+
             return $this->redirectToRoute('company_index');
         }
 
@@ -72,6 +77,11 @@ class CompanyController extends AdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'notice',
+                'La compagnie ' . $company->getName() . ' a été mise à jour avec succès !'
+            );
+
             return $this->redirectToRoute('company_index');
         }
 
@@ -90,6 +100,11 @@ class CompanyController extends AdminController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($company);
             $entityManager->flush();
+
+            $this->addFlash(
+                'notice',
+                'La compagnie ' . $company->getName() . ' a été supprimée avec succès !'
+            );
         }
 
         return $this->redirectToRoute('company_index');

@@ -32,6 +32,11 @@ class UserController extends AdminController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
+
+            $this->addFlash(
+                'notice',
+                'L\'utilisateur ' . $user->getUsername() . ' a été supprimé avec succès !'
+            );
         }
 
         return $this->redirectToRoute('user_index');

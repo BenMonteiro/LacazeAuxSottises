@@ -4,13 +4,28 @@
 	{{'event.index'|trans({}, 'event')|title}}
 {% endblock %}
 
+{% block flashMessage %}
+	<div class="flash-message col-12 text-center bg-white">
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="flash-{{ label }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+{% endblock %}
 {% block body %}
 
 	<div id="adminPageTitle">
 		<h1>{{'event.index'|trans({}, 'event')|title}}</h1>
 	</div>
 
-	<table class="table table-sm index table-striped text-center mb-5 pb-5">
+	{% set classDisplay = 'index' %}
+	{% if events|length <= 1  %}
+		{% set classDisplay = 'oneElement' %}
+	{% endif %}
+	<table class="table table-sm {{classDisplay}} table-striped text-center mb-5 pb-5">
 		<thead>
 			<tr>
 				<th>{{'event.name'|trans({}, 'event')|capitalize}}</th>
@@ -29,7 +44,7 @@
 			{% for event in events %}
 				<tr>
 					<td>{{ event.name }}</td>
-					<td>{{ event.description|slice(0,100) }}...</td>
+					<td>{{ event.description|slice(0,100)|raw }}...</td>
 					<td>{{ event.startingDate ? event.startingDate|date('d-m-Y') : '' }}</td>
 					<td>{{ event.endingDate ? event.endingDate|date('d-m-Y') : '' }}</td>
 					<td>{{ event.hours }}</td>

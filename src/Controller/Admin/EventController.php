@@ -40,6 +40,11 @@ class EventController extends AdminController
             $entityManager->persist($event);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'L\'événement ' . $event->getName() . ' a été ajouté avec succès !'
+            );
+
             return $this->redirectToRoute('event_index');
         }
 
@@ -70,6 +75,11 @@ class EventController extends AdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'notice',
+                'L\'événement ' . $event->getName() . ' a été mis à jour avec succès !'
+            );
+
             return $this->redirectToRoute('event_index');
         }
 
@@ -88,6 +98,11 @@ class EventController extends AdminController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($event);
             $entityManager->flush();
+
+            $this->addFlash(
+                'notice',
+                'L\'événement ' . $event->getName() . ' a été supprimé avec succès !'
+            );
         }
 
         return $this->redirectToRoute('event_index');

@@ -40,6 +40,11 @@ class TeamController extends AdminController
             $entityManager->persist($team);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'Le membre ' . $team->getName() . ' ' . $team->getFirstName() . ' a été ajouté avec succès !'
+            );
+
             return $this->redirectToRoute('team_index');
         }
 
@@ -60,6 +65,11 @@ class TeamController extends AdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'notice',
+                'Le membre ' . $team->getName() . ' ' . $team->getFirstName() . ' a été mis à jour avec succès !'
+            );
+
             return $this->redirectToRoute('team_index');
         }
 
@@ -78,6 +88,11 @@ class TeamController extends AdminController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($team);
             $entityManager->flush();
+
+            $this->addFlash(
+                'notice',
+                'Le membre ' . $team->getName() . ' ' . $team->getFirstName() . ' a été supprimé avec succès !'
+            );
         }
 
         return $this->redirectToRoute('team_index');

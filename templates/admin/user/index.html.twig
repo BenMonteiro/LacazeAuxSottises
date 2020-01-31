@@ -4,12 +4,28 @@
 	{{'user.index'|trans({}, 'user')|title}}
 {% endblock %}
 
-{% block body %}
+{% block flashMessage %}
+	<div class="flash-message col-12 text-center bg-white">
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="flash-{{ label }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+{% endblock %}
 
+{% block body %}
 	<div id="adminPageTitle">
 		<h1>{{'user.index'|trans({}, 'user')|title}}</h1>
 	</div>
-	<table class="table table-sm table-striped index text-center mb-5 pb-5">
+
+	{% set classDisplay = 'index' %}
+	{% if users|length <= 1  %}
+		{% set classDisplay = 'oneElement' %}
+	{% endif %}
+	<table class="table table-sm table-striped {{classDisplay}} text-center mb-5 pb-5">
 		<thead class="position-relative">
 			<tr>
 				<th>{{'Username'|trans({}, 'user')|capitalize}}</th>
