@@ -6,12 +6,12 @@
 
 {% block body %}
 
-	{% include('menu/_back_menu.html.twig') %}
+	<div id="adminPageTitle">
+		<h1>{{'event.index'|trans({}, 'event')|title}}</h1>
+	</div>
 
-	<h1>{{'event.index'|trans({}, 'event')|title}}</h1>
-
-	<table class="table table-sm index text-align-center table-striped text-center mb-5 pb-5">
-		<thead class="index">
+	<table class="table table-sm index table-striped text-center mb-5 pb-5">
+		<thead>
 			<tr>
 				<th>{{'event.name'|trans({}, 'event')|capitalize}}</th>
 				<th>Descritption</th>
@@ -25,9 +25,8 @@
 				</th>
 			</tr>
 		</thead>
-		<tbody class="index">
+		<tbody>
 			{% for event in events %}
-
 				<tr>
 					<td>{{ event.name }}</td>
 					<td>{{ event.description|slice(0,100) }}...</td>

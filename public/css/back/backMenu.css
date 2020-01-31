@@ -1,0 +1,42 @@
+nav {
+    height: 120px;
+}
+
+.back-nav-link:hover {
+    border: none !important;
+    color: black !important;
+}
+
+.dropdown-item:hover {
+    background-color: #DA291C;
+}
+
+#navbarNavDropdown.navbar-collapse.collapse.show {
+    z-index: 20 !important;
+}
+
+
+.navbar-collapse {
+    background-color: inherit;
+}
+
+.nav-link {
+    color: #DA291C !important;
+    font-size: 1.2em;
+    margin-right: 20px;
+    padding: 5px 10px !important;
+}
+
+.nav-tabs .nav-link.active {
+    border: solid black 1px !important;
+    border-bottom: none !important;
+    padding: 5px 10px;
+}
+
+nav>ul {
+    list-style: none;
+}
+
+.logo {
+    width: 100px;
+}

@@ -5,12 +5,12 @@
 {% endblock %}
 
 {% block body %}
-	{% include('menu/_back_menu.html.twig') %}
 
-	<h1>{{'user.index'|trans({}, 'user')|title}}</h1>
-
-	<table class="table table-sm text-align-center table-striped index text-center mb-5 pb-5">
-		<thead>
+	<div id="adminPageTitle">
+		<h1>{{'user.index'|trans({}, 'user')|title}}</h1>
+	</div>
+	<table class="table table-sm table-striped index text-center mb-5 pb-5">
+		<thead class="position-relative">
 			<tr>
 				<th>{{'Username'|trans({}, 'user')|capitalize}}</th>
 				<th>{{'Role'|trans({}, 'user')|capitalize}}</th>
@@ -35,5 +35,4 @@
 			{% endfor %}
 		</tbody>
 	</table>
-
 {% endblock %}

@@ -1,3 +1,11 @@
+nav {
+    height: 120px;
+}
+
+.navbar-collapse {
+    background-color: inherit;
+}
+
 .nav-link {
     color: #DA291C !important;
     font-size: 1.2em;
@@ -25,7 +33,10 @@ nav>ul {
 }
 
 .tab-content>.active {
+    align-items: center;
+    margin-top: 120px;
     background-color: rgba(0, 0, 0, 1);
+    height: 50px;
     padding: 20px;
     display: flex;
     justify-content: space-around;

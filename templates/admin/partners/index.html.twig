@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block body %}
-	{% include('menu/_back_menu.html.twig') %}
 
-	<h1>{{'partner.index'|trans({},'partners')|title}}</h1>
+	<div id="adminPageTitle">
+		<h1>{{'partner.index'|trans({},'partners')|title}}</h1>
+	</div>
 
-	<table class="table table-sm text-align-center index table-striped text-center mb-5 pb-5">
+	<table class="table table-sm index table-striped text-center mb-5 pb-5">
 		<thead>
 			<tr>
 				<th>{{'partner.logo'|trans({}, 'partners')|capitalize}}</th>

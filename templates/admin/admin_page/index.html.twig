@@ -6,10 +6,12 @@
 
 {% block body %}
 	{% include('menu/_back_menu.html.twig') %}
-	<div>
+
+	<div id="adminPageTitle">
 		<h1>{{'page.name'|trans({}, 'adminPage')|title}}</h1>
 	</div>
-	<table class="table table-sm text-align-center index table-striped text-center mb-5 pb-5">
+
+	<table class="table table-sm index table-striped text-center mb-5 pb-5">
 		<thead>
 			<tr>
 				<th>{{'page.name'|trans({}, 'adminPage')|capitalize}}</th>

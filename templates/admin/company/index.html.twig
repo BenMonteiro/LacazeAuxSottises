@@ -5,13 +5,10 @@
 {% endblock %}
 
 {% block body %}
-
-	{% include('menu/_back_menu.html.twig') %}
-
-	<div>
+	<div id="adminPageTitle">
 		<h1>{{'company.index'|trans({}, 'company')|title}}</h1>
 	</div>
-	<table class="table table-sm text-align-center table-striped index text-center mb-5 pb-5">
+	<table class="table table-sm table-striped index text-center mb-5 pb-5">
 		<thead>
 			<tr>
 				<th>{{'general.image'|trans({}, 'general')|capitalize}}</th>
@@ -37,7 +34,7 @@
 					<td><img class="miniImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>
 					<td>{{ company.name }}</td>
 					<td>{{ company.showTitle}}</td>
-					<td>{{ company.description|slice(0,100)}}...</td>
+					<td>{{ company.description|slice(0,100)|raw }}...</td>
 					<td>{{ company.theme}}</td>
 					<td>{{ company.duration}}</td>
 					<td>{{ company.audience}}</td>
@@ -47,7 +44,7 @@
 					</td>
 					<td>{{ company.website }}</td>
 					<td>{{ company.videoLink }}</td>
-					<td>{{ company.moreInfos}}</td>
+					<td>{{ company.moreInfos|slice(0,100)|raw }}...</td>
 					<td>
 						<a class="badge badge-secondary my-2 p-2" href="{{ path('company_show', {'id': company.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
 						<a class="badge badge-primary my-2 p-2" href="{{ path('company_edit', {'id': company.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>

@@ -28,6 +28,7 @@ class AdminPageController extends AdminController
     {
         return $this->render('admin/admin_page/show.html.twig', [
             'page' => $frontPage,
+            'tabs' => $this->tabList,
         ]);
     }
 }

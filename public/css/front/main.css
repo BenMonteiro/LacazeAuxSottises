@@ -40,16 +40,6 @@ h3 {
     color: #DA291C
 }
 
-
-form label,
-form legend {
-    font-weight: bold;
-}
-
-.btn-showView {
-    font-size: 1.3rem;
-}
-
 .assoIntroImage {
     border-radius: 10px;
     width: 400px;
@@ -63,81 +53,11 @@ form legend {
     height: 150px;
 }
 
-.partnerLogo {
-    width: 100px
-}
-
-label.required:before {
-    content: "* ";
-}
-
-div[id^="company_performances_"]>div:first-child {
-    display: none;
-}
-
-table.index thead {
-    position: sticky;
-    top: 140px;
-    height: 40px;
-    width: 100%;
-}
-
-table.index tbody {
-    position: relative;
-    top: 60px;
-}
-
-
-table.sectionList thead {
-    position: sticky;
-    top: 200px;
-    width: 100%;
-}
-
-table.sectionList tbody {
-    position: relative;
-    top: 200px;
-}
-
-thead {
-    background-color: black;
-    z-index: 10;
-    color: #DA291C
-}
-
-.table td,
-.table th {
-    border: none;
-    vertical-align: middle;
-    padding: 0.8rem 0.3rem;
-}
-
-.admin-dashboard .stat {
-    font-size: 3em;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px black;
-}
-
-.stat-bis {
-    font-size: 1.5em;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px black;
-}
-
-.admin-dashboard p {
-    font-size: 1.2em;
-}
-
-.card-body-icon {
-    position: absolute;
-    right: 0.1em;
-    top: -0.2em;
-    font-size: 5rem;
-    opacity: 0.5;
+.pageTitleBar {
+    margin-top: 150px;
 }
 
 .pageTitle {
-    position: relative;
     font-size: 3em;
     display: inline-block;
     align-content: center;
@@ -147,8 +67,8 @@ thead {
 
 #titleLines {
     position: relative;
-    z-index: 2;
     top: -80px;
+    z-index: 2;
     width: 95%;
     left: 2.5%
 }
