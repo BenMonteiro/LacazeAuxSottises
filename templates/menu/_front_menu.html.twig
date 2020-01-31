@@ -7,7 +7,7 @@
 		<div class="collapse navbar-collapse nav-tabs nav d-md-flex flex-md-column" id="navbarNavAltMarkup" role="tablist">
 			<ul class="col-xl-8 col-lg-10 d-flex flex-wrap justify-content-center navbar-nav pr-xl-5 ml-md-auto ml-2">
 				{% for tab in tabs %}
-					{% if tab.pages|length > 1  %}
+					{% if tab.pages|length > 1 %}
 						<li>
 							<a class="nav-item nav-link" href="" id="nav-{{tab.name}}-tab" data-toggle="tab" data-target="#nav-{{tab.name}}" role="tab" aria-controls="nav-{{tab.name}}">{{ tab.name|trans({}, 'menu') }}</a>
 						</li>
@@ -23,7 +23,7 @@
 		</div>
 	</nav>
 
-	<div class="tab-content fixed-top" id="nav-tabContent">
+	<div class="tab-content" id="nav-tabContent">
 		{% for tab in tabs %}
 			<div class="tab-pane fade" id="nav-{{tab.name}}" role="tabpanel" aria-labelledby="nav-{{tab.name}}-tab">
 				{% for page in tab.pages %}
