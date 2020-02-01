@@ -1,0 +1,83 @@
+{% extends "front_base.html.twig" %}
+
+{% block title %}
+	{{ page.pageSlug }}
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		{% for section in sections %}
+			{% if section.name == 'intro' %}
+				<article class="text-center my-5 col-12">
+					{% if section.title %}
+						<h3 class="colored">{{ section.title }}</h3>
+					{% endif %}
+					{% if section.subTitle %}
+						<h4>{{ section.subTitle }}</h4>
+					{% endif %}
+					<p>{{ section.content|raw }}</p>
+				</article>
+			{% endif %}
+		{% endfor %}
+
+		<h2 class="mb-3">Tout au long de l'année</h2>
+		{% for section in sections %}
+			{% if section.name == "toute l'année" %}
+				<section class=" d-flex align-items-center col-12 mb-3">
+					<div class="col-4">
+						<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+					</div>
+					<article class="h-100 col-6">
+						{% if section.title %}
+							<h3 class="colored">{{ section.title }}</h3>
+						{% endif %}
+						{% if section.subTitle %}
+							<h4>{{ section.subTitle }}</h4>
+						{% endif %}
+						<p class="text-justify">{{ section.content|raw}}</p>
+					</article>
+				</section>
+			{% endif %}
+		{% endfor %}
+
+		<h2 class="mb-3 mt-5">Le temps d’un instant</h2>
+		{% for section in sections %}
+			{% if section.name == 'ponctuel' %}
+				<div class="d-flex align-items-center col-12 mb-3">
+					<div class="col-4">
+						<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+					</div>
+					<article class="h-100 col-6">
+						{% if section.title %}
+							<h3 class="colored">{{ section.title }}</h3>
+						{% endif %}
+						{% if section.subTitle %}
+							<h4>{{ section.subTitle }}</h4>
+						{% endif %}
+						<p class="text-justify">{{ section.content|raw}}</p>
+					</article>
+				</div>
+			{% endif %}
+		{% endfor %}
+
+		<h2 class="mb-3 mt-5">Les ateliers Do it yourself</h2>
+		{% for section in sections %}
+			{% if section.name == 'do it' %}
+				<div class=" d-flex align-items-center col-12 mb-3">
+					<div class="col-4">
+						<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+					</div>
+					<article class="my-5 col-6">
+						{% if section.title %}
+							<h3 class="colored">{{ section.title }}</h3>
+						{% endif %}
+						{% if section.subTitle %}
+							<h4>{{ section.subTitle }}</h4>
+						{% endif %}
+						<p>{{ section.content|raw}}</p>
+					</article>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}

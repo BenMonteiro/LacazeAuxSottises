@@ -30,9 +30,12 @@
     }
 }
 
-@media all and (max-width: 750px) {
-    .tab-pane {
-        flex-wrap: wrap;
+@media all and (max-width: 768px) {
+    .tab-content {
+        position: relative;
+        top: 357px;
+        height: 50px;
+        z-index: 3;
     }
 }
 

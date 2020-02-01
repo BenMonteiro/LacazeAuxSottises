@@ -1,0 +1,82 @@
+{% extends "front_base.html.twig" %}
+
+{% block title %}
+	{{ page.pageSlug }}
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		{% for section in sections %}
+			{% if section.name == 'intro' %}
+				<div class="d-flex align-items-center col-12 mb-3">
+					<article class="my-5 col-8">
+						{% if section.title %}
+							<h3 class="colored">{{ section.title }}</h3>
+						{% endif %}
+						{% if section.subTitle %}
+							<h4>{{ section.subTitle }}</h4>
+						{% endif %}
+						<p>{{ section.content|raw}}</p>
+					</article>
+					<img class="miniImage img-thumbnail rounded offset-1 col-2" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+				</div>
+
+			{% elseif section.name == 'soirées' %}
+				<section class=" d-flex align-items-center col-12 mb-3">
+					{% if section.image.name %}
+						<div class="col-4">
+							<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+						</div>
+					{% endif %}
+					<article class="h-100 col-6">
+						{% if section.title %}
+							<h3 class="colored">{{ section.title }}</h3>
+						{% endif %}
+						{% if section.subTitle %}
+							<h4>{{ section.subTitle }}</h4>
+						{% endif %}
+						<p class="text-justify">{{ section.content|raw}}</p>
+					</article>
+				</section>
+				<div id="calendar" class="mt-5">
+					<ul>
+						{% for placeEventPerf in placeEventPerfs %}
+							<div class="col-8">
+								<li class="d-flex">
+									<img class="miniImage img-thumbnail rounded" src="{{ asset('images/uploads/company/' ~ placeEventPerf.companyName.image.name) }}">
+
+									<div class="flex-column col-2">
+										<p>{{ placeEventPerf.date|date('D, d-M') }}</p>
+										<p>
+											Prix libre
+										</p>
+									</div>
+									<div class="offset-1">
+										<p>{{ placeEventPerf.date|date('H') }}h{{ placeEventPerf.date|date('i') }}
+											-
+											{{ placeEventPerf.companyName.description|raw }}</p>
+									</div>
+								</li>
+								<hr class="my-2 redline">
+							</div>
+
+						{% endfor %}
+					</ul>
+				</div>
+			{% elseif section.name == 'visites' %}
+				<div class="d-flex align-items-center col-12 mb-3">
+					<article class="my-5 col-6">
+						{% if section.title %}
+							<h3 class="colored">{{ section.title }}</h3>
+						{% endif %}
+						{% if section.subTitle %}
+							<h4>{{ section.subTitle }}</h4>
+						{% endif %}
+						<p>{{ section.content|raw}}</p>
+					</article>
+					<img class="assoIntroImage img-thumbnail rounded offset-1 col-4" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}

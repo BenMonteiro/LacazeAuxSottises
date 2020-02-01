@@ -53,6 +53,10 @@ h3 {
     height: 150px;
 }
 
+.pageTitleBar {
+    margin-top: 130px;
+}
+
 .pageTitle {
     font-size: 3em;
     display: inline-block;
@@ -63,7 +67,7 @@ h3 {
 
 #titleLines {
     position: relative;
-    top: -80px;
+    top: -50px;
     z-index: 2;
     width: 95%;
     left: 2.5%
@@ -75,11 +79,11 @@ hr {
     margin: 0.5px 10px 0.5px 10px;
 }
 
-hr#blackline {
+hr.blackline {
     color: black
 }
 
-hr#redline {
+hr.redline {
     color: #DA291C;
 }
 
@@ -109,4 +113,10 @@ hr#redline {
 
 #projectContainer {
     border-radius: 20px;
+}
+
+.red-dot-borders {
+    border: dashed #DA291C 2px;
+    border-radius: 20px;
+    padding: 20px
 }

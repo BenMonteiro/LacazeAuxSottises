@@ -55,40 +55,24 @@ class PageController extends AbstractController
 
         $template = (empty($pageTemplate)) ? $defaultTemplate : 'front/' . $pageFolder . '/' . $pageTemplate . '.html.twig';
 
-        if ($frontPage->getPageSlug() === 'saison/calendrier') {
+        $seasonEvents = ($frontPage->getPageSlug() === 'saison/calendrier') ? $eventRepository->findSeasonEvents() : null;
+        $seasonPerformances = ($frontPage->getPageSlug() === 'saison/calendrier') ? $performanceRepository->findBy(['event' => 29], ['date' => 'ASC']) : null;
+        $festPerformances = ($frontPage->getPageSlug() === 'festival/calendrier') ? $performanceRepository->findBy(['event' => 'festival'], ['date' => 'ASC']) : null;
+        $placeEventPerfs = ($frontPage->getPageSlug() === 'tiers-lieu/les-rendez-vous') ? $performanceRepository->findBy(['event' => 31], ['date' => 'ASC']) : null;
 
-            $seasonEvents = $eventRepository->findSeasonEvents();
-            $seasonPerformances = $performanceRepository->findBy(['event' => 29], ['date' => 'ASC']);
-
-            return $this->render($template, [
-                'page' => $frontPage,
-                'pages' => $this->pages,
-                'tabs' => $this->tabs,
-                'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
-                'events' => $seasonEvents,
-                'perfs' => $seasonPerformances
-            ]);
-        } elseif ($pageTemplate === 'calendar' and $pageFolder === 'festival') {
-
-            $festPerformances = $performanceRepository->findBy(['event' => 'festival'], ['date' => 'ASC']);
-
-            return $this->render($template, [
-                'page' => $frontPage,
-                'pages' => $this->pages,
-                'tabs' => $this->tabs,
-                'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
-                'perfs' => $festPerformances
-            ]);
-        } else {
-            return $this->render($template, [
-                'page' => $frontPage,
-                'pages' => $this->pages,
-                'tabs' => $this->tabs,
-                'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
-                'companies' => $companyRepository->findBy([], ['name' => 'ASC']),
-            ]);
-        }
+        return $this->render($template, [
+            'page' => $frontPage,
+            'pages' => $this->pages,
+            'tabs' => $this->tabs,
+            'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
+            'companies' => $companyRepository->findBy([], ['name' => 'ASC']),
+            'seasonEvents' => $seasonEvents,
+            'seasonPerfs' => $seasonPerformances,
+            'festPerfs' => $festPerformances,
+            'placeEventPerfs' => $placeEventPerfs,
+        ]);
     }
+
 
     /**
      * @Route("company/{id<\d+>}", name="display_company", methods={"GET"})
