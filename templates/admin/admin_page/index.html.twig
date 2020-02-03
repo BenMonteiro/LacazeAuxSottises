@@ -8,8 +8,11 @@
 	<div id="adminPageTitle">
 		<h1>{{tab.name|trans({}, 'adminPage')|title}}</h1>
 	</div>
-
-	<table class="table table-sm index table-striped text-center mb-5 pb-5">
+	{% set classDisplay = 'sectionList' %}
+	{% if tab.pages|length <= 2  %}
+		{% set classDisplay = 'oneSection' %}
+	{% endif %}
+	<table class="table table-sm {{classDisplay}} table-striped text-center mb-5 pb-5">
 		<thead>
 			<tr>
 				<th>{{'page.name'|trans({}, 'adminPage')|capitalize}}</th>

@@ -1,16 +1,15 @@
-association: L'Association
-saison: La Saison
-festival: Le Festival
-tiers-lieu: Le Tiers-Lieu
-activités-du-lieu: Les Activités du Lieu
-locations: Les Locations
-benevolat: Le Bénévolat
-partenaires: Nos Partenaires
-soutient: Nous Noutenir
-contact: Contact
-home: Accueil
+
 
 front:
+    home: Accueil
+    association: L'Association
+    saison: La Saison
+    festival: Le Festival
+    tiers-lieu: Le Tiers-Lieu
+    volunteering: Le Bénévolat
+    partners: Nos Partenaires
+    support: Nous Soutenir
+    contact: Contact
     asso: L'Asso
     presentation: Présentation
     prog: Programmation
@@ -24,7 +23,7 @@ front:
     ecoPlace: éco-lieu
     shared-spaces: Espaces et services partagés
     meetings: Les rendez-vous
-    sust_dev: développement durable
+    curiosity: Ateliers de curiosité
     onYear: à l'année
     onFest: durant le festival
     plural-projects: Projets Pluriels
@@ -34,10 +33,19 @@ front:
     calendar: Calendrier
 
 back:
+    home: Accueil
+    association: L'Association
+    saison: La Saison
+    festival: Le Festival
+    tiers-lieu: Le Tiers-Lieu
+    benevolat: Le Bénévolat
+    support: Nous Soutenir
+    contact: Contact
     companies: compagnies
     events: Événements
     performances: représentations
-    partners: partenaires
+    partners: Nos Partenaires
+    partner: Partenaires
     team: équipe
     sections: pages
     user: admins

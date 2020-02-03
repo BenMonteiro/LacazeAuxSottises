@@ -53,6 +53,10 @@ h3 {
     height: 150px;
 }
 
+.partnerLogo {
+    width: 70px
+}
+
 .pageTitleBar {
     margin-top: 130px;
 }
@@ -77,6 +81,21 @@ hr {
     border-top: solid;
     height: 3px !important;
     margin: 0.5px 10px 0.5px 10px;
+}
+
+h2 {
+    display: inline-block;
+    align-content: center;
+    z-index: 3;
+    background-color: white;
+}
+
+div>hr.titleBar {
+    position: relative;
+    bottom: 30px;
+    z-index: 1;
+    width: 95%;
+    left: 2.5%
 }
 
 hr.blackline {

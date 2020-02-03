@@ -10,6 +10,7 @@ use App\Repository\EventRepository;
 use App\Repository\PerformanceRepository;
 use App\Repository\CompanyRepository;
 use App\Entity\Company;
+use App\Repository\PartnersRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,8 +48,14 @@ class PageController extends AbstractController
     /**
      * @Route("page/{pageSlug}", name="page_show", requirements={"pageSlug"=".+?"}, methods={"GET"})
      */
-    public function displayPage(FrontPage $frontPage, SectionRepository $sectionRepository, EventRepository $eventRepository, PerformanceRepository $performanceRepository, CompanyRepository $companyRepository): Response
-    {
+    public function displayPage(
+        FrontPage $frontPage,
+        SectionRepository $sectionRepository,
+        EventRepository $eventRepository,
+        PerformanceRepository $performanceRepository,
+        CompanyRepository $companyRepository,
+        PartnersRepository $partnersRepository
+    ): Response {
         $pageFolder = $frontPage->getTab();
         $pageTemplate = $frontPage->getTemplate();
         $defaultTemplate = 'front/page_default.html.twig';
@@ -59,6 +66,8 @@ class PageController extends AbstractController
         $seasonPerformances = ($frontPage->getPageSlug() === 'saison/calendrier') ? $performanceRepository->findBy(['event' => 29], ['date' => 'ASC']) : null;
         $festPerformances = ($frontPage->getPageSlug() === 'festival/calendrier') ? $performanceRepository->findBy(['event' => 'festival'], ['date' => 'ASC']) : null;
         $placeEventPerfs = ($frontPage->getPageSlug() === 'tiers-lieu/les-rendez-vous') ? $performanceRepository->findBy(['event' => 31], ['date' => 'ASC']) : null;
+        $partners = ($frontPage->getPageSlug() === 'partenaires/partenaires') ? $partnersRepository->findAll() : null;
+
 
         return $this->render($template, [
             'page' => $frontPage,
@@ -70,6 +79,7 @@ class PageController extends AbstractController
             'seasonPerfs' => $seasonPerformances,
             'festPerfs' => $festPerformances,
             'placeEventPerfs' => $placeEventPerfs,
+            'partners' => $partners
         ]);
     }
 

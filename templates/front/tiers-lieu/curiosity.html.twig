@@ -67,14 +67,14 @@
 					<div class="col-4">
 						<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
 					</div>
-					<article class="my-5 col-6">
+					<article class="h-100 col-6">
 						{% if section.title %}
 							<h3 class="colored">{{ section.title }}</h3>
 						{% endif %}
 						{% if section.subTitle %}
 							<h4>{{ section.subTitle }}</h4>
 						{% endif %}
-						<p>{{ section.content|raw}}</p>
+						<p class="text-justify">{{ section.content|raw}}</p>
 					</article>
 				</div>
 			{% endif %}

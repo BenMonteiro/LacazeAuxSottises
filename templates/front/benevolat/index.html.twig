@@ -1,0 +1,48 @@
+{% extends "front_base.html.twig" %}
+
+{% block title %}
+	{{ page.pageSlug }}
+{% endblock %}
+
+{% block body %}
+	{% for section in sections %}
+		{% if section.name == 'intro' %}
+			<div class="offset-1 col-10 mb-5">
+				{% if section.title %}
+					<h3>{{ section.title }}</h3>
+				{% endif %}
+				{% if section.subTitle %}
+					<h4>{{ section.subTitle }}</h4>
+				{% endif %}
+				<p class="text-center">{{ section.content|raw }}</p>
+			</div>
+		{% endif %}
+	{% endfor %}
+
+	<div class="d-flex justify-content-center">
+		<h2 class="text-center mb-3 px-2">Être Bénévole</h2>
+	</div>
+	<div>
+		<hr class="redline titleBar">
+	</div>
+	<div class="offset-1 col-10 mb-3">
+		{% for section in sections %}
+			{% if section.name == 'être bénévole' %}
+				<article class="mr-2 mt-5">
+					<div class="d-flex align-items-center mb-3">
+						{% if section.image.name %}
+							<img class="col-3 mr-3 img-thumbnail p-1" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+						{% endif %}
+						{% if section.title %}
+							<h3 class=" h-100 colored">{{ section.title }}</h3>
+						{% endif %}
+					</div>
+					{% if section.subTitle %}
+						<h4>{{ section.subTitle }}</h4>
+					{% endif %}
+					{{ section.content|raw }}
+				</article>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}

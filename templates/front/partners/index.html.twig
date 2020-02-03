@@ -1,0 +1,80 @@
+{% extends "front_base.html.twig" %}
+
+{% block title %}
+	{{ page.pageSlug }}
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		{% for section in sections %}
+			{% if section.name == 'intro' %}
+				<article class="text-center my-5 col-12">
+					{% if section.title %}
+						<h3 class="colored">{{ section.title }}</h3>
+					{% endif %}
+					{% if section.subTitle %}
+						<h4>{{ section.subTitle }}</h4>
+					{% endif %}
+					<p>{{ section.content|raw }}</p>
+				</article>
+			{% endif %}
+		{% endfor %}
+
+		<div id="partnersLogos" class="d-flex flex-wrap justify-content-around offset-1 col-10 mb-4">
+			{% for partner in partners %}
+				<div class="mb-2 mr-2">
+					<img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}">
+				</div>
+			{% endfor %}
+		</div>
+		<div class="d-flex justify-content-center">
+			<h2 class="text-center mb-3 px-2">Nos Producteurs, Nos Distributeurs</h2>
+		</div>
+		<div>
+			<hr class="redline titleBar">
+		</div>
+		<p class="offset-1 col-10">
+			{% for partner in partners %}
+				{% if partner.type == "prod_dist" %}
+					{% if loop.last %}
+						{{ partner.name}}
+					{% else %}
+						{{ partner.name~' /'}}
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		</p>
+
+		<div class="d-flex justify-content-center">
+			<h2 class="text-center mb-3 px-2">Les Partenaires</h2>
+		</div>
+		<div>
+			<hr class="redline titleBar">
+		</div>
+		<p class="offset-1 col-10">
+			{% for partner in partners %}
+				{% if partner.type == "partners" %}
+					{% if loop.last %}
+						{{ partner.name}}
+					{% else %}
+						{{ partner.name~' /'}}
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		</p>
+
+		{% for section in sections %}
+			{% if section.name == 'soutient' %}
+				<article class="p-0 my-5 col-12">
+					<div class="d-flex justify-content-center">
+						<h2 class="text-center mb-3 px-2">{{section.title}}</h2>
+					</div>
+					<div>
+						<hr class="redline partnerBar">
+					</div>
+					<div class="text-justify pl-3">{{ section.content|raw }}</div>
+				</article>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}
