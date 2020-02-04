@@ -36,6 +36,10 @@ h3 {
     text-align: inherit;
 }
 
+.bg-colored {
+    background-color: #DA291C;
+}
+
 .colored {
     color: #DA291C
 }
@@ -106,32 +110,27 @@ hr.redline {
     color: #DA291C;
 }
 
-#coopLeftArticle {
+
+.framedArticle {
     padding: 30px;
-    border: dotted 2px;
+    border: 2px;
     border-radius: 20px;
 }
 
-#coopRightArticle {
-    padding: 30px;
-    border: dotted 2px #DA291C;
-    border-radius: 20px;
+#leftArticle {
+    border: dotted
 }
 
-#coopBottomArticle {
-    padding: 30px;
-    border: solid 2px;
-    border-radius: 20px;
+#rightArticle {
+    border: dotted #DA291C;
 }
 
-#coopLastArticle {
-    padding: 30px;
-    border: dashed 2px;
-    border-radius: 20px;
+#bottomArticle {
+    border: solid
 }
 
-#projectContainer {
-    border-radius: 20px;
+#lastArticle {
+    border: dashed
 }
 
 .red-dot-borders {

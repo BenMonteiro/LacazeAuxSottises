@@ -5,19 +5,8 @@
 {% endblock %}
 
 {% block body %}
-	{% for section in sections %}
-		{% if section.name == 'intro' %}
-			<div class="offset-1 col-10 mb-5">
-				{% if section.title %}
-					<h3>{{ section.title }}</h3>
-				{% endif %}
-				{% if section.subTitle %}
-					<h4>{{ section.subTitle }}</h4>
-				{% endif %}
-				<p>{{ section.content|raw }}</p>
-			</div>
-		{% endif %}
-	{% endfor %}
+
+	{% include('/front/_intro_section_template.html.twig') %}
 
 	<div class="d-flex col-12 flex-wrap align-items-center justify-content-around ">
 		{% for section in sections %}
@@ -37,14 +26,14 @@
 
 	{% for section in sections %}
 		{% if section.name == 'RDV' %}
-			<article id="coopBottomArticle" class="offset-4 col-4 my-5 text-center">
+			<article id="bottomArticle" class=" offset-1 col-10 bg-colored py-3 my-5 text-center text-white border rounded">
 				{% if section.title %}
 					<h3>{{ section.title }}</h3>
 				{% endif %}
 				{% if section.subTitle %}
 					<h4>{{ section.subTitle }}</h4>
 				{% endif %}
-				<div>{{ section.content|raw }}</div>
+				<div class="text-white">{{ section.content|raw }}</div>
 			</article>
 		{% endif %}
 	{% endfor %}

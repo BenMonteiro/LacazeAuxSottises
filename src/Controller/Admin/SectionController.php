@@ -46,7 +46,10 @@ class SectionController extends AdminController
             );
 
             if (isset($_GET['page_id'])) {
-                return $this->redirectToRoute('page_list_show', ['id' => $_GET['page_id']]);
+                return $this->redirectToRoute(
+                    'page_list_show',
+                    ['id' => $_GET['page_id']]
+                );
             }
             return $this->redirectToRoute('section_index');
         }
@@ -84,7 +87,10 @@ class SectionController extends AdminController
             );
 
             if (isset($_GET['page_id'])) {
-                return $this->redirectToRoute('page_list_show', ['id' => $_GET['page_id']]);
+                return $this->redirectToRoute(
+                    'page_list_show',
+                    ['id' => $_GET['page_id']]
+                );
             }
             return $this->redirectToRoute('section_index');
         }
@@ -112,7 +118,10 @@ class SectionController extends AdminController
         }
 
         if (isset($_GET['page_id'])) {
-            return $this->redirectToRoute('page_list_show', ['id' => $_GET['page_id']]);
+            return $this->redirectToRoute(
+                'page_list_show',
+                ['id' => $_GET['page_id']]
+            );
         }
         return $this->redirectToRoute('section_index');
     }

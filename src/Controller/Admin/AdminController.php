@@ -22,8 +22,11 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/dashboard", name="admin_dashboard", methods={"GET"})
      */
-    public function dashboard(CompanyRepository $companyRepository, TeamRepository $teamRepository, EventRepository $eventRepository): Response
-    {
+    public function dashboard(
+        CompanyRepository $companyRepository,
+        TeamRepository $teamRepository,
+        EventRepository $eventRepository
+    ): Response {
         return $this->render('admin/dashboard.html.twig', [
             'companyNb' => $companyRepository->count([]),
             'companyInDiffusionNb' => $companyRepository->count(['isInDiffusion' => 1]),

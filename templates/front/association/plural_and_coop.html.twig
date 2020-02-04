@@ -5,32 +5,18 @@
 {% endblock %}
 
 {% block body %}
-	{% for section in sections %}
-		{% if section.name == 'intro' %}
-			<div class="offset-1 col-10 mb-5">
-				{% if section.title %}
-					<h3>{{ section.title }}</h3>
-				{% endif %}
-				{% if section.subTitle %}
-					<h4>{{ section.subTitle }}</h4>
-				{% endif %}
-				<p>{{ section.content|raw }}</p>
-			</div>
-		{% endif %}
-	{% endfor %}
+	{% include('/front/_intro_section_template.html.twig') %}
 
 	{% set bg = '' %}
-	{% for section in sections %}
-		{% if section.name == 'encart haut' %}
-			{% set bg = 'bg-light' %}
-		{% endif %}
-	{% endfor %}
-	<div id="projectContainer" class="offset-1 col-10 {{bg}} py-3 mb-3">
+	{% if page.name == 'plural-projects' %}
+		{% set bg = 'bg-light' %}
+	{% endif %}
+	<div class="offset-1 col-10 {{ bg }} py-3 mb-3">
 		{% for section in sections %}
-			{% if section.name == 'encart haut' %}
-				<article class="col-12 mr-2 text-center">
+			{% if section.name == 'top' %}
+				<article class="col-12 text-center">
 					{% if section.title %}
-						<h1 class=" colored">{{ section.title }}</h1>
+						<h3 class="colored">{{ section.title }}</h3>
 					{% endif %}
 					{% if section.subTitle %}
 						<h5>{{ section.subTitle }}</h5>
@@ -39,10 +25,10 @@
 				</article>
 			{% endif %}
 		{% endfor %}
-		<div class='d-flex mx-2 my-3 align-items-center justify-content-around'>
+		<div class='d-flex my-3 align-items-center justify-content-around'>
 			{% for section in sections %}
-				{% if section.name == 'encart gauche' %}
-					<article id="coopLeftArticle" class="col-6 mr-2">
+				{% if section.name == 'left' %}
+					<article id="leftArticle" class="framedArticle col-6 mr-2">
 						{% if section.title %}
 							<h3 class="text-center colored">{{ section.title }}</h3>
 						{% endif %}
@@ -53,8 +39,8 @@
 					</article>
 				{% endif %}
 
-				{% if section.name == 'encart droit' %}
-					<article id="coopRightArticle" class="col-6 ml-2">
+				{% if section.name == 'right' %}
+					<article id="rightArticle" class="framedArticle col-6 ml-2">
 						{% if section.title %}
 							<h3 class="text-center colored">{{ section.title }}</h3>
 						{% endif %}
@@ -68,8 +54,8 @@
 		</div>
 
 		{% for section in sections %}
-			{% if section.name == 'encart bas' %}
-				<article id="coopBottomArticle" class="mx-2">
+			{% if section.name == 'bottom' %}
+				<article id="bottomArticle" class="framedArticle offset-1 col-10 mb-3">
 					{% if section.title %}
 						<h3 class="text-center colored">{{ section.title }}</h3>
 					{% endif %}
@@ -79,13 +65,12 @@
 					<p class="text-center">{{ section.content|raw }}</p>
 				</article>
 			{% endif %}
-
 		{% endfor %}
 	</div>
 
 	{% for section in sections %}
 		{% if section.name == 'last' %}
-			<article id="coopLastArticle" class="offset-1 col-10 my-5">
+			<article id="lastArticle" class="framedArticle offset-1 col-10 mb-3">
 				{% if section.title %}
 					<h3>{{ section.title }}</h3>
 				{% endif %}

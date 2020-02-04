@@ -49,9 +49,15 @@ class PerformanceController extends AdminController
             );
 
             if (isset($_GET['company_id'])) {
-                return $this->redirectToRoute('company_show', ['id' => $_GET['company_id']]);
+                return $this->redirectToRoute(
+                    'company_show',
+                    ['id' => $_GET['company_id']]
+                );
             } elseif (isset($_GET['event_id'])) {
-                return $this->redirectToRoute('event_show', ['id' => $_GET['event_id']]);
+                return $this->redirectToRoute(
+                    'event_show',
+                    ['id' => $_GET['event_id']]
+                );
             }
             return $this->redirectToRoute('performance_index');
         }
@@ -87,10 +93,18 @@ class PerformanceController extends AdminController
 
             if (isset($_GET['company_id'])) {
                 $this->companyId = $_GET['company_id'];
-                return $this->redirectToRoute('company_show', ['id' => $this->companyId]);
+
+                return $this->redirectToRoute(
+                    'company_show',
+                    ['id' => $this->companyId]
+                );
             } elseif (isset($_GET['event_id'])) {
                 $this->eventId = $_GET['event_id'];
-                return $this->redirectToRoute('event_show', ['id' => $this->eventId]);
+
+                return $this->redirectToRoute(
+                    'event_show',
+                    ['id' => $this->eventId]
+                );
             }
             return $this->redirectToRoute('performance_index');
         }
@@ -100,6 +114,7 @@ class PerformanceController extends AdminController
         } elseif (isset($_GET['event_id'])) {
             $this->eventId = $_GET['event_id'];
         }
+
         return $this->render('admin/performance/edit.html.twig', [
             'performance' => $performance,
             'form' => $form->createView(),
@@ -126,10 +141,18 @@ class PerformanceController extends AdminController
 
         if (isset($_GET['company_id'])) {
             $this->companyId = $_GET['company_id'];
-            return $this->redirectToRoute('company_show', ['id' => $this->companyId]);
+
+            return $this->redirectToRoute(
+                'company_show',
+                ['id' => $this->companyId]
+            );
         } elseif (isset($_GET['event_id'])) {
             $this->eventId = $_GET['event_id'];
-            return $this->redirectToRoute('event_show', ['id' => $this->eventId]);
+
+            return $this->redirectToRoute(
+                'event_show',
+                ['id' => $this->eventId]
+            );
         }
         return $this->redirectToRoute('performance_index');
     }

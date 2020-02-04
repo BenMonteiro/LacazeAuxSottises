@@ -20,8 +20,10 @@ class PageController extends AbstractController
     protected $pages;
     protected $tabs;
 
-    public function __construct(FrontPageRepository $frontPageRepository, FrontTabRepository $frontTabRepository)
-    {
+    public function __construct(
+        FrontPageRepository $frontPageRepository,
+        FrontTabRepository $frontTabRepository
+    ) {
         $this->pages = $frontPageRepository->findAll();
         $this->tabs = $frontTabRepository->findAll();
     }

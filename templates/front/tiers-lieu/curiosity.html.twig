@@ -6,19 +6,8 @@
 
 {% block body %}
 	<div class="container-fluid">
-		{% for section in sections %}
-			{% if section.name == 'intro' %}
-				<article class="text-center my-5 col-12">
-					{% if section.title %}
-						<h3 class="colored">{{ section.title }}</h3>
-					{% endif %}
-					{% if section.subTitle %}
-						<h4>{{ section.subTitle }}</h4>
-					{% endif %}
-					<p>{{ section.content|raw }}</p>
-				</article>
-			{% endif %}
-		{% endfor %}
+
+		{% include('/front/_intro_section_template.html.twig') %}
 
 		<h2 class="mb-3">Tout au long de l'année</h2>
 		{% for section in sections %}

@@ -1,0 +1,13 @@
+{% for section in sections %}
+	{% if section.name == 'intro' %}
+		<div class="offset-1 col-10 mb-5 text-center">
+			{% if section.title %}
+				<h3>{{ section.title }}</h3>
+			{% endif %}
+			{% if section.subTitle %}
+				<h4>{{ section.subTitle }}</h4>
+			{% endif %}
+			<p>{{ section.content|raw }}</p>
+		</div>
+	{% endif %}
+{% endfor %}
