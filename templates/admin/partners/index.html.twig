@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block flashMessage %}
-	<div class="flash-message col-12 text-center bg-white">
+	<div class="index-flash-message col-12 text-center bg-white">
 		{% for label, messages in app.flashes %}
 			{% for message in messages %}
 				<div class="flash-{{ label }}">

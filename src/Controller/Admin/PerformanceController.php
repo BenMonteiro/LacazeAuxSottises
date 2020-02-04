@@ -139,14 +139,14 @@ class PerformanceController extends AdminController
             );
         }
 
-        if (isset($_GET['company_id'])) {
+        if (!empty($_GET['company_id'])) {
             $this->companyId = $_GET['company_id'];
 
             return $this->redirectToRoute(
                 'company_show',
                 ['id' => $this->companyId]
             );
-        } elseif (isset($_GET['event_id'])) {
+        } elseif (!empty($_GET['event_id'])) {
             $this->eventId = $_GET['event_id'];
 
             return $this->redirectToRoute(
