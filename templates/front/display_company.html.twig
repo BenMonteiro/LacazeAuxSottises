@@ -4,8 +4,19 @@
 	{{ company.name}}
 {% endblock %}
 
+
 {% block pageTitle %}
-	{{ company.name}}
+	<div class="pageTitleBar">
+		<div class="d-flex justify-content-center">
+			<p class="mt-3 pageTitle px-2">
+				{{ company.name}}
+			</p>
+		</div>
+		<div id="titleLines">
+			<hr class="blackline">
+			<hr class="redline">
+		</div>
+	</div>
 {% endblock %}
 
 {% block body %}

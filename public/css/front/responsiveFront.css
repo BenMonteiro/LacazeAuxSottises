@@ -32,10 +32,13 @@
 
 @media all and (max-width: 768px) {
     .tab-content {
-        position: relative;
-        top: 357px;
+        top: 455px;
         height: 50px;
         z-index: 3;
+    }
+
+    .tab-pane a {
+        font-size: 0.75em;
     }
 }
 

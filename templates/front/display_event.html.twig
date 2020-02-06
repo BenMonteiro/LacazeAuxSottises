@@ -1,0 +1,81 @@
+{% extends 'front_base.html.twig' %}
+
+{% block title %}
+	{{ event.name }}
+{% endblock %}
+
+{% block pageTitle %}
+	<div class="pageTitleBar">
+		<div class="d-flex justify-content-center">
+			<p class="mt-3 pageTitle px-2">
+				{{ event.name}}
+			</p>
+		</div>
+		<div id="titleLines">
+			<hr class="blackline">
+			<hr class="redline">
+		</div>
+	</div>
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex my-5">
+		<img class="miniImage offset-3 col-5 " src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}">
+		<div class="offset-1 col-2 text-center">
+			{% if event.startingDate != null %}
+				<h4>{{'event.start'|trans({}, 'event')|capitalize}}</h4>
+				<p>{{ event.startingDate ? event.startingDate|format_date('full') : '' }}</p>
+				<h4>{{'event.end'|trans({}, 'event')|capitalize}}</h4>
+				<p>{{ event.endingDate ? event.endingDate|format_date('full') : '' }}</p>
+			{% endif %}
+			{% if event.hours != null %}
+				<h4>{{'event.hours'|trans({}, 'event')|capitalize}}</h4>
+				<p>{{ event.hours }}</p>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="text-center offset-1 col-10">{{ event.description|raw }}</div>
+	<div class="text-center mt-5">
+		<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
+	</div>
+
+	<h2 class="offset-2 my-3 font-weight-bold">
+		{{ 'general.program'|trans({}, 'general')|capitalize}}
+	</h2>
+	<table class="table table-sm offset-2 col-8 text-center">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>{{'perf.companyName'|trans({}, 'perf')|capitalize}}</th>
+				<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
+			</tr>
+		</thead>
+		<tbody class="align-middle">
+			{% for performance in eventPerfs %}
+				<tr>
+					<td>
+						<div class="date-infos h-100 colored">
+							<p class="mb-0 font-weight-bold">{{ performance.date ? performance.date|format_date('full')|capitalize}}</p>
+							<p>{{ performance.date ? performance.date|format_time('short') : '' }}</p>
+						</div>
+					</td>
+					<td>
+						<a class="text-reset" href="{{ path('display_company', {'id': performance.companyNameId})}}">
+							<h4 class=" text-decoration-none font-weight-bold">{{ performance.companyName }}</h4>
+						</a>
+					</td>
+					<td>
+						<p>{{ performance.placeShow }}</p>
+						<p class="font-italic colored">{{ performance.cityShow }}</p>
+					</td>
+
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">{{'general.noRecords'|trans({}, 'general')}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

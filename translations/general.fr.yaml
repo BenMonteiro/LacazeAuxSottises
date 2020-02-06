@@ -24,3 +24,4 @@ general:
     image: image
     theme: theme
     description: description
+    program: Programmation

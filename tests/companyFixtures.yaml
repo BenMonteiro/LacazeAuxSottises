@@ -1,0 +1,7 @@
+company:
+    add: 
+        - 'Jack'
+        - company:
+            - name: 'Jack'
+            - audience: 'Tout Public'
+            - duration: 20

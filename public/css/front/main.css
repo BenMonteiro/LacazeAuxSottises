@@ -138,3 +138,79 @@ hr.redline {
     border-radius: 20px;
     padding: 20px
 }
+
+.card-header {
+    background-color: #DA291C;
+}
+
+
+
+.nav-pills .nav-link.active {
+    color: black !important;
+    background-color: #DA291C;
+}
+
+.nav-pills .nav-link:hover {
+    color: black !important;
+    background-color: #DA291C;
+    border: none !important
+}
+
+.agenda {
+    position: relative;
+    top: 0px;
+    height: 100%;
+}
+
+.agenda>.active {
+    position: relative;
+    display: block;
+    width: 100%;
+    align-items: center;
+    background-color: white;
+    height: 50px;
+    padding: 20px;
+    justify-content: space-around;
+    z-index: 200;
+}
+
+.agenda>.tab-pane a {
+    color: black;
+    margin: 0 20px 0 0;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.agenda>.tab-pane a:hover {
+    color: #DA291C;
+    background-color: unset;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.company-image-div {
+    position: relative;
+    display: flex;
+}
+
+.company-frame {
+    width: 100%;
+    z-index: 3;
+}
+
+.company-image {
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    height: 70%;
+    z-index: 2;
+}
+
+thead {
+    background-color: black;
+    color: #DA291C
+}
+
+.table td {
+    vertical-align: middle;
+}

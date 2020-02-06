@@ -39,12 +39,15 @@ nav>ul {
 }
 
 .tab-content>.active {
+    position: fixed;
+    width: 100%;
     align-items: center;
     background-color: rgba(0, 0, 0, 1);
     height: 50px;
     padding: 20px;
     display: flex;
     justify-content: space-around;
+    z-index: 200;
 }
 
 .tab-pane a {

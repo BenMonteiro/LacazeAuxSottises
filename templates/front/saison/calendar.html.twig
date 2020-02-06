@@ -8,23 +8,57 @@
 
 	{% include('/front/_intro_section_template.html.twig') %}
 
-	<div>
-		<h1>{{'seasonCalendar'|trans({}, 'general')}}</h1>
-		{% set months = ['Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %}
+	<h1>{{'seasonCalendar'|trans({}, 'general')}}</h1>
+
+	<ul class="nav nav-pills mt-5 offset-1 col-10 justify-content-around" id="pills-tab" role="tablist">
 		{% for month in months %}
-			<h2>{{month}}</h2>
-			{% for seasonEvent in seasonEvents %}
-				{% if seasonEvent.starting_date|date('M') == month %}
-					<h3>{{ seasonEvent.starting_date|date('D, d')}}</h3>
-					<h4>{{seasonEvent.name}}</h4>
-				{% endif %}
-				{% for seasonPerf in seasonPerfs %}
-					{% if seasonPerf.date|date('M') == month %}
-						<h3>{{ seasonPerf.date|date('D, d')}}</h3>
-						<h4>{{seasonPerf.companyName}}</h4>
+			{% set show = '' %}
+			{% if month == 'now'|date('M') %}
+				{% set show = 'active show' %}
+			{% endif %}
+			<li class="nav-item">
+				<a class="nav-link {{ show }}" id="pills-{{month}}-tab" data-toggle="pill" href="#pills-{{month}}" role="tab" aria-controls="pills-{{month}}" aria-selected="true">{{month}}</a>
+			</li>
+		{% endfor %}
+	</ul>
+
+	<div class="tab-content agenda mb-3" id="pills-tabContent">
+		{% for month in months %}
+			{% set show = '' %}
+			{% if month == 'now'|date('M') %}
+				{% set show = 'active show' %}
+			{% endif %}
+			<div class="tab-pane fade {{ show }}" id="pills-{{month}}" role="tabpanel" aria-labelledby="pills-{{month}}-tab">
+				<h3 class="offset-2">Événement du mois</h3>
+				{% for seasonEvent in seasonEvents  %}
+					{% if (seasonEvent.starting_date|date('M') == month)%}
+						<a href="{{ path('display_event', {'id': seasonEvent.id}) }}">
+							<div class="text-center my-4">
+								<h3 class="text-decoration-none colored">{{ seasonEvent.starting_date|date('D, d')}}</h3>
+								<h4>{{ seasonEvent.name }}</h4>
+							</div>
+						</a>
 					{% endif %}
 				{% endfor %}
-			{% endfor %}
+				<h3 class="offset-2">Spectacles du mois</h3>
+				{% for seasonPerf in seasonPerfs %}
+					{% if seasonPerf.date|date('M') == month %}
+						<a href="{{ path('display_company', {'id': seasonPerf.companyNameId}) }}">
+							<div class="text-center my-4">
+								<h3 class="text-decoration-none colored">{{ seasonPerf.date|date('D, d')}}
+									-
+									<span class="text-dark font-weight-lighter">{{ seasonPerf.cityShow }}</span>
+								</h3>
+								<h4>{{ seasonPerf.companyName }}</h4>
+								<p class="colored font-italic">{{ seasonPerf.companyName.showTitle}}
+									-
+									<span>{{ seasonPerf.companyName.duration}}min</span>
+								</p>
+							</div>
+						</a>
+					{% endif %}
+				{% endfor %}
+			</div>
 		{% endfor %}
 	</div>
 {% endblock %}

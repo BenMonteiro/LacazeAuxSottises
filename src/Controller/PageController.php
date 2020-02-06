@@ -7,6 +7,7 @@ use App\Repository\FrontPageRepository;
 use App\Repository\FrontTabRepository;
 use App\Repository\SectionRepository;
 use App\Repository\EventRepository;
+use App\Entity\Event;
 use App\Repository\PerformanceRepository;
 use App\Repository\CompanyRepository;
 use App\Entity\Company;
@@ -95,6 +96,21 @@ class PageController extends AbstractController
             'pages' => $this->pages,
             'tabs' => $this->tabs,
             'company' => $company,
+        ]);
+    }
+
+    /**
+     * @Route("event/{id<\d+>}", name="display_event", methods={"GET"})
+     */
+    public function displayEventCard(Event $event, PerformanceRepository $performanceRepository): Response
+    {
+        $eventPerfs = $performanceRepository->findBy(['event' => $event], ['date' => 'ASC']);
+
+        return $this->render('front/display_event.html.twig', [
+            'pages' => $this->pages,
+            'tabs' => $this->tabs,
+            'event' => $event,
+            'eventPerfs' => $eventPerfs
         ]);
     }
 }
