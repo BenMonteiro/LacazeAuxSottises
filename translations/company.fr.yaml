@@ -8,9 +8,10 @@ company:
     performances: représentations de la compagnie
     site: aller vers le site de la compagnie
     video: voir la vidéo
+    inResidence: en résidence du 
     isIn:
-        creation: en création
-        diffusion: en diffusion
+        residence?: en résidence ?
+        residence: sortie de résidence
     show:
         theme: thème
         title: titre du spectacle

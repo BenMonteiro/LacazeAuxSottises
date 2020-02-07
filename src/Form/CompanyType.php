@@ -29,9 +29,10 @@ class CompanyType extends AbstractType
             ->add('theme')
             ->add('duration')
             ->add('audience')
+            ->add('isInResidence')
+            ->add('inResidenceFrom')
+            ->add('inResidenceUntil')
             ->add('moreInfos')
-            ->add('isInDiffusion')
-            ->add('isInCreation')
             ->add('website')
             ->add('videoLink')
             ->add('performances', CollectionType::class, [

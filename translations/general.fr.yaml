@@ -1,7 +1,11 @@
 Save: Enregistrer
 Update: Mettre à jour
 seasonCalendar: Calendrier de la saison
+from: du 
+to: au
 general:
+    from: du 
+    to: au
     create: ajouter
     delete: supprimer
     show: voir

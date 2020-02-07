@@ -62,16 +62,6 @@ class Company
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isInDiffusion;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isInCreation;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url
      */
@@ -114,6 +104,21 @@ class Company
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $showTitle;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isInResidence;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $inResidenceFrom;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $inResidenceUntil;
 
     public function __construct()
     {
@@ -183,30 +188,6 @@ class Company
     public function getImage(): ?EmbeddedFile
     {
         return $this->image;
-    }
-
-    public function getIsInDiffusion(): ?bool
-    {
-        return $this->isInDiffusion;
-    }
-
-    public function setIsInDiffusion(bool $isInDiffusion): self
-    {
-        $this->isInDiffusion = $isInDiffusion;
-
-        return $this;
-    }
-
-    public function getIsInCreation(): ?bool
-    {
-        return $this->isInCreation;
-    }
-
-    public function setIsInCreation(bool $isInCreation): self
-    {
-        $this->isInCreation = $isInCreation;
-
-        return $this;
     }
 
     public function getWebsite(): ?string
@@ -323,6 +304,42 @@ class Company
     public function setShowTitle(?string $showTitle): self
     {
         $this->showTitle = $showTitle;
+
+        return $this;
+    }
+
+    public function getIsInResidence(): ?bool
+    {
+        return $this->isInResidence;
+    }
+
+    public function setIsInResidence(bool $isInResidence): self
+    {
+        $this->isInResidence = $isInResidence;
+
+        return $this;
+    }
+
+    public function getInResidenceFrom(): ?\DateTimeInterface
+    {
+        return $this->inResidenceFrom;
+    }
+
+    public function setInResidenceFrom(?\DateTimeInterface $inResidenceFrom): self
+    {
+        $this->inResidenceFrom = $inResidenceFrom;
+
+        return $this;
+    }
+
+    public function getInResidenceUntil(): ?\DateTimeInterface
+    {
+        return $this->inResidenceUntil;
+    }
+
+    public function setInResidenceUntil(?\DateTimeInterface $inResidenceUntil): self
+    {
+        $this->inResidenceUntil = $inResidenceUntil;
 
         return $this;
     }
