@@ -124,6 +124,20 @@ thead {
     padding: 0.8rem 0.3rem;
 }
 
+.press-index {
+    position: relative;
+    top: 300px;
+}
+
+.fileImageContainer {
+    height: 110px;
+}
+
+.fileImage {
+    width: 100px;
+    height: 100px
+}
+
 .admin-dashboard .stat {
     font-size: 3em;
     font-weight: bold;

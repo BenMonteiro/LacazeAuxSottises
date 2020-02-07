@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{'press.index'|trans({}, 'press')|title}}
+{% endblock %}
+
+{% block flashMessage %}
+	<div class="index-flash-message col-12 text-center bg-white">
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="flash-{{ label }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+{% endblock %}
+
+{% block body %}
+	<div id="adminPageTitle">
+		<h1>
+			{{'press.index'|trans({}, 'press')|title}}
+		</h1>
+	</div>
+
+	<div class="press-index">
+		{% if is_granted('ROLE_ADMIN') %}
+			<a class=" offset-1" href="{{ path('press_document_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+		{% endif %}
+
+		<div class="d-flex offset-1 mt-5 text-center">
+			{% for press_document in press_documents %}
+				<div class="d-flex flex-column justify-content-between col-2">
+					<div class="fileImageContainer">
+						{% if press_document.fileType == 'file' %}
+							<img class="fileImage" src="{{ asset('images/icone-dossier.png') }}">
+						{% else %}
+							<img class="fileImage img-thumbnail" src="{{ asset('images/uploads/pressDocs/' ~ press_document.document.name) }}">
+						{% endif %}
+					</div>
+					<p class="text-break">{{ press_document.name }}</p>
+					<a class="text-break" href="{{ asset('images/uploads/pressDocs/' ~ press_document.document.name) }}" download>{{press_document.document.name}}</a>
+					{% if is_granted('ROLE_ADMIN') %}
+						{{ include('admin/press_document/_delete_form.html.twig') }}
+					{% endif %}
+				</div>
+			{% else %}
+				<p colspan="8">no records found</p>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

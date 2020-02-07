@@ -50,7 +50,7 @@
 					<td>{{ event.hours }}</td>
 					<td><img class="miniImage" src="{{ asset('images/uploads/eventProgram/' ~ event.programImage.name) }}"></td>
 					<td>
-						<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}">Programme du festival</a>
+						<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}">{{event.programPDF.name}}</a>
 					</td>
 					<td>
 						<a class="badge badge-secondary my-2 p-2" href="{{ path('event_show', {'id': event.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
