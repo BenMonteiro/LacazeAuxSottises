@@ -29,3 +29,9 @@ general:
     theme: theme
     description: description
     program: Programmation
+    highlights: actus du mois 
+    events: événements
+    perfs: spectacles
+    seasonDoc: plaquette
+    downloadDoc: télécharger la plaquette
+    focusOn: zoom sur 

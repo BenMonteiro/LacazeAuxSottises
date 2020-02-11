@@ -98,9 +98,12 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         $rolesTab = array_map(function ($role) {
             return $role->getRole();
         }, $roles);
+
         if (in_array('ROLE_ADMIN', $rolesTab, true)) {
+
             return new RedirectResponse($this->urlGenerator->generate('admin_dashboard'));
         } elseif (in_array('ROLE_USER', $rolesTab, true) && !in_array('ROLE_ADMIN', $rolesTab, true)) {
+
             return new RedirectResponse($this->urlGenerator->generate('press_document_index'));
         }
     }

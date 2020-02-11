@@ -22,6 +22,20 @@
 {% block body %}
 	<div class="col-12 d-flex">
 		<aside class="col-2 my-5 border-right border-danger">
+			{% if company.isInResidence %}
+				<div>
+					<h4>{{ 'company.status'|trans({}, 'company')|capitalize}}</h4>
+					<p class="ml-3 colored font-italic">
+						{{ 'company.isIn.residence'|trans({}, 'company')|capitalize }}
+					</p>
+				</div>
+				<p>
+					{{ 'company.inResidence'|trans({}, 'company')|capitalize}}
+					{{ company.inResidenceFrom ? company.inResidenceFrom|format_date('medium') : '' }}
+					<br>
+					{{ 'general.to'|trans({}, 'general')|capitalize}}
+					{{ company.inResidenceUntil ? company.inResidenceUntil|format_date('medium'): '' }}</p>
+			{% endif %}
 			<div>
 				<h4>{{ 'company.show.title'|trans({}, 'company')|capitalize }}
 					:
@@ -49,27 +63,6 @@
 					:</h4>
 				<p class="ml-3">{{ company.moreInfos|raw }}</p>
 			</div>
-			{% if company.isInDiffusion != 0 or company.isInCreation != 0 %}
-				<div>
-					<h4>{{ 'company.status'|trans({}, 'company')|capitalize}}</h4>
-
-					{% if company.isInDiffusion == 1 and company.isInCreation == 0 %}
-						<p class="ml-3">
-							{{ 'company.isIn.diffusion'|trans({}, 'company')|capitalize }}</p>
-
-					{% elseif  company.isInDiffusion == 0 and company.isInCreation == 1 %}
-						<p class="ml-3">
-							{{ 'company.isIn.creation'|trans({}, 'company')|capitalize }}</p>
-
-					{% elseif  company.isInDiffusion == 1 and company.isInCreation == 1 %}
-						<p class="ml-3">
-							{{ 'company.isIn.creation'|trans({}, 'company')|capitalize }}
-							/
-							{{ 'company.isIn.diffusion'|trans({}, 'company')|capitalize }}
-						</p>
-					{% endif %}
-				</div>
-			{% endif %}
 			{% if company.website != null %}
 				<div>
 					<h4>{{'general.website'|trans({}, 'general')|capitalize}}

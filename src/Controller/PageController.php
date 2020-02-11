@@ -65,6 +65,8 @@ class PageController extends AbstractController
 
         $template = (empty($pageTemplate)) ? $defaultTemplate : 'front/' . $pageFolder . '/' . $pageTemplate . '.html.twig';
 
+        $homeEvents = ($frontPage->getPageSlug() === 'home') ? $eventRepository->findBy(['isHighlight' => true], ['startingDate' => 'ASC']) : null;
+        $homePerfs = ($frontPage->getPageSlug() === 'home') ? $performanceRepository->findBy(['isHighlight' => true], ['date' => 'ASC']) : null;
         $seasonEvents = ($frontPage->getPageSlug() === 'saison/calendrier') ? $eventRepository->findSeasonEvents() : null;
         $seasonPerformances = ($frontPage->getPageSlug() === 'saison/calendrier') ? $performanceRepository->findBy(['event' => 29], ['date' => 'ASC']) : null;
         $festPerformances = ($frontPage->getPageSlug() === 'festival/calendrier') ? $performanceRepository->findBy(['event' => 'festival'], ['date' => 'ASC']) : null;
@@ -78,11 +80,14 @@ class PageController extends AbstractController
             'tabs' => $this->tabs,
             'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
             'companies' => $companyRepository->findBy([], ['name' => 'ASC']),
+            'season' => $eventRepository->find(29),
             'seasonEvents' => $seasonEvents,
             'seasonPerfs' => $seasonPerformances,
             'festPerfs' => $festPerformances,
             'placeEventPerfs' => $placeEventPerfs,
-            'partners' => $partners
+            'partners' => $partners,
+            'homeEvents' => $homeEvents,
+            'homePerfs' => $homePerfs
         ]);
     }
 

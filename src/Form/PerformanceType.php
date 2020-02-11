@@ -7,6 +7,7 @@ use App\Entity\Company;
 use App\Entity\Event;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -33,6 +34,10 @@ class PerformanceType extends AbstractType
             ->add('cityShow')
             ->add('placeShow')
             ->add('date')
+            ->add('price', MoneyType::class, [
+                'required' => false
+            ])
+            ->add('isHighlight')
             ->add('event', EntityType::class, [
                 'class' => Event::class,
                 'choice_attr' => function ($choice, $key, $value) {

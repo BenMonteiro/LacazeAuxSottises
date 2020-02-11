@@ -44,6 +44,10 @@ h3 {
     color: #DA291C
 }
 
+.border-colored {
+    border: solid 3px #DA291C
+}
+
 .assoIntroImage {
     border-radius: 10px;
     width: 400px;
@@ -102,12 +106,31 @@ div>hr.titleBar {
     left: 2.5%
 }
 
+div>hr.miniTitleBar {
+    position: relative;
+    bottom: 30px;
+    z-index: 1;
+    width: 80%;
+    left: 10%
+}
+
 hr.blackline {
     color: black
 }
 
 hr.redline {
     color: #DA291C;
+}
+
+
+.highlight-card {
+    width: 15%;
+    height: 250px;
+}
+
+
+.highlight-card>img {
+    height: 55%;
 }
 
 

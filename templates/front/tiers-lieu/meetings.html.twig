@@ -45,7 +45,7 @@
 									<img class="miniImage img-thumbnail rounded" src="{{ asset('images/uploads/company/' ~ placeEventPerf.companyName.image.name) }}">
 
 									<div class="flex-column col-2">
-										<p>{{ placeEventPerf.date|date('D, d-M') }}</p>
+										<p>{{ placeEventPerf.date|format_date(pattern='EEEE dd MMMM')|capitalize }}</p>
 										<p>
 											Prix libre
 										</p>

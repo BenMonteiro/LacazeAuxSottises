@@ -40,7 +40,7 @@ class EventRepository extends ServiceEntityRepository
 
         $sql = 'SELECT * 
         FROM event
-        WHERE starting_date > NOW()
+        WHERE starting_date  IS NOT NULL
         ORDER BY starting_date ASC
             ';
 

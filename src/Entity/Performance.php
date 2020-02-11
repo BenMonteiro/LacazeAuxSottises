@@ -48,6 +48,16 @@ class Performance
      */
     private $event;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isHighlight;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -128,5 +138,29 @@ class Performance
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getIsHighlight(): ?bool
+    {
+        return $this->isHighlight;
+    }
+
+    public function setIsHighlight(bool $isHighlight): self
+    {
+        $this->isHighlight = $isHighlight;
+
+        return $this;
     }
 }

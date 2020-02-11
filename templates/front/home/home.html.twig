@@ -1,0 +1,84 @@
+{% extends 'front_base.html.twig' %}
+
+{% block title %}
+	{{ 'general.home'|trans({}, 'general')|title }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="container-fluid">
+		<h1>{{'general.highlights'|trans({}, 'general')|capitalize}}</h1>
+		{% if homeEvents %}
+			<h3 class="my-3 colored ml-5">{{'general.events'|trans({}, 'general')|capitalize}}</h3>
+			<div class="row justify-content-around">
+				{% for event in homeEvents %}
+					{% if event.startingDate|date('M') == 'Mar'|date('M') %}
+						<div class="highlight-card card px-0 border border-danger">
+							<img src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name)}}" class="card-img-top" alt="...">
+							<div class="d-flex flex-column justify-content-center card-body py-0">
+								<p class="text-decoration-none text-muted my-1">
+									{{event.startingDate|format_date('full')|capitalize}}
+									-
+									{{event.place}}
+								</p>
+								<h5 class="card-title">{{event.name}}</h5>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		{% endif %}
+		{% if homePerfs %}
+			<h3 class="my-3 colored ml-5">{{'general.perfs'|trans({}, 'general')|capitalize}}</h3>
+			<div class="row justify-content-around mb-3">
+				{% for perf in homePerfs %}
+					{% if perf.date|date('M') == 'Mar'|date('M') %}
+						<div class=" highlight-card card px-0 border border-danger">
+							<img src="{{asset('images/uploads/company/' ~ perf.companyName.image.name)}}" class="card-img-top" alt="...">
+							<div class="card-body d-flex flex-column justify-content-center py-0">
+								<p class="text-decoration-none text-muted text-small my-1">
+									{{perf.date|format_date('full')|capitalize}}
+									-
+									{{perf.cityShow}}
+								</p>
+								{% if perf.event != 'saison' %}
+									<h5 class="card-title m-1">{{perf.event}}</h5>
+								{% else %}
+									<h5 class="card-title m-1">{{perf.companyName}}</h5>
+								{% endif %}
+								<p class="card-text">
+									<small>{{perf.companyName.showTitle}}</small>
+								</p>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+
+	<div class=" container-fluid d-flex justify-content-around my-3">
+		<div class="col-4">
+			<h3>{{'general.seasonDoc'|trans({}, 'general')|capitalize}}
+				{{ 'now'|date('Y')}}
+			</h3>
+			<img class="d-block w-75 mb-3 border-colored p-2" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}">
+			<a href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}">{{'general.downloadDoc'|trans({}, 'general')|capitalize}}</a>
+		</div>
+		<div class="col-6">
+			<h3 class="text-center">{{'general.focusOn'|trans({}, 'general')|capitalize}}
+			</h3>
+			{% for section in sections %}
+				<div class="d-flex justify-content-around">
+					{% if section.image.name %}
+						<img class="col-3" src="{{asset('images/uploads/paragraphImage/' ~ section.image.name)}}">
+					{% endif %}
+					<div class="col-8">
+						<h5 class="colored">{{ section.title }}</h5>
+						<p>{{ section.content|raw }}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

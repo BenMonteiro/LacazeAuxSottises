@@ -101,6 +101,16 @@ class Event
      */
     private $performances;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $place;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isHighlight;
+
     public function __construct()
     {
         $this->programPDF = new EmbeddedFile();
@@ -273,6 +283,30 @@ class Event
                 $performance->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPlace(): ?string
+    {
+        return $this->place;
+    }
+
+    public function setPlace(?string $place): self
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    public function getIsHighlight(): ?bool
+    {
+        return $this->isHighlight;
+    }
+
+    public function setIsHighlight(bool $isHighlight): self
+    {
+        $this->isHighlight = $isHighlight;
 
         return $this;
     }

@@ -16,9 +16,11 @@ class EventType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('place')
             ->add('startingDate')
             ->add('endingDate')
             ->add('hours')
+            ->add('isHighlight')
             ->add('programPDFFile', VichFileType::class, [
                 'label' => 'Programme (format PDF)',
                 'required' => false,

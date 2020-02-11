@@ -9,6 +9,7 @@ event:
     program: programmation
     name: événement
     performances: représentations de l'événement
+    highlight: actu du mois ?
     prog:
         PDF: programmation au format PDF
         image: image de couverture du programme
