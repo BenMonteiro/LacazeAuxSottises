@@ -8,8 +8,8 @@ App\Entity\Company:
         audience: "<sentence(3, true)>"
         moreInfos: "<sentence(15, true)>"
         isHosted: "<boolean(50)>"
-        isHosedFrom: <dateTimeBetween("now", "+ 300 days")>
-        isHostedUntil: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
+        isHostedFrom: <dateTimeBetween("now", "+ 300 days")>
+        isHostedUntil: '<dateTimeBetween($isHostedFrom, $isHostedFrom "+ 2 days ")>'
         website: "<domainName()>"
         videoLink: "<domainName()>"
 
@@ -26,6 +26,19 @@ App\Entity\Event:
         endingDate: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
         place: "<city()>"
         isHighlight: "<boolean(50)>"
+    event_season:
+        name: "saison"
+        description: "<paragraph(3, true)>"
+        isHighlight: false
+    event_fest:
+        name: "festival"
+        startingDate: '<dateTimeBetween("now", "+ 300 days")>'
+        endingDate: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
+        place: "<city()>"
+        isHighlight: true
+    event_soirées:
+        name: "soirées du tiers-lieu"
+        isHighlight: false
 
 App\Entity\Team:
     team{1..15}:
@@ -39,7 +52,7 @@ App\Entity\Performance:
         companyName: "@company*"
         cityShow: "<city()>"
         placeShow: "<streetAddress()>"
-        date: '<dateTimeBetween("-200 days", "now")>'
+        date: '<dateTimeBetween("now", "+ 200 days")>'
         price: '<randomFloat(2, 0, 50)>'
         event: "@event*"
         isHighlight: "<boolean(50)>"
@@ -49,139 +62,245 @@ App\Entity\FrontTab:
         name: "<current()>"
 
 App\Entity\FrontPage:
-    home:
+    page_home:
         tab: "@tab_home"
         name: "home"
-        pageSlug: $tab/$name
+        pageSlug: 'home'
         template: 'home'
-    asso:
+    page_asso:
         tab: "@tab_association"
         name: "asso"
         pageSlug: $tab/$name
-    projet-pluriels:
+    page_projet-pluriels:
         tab: "@tab_association"
         name: "plural-projects"
         pageSlug: $tab/$name
         template: 'plural_and_coop'
-    coop:
+    page_coop:
         tab: "@tab_association"
         name: "coop"
         pageSlug: $tab/$name
         template: 'plural_and_coop'
-    team:
+    page_team:
         tab: "@tab_association"
         name: "team"
         pageSlug: $tab/$name
         template: 'equipe_adhesion'
-    subscription:
+    page_subscription:
         tab: "@tab_association"
         name: "subscription"
         pageSlug: $tab/$name
         template: 'equipe_adhesion'
-    intro_saison:
+    page_intro_saison:
         tab: "@tab_season"
         name: "presentation"
         pageSlug: $tab/$name
-    prog_saison:
+    page_prog_saison:
         tab: "@tab_season"
         name: "prog"
-        pageSlug: $tab/$name
+        pageSlug: 'saison/calendrier'
         template: 'calendar'
-    host_saison:
+    page_host_saison:
         tab: "@tab_season"
         name: "hostedCompanies"
         pageSlug: $tab/$name
         template: 'companies'
-    area_project:
+    page_area_project:
         tab: "@tab_season"
         name: "area-project"
         pageSlug: $tab/$name
-    cultural_saison:
+    page_cultural_saison:
         tab: "@tab_season"
         name: "cultural-actions"
         pageSlug: $tab/$name
         template: 'cultural_actions'
-    intro_fest:
+    page_intro_fest:
+        tab: "@tab_festival"
+        name: "presentation"
+        pageSlug: $tab/$name
+    page_prog_fest:
         tab: "@tab_festival"
         name: "prog"
-        pageSlug: $tab/$name
+        pageSlug: 'festival/calendrier'
         template: 'calendar'
-    prog_fest:
+    page_host_fest:
         tab: "@tab_festival"
-        name: "calendar"
+        name: "hostedCompanies"
         pageSlug: $tab/$name
-    host_fest:
+    page_meeting_fest:
         tab: "@tab_festival"
-        name: "cies-accueillies"
+        name: "pro-meeting"
         pageSlug: $tab/$name
-    meeting_fest:
+    page_art_fest:
         tab: "@tab_festival"
-        name: "rencontres-pro"
+        name: "arts-etc"
         pageSlug: $tab/$name
-    art_fest:
+    page_cultural_fest:
         tab: "@tab_festival"
-        name: "aux-arts-etc"
+        name: "cultural-actions"
         pageSlug: $tab/$name
-    cultural_fest:
+    page_infos_fest:
         tab: "@tab_festival"
-        name: "actions-culturelles"
+        name: "infos"
         pageSlug: $tab/$name
-    infos_fest:
-        tab: "@tab_festival"
-        name: "infos-pratiques"
-        pageSlug: $tab/$name
-    intro_place:
+    page_intro_place:
         tab: "@tab_third-location"
         name: "presentation"
         pageSlug: $tab/$name
-    spaces_place:
+    page_spaces_place:
         tab: "@tab_third-location"
         name: "shared-spaces"
         pageSlug: $tab/$name
         template: 'shared_spaces'
-    meeting_place:
+    page_meeting_place:
         tab: "@tab_third-location"
         name: "meetings"
-        pageSlug: $tab/$name
+        pageSlug: 'tiers-lieu/les-rendez-vous'
         template: 'meetings'
-    curiosity_place:
+    page_curiosity_place:
         tab: "@tab_third-location"
         name: "curiosity"
         pageSlug: $tab/$name
         template: 'curiosity'
-    volunteering:
+    page_volunteering:
         tab: "@tab_volunteering"
         name: "volunteering"
         pageSlug: $tab/$name
         template: 'index'
-    partners:
+    page_partners:
         tab: "@tab_partners"
         name: "partners"
-        pageSlug: $tab/$name
+        pageSlug: 'partenaires/partenaires'
         template: 'index'
-    support:
+    page_support:
         tab: "@tab_support"
         name: "support"
         pageSlug: $tab/$name
-    contact:
+    page_contact:
         tab: "@tab_contact"
         name: "contact"
         pageSlug: $tab/$name
 
 App\Entity\Section:
-    section{1..100}:
+    section{1..120}:
         name: "<sentence(4, true)>"
         title: "<sentence(3, true)>"
         subTitle: "<sentence(3, true)>"
         appearanceOrder: "<randomDigit()>"
         content: "<paragraph(3, true)>"
         belongToPage: "@page*"
-
-App\Entity\User:
-    user:
-        username: 'test'
-        password: 'test2020'
-        roles: 'ROLE_ADMIN'
+    section_top:
+        name: "top"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_coop"
+    section_left:
+        name: "left"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_coop"
+    section_right:
+        name: "right"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_coop"
+    section_bottom:
+        name: "bottom"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_coop"
+    section_last:
+        name: "last"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_coop"
+    project_section_top:
+        name: "top"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_projet-pluriels"
+    project_section_left:
+        name: "left"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_projet-pluriels"
+    project_section_right:
+        name: "right"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_projet-pluriels"
+    project_section_bottom:
+        name: "bottom"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_projet-pluriels"
+    project_section_last:
+        name: "last"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_projet-pluriels"
+    meeting_pro_meeting:
+        name: "pro meeting"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_meeting_place"
+    meeting_nights:
+        name: "nights"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_meeting_place"
+    meeting_visit:
+        name: "visit"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_meeting_place"
+    curiosity_year{1..2}:
+        name: "all year"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_curiosity_place"
+    curiosity_punctual{1..2}:
+        name: "punctual"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_curiosity_place"
+    curiosity_do_it{1..2}:
+        name: "do it"
+        title: "<sentence(3, true)>"
+        subTitle: "<sentence(3, true)>"
+        appearanceOrder: "<randomDigit()>"
+        content: "<paragraph(3, true)>"
+        belongToPage: "@page_curiosity_place"
 
 App\Entity\PressDocument:
     docs{1..5}: 

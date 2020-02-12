@@ -22,19 +22,19 @@
 {% block body %}
 	<div class="col-12 d-flex">
 		<aside class="col-2 my-5 border-right border-danger">
-			{% if company.isInResidence %}
+			{% if company.isHosted %}
 				<div>
 					<h4>{{ 'company.status'|trans({}, 'company')|capitalize}}</h4>
 					<p class="ml-3 colored font-italic">
-						{{ 'company.isIn.residence'|trans({}, 'company')|capitalize }}
+						{{ 'company.is.hosted'|trans({}, 'company')|capitalize }}
 					</p>
 				</div>
 				<p>
-					{{ 'company.inResidence'|trans({}, 'company')|capitalize}}
-					{{ company.inResidenceFrom ? company.inResidenceFrom|format_date('medium') : '' }}
+					{{ 'company.hosted'|trans({}, 'company')|capitalize}}
+					{{ company.isHostedFrom ? company.isHostedFrom|format_date('medium') : '' }}
 					<br>
 					{{ 'general.to'|trans({}, 'general')|capitalize}}
-					{{ company.inResidenceUntil ? company.inResidenceUntil|format_date('medium'): '' }}</p>
+					{{ company.isHostedUntil ? company.isHostedUntil|format_date('medium'): '' }}</p>
 			{% endif %}
 			<div>
 				<h4>{{ 'company.show.title'|trans({}, 'company')|capitalize }}
@@ -102,7 +102,9 @@
 							<tr>
 								<td>{{ performance.cityShow }}</td>
 								<td>{{ performance.placeShow }}</td>
-								<td>{{ performance.date ? performance.date|date('d-m-Y H:i') : '' }}</td>
+								<td>{{ performance.date ? performance.date|format_date('medium') : '' }}<br/>
+									{{ performance.date ? performance.date|format_time('short') : '' }}
+								</td>
 								<td>{{ performance.event}}</td>
 							</tr>
 						{% else %}
@@ -115,7 +117,7 @@
 				<div class="offset-9 col-4 mt-5 mr-5 text-center ">
 					<div class="d-flex justify-content-center ">
 						<div class="btn-showView mr-1">
-							<a class="badge badge-secondary p-2 " href="{{ path('page_show', {'pageSlug' : 'saison/cies-accueillies'}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+							<a class="badge badge-secondary p-2 " href="{{ path('page_show', {'pageSlug' : 'season/hostedCompanies'}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 						</div>
 					</div>
 				</div>

@@ -32,20 +32,9 @@ class PageController extends AbstractController
     /**
      * @Route("/", name="blog")
      */
-    public function index()
+    public function index(FrontPageRepository $frontPageRepository)
     {
         return $this->render('front/landing_page.html.twig');
-    }
-
-    /**
-     * @Route("/accueil", name="home")
-     */
-    public function home()
-    {
-        return $this->render('front/home.html.twig', [
-            'tabs' => $this->tabs,
-            'pages' => $this->pages,
-        ]);
     }
 
     /**
@@ -68,9 +57,9 @@ class PageController extends AbstractController
         $homeEvents = ($frontPage->getPageSlug() === 'home') ? $eventRepository->findBy(['isHighlight' => true], ['startingDate' => 'ASC']) : null;
         $homePerfs = ($frontPage->getPageSlug() === 'home') ? $performanceRepository->findBy(['isHighlight' => true], ['date' => 'ASC']) : null;
         $seasonEvents = ($frontPage->getPageSlug() === 'saison/calendrier') ? $eventRepository->findSeasonEvents() : null;
-        $seasonPerformances = ($frontPage->getPageSlug() === 'saison/calendrier') ? $performanceRepository->findBy(['event' => 29], ['date' => 'ASC']) : null;
-        $festPerformances = ($frontPage->getPageSlug() === 'festival/calendrier') ? $performanceRepository->findBy(['event' => 'festival'], ['date' => 'ASC']) : null;
-        $placeEventPerfs = ($frontPage->getPageSlug() === 'tiers-lieu/les-rendez-vous') ? $performanceRepository->findBy(['event' => 31], ['date' => 'ASC']) : null;
+        $seasonPerformances = ($frontPage->getPageSlug() === 'saison/calendrier') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'saison'])], ['date' => 'ASC']) : null;
+        $festPerformances = ($frontPage->getPageSlug() === 'festival/calendrier') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'festival'])], ['date' => 'ASC']) : null;
+        $placeEventPerfs = ($frontPage->getPageSlug() === 'tiers-lieu/les-rendez-vous') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'soirées du tiers-lieu'])], ['date' => 'ASC']) : null;
         $partners = ($frontPage->getPageSlug() === 'partenaires/partenaires') ? $partnersRepository->findAll() : null;
 
 
@@ -80,7 +69,7 @@ class PageController extends AbstractController
             'tabs' => $this->tabs,
             'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
             'companies' => $companyRepository->findBy([], ['name' => 'ASC']),
-            'season' => $eventRepository->find(29),
+            'season' => $eventRepository->findOneBy(['name' => 'saison']),
             'seasonEvents' => $seasonEvents,
             'seasonPerfs' => $seasonPerformances,
             'festPerfs' => $festPerformances,

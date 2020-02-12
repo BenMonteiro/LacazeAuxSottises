@@ -11,7 +11,7 @@
 
 		<h2 class="mb-3">Tout au long de l'année</h2>
 		{% for section in sections %}
-			{% if section.name == "toute l'année" %}
+			{% if section.name == "all year" %}
 				<section class=" d-flex align-items-center col-12 mb-3">
 					<div class="col-4">
 						<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
@@ -31,7 +31,7 @@
 
 		<h2 class="mb-3 mt-5">Le temps d’un instant</h2>
 		{% for section in sections %}
-			{% if section.name == 'ponctuel' %}
+			{% if section.name == 'punctual' %}
 				<div class="d-flex align-items-center col-12 mb-3">
 					<div class="col-4">
 						<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">

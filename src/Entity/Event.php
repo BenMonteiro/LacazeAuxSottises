@@ -251,11 +251,6 @@ class Event
         return $this->programImage;
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
-
     /**
      * @return Collection|Performance[]
      */
@@ -309,5 +304,10 @@ class Event
         $this->isHighlight = $isHighlight;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

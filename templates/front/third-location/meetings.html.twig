@@ -7,7 +7,7 @@
 {% block body %}
 	<div class="container-fluid">
 		{% for section in sections %}
-			{% if section.name == 'rdv prod' %}
+			{% if section.name == 'prod meeting' %}
 				<div class="d-flex align-items-center col-12 mb-3">
 					<img class="miniImage img-thumbnail rounded col-2" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
 					<article class="my-5 col-8">
@@ -20,7 +20,7 @@
 						<p>{{ section.content|raw}}</p>
 					</article>
 				</div>
-			{% elseif section.name == 'soirées' %}
+			{% elseif section.name == 'nights' %}
 				<section class=" d-flex align-items-center col-12 mb-3">
 					{% if section.image.name %}
 						<div class="col-4">
@@ -62,7 +62,7 @@
 						{% endfor %}
 					</ul>
 				</div>
-			{% elseif section.name == 'visites' %}
+			{% elseif section.name == 'visit' %}
 				<div class="d-flex align-items-center col-12 mb-3">
 					<article class="my-5 col-6">
 						{% if section.title %}

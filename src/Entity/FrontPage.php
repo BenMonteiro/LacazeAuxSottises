@@ -139,11 +139,6 @@ class FrontPage
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->pageSlug;
-    }
-
     public function getTemplate(): ?string
     {
         return $this->template;
@@ -154,5 +149,11 @@ class FrontPage
         $this->template = $template;
 
         return $this;
+    }
+
+
+    public function __toString()
+    {
+        return $this->pageSlug;
     }
 }

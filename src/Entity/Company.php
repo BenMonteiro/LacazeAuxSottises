@@ -291,11 +291,6 @@ class Company
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
-
     public function getShowTitle(): ?string
     {
         return $this->showTitle;
@@ -342,5 +337,10 @@ class Company
         $this->isHostedUntil = $isHostedUntil;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

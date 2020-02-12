@@ -1,0 +1,30 @@
+{% extends "front_base.html.twig" %}
+
+{% block title %}
+	{{ page.pageSlug }}
+{% endblock %}
+
+{% block body %}
+
+	{% include('/front/_intro_section_template.html.twig') %}
+
+	<h1>{{'festCalendar'|trans({}, 'general')}}</h1>
+
+	<div>
+		{% for festPerf in festPerfs %}
+			<a class="calendar-link" href="{{ path('display_company', {'id': festPerf.companyNameId}) }}">
+				<div class="text-center my-4">
+					<h3 class="text-decoration-none colored">{{ festPerf.date|format_date('full')|capitalize}}
+						-
+						<span class="text-dark font-weight-lighter">{{ festPerf.cityShow }}</span>
+					</h3>
+					<h4>{{ festPerf.companyName }}</h4>
+					<p class="colored font-italic">{{ festPerf.companyName.showTitle}}
+						-
+						<span>{{ festPerf.companyName.duration}}min</span>
+					</p>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+{% endblock %}

@@ -166,8 +166,6 @@ hr.redline {
     background-color: #DA291C;
 }
 
-
-
 .nav-pills .nav-link.active {
     color: black !important;
     background-color: #DA291C;
@@ -197,14 +195,16 @@ hr.redline {
     z-index: 200;
 }
 
-.agenda>.tab-pane a {
+.agenda>.tab-pane a.calendar-link,
+.calendar-link {
     color: black;
     margin: 0 20px 0 0;
     font-weight: bold;
     padding: 5px 10px;
 }
 
-.agenda>.tab-pane a:hover {
+.agenda>.tab-pane a.calendar-link:hover,
+.calendar-link:hover {
     color: #DA291C;
     background-color: unset;
     border-radius: 15px;

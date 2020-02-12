@@ -3,495 +3,88 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 14 jan. 2020 à 09:54
+-- Généré le :  mer. 12 fév. 2020 à 09:33
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
-SET
-  SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
-SET
-  AUTOCOMMIT = 0;
-
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
+SET time_zone = "+00:00";
 
-SET
-  time_zone = "+00:00";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */
-;
-
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */
-;
-
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */
-;
-
-/*!40101 SET NAMES utf8mb4 */
-;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `lacaze_aux_sottises`
 --
+
 -- --------------------------------------------------------
+
 --
 -- Structure de la table `company`
 --
-DROP TABLE IF EXISTS `company`;
 
+DROP TABLE IF EXISTS `company`;
 CREATE TABLE IF NOT EXISTS `company` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `show_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci,
-  `updated_at` datetime DEFAULT NULL,
-  `is_in_diffusion` tinyint(1) NOT NULL,
-  `is_in_creation` tinyint(1) NOT NULL,
-  `website` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `video_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `theme` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `audience` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `more_infos` longtext COLLATE utf8mb4_unicode_ci,
   `duration` int(11) NOT NULL,
-  `show_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_hosted` tinyint(1) NOT NULL,
+  `website` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `video_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `more_infos` longtext COLLATE utf8mb4_unicode_ci,
   `image_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_original_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_mime_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_size` int(11) DEFAULT NULL,
   `image_dimensions` longtext COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:simple_array)',
+  `updated_at` datetime DEFAULT NULL,
+  `is_hosted_from` date DEFAULT NULL,
+  `is_hosted_until` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 21 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `company`
 --
-INSERT INTO
-  `company` (
-    `id`,
-    `name`,
-    `description`,
-    `updated_at`,
-    `is_in_diffusion`,
-    `is_in_creation`,
-    `website`,
-    `video_link`,
-    `theme`,
-    `audience`,
-    `more_infos`,
-    `duration`,
-    `show_title`,
-    `image_name`,
-    `image_original_name`,
-    `image_mime_type`,
-    `image_size`,
-    `image_dimensions`
-  )
-VALUES
-  (
-    1,
-    'Thomas',
-    'Asperiores accusamus nihil repellat vero omnis voluptates id amet. Et suscipit qui recusandae totam nulla quam. Voluptatem cupiditate sed natus debitis voluptas. Laudantium sit repudiandae esse perspiciatis dignissimos error et itaque.',
-    NULL,
-    1,
-    1,
-    'payet.net',
-    'ledoux.com',
-    'soluta',
-    'Occaecati debitis et saepe.',
-    'Sint dolorem delectus enim ipsum inventore sed libero et velit qui suscipit a deserunt laudantium quibusdam enim nostrum soluta qui.',
-    24,
-    'Tempora velit porro ut velit.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    2,
-    'Coulon et Fils',
-    'Cumque est ducimus temporibus modi saepe architecto unde. Dicta eveniet exercitationem aut porro sed magni. Sit vitae voluptas sint non voluptates ut.',
-    NULL,
-    1,
-    1,
-    'chevalier.net',
-    'labbe.net',
-    'laborum',
-    'Officia id corporis incidunt saepe.',
-    'Esse hic eligendi quos culpa ut ab voluptas sed a nam et sint autem inventore aut.',
-    105,
-    'Quos qui illo error nihil.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    3,
-    'Perez S.A.',
-    'Ut eum nisi molestiae quidem ut sunt. Quidem est accusamus aut nemo. Est placeat rerum ut et enim ex. Facere sunt quia delectus aut nam et eum.',
-    NULL,
-    0,
-    0,
-    'guillou.net',
-    'mercier.fr',
-    'veritatis',
-    'Esse veritatis voluptate.',
-    'Possimus omnis aut incidunt sunt cumque asperiores incidunt iure sequi cum culpa rem aut.',
-    62,
-    'Fugit repellendus illo.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    4,
-    'Marchal',
-    'Architecto fugiat nemo omnis consequatur recusandae qui cupiditate. Quod veritatis vel optio provident. Incidunt magnam molestias et quibusdam et ab quo voluptatum. Ipsum voluptatibus est accusantium eveniet. Atque possimus aut dolores quis totam incidunt ducimus aperiam.',
-    NULL,
-    1,
-    0,
-    'gautier.fr',
-    'gallet.com',
-    'minima',
-    'Similique ut culpa natus.',
-    'Reiciendis sit et nihil ut porro amet laborum iure molestiae et dolore quaerat molestiae.',
-    24,
-    'Est quia assumenda.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    5,
-    'Vincent SA',
-    'Numquam tempora et quo aperiam natus ut doloribus. Quasi impedit aperiam ea similique. Sed architecto quod nulla maxime. Quibusdam inventore esse harum accusantium rerum nulla voluptatem. Optio quos sed autem voluptatibus eum aut nesciunt.',
-    NULL,
-    0,
-    0,
-    'brun.com',
-    'pages.com',
-    'sit',
-    'Similique ut voluptatem.',
-    'Perferendis eveniet quam vero fuga corrupti omnis temporibus maxime sint suscipit laudantium quod magni non.',
-    79,
-    'Sit nisi recusandae eaque molestias.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    6,
-    'Aubert S.A.',
-    'Quaerat ut aut at consequatur non. In cupiditate voluptas molestiae fuga quod cum. Qui quaerat cupiditate incidunt id sunt dolorem veritatis voluptatem. Molestiae est ut iure. Ab in hic molestiae odio sed vitae maiores.',
-    NULL,
-    1,
-    0,
-    'dossantos.com',
-    'leleu.org',
-    'dolorem',
-    'Ducimus omnis molestiae consequatur sint.',
-    'Est qui doloremque aperiam qui rerum accusamus beatae dolores enim et doloribus voluptatibus perspiciatis.',
-    56,
-    'Beatae reprehenderit exercitationem corrupti.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    7,
-    'Grenier',
-    'Magni rerum consequatur laudantium nisi quo earum. Esse eveniet debitis omnis voluptatem voluptatem et. Praesentium et praesentium est. Molestiae porro consequuntur quos hic.',
-    NULL,
-    1,
-    0,
-    'francois.net',
-    'diallo.com',
-    'similique',
-    'Et ipsam omnis saepe.',
-    'In perspiciatis sit consectetur temporibus voluptate laborum hic hic reiciendis culpa rerum.',
-    41,
-    'Nobis doloribus illo velit eius.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    8,
-    'Bonneau SAS',
-    'Et reprehenderit nesciunt eum. In esse et ut quis. Voluptate ullam placeat non ratione eaque.',
-    NULL,
-    1,
-    0,
-    'ferrand.com',
-    'lebreton.fr',
-    'tempore',
-    'Totam iste quidem eum.',
-    'Velit voluptatibus in laudantium voluptatem officiis vel dignissimos et dolorem doloremque quam.',
-    93,
-    'Quia optio explicabo et repellat.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    9,
-    'Picard Ferrand et Fils',
-    'Aut numquam laboriosam sint enim reiciendis quod ullam at. Non eos sed amet sunt vitae enim. Occaecati natus assumenda reiciendis similique et laudantium vel nisi.',
-    NULL,
-    1,
-    1,
-    'perret.com',
-    'berger.fr',
-    'beatae',
-    'Quae sit veniam vel eos.',
-    'Et est nisi iusto amet neque deleniti totam aut nisi non omnis voluptatem velit nesciunt eligendi eos sint ut voluptates.',
-    95,
-    'Itaque est et nihil.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    10,
-    'Vidal',
-    'Rem est est alias neque. Nihil esse repudiandae pariatur reprehenderit assumenda. Consequatur fugit ad iste minus ullam quidem. Vero soluta nostrum ea dolores doloremque fuga labore.',
-    NULL,
-    0,
-    1,
-    'dubois.com',
-    'dacosta.com',
-    'omnis',
-    'Enim quia reprehenderit magni fugiat.',
-    'Officiis velit alias et et quis quae distinctio ratione quis voluptates nulla totam eos.',
-    90,
-    'Et molestias hic minus et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    11,
-    'Huet',
-    'Tempora repellat corporis excepturi sint dolores quaerat. Quia nisi accusantium natus voluptatem. Explicabo corporis eligendi ut ut sapiente ut qui quidem.',
-    NULL,
-    1,
-    1,
-    'gerard.net',
-    'coste.net',
-    'aut',
-    'Sed alias asperiores.',
-    'Deserunt omnis inventore mollitia unde id in id porro molestiae in maxime sint doloremque similique aut.',
-    117,
-    'Optio amet velit.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    12,
-    'Lefort SA',
-    'Sit facere cupiditate doloremque odio ad asperiores quaerat. Accusamus sint dolorem earum ut.',
-    NULL,
-    1,
-    0,
-    'menard.fr',
-    'normand.org',
-    'delectus',
-    'Accusantium autem suscipit.',
-    'Et et dolorum quos aliquam delectus accusantium quidem ut eius a corrupti totam.',
-    73,
-    'Facilis molestias quo omnis minima illo.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    13,
-    'De Oliveira Hoarau S.A.S.',
-    'Iste similique aut tempore. Et libero explicabo quia sed ea aperiam unde. Tempora beatae neque eum. Molestiae et laboriosam dolor odit omnis vel excepturi.',
-    NULL,
-    1,
-    0,
-    'paris.fr',
-    'morvan.com',
-    'itaque',
-    'Ea accusantium temporibus.',
-    'Ad est et et cum eius voluptas numquam quam occaecati culpa aut in laudantium omnis et aut laborum.',
-    31,
-    'Quia quas beatae et nam.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    14,
-    'Marie',
-    'Aliquid rerum autem qui est velit excepturi et necessitatibus. Doloremque iusto quibusdam fuga beatae voluptas iure rerum voluptas. Eius commodi odio ut aliquid et sit enim. In minus aliquid repudiandae qui voluptatem distinctio.',
-    NULL,
-    0,
-    0,
-    'letellier.org',
-    'maury.fr',
-    'vel',
-    'Quia recusandae qui.',
-    'Quo voluptas totam asperiores ab tenetur voluptatem repudiandae reiciendis cum accusamus ut et nobis iste accusantium quaerat nostrum.',
-    110,
-    'Officiis eos suscipit facilis.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    15,
-    'Martins S.A.S.',
-    'Nihil aliquid eos fugit. Quaerat quibusdam alias omnis accusamus aut dolores. Itaque doloribus qui dicta eligendi quae recusandae. Quo beatae deleniti quia molestiae alias quo quis.',
-    NULL,
-    1,
-    0,
-    'leroy.fr',
-    'petit.net',
-    'in',
-    'Fugiat dolores placeat.',
-    'Nesciunt architecto quas ex similique consequatur nisi fuga dolores aut velit illo illum sint.',
-    110,
-    'Qui ea sit.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    16,
-    'Baudry et Fils',
-    'Non et et et fugit. Excepturi enim velit qui nam nesciunt non dolore quis. Eius et et omnis.',
-    NULL,
-    1,
-    0,
-    'boulay.com',
-    'maury.fr',
-    'vel',
-    'Explicabo inventore quam suscipit qui.',
-    'Eveniet dolorem voluptatem est similique tenetur aut sit aliquam provident et voluptatem eveniet consequatur sit impedit sint nam perferendis sit.',
-    73,
-    'Pariatur non ea.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    17,
-    'Lesage Launay SAS',
-    'Ad rerum perferendis fugiat et facere. Et quod velit velit ut rem repellendus ut. Laudantium consequuntur aut et. Quas ut est in reprehenderit reiciendis accusamus.',
-    NULL,
-    1,
-    1,
-    'leclercq.com',
-    'pons.fr',
-    'nostrum',
-    'Aut molestiae sapiente.',
-    'Consequatur numquam tempore similique ut debitis consequatur facere dolorum doloremque quasi vero nobis error fuga ut perspiciatis quia.',
-    18,
-    'Quia et mollitia deleniti qui.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    18,
-    'Foucher',
-    'Ut quis quisquam consequatur asperiores voluptatem magnam nostrum. Corrupti voluptatem molestiae cupiditate rerum ratione. Repellendus ducimus nulla voluptatem aperiam ipsa eius. Adipisci reiciendis voluptas doloremque esse dolor qui illo placeat.',
-    NULL,
-    0,
-    0,
-    'schneider.fr',
-    'leclerc.com',
-    'ut',
-    'Deserunt provident natus ipsam.',
-    'Est ipsam quia reprehenderit sint mollitia sed facere qui sit delectus ad iusto molestias iusto autem laboriosam nulla earum eius.',
-    32,
-    'Voluptatem at enim tempora voluptas.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    19,
-    'Da Costa Humbert et Fils',
-    'Rerum delectus dolorum voluptas cupiditate aut consequatur aut ullam. Ea voluptatem aut cum vitae nostrum non maiores. Omnis aut quos ut ad est quidem eum rerum. Laboriosam ea porro blanditiis eos enim non aut.',
-    NULL,
-    1,
-    0,
-    'evrard.fr',
-    'simon.com',
-    'fuga',
-    'Veniam enim.',
-    'Voluptas assumenda dolore explicabo nisi a aut architecto et aut.',
-    113,
-    'Sunt eligendi sapiente et et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    20,
-    'Le Gall SA',
-    'Iste repellat provident qui debitis nisi ad. Magni nihil voluptatem magnam. Impedit recusandae omnis consequatur ut repellendus.',
-    NULL,
-    0,
-    0,
-    'besson.fr',
-    'lefebvre.com',
-    'magnam',
-    'Sed velit aut.',
-    'Quod cupiditate culpa nisi eos cupiditate quibusdam eveniet eveniet provident quas omnis voluptatem quia soluta recusandae id quo aut.',
-    55,
-    'Nihil reprehenderit non ut rem esse.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  );
+
+INSERT INTO `company` (`id`, `name`, `show_title`, `description`, `theme`, `audience`, `duration`, `is_hosted`, `website`, `video_link`, `more_infos`, `image_name`, `image_original_name`, `image_mime_type`, `image_size`, `image_dimensions`, `updated_at`, `is_hosted_from`, `is_hosted_until`) VALUES
+(81, 'Thomas', 'Tempora velit porro ut velit.', 'Asperiores accusamus nihil repellat vero omnis voluptates id amet. Et suscipit qui recusandae totam nulla quam. Voluptatem cupiditate sed natus debitis voluptas. Laudantium sit repudiandae esse perspiciatis dignissimos error et itaque.', 'soluta', 'Occaecati debitis et saepe.', 24, 0, 'payet.net', 'ledoux.com', 'Sint dolorem delectus enim ipsum inventore sed libero et velit qui suscipit a deserunt laudantium quibusdam enim nostrum soluta qui.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(82, 'Coulon et Fils', 'Quos qui illo error nihil.', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Cumque est ducimus temporibus modi saepe architecto unde. Dicta eveniet exercitationem aut porro sed magni. Sit vitae voluptas sint non voluptates ut.</p>\r\n</body>\r\n</html>', 'laborum', 'Officia id corporis incidunt saepe.', 105, 0, 'http://chevalier.net', 'http://labbe.net', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Esse hic eligendi quos culpa ut ab voluptas sed a nam et sint autem inventore aut.</p>\r\n</body>\r\n</html>', 'photo.8.midi.a.ouest.c.Marie Monteiro..5HD NB.jpg', 'photo.8.midi.a.ouest.c.Marie Monteiro..5HD NB.jpg', 'image/jpeg', 6031803, '6016,4016', '2020-01-27 13:52:01', NULL, NULL),
+(83, 'Perez S.A.', 'Fugit repellendus illo.', 'Ut eum nisi molestiae quidem ut sunt. Quidem est accusamus aut nemo. Est placeat rerum ut et enim ex. Facere sunt quia delectus aut nam et eum.', 'veritatis', 'Esse veritatis voluptate.', 62, 0, 'guillou.net', 'mercier.fr', 'Possimus omnis aut incidunt sunt cumque asperiores incidunt iure sequi cum culpa rem aut.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(84, 'Marchal', 'Est quia assumenda.', 'Architecto fugiat nemo omnis consequatur recusandae qui cupiditate. Quod veritatis vel optio provident. Incidunt magnam molestias et quibusdam et ab quo voluptatum. Ipsum voluptatibus est accusantium eveniet. Atque possimus aut dolores quis totam incidunt ducimus aperiam.', 'minima', 'Similique ut culpa natus.', 24, 0, 'gautier.fr', 'gallet.com', 'Reiciendis sit et nihil ut porro amet laborum iure molestiae et dolore quaerat molestiae.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(85, 'Vincent SA', 'Sit nisi recusandae eaque molestias.', 'Numquam tempora et quo aperiam natus ut doloribus. Quasi impedit aperiam ea similique. Sed architecto quod nulla maxime. Quibusdam inventore esse harum accusantium rerum nulla voluptatem. Optio quos sed autem voluptatibus eum aut nesciunt.', 'sit', 'Similique ut voluptatem.', 79, 0, 'brun.com', 'pages.com', 'Perferendis eveniet quam vero fuga corrupti omnis temporibus maxime sint suscipit laudantium quod magni non.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(86, 'Aubert S.A.', 'Beatae reprehenderit exercitationem corrupti.', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Quaerat ut aut at consequatur non. In cupiditate voluptas molestiae fuga quod cum. Qui quaerat cupiditate incidunt id sunt dolorem veritatis voluptatem. Molestiae est ut iure. Ab in hic molestiae odio sed vitae maiores.</p>\r\n</body>\r\n</html>', 'dolorem', 'Ducimus omnis molestiae consequatur sint.', 56, 1, 'http://dossantos.com', 'http://leleu.org', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Est qui doloremque aperiam qui rerum accusamus beatae dolores enim et doloribus voluptatibus perspiciatis.</p>\r\n</body>\r\n</html>', 'photo.6.Micro Lons.jpg', 'photo.6.Micro Lons.jpg', 'image/jpeg', 120151, '1440,1080', '2020-01-27 13:51:20', '2020-08-09', '2020-08-11'),
+(87, 'Grenier', 'Nobis doloribus illo velit eius.', 'Magni rerum consequatur laudantium nisi quo earum. Esse eveniet debitis omnis voluptatem voluptatem et. Praesentium et praesentium est. Molestiae porro consequuntur quos hic.', 'similique', 'Et ipsam omnis saepe.', 41, 0, 'francois.net', 'diallo.com', 'In perspiciatis sit consectetur temporibus voluptate laborum hic hic reiciendis culpa rerum.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(88, 'Bonneau SAS', 'Quia optio explicabo et repellat.', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Et reprehenderit nesciunt eum. In esse et ut quis. Voluptate ullam placeat non ratione eaque.</p>\r\n</body>\r\n</html>', 'tempore', 'Totam iste quidem eum.', 93, 0, 'http://ferrand.com', 'http://lebreton.fr', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Velit voluptatibus in laudantium voluptatem officiis vel dignissimos et dolorem doloremque quam.</p>\r\n</body>\r\n</html>', 'photo.8.midi.a.ouest.c.Marie Monteiro.le clown.jpg', 'photo.8.midi.a.ouest.c.Marie Monteiro.le clown.jpg', 'image/jpeg', 4248562, '6016,4016', '2020-01-27 13:51:46', NULL, NULL),
+(89, 'Picard Ferrand et Fils', 'Itaque est et nihil.', 'Aut numquam laboriosam sint enim reiciendis quod ullam at. Non eos sed amet sunt vitae enim. Occaecati natus assumenda reiciendis similique et laudantium vel nisi.', 'beatae', 'Quae sit veniam vel eos.', 95, 0, 'perret.com', 'berger.fr', 'Et est nisi iusto amet neque deleniti totam aut nisi non omnis voluptatem velit nesciunt eligendi eos sint ut voluptates.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(90, 'Vidal', 'Et molestias hic minus et.', 'Rem est est alias neque. Nihil esse repudiandae pariatur reprehenderit assumenda. Consequatur fugit ad iste minus ullam quidem. Vero soluta nostrum ea dolores doloremque fuga labore.', 'omnis', 'Enim quia reprehenderit magni fugiat.', 90, 0, 'dubois.com', 'dacosta.com', 'Officiis velit alias et et quis quae distinctio ratione quis voluptates nulla totam eos.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(91, 'Huet', 'Optio amet velit.', 'Tempora repellat corporis excepturi sint dolores quaerat. Quia nisi accusantium natus voluptatem. Explicabo corporis eligendi ut ut sapiente ut qui quidem.', 'aut', 'Sed alias asperiores.', 117, 0, 'gerard.net', 'coste.net', 'Deserunt omnis inventore mollitia unde id in id porro molestiae in maxime sint doloremque similique aut.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(92, 'Lefort SA', 'Facilis molestias quo omnis minima illo.', 'Sit facere cupiditate doloremque odio ad asperiores quaerat. Accusamus sint dolorem earum ut.', 'delectus', 'Accusantium autem suscipit.', 73, 0, 'menard.fr', 'normand.org', 'Et et dolorum quos aliquam delectus accusantium quidem ut eius a corrupti totam.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(93, 'De Oliveira Hoarau S.A.S.', 'Quia quas beatae et nam.', 'Iste similique aut tempore. Et libero explicabo quia sed ea aperiam unde. Tempora beatae neque eum. Molestiae et laboriosam dolor odit omnis vel excepturi.', 'itaque', 'Ea accusantium temporibus.', 31, 0, 'paris.fr', 'morvan.com', 'Ad est et et cum eius voluptas numquam quam occaecati culpa aut in laudantium omnis et aut laborum.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(94, 'Marie', 'Officiis eos suscipit facilis.', 'Aliquid rerum autem qui est velit excepturi et necessitatibus. Doloremque iusto quibusdam fuga beatae voluptas iure rerum voluptas. Eius commodi odio ut aliquid et sit enim. In minus aliquid repudiandae qui voluptatem distinctio.', 'vel', 'Quia recusandae qui.', 110, 0, 'letellier.org', 'maury.fr', 'Quo voluptas totam asperiores ab tenetur voluptatem repudiandae reiciendis cum accusamus ut et nobis iste accusantium quaerat nostrum.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(95, 'Martins S.A.S.', 'Qui ea sit.', 'Nihil aliquid eos fugit. Quaerat quibusdam alias omnis accusamus aut dolores. Itaque doloribus qui dicta eligendi quae recusandae. Quo beatae deleniti quia molestiae alias quo quis.', 'in', 'Fugiat dolores placeat.', 110, 0, 'leroy.fr', 'petit.net', 'Nesciunt architecto quas ex similique consequatur nisi fuga dolores aut velit illo illum sint.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(96, 'Baudry et Fils', 'Pariatur non ea.', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Non et et et fugit. Excepturi enim velit qui nam nesciunt non dolore quis. Eius et et omnis.</p>\r\n</body>\r\n</html>', 'vel', 'Explicabo inventore quam suscipit qui.', 73, 0, 'http://boulay.com', 'http://maury.fr', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Eveniet dolorem voluptatem est similique tenetur aut sit aliquam provident et voluptatem eveniet consequatur sit impedit sint nam perferendis sit.</p>\r\n</body>\r\n</html>', 'photo.15.ptdp.©g.meziat-0292.jpg', 'photo.15.ptdp.©g.meziat-0292.jpg', 'image/jpeg', 2027067, '2395,1449', '2020-01-27 13:51:32', NULL, NULL),
+(97, 'Lesage Launay SAS', 'Quia et mollitia deleniti qui.', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Ad rerum perferendis fugiat et facere. Et quod velit velit ut rem repellendus ut. Laudantium consequuntur aut et. Quas ut est in reprehenderit reiciendis accusamus.</p>\r\n</body>\r\n</html>', 'nostrum', 'Aut molestiae sapiente.', 18, 0, 'http://leclercq.com', 'http://pons.fr', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Consequatur numquam tempore similique ut debitis consequatur facere dolorum doloremque quasi vero nobis error fuga ut perspiciatis quia.</p>\r\n</body>\r\n</html>', 'photo.44.lieu.activité.chantier.repas.6.JPG', 'photo.44.lieu.activité.chantier.repas.6.JPG', 'image/jpeg', 3843272, '4608,3456', '2020-02-11 13:53:53', NULL, NULL),
+(98, 'Foucher', 'Voluptatem at enim tempora voluptas.', 'Ut quis quisquam consequatur asperiores voluptatem magnam nostrum. Corrupti voluptatem molestiae cupiditate rerum ratione. Repellendus ducimus nulla voluptatem aperiam ipsa eius. Adipisci reiciendis voluptas doloremque esse dolor qui illo placeat.', 'ut', 'Deserunt provident natus ipsam.', 32, 0, 'schneider.fr', 'leclerc.com', 'Est ipsam quia reprehenderit sint mollitia sed facere qui sit delectus ad iusto molestias iusto autem laboriosam nulla earum eius.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(99, 'Da Costa Humbert et Fils', 'Sunt eligendi sapiente et et.', 'Rerum delectus dolorum voluptas cupiditate aut consequatur aut ullam. Ea voluptatem aut cum vitae nostrum non maiores. Omnis aut quos ut ad est quidem eum rerum. Laboriosam ea porro blanditiis eos enim non aut.', 'fuga', 'Veniam enim.', 113, 0, 'evrard.fr', 'simon.com', 'Voluptas assumenda dolore explicabo nisi a aut architecto et aut.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(100, 'Le Gall SA', 'Nihil reprehenderit non ut rem esse.', 'Iste repellat provident qui debitis nisi ad. Magni nihil voluptatem magnam. Impedit recusandae omnis consequatur ut repellendus.', 'magnam', 'Sed velit aut.', 55, 0, 'besson.fr', 'lefebvre.com', 'Quod cupiditate culpa nisi eos cupiditate quibusdam eveniet eveniet provident quas omnis voluptatem quia soluta recusandae id quo aut.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
+
 --
 -- Structure de la table `event`
 --
-DROP TABLE IF EXISTS `event`;
 
+DROP TABLE IF EXISTS `event`;
 CREATE TABLE IF NOT EXISTS `event` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -499,6 +92,8 @@ CREATE TABLE IF NOT EXISTS `event` (
   `starting_date` date DEFAULT NULL,
   `ending_date` date DEFAULT NULL,
   `hours` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `place` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_highlight` tinyint(1) NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   `program_pdf_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `program_pdf_original_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -511,341 +106,117 @@ CREATE TABLE IF NOT EXISTS `event` (
   `program_image_size` int(11) DEFAULT NULL,
   `program_image_dimensions` longtext COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:simple_array)',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 8 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `event`
 --
-INSERT INTO
-  `event` (
-    `id`,
-    `name`,
-    `description`,
-    `starting_date`,
-    `ending_date`,
-    `hours`,
-    `updated_at`,
-    `program_pdf_name`,
-    `program_pdf_original_name`,
-    `program_pdf_mime_type`,
-    `program_pdf_size`,
-    `program_pdf_dimensions`,
-    `program_image_name`,
-    `program_image_original_name`,
-    `program_image_mime_type`,
-    `program_image_size`,
-    `program_image_dimensions`
-  )
-VALUES
-  (
-    1,
-    'sit',
-    'Sint velit rerum autem quia. Ducimus odio fuga vitae expedita. Vero animi fugiat corporis.',
-    '2020-02-23',
-    '2020-02-23',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    2,
-    'et',
-    'Qui sit rem consequatur. Incidunt et sunt tempora sunt aliquam mollitia id repudiandae. Doloremque placeat ut esse. Aut ratione cumque commodi.',
-    '2020-06-09',
-    '2020-06-09',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    3,
-    'animi',
-    'Est quam provident vel tenetur asperiores. Ipsa dolorum optio odio aspernatur qui dolor. Suscipit ipsum veniam neque omnis dolor. Molestiae quia voluptatem quisquam sed.',
-    '2020-01-17',
-    '2020-01-17',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    4,
-    'vero',
-    'Quasi corporis rerum quo ut accusantium omnis quibusdam. Aut culpa dolores consectetur quod. Quisquam aut cupiditate aperiam. Adipisci veritatis vel voluptas voluptatem cumque sed. Odit excepturi accusamus vel quae.',
-    '2020-07-16',
-    '2020-07-16',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    5,
-    'ut',
-    'Id consequatur accusantium quia. Minus voluptates dignissimos est officiis est repudiandae est. Odio inventore sed ipsum omnis maiores.',
-    '2020-05-18',
-    '2020-05-18',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    6,
-    'inventore',
-    'Exercitationem nisi quaerat numquam voluptatem harum. Quia et aliquid neque voluptas est totam.',
-    '2020-06-22',
-    '2020-06-22',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    7,
-    'est',
-    'Minus officia quis consequuntur voluptates non quasi minima. Repudiandae laborum dolor quasi totam qui ipsam iusto. Inventore molestias amet aut qui nihil.',
-    '2020-10-11',
-    '2020-10-11',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  );
+
+INSERT INTO `event` (`id`, `name`, `description`, `starting_date`, `ending_date`, `hours`, `place`, `is_highlight`, `updated_at`, `program_pdf_name`, `program_pdf_original_name`, `program_pdf_mime_type`, `program_pdf_size`, `program_pdf_dimensions`, `program_image_name`, `program_image_original_name`, `program_image_mime_type`, `program_image_size`, `program_image_dimensions`) VALUES
+(29, 'saison', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Sint velit rerum autem quia. Ducimus odio fuga vitae expedita. Vero animi fugiat corporis.</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, 0, '2020-02-11 14:14:50', 'présentation projet 2020.pdf', 'présentation projet 2020.pdf', 'application/pdf', 10556146, NULL, 'LOGO_LACAZE_NOIR.jpg', 'LOGO_LACAZE_NOIR.jpg', 'image/jpeg', 576489, NULL),
+(30, 'Festival des Sottises', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>* Une programmation variée O programme ! Chicken Street, La Baleine Cargo, L’Etabli, Le GIVB, L’ESAC-TO - Ecole de Cirque de Toulouse, La Marmaille, Sara &amp; Alberto, Duo Jacaranda, Janusz &amp; Jerry, Anonima Teatro, Typhus Bronx, Léandre,...</p>\r\n<p> </p>\r\n<p>* Une rencontre professionnelle avec la Fédération des Arts de la Rue de la Nouvelle-Aquitaine et le CNAREP de la Rochelle</p>\r\n<p> </p>\r\n<p>* Des initiations cirque, des jeux, un rallye,…</p>\r\n<p> </p>\r\n<p>* Un Bistrot et une P’tite Resto en circuit court, toilettes sèches tel un éco festival</p>\r\n<p> </p>\r\n<p>Prix libre</p>\r\n<p>Afin de conserver l’accessibilité à tous au festival et de défendre un projet solidaire, nous militons pour le prix libre – une billetterie solidaire, à savoir un appel aux dons via les chapeaux à l’issue des spectacles ou du guichet à don en valorisant le mécénat culturel ouvrant droit à une réduction d’impôts.</p>\r\n<p> </p>\r\n<p>Appel à bénévole et à hébergeur</p>\r\n<p>Chaque année environ 120 bénévoles participent au festival et aux chantiers en amont de celui-ci. Sans ces forces vives, le festival n’existerait pas ! Rejoignez-nous.</p>\r\n<p>Nous avons également besoin d’aide pour héberger les artistes le temps du festival à Salies-de-Béarn et aux alentours. Si vous avez une chambre de libre et que vous adorez le festival, n’hésitez plus… c’est un soutien précieux !</p>\r\n</body>\r\n</html>', '2020-03-24', '2020-07-26', NULL, NULL, 1, '2020-02-11 09:34:32', NULL, NULL, NULL, NULL, NULL, 'photo.24..jpg', 'photo.24..jpg', 'image/jpeg', 1490154, NULL),
+(31, 'Soirées du Tiers-Lieu', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Pensé tel un lieu de rencontre et de convivialité, Lacaze aux sottises invite au croisement des publics dans une mixité sociale, culturelle et générationnelle. </p>\r\n<p>L’adhésion à Lacaze aux sottises est obligatoire pour accéder aux soirée du Tiers Lieu</p>\r\n<p>Adhésion structure 50 euros / Adhésion individuelle prix libre à partir de 5 euros</p>\r\n<p>Bistrot sur place</p>\r\n<p>Soirées en auberge espagnole</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, 'vero', 'Quasi corporis rerum quo ut accusantium omnis quibusdam. Aut culpa dolores consectetur quod. Quisquam aut cupiditate aperiam. Adipisci veritatis vel voluptas voluptatem cumque sed. Odit excepturi accusamus vel quae.', '2020-07-20', '2020-07-20', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 'inventore', 'Exercitationem nisi quaerat numquam voluptatem harum. Quia et aliquid neque voluptas est totam.', '2020-06-26', '2020-06-26', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, 'est', 'Minus officia quis consequuntur voluptates non quasi minima. Repudiandae laborum dolor quasi totam qui ipsam iusto. Inventore molestias amet aut qui nihil.', '2020-10-15', '2020-10-15', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
+
 --
 -- Structure de la table `front_page`
 --
-DROP TABLE IF EXISTS `front_page`;
 
+DROP TABLE IF EXISTS `front_page`;
 CREATE TABLE IF NOT EXISTS `front_page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tab_id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `page_slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `template` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_2CDA0C4C8D0C9323` (`tab_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 29 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `front_page`
 --
-INSERT INTO
-  `front_page` (`id`, `tab_id`, `name`, `page_slug`)
-VALUES
-  (1, 1, 'presentation', 'association/presentation'),
-  (
-    2,
-    1,
-    'projets-pluriels',
-    'association/projets-pluriels'
-  ),
-  (
-    3,
-    1,
-    'coopération-territoriale',
-    'association/coopération-territoriale'
-  ),
-  (4, 1, 'équipe', 'association/équipe'),
-  (5, 1, 'adhésion', 'association/adhésion'),
-  (6, 2, 'programmation', 'saison/programmation'),
-  (
-    7,
-    2,
-    'cies-en-diffusion',
-    'saison/cies-en-diffusion'
-  ),
-  (
-    8,
-    2,
-    'cies-en-création',
-    'saison/cies-en-création'
-  ),
-  (
-    9,
-    2,
-    'action-culturelles',
-    'saison/action-culturelles'
-  ),
-  (10, 3, 'présentation', 'festival/présentation'),
-  (11, 3, 'programation', 'festival/programation'),
-  (
-    12,
-    3,
-    'billetterie-solidaire',
-    'festival/billetterie-solidaire'
-  ),
-  (
-    13,
-    3,
-    'cie-en-diffusion',
-    'festival/cie-en-diffusion'
-  ),
-  (
-    14,
-    3,
-    'rencontres-pro',
-    'festival/rencontres-pro'
-  ),
-  (
-    15,
-    3,
-    'actions-culturelles',
-    'festival/actions-culturelles'
-  ),
-  (
-    16,
-    3,
-    'espace-ludique',
-    'festival/espace-ludique'
-  ),
-  (
-    17,
-    3,
-    'les-ptits-plus',
-    'festival/les-ptits-plus'
-  ),
-  (18, 4, 'prsentation', 'tiers-lieu/prsentation'),
-  (19, 4, 'éco-lieu', 'tiers-lieu/éco-lieu'),
-  (
-    20,
-    4,
-    'espaces-partagés',
-    'tiers-lieu/espaces-partagés'
-  ),
-  (
-    21,
-    5,
-    'spectacles_vivants',
-    'activités-du-lieu/spectacles_vivants'
-  ),
-  (
-    22,
-    5,
-    'développement-durable',
-    'activités-du-lieu/développement-durable'
-  ),
-  (23, 6, 'locations', 'locations/locations'),
-  (24, 7, 'annuel', 'bénévolat/annuel'),
-  (25, 7, 'festival', 'bénévolat/festival'),
-  (26, 8, 'partenaires', 'partenaires/partenaires'),
-  (27, 9, 'soutient', 'soutient/soutient'),
-  (28, 10, 'contact', 'contact/contact');
+
+INSERT INTO `front_page` (`id`, `tab_id`, `name`, `page_slug`, `template`) VALUES
+(104, 38, 'asso', 'association/asso', ''),
+(105, 38, 'plural-projects', 'association/projets-pluriels', 'plural_and_coop'),
+(106, 38, 'coop', 'association/coopération-territoriale', 'plural_and_coop'),
+(107, 38, 'team', 'association/équipe', 'equipe_adhesion'),
+(108, 38, 'subscription', 'association/adhésion', 'equipe_adhesion'),
+(109, 39, 'presentation', 'saison/intoduction', NULL),
+(110, 39, 'prog', 'saison/calendrier', 'calendar'),
+(111, 39, 'hostedCompanies', 'saison/cies-accueillies', 'companies'),
+(112, 39, 'area-project', 'saison/projet-de-territoire', NULL),
+(113, 39, 'cultural-actions', 'saison/action-culturelles', 'cultural_actions'),
+(114, 40, 'presentation', 'festival/presentation', NULL),
+(115, 40, 'prog', 'festival/programmation', NULL),
+(116, 40, 'hostedCompanies', 'festival/cie-accueillies', NULL),
+(117, 40, 'pro-meeting', 'festival/rencontres-pro', NULL),
+(118, 40, 'arts-etc', 'festival/aux-arts-etc', NULL),
+(119, 40, 'cultural-actions', 'festival/actions-culturelles', NULL),
+(120, 40, 'infos', 'festival/infos-pratiques', NULL),
+(121, 41, 'presentation', 'tiers-lieu/presentation', NULL),
+(122, 41, 'shared-spaces', 'tiers-lieu/espaces-et-services-partages', 'shared_spaces'),
+(123, 41, 'meetings', 'tiers-lieu/les-rendez-vous', 'meetings'),
+(124, 41, 'curiosity', 'tiers-lieu/les-ateliers-de-curiosites', 'curiosity'),
+(126, 43, 'volunteering', 'benevolat/benevolat', 'index'),
+(127, 44, 'partners', 'partenaires/partenaires', 'index'),
+(128, 45, 'support', 'soutient/soutient', NULL),
+(129, 46, 'contact', 'contact/contact', NULL),
+(130, 37, 'home', 'home', 'home');
 
 -- --------------------------------------------------------
+
 --
 -- Structure de la table `front_tab`
 --
-DROP TABLE IF EXISTS `front_tab`;
 
+DROP TABLE IF EXISTS `front_tab`;
 CREATE TABLE IF NOT EXISTS `front_tab` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `front_tab`
 --
-INSERT INTO
-  `front_tab` (`id`, `name`)
-VALUES
-  (1, 'association'),
-  (2, 'saison'),
-  (3, 'festival'),
-  (4, 'tiers-lieu'),
-  (5, 'activités-du-lieu'),
-  (6, 'locations'),
-  (7, 'bénévolat'),
-  (8, 'partenaires'),
-  (9, 'soutient'),
-  (10, 'contact');
+
+INSERT INTO `front_tab` (`id`, `name`) VALUES
+(37, 'home'),
+(38, 'association'),
+(39, 'season'),
+(40, 'festival'),
+(41, 'third-location'),
+(43, 'volunteering'),
+(44, 'partners'),
+(45, 'support'),
+(46, 'contact');
 
 -- --------------------------------------------------------
+
 --
 -- Structure de la table `migration_versions`
 --
-DROP TABLE IF EXISTS `migration_versions`;
 
+DROP TABLE IF EXISTS `migration_versions`;
 CREATE TABLE IF NOT EXISTS `migration_versions` (
   `version` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
   `executed_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   PRIMARY KEY (`version`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `migration_versions`
---
-INSERT INTO
-  `migration_versions` (`version`, `executed_at`)
-VALUES
-  ('20200114094325', '2020-01-14 09:43:59');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
+
 --
 -- Structure de la table `partners`
 --
-DROP TABLE IF EXISTS `partners`;
 
+DROP TABLE IF EXISTS `partners`;
 CREATE TABLE IF NOT EXISTS `partners` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -857,361 +228,49 @@ CREATE TABLE IF NOT EXISTS `partners` (
   `logo_size` int(11) DEFAULT NULL,
   `logo_dimensions` longtext COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:simple_array)',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 31 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `partners`
 --
-INSERT INTO
-  `partners` (
-    `id`,
-    `name`,
-    `updated_at`,
-    `type`,
-    `logo_name`,
-    `logo_original_name`,
-    `logo_mime_type`,
-    `logo_size`,
-    `logo_dimensions`
-  )
-VALUES
-  (
-    1,
-    'Labbe Clement SAS',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    2,
-    'Boucher Le Roux SARL',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    3,
-    'Gilles',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    4,
-    'Roussel SARL',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    5,
-    'Delorme',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    6,
-    'Barre SAS',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    7,
-    'Gilbert',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    8,
-    'Wagner',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    9,
-    'Hoareau',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    10,
-    'Carpentier et Fils',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    11,
-    'Boutin',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    12,
-    'Lelievre SAS',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    13,
-    'Chauvin Vallet et Fils',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    14,
-    'Labbe Jacquot S.A.',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    15,
-    'Bonnet',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    16,
-    'Guilbert',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    17,
-    'Launay',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    18,
-    'Launay',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    19,
-    'Pierre',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    20,
-    'Berger SARL',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    21,
-    'Legendre',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    22,
-    'Perrin',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    23,
-    'Clerc SARL',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    24,
-    'Vidal et Fils',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    25,
-    'Ledoux',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    26,
-    'Blanchard SAS',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    27,
-    'Huet',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    28,
-    'Lambert S.A.',
-    NULL,
-    'partners',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    29,
-    'Deschamps',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    30,
-    'Gosselin Weiss S.A.R.L.',
-    NULL,
-    'prod_dist',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  );
+
+INSERT INTO `partners` (`id`, `name`, `updated_at`, `type`, `logo_name`, `logo_original_name`, `logo_mime_type`, `logo_size`, `logo_dimensions`) VALUES
+(122, 'Labbe Clement SAS', '2020-02-03 07:36:10', 'partners', '02.logo-communaute de commune.png', '02.logo-communaute de commune.png', 'image/png', 41563, NULL),
+(123, 'Boucher Le Roux SARL', '2020-02-03 07:36:24', 'partners', '08.dreal_nouvelle-aquitaine.jpg', '08.dreal_nouvelle-aquitaine.jpg', 'image/jpeg', 113503, NULL),
+(124, 'Gilles', '2020-02-03 07:36:34', 'prod_dist', '05.regionlogo_na_horiz_QUADRI_2019.png', '05.regionlogo_na_horiz_QUADRI_2019.png', 'image/png', 110129, NULL),
+(125, 'Roussel SARL', '2020-02-03 07:36:45', 'partners', '04.logo-le64.jpg', '04.logo-le64.jpg', 'image/jpeg', 63127, NULL),
+(126, 'Delorme', NULL, 'prod_dist', NULL, NULL, NULL, NULL, NULL),
+(127, 'Barre SAS', NULL, 'prod_dist', NULL, NULL, NULL, NULL, NULL),
+(128, 'Gilbert', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(129, 'Wagner', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(130, 'Hoareau', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(131, 'Carpentier et Fils', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(132, 'Boutin', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(133, 'Lelievre SAS', NULL, 'prod_dist', NULL, NULL, NULL, NULL, NULL),
+(134, 'Chauvin Vallet et Fils', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(137, 'Guilbert', NULL, 'prod_dist', NULL, NULL, NULL, NULL, NULL),
+(138, 'Launay', NULL, 'prod_dist', NULL, NULL, NULL, NULL, NULL),
+(139, 'Launay', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(140, 'Pierre', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(141, 'Berger SARL', NULL, 'prod_dist', NULL, NULL, NULL, NULL, NULL),
+(142, 'Legendre', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(143, 'Perrin', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(144, 'Clerc SARL', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(145, 'Vidal et Fils', NULL, 'prod_dist', NULL, NULL, NULL, NULL, NULL),
+(146, 'Ledoux', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(147, 'Blanchard SAS', NULL, 'prod_dist', NULL, NULL, NULL, NULL, NULL),
+(148, 'Huet', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(149, 'Lambert S.A.', NULL, 'partners', NULL, NULL, NULL, NULL, NULL),
+(150, 'Deschamps', NULL, 'prod_dist', NULL, NULL, NULL, NULL, NULL),
+(151, 'Gosselin Weiss S.A.R.L.', NULL, 'prod_dist', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
+
 --
 -- Structure de la table `performance`
 --
-DROP TABLE IF EXISTS `performance`;
 
+DROP TABLE IF EXISTS `performance`;
 CREATE TABLE IF NOT EXISTS `performance` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `company_name_id` int(11) NOT NULL,
@@ -1219,1976 +278,235 @@ CREATE TABLE IF NOT EXISTS `performance` (
   `city_show` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `place_show` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
+  `price` double DEFAULT NULL,
+  `is_highlight` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_82D7968151458601` (`company_name_id`),
   KEY `IDX_82D7968171F7E88B` (`event_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 51 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `performance`
 --
-INSERT INTO
-  `performance` (
-    `id`,
-    `company_name_id`,
-    `event_id`,
-    `city_show`,
-    `place_show`,
-    `date`
-  )
-VALUES
-  (
-    1,
-    2,
-    3,
-    'Levy',
-    'chemin de Devaux',
-    '2019-09-09 12:18:59'
-  ),
-  (
-    2,
-    8,
-    5,
-    'Chauvet-sur-Monnier',
-    '871, place Levy',
-    '2020-01-04 18:13:52'
-  ),
-  (
-    3,
-    13,
-    4,
-    'Raynaud',
-    '534, place Léon Richard',
-    '2019-12-24 02:46:36'
-  ),
-  (
-    4,
-    2,
-    5,
-    'Dos Santos',
-    '73, impasse de Francois',
-    '2019-07-31 02:17:03'
-  ),
-  (
-    5,
-    15,
-    6,
-    'Gerard',
-    '11, rue Vidal',
-    '2019-12-27 18:56:12'
-  ),
-  (
-    6,
-    1,
-    6,
-    'Ribeiro-sur-Camus',
-    '72, rue de Peltier',
-    '2019-07-31 07:48:32'
-  ),
-  (
-    7,
-    3,
-    5,
-    'Le Goff',
-    '26, chemin de Etienne',
-    '2019-10-31 21:38:50'
-  ),
-  (
-    8,
-    6,
-    1,
-    'Guillet',
-    '22, boulevard Blanchard',
-    '2019-12-11 17:59:49'
-  ),
-  (
-    9,
-    18,
-    5,
-    'Tanguy',
-    'impasse de Lopez',
-    '2019-09-08 21:01:25'
-  ),
-  (
-    10,
-    16,
-    7,
-    'JourdanBourg',
-    '83, rue de Marie',
-    '2019-12-07 18:39:46'
-  ),
-  (
-    11,
-    12,
-    7,
-    'Richard',
-    '55, chemin Marques',
-    '2019-10-03 12:46:18'
-  ),
-  (
-    12,
-    3,
-    5,
-    'Chevallier',
-    '88, impasse Jeanne Pereira',
-    '2020-01-13 18:41:29'
-  ),
-  (
-    13,
-    10,
-    2,
-    'Weiss',
-    'rue Dupont',
-    '2019-08-23 12:04:02'
-  ),
-  (
-    14,
-    14,
-    1,
-    'Potier-sur-Humbert',
-    '25, rue Honoré Deschamps',
-    '2019-07-12 04:55:32'
-  ),
-  (
-    15,
-    5,
-    1,
-    'Boutin',
-    '55, rue Marine Le Roux',
-    '2019-09-12 05:06:14'
-  ),
-  (
-    16,
-    8,
-    3,
-    'HubertVille',
-    '64, rue Patrick Marie',
-    '2019-07-09 16:33:22'
-  ),
-  (
-    17,
-    10,
-    3,
-    'Baudry-sur-Collin',
-    '37, place Alexandre Raymond',
-    '2019-12-13 19:23:51'
-  ),
-  (
-    18,
-    12,
-    4,
-    'Ramos',
-    '4, impasse de Denis',
-    '2019-08-16 19:56:52'
-  ),
-  (
-    19,
-    15,
-    1,
-    'Hamel',
-    '78, place de Fouquet',
-    '2019-10-31 01:07:35'
-  ),
-  (
-    20,
-    1,
-    5,
-    'Germain-la-Forêt',
-    'impasse Colin',
-    '2019-07-05 00:24:25'
-  ),
-  (
-    21,
-    7,
-    4,
-    'Lacombe-la-Forêt',
-    '336, chemin Charles Breton',
-    '2019-08-08 22:35:22'
-  ),
-  (
-    22,
-    8,
-    2,
-    'Poirier-les-Bains',
-    '14, impasse de Robert',
-    '2019-11-09 18:55:54'
-  ),
-  (
-    23,
-    1,
-    2,
-    'GuillonVille',
-    '856, avenue Georges',
-    '2019-07-22 05:22:20'
-  ),
-  (
-    24,
-    17,
-    1,
-    'Richard',
-    '31, impasse de Lesage',
-    '2019-12-13 00:48:27'
-  ),
-  (
-    25,
-    15,
-    7,
-    'Ferrand-les-Bains',
-    'boulevard Antoine Dubois',
-    '2019-12-02 19:12:05'
-  ),
-  (
-    26,
-    18,
-    3,
-    'MartinsVille',
-    '96, chemin Morvan',
-    '2019-11-15 03:54:14'
-  ),
-  (
-    27,
-    2,
-    1,
-    'Roussel',
-    '9, impasse de Aubert',
-    '2019-10-11 18:42:30'
-  ),
-  (
-    28,
-    18,
-    4,
-    'Dupuis',
-    '55, place Alexandre Marques',
-    '2020-01-01 12:17:34'
-  ),
-  (
-    29,
-    15,
-    3,
-    'Lagarde-sur-Launay',
-    '40, place Clerc',
-    '2019-10-18 00:59:45'
-  ),
-  (
-    30,
-    17,
-    1,
-    'Bazin-les-Bains',
-    '472, place de Launay',
-    '2019-06-29 04:56:53'
-  ),
-  (
-    31,
-    13,
-    7,
-    'Vincentboeuf',
-    '743, rue Raymond Schneider',
-    '2019-11-28 11:44:49'
-  ),
-  (
-    32,
-    1,
-    3,
-    'Courtois-sur-Mer',
-    'rue Marcel Berthelot',
-    '2019-09-17 02:08:25'
-  ),
-  (
-    33,
-    2,
-    1,
-    'Langlois-sur-Mer',
-    '72, rue Daniel Duhamel',
-    '2019-10-19 13:43:42'
-  ),
-  (
-    34,
-    5,
-    2,
-    'Morin',
-    'chemin de Valentin',
-    '2019-09-18 20:57:22'
-  ),
-  (
-    35,
-    4,
-    2,
-    'Auger-les-Bains',
-    'impasse Leroux',
-    '2019-07-27 19:37:12'
-  ),
-  (
-    36,
-    3,
-    4,
-    'Bonneau',
-    '95, avenue Corinne Bruneau',
-    '2019-08-09 15:47:37'
-  ),
-  (
-    37,
-    19,
-    1,
-    'Lopez',
-    '90, chemin Noémi Gallet',
-    '2019-09-17 18:55:01'
-  ),
-  (
-    38,
-    11,
-    2,
-    'Lebonnec',
-    '45, chemin Dupuis',
-    '2019-12-09 09:47:19'
-  ),
-  (
-    39,
-    4,
-    3,
-    'Nguyen-la-Forêt',
-    'rue Léon Da Silva',
-    '2019-06-29 12:14:39'
-  ),
-  (
-    40,
-    15,
-    1,
-    'Bonnet',
-    '1, avenue Alfred Humbert',
-    '2019-08-25 18:58:28'
-  ),
-  (
-    41,
-    10,
-    6,
-    'Maceboeuf',
-    '8, place Fischer',
-    '2019-12-06 05:39:49'
-  ),
-  (
-    42,
-    5,
-    6,
-    'Rodriguezdan',
-    'boulevard Alexandre Masson',
-    '2019-10-26 03:40:04'
-  ),
-  (
-    43,
-    13,
-    5,
-    'Gillet',
-    '6, place Alexandre Etienne',
-    '2019-12-11 16:10:13'
-  ),
-  (
-    44,
-    12,
-    4,
-    'Berger',
-    '8, chemin Aurore De Sousa',
-    '2019-10-30 11:34:29'
-  ),
-  (
-    45,
-    20,
-    3,
-    'Da Silva',
-    '18, rue Denis Guillou',
-    '2019-11-22 02:23:10'
-  ),
-  (
-    46,
-    3,
-    5,
-    'Allard',
-    '835, avenue de Boyer',
-    '2019-07-24 03:55:22'
-  ),
-  (
-    47,
-    6,
-    4,
-    'LaporteVille',
-    '886, boulevard Célina Michel',
-    '2019-07-16 02:37:03'
-  ),
-  (
-    48,
-    20,
-    7,
-    'Duval',
-    '28, place Grégoire Mary',
-    '2019-12-12 00:04:21'
-  ),
-  (
-    49,
-    19,
-    6,
-    'Texier',
-    '19, place Margot Joly',
-    '2019-10-17 03:32:12'
-  ),
-  (
-    50,
-    16,
-    5,
-    'Rolland',
-    '69, avenue Nathalie Ramos',
-    '2019-10-22 12:08:36'
-  );
+
+INSERT INTO `performance` (`id`, `company_name_id`, `event_id`, `city_show`, `place_show`, `date`, `price`, `is_highlight`) VALUES
+(201, 82, 31, 'Levy', 'chemin de Devaux', '2019-09-13 15:56:00', NULL, 0),
+(203, 93, 32, 'Raynaud', '534, place Léon Richard', '2019-12-28 06:24:25', NULL, 0),
+(205, 95, 34, 'Gerard', '11, rue Vidal', '2019-12-31 22:34:01', NULL, 0),
+(206, 81, 34, 'Ribeiro-sur-Camus', '72, rue de Peltier', '2019-08-04 11:26:21', NULL, 0),
+(210, 96, 35, 'JourdanBourg', '83, rue de Marie', '2019-12-11 22:17:00', NULL, 0),
+(211, 92, 35, 'Richard', '55, chemin Marques', '2019-10-07 16:24:07', NULL, 0),
+(213, 90, 30, 'Weiss', 'rue Dupont', '2019-08-27 15:41:51', NULL, 0),
+(214, 94, 29, 'Potier-sur-Humbert', '25, rue Honoré Deschamps', '2019-07-16 08:33:21', NULL, 0),
+(215, 85, 29, 'Boutin', '55, rue Marine Le Roux', '2019-09-16 08:44:03', NULL, 0),
+(216, 88, 31, 'HubertVille', '64, rue Patrick Marie', '2019-07-13 20:11:00', NULL, 0),
+(217, 90, 31, 'Baudry-sur-Collin', '37, place Alexandre Raymond', '2019-12-17 23:01:40', NULL, 0),
+(218, 92, 32, 'Ramos', '4, impasse de Denis', '2019-08-20 23:34:41', NULL, 0),
+(219, 95, 29, 'Hamel', '78, place de Fouquet', '2019-11-04 04:45:24', NULL, 0),
+(221, 87, 32, 'Lacombe-la-Forêt', '336, chemin Charles Breton', '2019-08-13 02:13:11', NULL, 0),
+(222, 88, 30, 'Poirier-les-Bains', '14, impasse de Robert', '2019-11-13 22:33:00', NULL, 0),
+(223, 81, 30, 'GuillonVille', '856, avenue Georges', '2019-07-26 09:00:09', NULL, 0),
+(224, 97, 29, 'Richard', '31, impasse de Lesage', '2019-12-17 04:26:00', NULL, 0),
+(225, 95, 35, 'Ferrand-les-Bains', 'boulevard Antoine Dubois', '2019-12-06 22:49:54', NULL, 0),
+(226, 98, 31, 'MartinsVille', '96, chemin Morvan', '2019-11-19 07:32:03', NULL, 0),
+(227, 82, 29, 'Roussel', '9, impasse de Aubert', '2019-10-15 22:20:00', NULL, 0),
+(228, 98, 32, 'Dupuis', '55, place Alexandre Marques', '2020-01-05 15:55:23', NULL, 0),
+(229, 95, 31, 'Lagarde-sur-Launay', '40, place Clerc', '2019-10-22 04:37:34', NULL, 0),
+(230, 97, 29, 'Bazin-les-Bains', '472, place de Launay', '2020-03-03 08:34:00', 25.3, 1),
+(231, 93, 35, 'Vincentboeuf', '743, rue Raymond Schneider', '2019-12-02 15:22:38', NULL, 0),
+(232, 81, 31, 'Courtois-sur-Mer', 'rue Marcel Berthelot', '2019-09-21 05:46:14', NULL, 0),
+(233, 82, 29, 'Langlois-sur-Mer', '72, rue Daniel Duhamel', '2019-10-23 17:21:00', NULL, 0),
+(234, 85, 30, 'Morin', 'chemin de Valentin', '2019-09-23 00:35:11', NULL, 0),
+(235, 84, 30, 'Auger-les-Bains', 'impasse Leroux', '2019-07-31 23:15:01', NULL, 0),
+(236, 83, 32, 'Bonneau', '95, avenue Corinne Bruneau', '2019-08-13 19:25:26', NULL, 0),
+(237, 99, 29, 'Lopez', '90, chemin Noémi Gallet', '2019-09-21 22:32:50', NULL, 0),
+(238, 91, 30, 'Lebonnec', '45, chemin Dupuis', '2019-12-13 13:25:08', NULL, 0),
+(239, 84, 31, 'Nguyen-la-Forêt', 'rue Léon Da Silva', '2019-07-03 15:52:28', NULL, 0),
+(241, 90, 34, 'Maceboeuf', '8, place Fischer', '2019-12-10 09:17:38', NULL, 0),
+(242, 85, 34, 'Rodriguezdan', 'boulevard Alexandre Masson', '2019-10-30 07:17:53', NULL, 0),
+(244, 92, 32, 'Berger', '8, chemin Aurore De Sousa', '2019-11-03 15:12:18', NULL, 0),
+(245, 100, 31, 'Da Silva', '18, rue Denis Guillou', '2019-11-26 06:00:59', NULL, 0),
+(247, 86, 29, 'LaporteVille', '886, boulevard Célina Michel', '2020-07-20 06:14:00', NULL, 0);
 
 -- --------------------------------------------------------
+
+--
+-- Structure de la table `press_document`
+--
+
+DROP TABLE IF EXISTS `press_document`;
+CREATE TABLE IF NOT EXISTS `press_document` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `document_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `document_original_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `document_mime_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `document_size` int(11) DEFAULT NULL,
+  `document_dimensions` longtext COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:simple_array)',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `press_document`
+--
+
+INSERT INTO `press_document` (`id`, `name`, `file_type`, `updated_at`, `document_name`, `document_original_name`, `document_mime_type`, `document_size`, `document_dimensions`) VALUES
+(4, 'eeee', 'image', '2020-02-07 10:26:44', '9.mare.1.JPG', '9.mare.1.JPG', 'image/jpeg', 6832744, NULL),
+(5, 'kuyjf', 'file', '2020-02-07 10:43:45', 'photo.20..centre.ressrouces..JPG', 'photo.20..centre.ressrouces..JPG', 'image/jpeg', 675409, NULL);
+
+-- --------------------------------------------------------
+
 --
 -- Structure de la table `section`
 --
-DROP TABLE IF EXISTS `section`;
 
+DROP TABLE IF EXISTS `section`;
 CREATE TABLE IF NOT EXISTS `section` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `belong_to_page_id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sub_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sub_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `appearance_order` int(11) NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `image_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image_original_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image_mime_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_original_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_mime_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `image_size` int(11) DEFAULT NULL,
-  `image_dimensions` longtext COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:simple_array)',
+  `image_dimensions` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:simple_array)',
   PRIMARY KEY (`id`),
   KEY `IDX_2D737AEFD261FDD1` (`belong_to_page_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 101 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=542 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `section`
 --
-INSERT INTO
-  `section` (
-    `id`,
-    `belong_to_page_id`,
-    `name`,
-    `title`,
-    `sub_title`,
-    `appearance_order`,
-    `content`,
-    `updated_at`,
-    `image_name`,
-    `image_original_name`,
-    `image_mime_type`,
-    `image_size`,
-    `image_dimensions`
-  )
-VALUES
-  (
-    1,
-    20,
-    'Ut culpa aliquam.',
-    'Aut magni qui qui.',
-    'Quis sint quia quibusdam.',
-    7,
-    'Et consequatur suscipit saepe quia. Nesciunt nobis aperiam facere non iure nihil quia. Nihil est dolorum voluptas est voluptatem a.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    2,
-    16,
-    'Aut sit voluptas consequatur rerum.',
-    'Porro molestiae est excepturi.',
-    'Ex consequatur.',
-    1,
-    'Necessitatibus necessitatibus qui est et. Odio alias sed eaque.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    3,
-    20,
-    'Officia reiciendis ipsam voluptatem.',
-    'Molestias et minus hic.',
-    'Aperiam voluptas corporis fugiat.',
-    6,
-    'Illum ipsum odit ducimus culpa quae dolores blanditiis. Ut nemo eum vitae impedit recusandae temporibus quam aperiam. Omnis corrupti hic aut qui rem. Unde enim molestiae autem id.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    4,
-    9,
-    'Aliquid nam ex asperiores neque.',
-    'Voluptas ut ut.',
-    'Qui sed sint magnam.',
-    0,
-    'Praesentium exercitationem numquam iste vel perferendis consequuntur assumenda. Labore nesciunt exercitationem animi. Sit repudiandae id aliquam reprehenderit a tempora.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    5,
-    22,
-    'Vel laudantium qui assumenda a.',
-    'Perspiciatis dolor nihil.',
-    'Unde nihil ducimus.',
-    6,
-    'Et perferendis distinctio minima fugit corrupti voluptatem. Excepturi soluta temporibus repellendus. Eum cupiditate in quaerat et. Temporibus quo soluta molestiae optio consectetur.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    6,
-    16,
-    'A eum natus officia laudantium.',
-    'Aliquam deleniti rerum qui vitae.',
-    'Et explicabo possimus.',
-    1,
-    'Officia fugit iste et et. Totam repellendus provident voluptatem. Repellendus necessitatibus hic ipsa doloribus. Qui accusamus et odio explicabo quam accusamus. Sint quia fuga autem impedit perspiciatis.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    7,
-    9,
-    'Odit id quasi.',
-    'Omnis quidem.',
-    'Reprehenderit commodi aut voluptas.',
-    4,
-    'At nostrum voluptatem et et ea. Harum tempore ab quis impedit. Assumenda aut aliquid consequatur nulla explicabo commodi praesentium voluptatem. Non optio consequatur occaecati delectus ut amet ipsam magni.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    8,
-    7,
-    'Dolorem iusto odio alias nemo.',
-    'Non ea architecto.',
-    'Nulla consectetur beatae.',
-    3,
-    'Aut blanditiis in pariatur omnis blanditiis consectetur itaque consequuntur. Praesentium itaque et reiciendis quo sapiente est. Quaerat voluptas vitae quia molestiae.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    9,
-    26,
-    'Velit quo autem id.',
-    'Voluptatem est et ipsam.',
-    'Ipsam consequatur quaerat minima id.',
-    4,
-    'Neque et quia saepe itaque. Laborum aut commodi et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    10,
-    17,
-    'Dolor assumenda ut.',
-    'Vitae odit magnam omnis.',
-    'Rerum earum.',
-    5,
-    'Corporis recusandae ad omnis explicabo expedita sed et quis. Facilis a eum et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    11,
-    27,
-    'Asperiores et reprehenderit.',
-    'Dolorum consequuntur sed.',
-    'Aut accusamus aut.',
-    1,
-    'Ex omnis est similique culpa dolorem dolor perspiciatis. Nostrum eum omnis quaerat. Beatae iure necessitatibus qui. Quasi rerum veritatis veritatis nam et quam. Voluptatem qui ut itaque iusto consequuntur.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    12,
-    15,
-    'Et cupiditate ea.',
-    'In ab facere sunt.',
-    'Omnis ut et fugiat.',
-    6,
-    'Animi nihil impedit voluptatum qui. Laboriosam laborum doloribus iusto ipsum suscipit. Qui tempora qui qui alias itaque esse.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    13,
-    27,
-    'Sed maiores veritatis laudantium.',
-    'Incidunt placeat et.',
-    'Dolores omnis est accusamus iusto.',
-    6,
-    'Recusandae vel praesentium aliquam dolor quasi. Et nihil ut ipsam odio quia. Temporibus alias nihil ipsa officia.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    14,
-    2,
-    'Atque rem eius.',
-    'Esse velit voluptas.',
-    'Ut magnam repudiandae voluptas.',
-    9,
-    'Fugiat officia ut omnis nihil dolores et. Tempora non aut aut totam molestiae assumenda fugiat. Ab unde a cumque. Voluptatum molestias facere totam similique voluptatum mollitia.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    15,
-    14,
-    'Error rerum accusantium laborum veniam iure.',
-    'Possimus cumque.',
-    'Provident nemo asperiores.',
-    5,
-    'A molestiae aliquam aut voluptate velit et et. Officia consequatur in et aut hic. Maxime nemo rerum in dolores molestias earum.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    16,
-    5,
-    'Eos ipsam culpa non.',
-    'Ex in nihil quidem.',
-    'Eum quia et amet.',
-    7,
-    'Unde sint magni ea. Sed voluptatibus in laborum est ratione. Perferendis fuga animi nulla possimus et optio.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    17,
-    17,
-    'Eveniet perspiciatis et et sed.',
-    'Maiores et dignissimos.',
-    'Mollitia non enim ad.',
-    4,
-    'Aliquid maiores ipsa esse ullam cupiditate. Voluptatem deserunt doloremque magnam et impedit quo. Vel deserunt eius architecto commodi eum at. Facilis inventore vero animi unde doloribus.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    18,
-    15,
-    'Dolor vel consectetur debitis.',
-    'Animi tempore ut ut exercitationem.',
-    'Quia ad quas ut.',
-    6,
-    'Ut ducimus suscipit quia nostrum veritatis saepe ex. Aut neque sit numquam vel est sunt ab. Cupiditate excepturi non saepe in voluptatem vel rem quaerat. Magni aut eaque vel deleniti.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    19,
-    9,
-    'Deleniti enim rerum sequi.',
-    'Et nemo excepturi et.',
-    'Vero hic quia ut.',
-    1,
-    'Cum et facere fugiat sed earum iste suscipit voluptatem. Deserunt nobis doloribus enim ipsa dolores. Asperiores voluptates ut delectus sapiente quo. Rerum nihil sint placeat ipsa id ullam.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    20,
-    22,
-    'Eveniet debitis voluptatem.',
-    'Sed totam aut impedit facere.',
-    'Provident aut aut officia ducimus.',
-    4,
-    'Amet provident sint in eius et reprehenderit aliquam. Id et ab voluptate molestiae ut qui.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    21,
-    19,
-    'Vel quod dolorem perspiciatis.',
-    'Quis asperiores non qui.',
-    'Natus qui.',
-    8,
-    'Deleniti in quis hic. Ab architecto quas illum cum aut.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    22,
-    18,
-    'Doloremque unde fuga nostrum.',
-    'Dolorem dicta repellendus dolorum.',
-    'Dolorem molestiae aut.',
-    7,
-    'Qui dolore nobis in autem dicta adipisci. Perspiciatis ut vel quibusdam voluptatem consequuntur voluptatem. Possimus magnam earum non explicabo voluptas et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    23,
-    19,
-    'Est animi quaerat laborum autem.',
-    'Suscipit vel aut.',
-    'Architecto corrupti itaque.',
-    0,
-    'Autem consequatur consequatur perspiciatis animi. Assumenda debitis est nihil. Blanditiis labore maxime explicabo assumenda sit. Sint nam in pariatur vero fuga consequatur praesentium consequatur. Aut possimus id voluptas similique cumque provident et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    24,
-    2,
-    'Consequatur provident voluptas.',
-    'Omnis nisi dolorem ut.',
-    'Delectus magnam repudiandae molestiae et.',
-    9,
-    'Consequuntur est ut commodi sed. Fugiat repellat harum assumenda sed illo voluptatem nobis fugit.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    25,
-    26,
-    'At vero consequatur ut.',
-    'Sint et inventore.',
-    'Ullam ullam dolor.',
-    8,
-    'Vel possimus est labore et totam adipisci et. Molestiae tempora aut quidem quam. Adipisci rerum beatae laboriosam possimus ut. Et maiores ex ratione facilis consequatur est est et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    26,
-    1,
-    'Non similique aut suscipit quo.',
-    'Quaerat libero provident.',
-    'Minus alias eos et.',
-    6,
-    'Et maiores inventore iure tempora perspiciatis. Numquam veniam sequi dolorem quisquam amet nam ipsa. Et non autem iste praesentium. Porro aut corporis quis in quia asperiores sed.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    27,
-    13,
-    'Vero excepturi nihil harum sit et.',
-    'Rerum quasi possimus.',
-    'Qui voluptatem asperiores.',
-    9,
-    'Soluta distinctio placeat nesciunt quam hic perspiciatis. Est neque ipsam sequi. Error consequatur vero sint qui rerum vel aut provident.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    28,
-    18,
-    'Qui at molestiae commodi.',
-    'Distinctio commodi dolorem voluptas.',
-    'Itaque vel voluptatibus vero.',
-    0,
-    'Et tempore enim eius. Maiores laboriosam qui pariatur nam minus architecto consequatur animi. Nulla voluptate iste enim. Architecto aliquid amet eveniet voluptatem.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    29,
-    25,
-    'Tempore odit commodi aut culpa totam.',
-    'Facere sit et voluptatum.',
-    'Aut dolores voluptatem.',
-    9,
-    'Quis tempora provident et nobis dolore praesentium. Dolores harum cumque aperiam voluptatem necessitatibus nobis vel. Sit voluptatem dolores distinctio velit fugiat quaerat reiciendis.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    30,
-    4,
-    'Reprehenderit quis modi molestias qui expedita.',
-    'Accusamus magni qui animi aut.',
-    'Deleniti illo blanditiis eum.',
-    3,
-    'Pariatur enim animi quas laboriosam nisi sed recusandae placeat. Repudiandae nesciunt labore dolores. Dolor est cum sit iusto eius. Perferendis rem molestiae magnam omnis qui.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    31,
-    10,
-    'Pariatur voluptatem repellat similique voluptatem.',
-    'Velit maxime sint natus.',
-    'Ullam culpa voluptatem sequi.',
-    2,
-    'Eveniet architecto non aut itaque. Qui delectus aspernatur maiores atque. Unde dolorum voluptates et eaque praesentium. Consequatur incidunt dolore quasi placeat amet veniam.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    32,
-    6,
-    'Facilis id soluta quia quidem.',
-    'Odit quos voluptate et.',
-    'Non corrupti numquam dolore.',
-    3,
-    'Vero eligendi nemo nisi voluptate nobis vero sit. Unde sapiente atque suscipit quisquam et quos. Nisi est autem dolore expedita. Eos assumenda expedita rerum nesciunt.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    33,
-    7,
-    'Voluptates et dolores.',
-    'Facere numquam expedita.',
-    'Quidem earum est.',
-    3,
-    'Id cupiditate et sunt suscipit. Et et dolores excepturi sed qui dolorum sed. Numquam sunt autem nostrum ad sed eos. Earum natus eum rerum consectetur et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    34,
-    22,
-    'Qui sunt sapiente.',
-    'Est dolore veritatis.',
-    'Occaecati sequi quod assumenda.',
-    4,
-    'Laudantium voluptatem autem ratione hic nihil eligendi error dolore. Autem voluptatum porro consequuntur ullam. Neque odit voluptatem ut quod.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    35,
-    17,
-    'Qui sit ut sapiente fugit ullam.',
-    'Beatae sequi nemo.',
-    'Ut quam ut.',
-    8,
-    'Est quo et id est illum veniam eos. Placeat labore maxime ab aut aut. Fuga occaecati ut ea et. Repellendus amet commodi quia consequuntur quod vel.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    36,
-    23,
-    'Explicabo optio sit ea consequatur omnis.',
-    'Sint reprehenderit labore quo.',
-    'Mollitia dignissimos qui.',
-    7,
-    'Soluta ducimus maiores id non eius ipsa. Qui sed inventore commodi voluptatibus corporis. Rerum aut ipsam magnam sit officia assumenda accusamus aut. Nesciunt est qui minus. Aut iusto quasi molestiae earum commodi placeat qui.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    37,
-    7,
-    'Et neque officia quidem non excepturi.',
-    'Ratione et ea.',
-    'Nulla harum explicabo unde.',
-    4,
-    'Quidem consequatur fugiat nihil at. Nobis in iste impedit rerum. Dolor minima sint rerum pariatur.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    38,
-    6,
-    'Deleniti molestias sunt modi.',
-    'Amet corrupti dolorem rem.',
-    'Voluptas aperiam.',
-    0,
-    'Ex quaerat blanditiis aspernatur et placeat tenetur et minus. Laborum quia architecto temporibus alias ratione facere. Consequatur omnis eum placeat laborum consequatur enim id.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    39,
-    26,
-    'Aperiam dolor quis velit.',
-    'Praesentium est dignissimos.',
-    'Hic ducimus expedita et.',
-    7,
-    'Qui quia hic cupiditate sequi dicta velit. Nihil in magnam iure optio et aut nam aspernatur. Aut quidem modi autem nemo.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    40,
-    18,
-    'Voluptas aliquid et est.',
-    'Maiores ducimus assumenda.',
-    'Ex non.',
-    8,
-    'Earum magnam incidunt modi perferendis ea et non. Aut illo dolor minus non aperiam nemo et porro. Sequi voluptatem quos deserunt omnis in sint est. Tenetur cumque eos ipsum et dolor provident. Nihil laboriosam deleniti quibusdam dolorem.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    41,
-    21,
-    'Voluptate laborum enim qui.',
-    'Earum harum harum sequi.',
-    'Ut accusantium dolores.',
-    0,
-    'Sed commodi officia itaque itaque similique. Aut corporis et molestiae nemo. Ipsam eius magni animi totam enim illum.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    42,
-    27,
-    'Quas eum in sequi.',
-    'Officiis perferendis sit.',
-    'Inventore est accusantium placeat.',
-    5,
-    'Iure corporis nulla repellat delectus qui saepe ipsam. Deleniti iure porro impedit aut. Deserunt sit vitae eligendi omnis ex tempore aut et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    43,
-    14,
-    'Blanditiis atque ad qui et autem.',
-    'Nisi nihil doloremque.',
-    'Qui excepturi.',
-    5,
-    'Qui necessitatibus nostrum consequatur quibusdam voluptas. Dignissimos magni reiciendis labore corporis laudantium dolorem. Aut hic odio ex minus.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    44,
-    4,
-    'Doloribus non et earum.',
-    'Voluptates consectetur quas.',
-    'Explicabo reiciendis quia temporibus.',
-    5,
-    'Et dolores et et et adipisci at. Et ullam commodi debitis totam. Repellendus deleniti alias maxime sit sint corrupti. Quas eum ut et nisi eum accusantium.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    45,
-    24,
-    'Est repellendus nihil cumque est.',
-    'Velit sapiente et unde sequi.',
-    'Blanditiis id enim dolores.',
-    5,
-    'Pariatur iure natus quibusdam dolorem ut repellat. Quia praesentium rerum quas error vero voluptates eum. Voluptatem nihil quod sed ipsa doloremque in. Sed voluptatum et quos itaque et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    46,
-    16,
-    'Nesciunt velit consequatur hic accusantium.',
-    'Dolorem ut ex nemo.',
-    'Omnis odit quia.',
-    8,
-    'Odio consequuntur aperiam qui pariatur sit laborum est a. Et porro qui quo perspiciatis repellendus. Reprehenderit excepturi ut fuga. Similique sint est voluptatem laudantium.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    47,
-    14,
-    'Officia repellat id.',
-    'Voluptas iusto animi.',
-    'Fugit adipisci.',
-    6,
-    'Quos illum autem est id voluptatibus sint. Rerum est sequi inventore. Eaque sit provident repudiandae.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    48,
-    14,
-    'Magni quia ut eaque.',
-    'Vero nostrum exercitationem.',
-    'Qui a consequatur praesentium.',
-    6,
-    'Dolorem nihil eius magni aspernatur tenetur rerum. Sequi dolore distinctio est perspiciatis autem tempore. Ut quae iste reprehenderit.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    49,
-    16,
-    'Aut dolor quam minima est libero.',
-    'Doloremque dolores.',
-    'Natus ea qui est.',
-    2,
-    'Voluptatem eius inventore qui quam. Consequatur sapiente rerum sed ea autem voluptas. Saepe et harum beatae.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    50,
-    7,
-    'Quis ducimus et expedita sed.',
-    'Mollitia sed laboriosam assumenda.',
-    'Libero reprehenderit aut repellendus.',
-    6,
-    'Tempore aperiam sit aut et odit non et. Nobis incidunt dicta dolor non quae non. Quas earum ut explicabo ut voluptas.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    51,
-    28,
-    'Quia magnam perspiciatis.',
-    'Eligendi libero est.',
-    'At qui quis.',
-    5,
-    'Modi ullam eum mollitia laborum ipsam eum. Omnis iure possimus quia quod. Et at accusamus repellat corrupti reprehenderit ab tempora. Officia sapiente eos sit corrupti maxime ut tenetur.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    52,
-    16,
-    'Eius velit adipisci consequuntur fuga id.',
-    'Dicta natus nulla.',
-    'Non accusantium nam mollitia autem.',
-    1,
-    'Possimus dolorem quis velit dignissimos corporis. Qui ipsum quia error rerum autem repudiandae. Totam quisquam perferendis quia praesentium eos iure molestiae dolorum. Dolores illum nulla rerum eaque qui consectetur.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    53,
-    13,
-    'Distinctio provident vero ullam voluptatem dolores.',
-    'Quis voluptatem.',
-    'Rerum quasi excepturi optio.',
-    3,
-    'Et ex fuga quis voluptatem quod. Aliquid aut est beatae repellendus esse ratione.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    54,
-    6,
-    'Soluta fugit tenetur doloremque quae.',
-    'Et porro maiores.',
-    'Molestias voluptates tenetur aspernatur.',
-    7,
-    'Reiciendis omnis qui omnis aut aut. Consequatur a praesentium et laborum et itaque voluptate. Dolorum modi qui eos consequatur voluptatibus ut. Quasi perferendis sit veniam nostrum perferendis.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    55,
-    18,
-    'Consequatur est et assumenda qui.',
-    'Maxime velit facilis.',
-    'Neque odit ratione amet.',
-    6,
-    'Dolor nobis libero vel minima quia nulla quae. Velit non itaque consequatur dolorum dolorem libero. Ipsum ducimus distinctio explicabo et qui expedita ex possimus. Voluptatum sequi autem consectetur quam. Debitis vero natus laboriosam fuga maxime ad qui mollitia.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    56,
-    24,
-    'Illo quod vero sint.',
-    'Pariatur delectus atque.',
-    'Ipsum laboriosam est nihil.',
-    2,
-    'Deserunt in voluptatem deserunt accusamus qui est quod. Quidem odit unde quis ex. Blanditiis est autem est incidunt a aut dolorem consequatur.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    57,
-    12,
-    'Velit at dolorem error non laboriosam.',
-    'Voluptatem in quis repellat.',
-    'Voluptas veritatis earum fuga temporibus.',
-    4,
-    'Vel minima dolor distinctio et dolores. Aut quis magnam magnam. Ea officia ratione voluptate quo fugiat. Ut repellendus necessitatibus minima earum laborum voluptas voluptates.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    58,
-    1,
-    'Accusantium consequatur qui ipsum.',
-    'Exercitationem iure sunt.',
-    'Cupiditate est maxime.',
-    4,
-    'Aut voluptas aut est officiis nisi distinctio. Iste velit dolor consectetur doloremque quod et. Fugiat rem voluptatum fugiat eum ut. Est repudiandae sint eos.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    59,
-    18,
-    'Veniam nostrum nostrum quia nobis aut.',
-    'Doloremque vel sit.',
-    'Itaque totam pariatur commodi.',
-    0,
-    'Ducimus est mollitia rerum est quod eum quo. Harum sapiente repellat quo qui reprehenderit deleniti dignissimos. Doloribus quis provident molestias aut aspernatur voluptatem.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    60,
-    19,
-    'Et omnis quos quia accusamus.',
-    'Ea alias dolorem.',
-    'Quisquam at rerum a aut.',
-    4,
-    'Est eum eos dolorem itaque voluptate. Sit eaque tenetur cumque dolores et nam rerum. Voluptatibus quisquam quae maxime.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    61,
-    8,
-    'Voluptates odio ipsam porro aut.',
-    'Commodi nihil.',
-    'Qui saepe sunt.',
-    5,
-    'Architecto numquam adipisci quasi accusantium aliquam sequi. Iusto officia quia repudiandae numquam quas ratione. Deleniti ducimus vel tenetur ut vel voluptas.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    62,
-    16,
-    'Dicta sunt omnis eos expedita recusandae.',
-    'Quidem ut nisi quia.',
-    'Qui aut.',
-    5,
-    'Unde temporibus ex esse. Nesciunt dignissimos in similique in facilis temporibus.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    63,
-    6,
-    'Porro nesciunt sint rerum molestias.',
-    'Atque harum veniam ut.',
-    'Exercitationem aut non.',
-    6,
-    'Eum odit nihil ut dolores est. Dolore rerum est inventore sunt ipsam magnam. Accusantium architecto et tempore.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    64,
-    27,
-    'Aspernatur quaerat voluptatem et quia.',
-    'Est eum explicabo et.',
-    'Eos iusto dolores.',
-    6,
-    'Nemo quia iusto quas quia maxime veritatis minima. Illum dolorem voluptatem tempore architecto. Voluptas magnam repellendus laborum quo non vel facilis.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    65,
-    12,
-    'Enim quia beatae nobis voluptas rerum.',
-    'Molestiae dolores voluptatem.',
-    'Excepturi ullam et.',
-    0,
-    'Nulla sed nobis qui rerum quis qui. Tempora cumque eos alias nihil porro totam voluptatum. Ut optio omnis dolores id.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    66,
-    27,
-    'Beatae eius aspernatur.',
-    'Commodi at neque inventore.',
-    'Ducimus autem.',
-    3,
-    'Aperiam consequatur sequi rem. Delectus architecto vero numquam aut repellendus. Nulla eos quos laboriosam similique ipsam earum vitae qui.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    67,
-    26,
-    'Accusamus quod ut.',
-    'Sed voluptate animi.',
-    'Voluptas quisquam temporibus.',
-    0,
-    'Nihil perferendis delectus veritatis ut. Sed occaecati dignissimos tempore odio enim veniam eum. Ad inventore impedit non assumenda similique quo.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    68,
-    18,
-    'Tempora voluptas accusantium alias reprehenderit.',
-    'Quo eos.',
-    'Et magnam est enim totam.',
-    8,
-    'Vitae quos officiis voluptatibus cupiditate cupiditate enim. In numquam odio quam ipsum. Sit harum repellendus voluptates autem. Qui incidunt aut illo voluptatem.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    69,
-    17,
-    'Omnis dignissimos maiores.',
-    'Esse quasi.',
-    'Provident rerum eum.',
-    9,
-    'Et magnam quia quia a. Tempora quia ex id. Assumenda occaecati temporibus dolore maxime tenetur quis omnis. Rem inventore non labore quam nihil in voluptatibus.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    70,
-    5,
-    'Consequatur possimus cupiditate iure quo.',
-    'Ratione beatae.',
-    'Quis mollitia et facere.',
-    8,
-    'Dolor dolorem quis quam ut ea. Ipsa et veniam non doloremque iure molestias aut. Dolor assumenda voluptatibus qui voluptas eos.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    71,
-    24,
-    'Voluptas illum quaerat qui.',
-    'Temporibus facere vel ducimus.',
-    'Doloremque dolorem quae omnis.',
-    5,
-    'Nobis explicabo facere deserunt. Ratione delectus exercitationem odit. Corrupti qui magni ex eum et adipisci.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    72,
-    10,
-    'Praesentium nihil ut qui.',
-    'Velit sit nihil hic excepturi.',
-    'Ut nostrum sapiente.',
-    8,
-    'Eius fugiat voluptatem commodi omnis. Maxime quia sint doloremque quisquam aut voluptas. Blanditiis modi magnam quos dolores quis iste. Ipsa occaecati quod eius dolorum itaque.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    73,
-    6,
-    'Laudantium dolores non.',
-    'Numquam consequatur at iste.',
-    'Voluptas aut minus.',
-    7,
-    'Repellendus sint sed ut expedita numquam. Quidem ullam quasi laboriosam natus fugit quis deserunt. Alias nobis laboriosam quae voluptatem itaque voluptatem sapiente.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    74,
-    17,
-    'Quis numquam voluptatem culpa totam porro.',
-    'Molestias recusandae non.',
-    'Qui et libero aperiam commodi.',
-    7,
-    'Velit provident animi et ex maxime culpa omnis repudiandae. Quasi occaecati aut fugit dolor. Dolorem ea voluptates assumenda.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    75,
-    23,
-    'Neque delectus itaque aut qui.',
-    'Hic hic possimus at.',
-    'Doloribus voluptatem voluptatem tempore.',
-    2,
-    'Doloribus natus a consectetur ipsa voluptatem atque animi quibusdam. Sed porro repudiandae reiciendis quibusdam ut ullam. Sit qui sit et nesciunt et aut. Hic officia magni officia eaque ut.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    76,
-    3,
-    'In tempora pariatur est.',
-    'Quas aut cumque.',
-    'Autem suscipit pariatur.',
-    5,
-    'Repudiandae ea maiores est quae doloribus incidunt. Temporibus asperiores autem exercitationem molestiae unde distinctio officiis. Quia in dolores tempora nemo quaerat quae. Reiciendis ipsa temporibus voluptates alias.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    77,
-    7,
-    'Nihil repellat officia velit consequuntur dicta.',
-    'Veniam ipsum velit.',
-    'Quae beatae veritatis illum.',
-    3,
-    'Culpa ea dolore sit placeat laudantium. Qui voluptatibus aliquam nam sit doloremque omnis nesciunt. Unde blanditiis commodi earum.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    78,
-    28,
-    'Ipsa est vitae quia sapiente.',
-    'Aperiam in magnam quia.',
-    'Itaque molestias ea iste.',
-    7,
-    'Nisi fugit magnam suscipit distinctio aut expedita. Consequatur et officia iusto voluptas. Cumque debitis fuga necessitatibus.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    79,
-    21,
-    'Aut officiis autem consectetur delectus.',
-    'Maxime omnis ducimus.',
-    'Qui cum temporibus impedit.',
-    4,
-    'Assumenda recusandae eius ut repudiandae. Placeat sint et quibusdam corporis ratione. Nihil non dolorem et nesciunt. Sed numquam natus ut delectus incidunt.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    80,
-    11,
-    'Dolores fugiat assumenda tempore.',
-    'Ut quia omnis.',
-    'Omnis harum tempora.',
-    7,
-    'Quaerat omnis at repellendus laboriosam enim est. Et aspernatur voluptas exercitationem. Sequi culpa corporis reprehenderit et impedit et hic est.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    81,
-    5,
-    'Numquam esse id minima.',
-    'Est explicabo rerum adipisci.',
-    'Ab molestiae quod libero.',
-    2,
-    'Ab rerum consequuntur atque omnis rerum aspernatur. Vel sint quibusdam excepturi. Nam at quas numquam iste nemo. Enim iusto recusandae repudiandae natus dolores perferendis.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    82,
-    23,
-    'Nihil voluptate eveniet est repellat voluptatem.',
-    'Id dolores et odio.',
-    'Exercitationem distinctio officia.',
-    3,
-    'Fugiat quas quia id est. Et quas dolor dignissimos placeat.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    83,
-    23,
-    'Delectus velit voluptas et.',
-    'Amet praesentium voluptatem.',
-    'Voluptate labore in voluptas dolor.',
-    3,
-    'Enim voluptatem accusantium quisquam odio optio occaecati. Quis vitae autem est optio eaque. Omnis incidunt rerum reprehenderit rerum molestiae rerum incidunt.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    84,
-    6,
-    'Consequatur provident et porro adipisci aut.',
-    'Officiis dolorum aliquid magnam.',
-    'Magni voluptates.',
-    9,
-    'Nemo totam doloribus culpa unde. Dolor et a quisquam qui. Culpa voluptatum error eius nam cupiditate.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    85,
-    2,
-    'Ut nemo harum aut.',
-    'Assumenda dignissimos dolorem ab.',
-    'Quia esse.',
-    6,
-    'Aut deleniti ut qui doloremque. Quia vel minus vero et. Soluta non corporis rerum facere rem voluptatum beatae. Dolorum cumque sit et praesentium repellendus aut.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    86,
-    20,
-    'Ullam perspiciatis sed dolorum sequi.',
-    'Doloremque earum vitae.',
-    'Et dolores ratione eos.',
-    9,
-    'Aspernatur iste repellendus aperiam non molestiae sint vel nisi. Vel laudantium et cum et enim odit et. Consequuntur aliquid aut suscipit laudantium sint natus.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    87,
-    27,
-    'Itaque consequuntur aut architecto commodi.',
-    'Rem sed numquam sapiente.',
-    'Iusto nostrum cum.',
-    0,
-    'Molestiae aliquam maiores quia numquam ea voluptas aut. Placeat placeat dolor doloremque qui quis. Velit rerum eligendi quis rem nemo natus architecto eum. Id dolor voluptatem ut.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    88,
-    16,
-    'Et et voluptas rerum atque.',
-    'Debitis commodi pariatur.',
-    'Ea est illo.',
-    4,
-    'Ea dolor exercitationem ducimus quidem nesciunt adipisci sunt. Quaerat exercitationem aut quia quod modi. Quas et tenetur voluptatum quae qui.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    89,
-    17,
-    'Vero aperiam fugit molestias illo.',
-    'Modi mollitia sequi voluptas quisquam.',
-    'Perferendis autem est id.',
-    4,
-    'Iure maxime sit nemo omnis quaerat sit. Quos natus aliquid saepe. Sed occaecati enim dolores qui. Aliquid explicabo consectetur eos quo qui sint dolore.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    90,
-    20,
-    'Architecto quod sunt accusamus.',
-    'Aut quibusdam ipsum.',
-    'Illo in ipsum.',
-    4,
-    'Ut quo fugit laudantium eos. Voluptate libero veritatis quaerat ea quaerat. Et non officiis quo minus. In autem perferendis quidem.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    91,
-    2,
-    'Rerum assumenda quia aut quo.',
-    'Et eos et vitae voluptatem.',
-    'Illo esse possimus.',
-    9,
-    'Quae rerum molestias eos quia placeat asperiores autem provident. Aut numquam tempora quidem consequuntur. Soluta quibusdam quis ut quos ducimus. Quos vitae numquam dicta pariatur omnis.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    92,
-    18,
-    'Modi molestias adipisci qui quam culpa.',
-    'Aliquam officia et facilis.',
-    'Sed illo quos.',
-    8,
-    'Sit recusandae ad dolorem sed sunt doloribus ea earum. In ad nam debitis sit. At soluta sint omnis ullam. Eos unde earum ea ratione alias delectus.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    93,
-    3,
-    'Odit deserunt voluptas dignissimos cumque.',
-    'A voluptate vitae autem.',
-    'Odio dolorem laudantium.',
-    7,
-    'Eos dolor sit dolor accusamus. Tempora necessitatibus maxime dolor est cupiditate possimus laboriosam cumque. Porro quia ut eligendi ut autem voluptatem sit.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    94,
-    26,
-    'Dicta eos doloribus eligendi iusto.',
-    'Consequatur dolores.',
-    'Minima et recusandae.',
-    6,
-    'Excepturi id nostrum tempora quia qui aspernatur rerum. Inventore libero quae laboriosam voluptatum non facere veritatis. Placeat repellat magni sit commodi saepe quis neque. Aspernatur a unde quis ab voluptatem mollitia. Voluptate odio sunt aut est voluptatem.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    95,
-    27,
-    'Et sit sunt aut deleniti commodi.',
-    'Consequatur quia debitis dolor.',
-    'Incidunt ea quam.',
-    5,
-    'Impedit sed ea quia voluptatem. Porro est doloremque commodi beatae itaque. Est vitae vel rerum aut provident magnam.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    96,
-    28,
-    'Quaerat et quia voluptate.',
-    'Unde vel fugit eveniet.',
-    'Quasi rerum quia quia.',
-    3,
-    'Reprehenderit sint excepturi ea est corrupti tempore. Consequuntur laboriosam dolor dignissimos soluta omnis natus. Quidem id rerum repellat doloribus.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    97,
-    17,
-    'Nobis adipisci tempore eos.',
-    'Facere quos pariatur.',
-    'Est amet qui at.',
-    3,
-    'Vitae et laboriosam magnam et. Sit ratione at itaque. Consequatur exercitationem distinctio quo aut.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    98,
-    9,
-    'Alias quia sequi perferendis.',
-    'Necessitatibus nostrum aut.',
-    'Suscipit eius et illo odit.',
-    2,
-    'Ratione et illo architecto et ut eveniet. Eum aliquid animi omnis at praesentium molestias. Temporibus quo qui ad iste neque.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    99,
-    11,
-    'Sed maiores consectetur.',
-    'Numquam odit eum sint.',
-    'Consequuntur laudantium dolor voluptatem tempore.',
-    7,
-    'Aut nulla impedit modi amet eaque distinctio numquam vitae. Magnam aut autem sunt fugiat quibusdam corporis atque. Quis nobis delectus architecto et quidem earum et.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    100,
-    2,
-    'Placeat saepe nihil.',
-    'Aspernatur quasi est velit.',
-    'Reiciendis nisi natus cupiditate.',
-    7,
-    'Velit eligendi consequatur rem in quos. Eum aut optio omnis officia sit distinctio aut explicabo.',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  );
+
+INSERT INTO `section` (`id`, `belong_to_page_id`, `name`, `title`, `sub_title`, `appearance_order`, `content`, `updated_at`, `image_name`, `image_original_name`, `image_mime_type`, `image_size`, `image_dimensions`) VALUES
+(402, 122, 'intro', NULL, NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Conçu comme un lieu de rencontre et de partage pour penser l’imaginaire collectif, la Maison LAcaze vous ouvre ses portes et met à votre disposition ses différents espaces.</p>\r\n<p>Le Tiers Lieu est ouvert du lundi au vendredi de 9h à 17h</p>\r\n<p>L’adhésion à Lacaze aux sottises est obligatoire pour tout accès au lieu et à ses activités</p>\r\n<p>Adhésion structure 50 euros / Adhésion individuelle prix libre à partir de 5 euros</p>\r\n<p>Pour + d’infos, pour les réservations ou les prix des locations, merci de nous contacter.</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(403, 118, 'Aut sit voluptas consequatur rerum.', 'Porro molestiae est excepturi.', 'Ex consequatur.', 1, 'Necessitatibus necessitatibus qui est et. Odio alias sed eaque.', NULL, NULL, NULL, NULL, NULL, NULL),
+(404, 121, 'Presentation', 'Développement durable au coeur de la constellation d’Orion', NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Après avoir sillonné le territoire pour aller au plus près de la population, Lacaze aux sottises décide d’aller plus loin dans sa démarche citoyenne, sociale, écologique et solidaire - principes chevillés au corps du projet depuis ses débuts, Lacaze aux sottises ouvre les portes de son lieu hybride, la maison LAcaze au sein d’un ancien corps de ferme datant du 18ème siècle.</p>\r\n<p>Lacaze aux sottises prend plaisir à créer le dialogue entre les cultures - culture du spectacle vivant, culture du vivant végétal, culture individuelle et collective, culture citoyenne, culture sociale, culture locale…</p>\r\n<p>En s’appuyant sur ses trois secteurs activités le spectacle vivant, le développement durable, la médiation dans une dynamique d’éducation populaire, Lacaze aux sottises propose un lieu en faveur de la cohésion sociale afin de créer, innover, expérimenter et faire ensemble !</p>\r\n<p>Situé à Orion, il s’agit d’un Tiers Lieu pensé tel</p>\r\n<p>…. un éco lieu dans son fonctionnement au travers de sa réflexion autour de l’eau – phytoépuration, récupération des eaux de pluie ; de l’énergie – pompe solaire, panneau solaire thermique ; des déchets – tri sélectif et recyclage ; de l’agroécologie – jardin et verger pédagogiques, engrais naturel, moutons, canards, mare,...</p>\r\n<p><strong>… un centre social en milieu rural aux travers de ses espaces et services partagés ou encore de ses activités pédagogiques.</strong></p>\r\n</body>\r\n</html>', '2020-02-01 09:05:45', 'photoi.jardin.peda.1.JPG', 'photoi.jardin.peda.1.JPG', 'image/jpeg', 5265152, NULL),
+(405, 112, 'intro', NULL, NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Dimanche 18 octobre</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Navarrenx, Sauveterre-de-Béarn, Salies-de-Béarn</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Marathon artistique - Projet de territoire</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">11h à Navarrenx</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">15h à Sauveterre-de-Béarn</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">18h à Salies-de-Béarn</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">En partenariat avec les communes, l</span><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">a Station - CC Béarn des gaves </span><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">et l’Office du Tourisme Béarn des gaves</span></p>\r\n</body>\r\n</html>', '2020-01-27 14:54:27', 'photo11.c.hommedebout3.jpeg', 'photo11.c.hommedebout3.jpeg', 'image/jpeg', 165333, NULL),
+(406, 124, 'intro', NULL, NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Afin de privilégier les découvertes, les expérimentations et l’échange de savoir-faire, Lacaze aux sottises propose des cycles d’ateliers, dans une dynamique d’éducation populaire.</p>\r\n<p>L’adhésion à Lacaze aux sottises est obligatoire pour accéder aux ateliers du Tiers Lieu<br />Adhésion individuelle prix libre à partir de 5 €<br />La majorité des ateliers a lieu à Orion, le cas contraire est précisé.<br />Inscription auprès de <a href=\"mailto:lacazeauxsottises@gmail.com\">lacazeauxsottises@gmail.com</a>, 05 59 38 68 71</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(407, 118, 'A eum natus officia laudantium.', 'Aliquam deleniti rerum qui vitae.', 'Et explicabo possimus.', 1, 'Officia fugit iste et et. Totam repellendus provident voluptatem. Repellendus necessitatibus hic ipsa doloribus. Qui accusamus et odio explicabo quam accusamus. Sint quia fuga autem impedit perspiciatis.', NULL, NULL, NULL, NULL, NULL, NULL),
+(408, 111, 'Odit id quasi.', 'Omnis quidem.', 'Reprehenderit commodi aut voluptas.', 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>At nostrum voluptatem et et ea. Harum tempore ab quis impedit. Assumenda aut aliquid consequatur nulla explicabo commodi praesentium voluptatem. Non optio consequatur occaecati delectus ut amet ipsam magni.</p>\r\n</body>\r\n</html>', '2020-01-27 13:50:07', 'photo.6.Micro Lons.jpg', 'photo.6.Micro Lons.jpg', 'image/jpeg', 120151, NULL),
+(411, 119, 'Dolor assumenda ut.', 'Vitae odit magnam omnis.', 'Rerum earum.', 5, 'Corporis recusandae ad omnis explicabo expedita sed et quis. Facilis a eum et.', NULL, NULL, NULL, NULL, NULL, NULL),
+(412, 129, 'infos', NULL, NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Le siège social au 46, avenue des Docteurs Foix 64270 Salies-de-Béarn</p>\r\n<p>Les bureaux Maison LAcaze 11 route de Lasbordes 64390 Orion</p>\r\n<p>05 59 38 68 71 - lacazeauxsottises@gmail.com</p>\r\n<p>Du lundi au vendredi 9h/12h - 14h/17h</p>\r\n<p>Agréée Jeunesse et Education Populaire sous le n°64.1204, reconnue d\'intérêt général</p>\r\n<p>SIRET 51007391900035 - APE 9001Z - N° de licence 3-1104659 / 2-1104660 / 1-11122925</p>\r\n<p>Rejoignez-nous sur Facebook et sur www.lacaze-aux-sottises.org</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(413, 117, 'Et cupiditate ea.', 'In ab facere sunt.', 'Omnis ut et fugiat.', 6, 'Animi nihil impedit voluptatum qui. Laboriosam laborum doloribus iusto ipsum suscipit. Qui tempora qui qui alias itaque esse.', NULL, NULL, NULL, NULL, NULL, NULL),
+(414, 128, 'être adhérant', 'Être adhérent', NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Adhérer à Lacaze aux sottises : </span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"> </p>\r\n<ul>\r\n<li class=\"Textbody\" style=\"text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">C\'est soutenir un projet humain, militant et formidablement curieux.</span></li>\r\n<li class=\"Textbody\" style=\"text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">C\'est contribuer à la vie associative en prenant part aux instances décisionnaires - conseil d’administration, AG, commission,..</span></li>\r\n<li class=\"Textbody\" style=\"text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">C\'est accéder aux services et activités – espaces partagés du Tiers Lieu, parc de matériel, soirées du Tiers Lieu, ateliers de curiosité, formations, rendez-vous des producteurs, aux commandes groupées, des ventes de plants et de légumes proposées par l\'éco-lieu,...</span></li>\r\n</ul>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(415, 105, 'intro', NULL, NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>«La culture prend des formes diverses à travers le temps et l’espace. Cette diversité s’incarne dans l’originalité et la pluralité des identités qui caractérisent les groupes et les sociétés composant l’humanité. Source d’échanges, d’innovation et de créativité, la diversité culturelle est, pour le genre humain, aussi nécessaire que l’est la biodiversité dans l’ordre du vivant. En ce sens, elle constitue le patrimoine commun de l’humanité et elle doit être reconnue et affirmée au bénéfice des générations présentes et des générations futures.»</p>\r\n<p dir=\"ltr\" style=\"text-align: right;\">Article 1 de la déclaration Universelle de l’UNESCO sur la diversité culturelle, Mexico-mai 2001</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(416, 116, 'Error rerum accusantium laborum veniam iure.', 'Possimus cumque.', 'Provident nemo asperiores.', 5, 'A molestiae aliquam aut voluptate velit et et. Officia consequatur in et aut hic. Maxime nemo rerum in dolores molestias earum.', NULL, NULL, NULL, NULL, NULL, NULL),
+(417, 107, 'CA', 'CONSEIL D\'ADMINISTRATION', NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Le conseil d’administration de Lacaze aux sottises, composé de 9 membres, pour beaucoup investis depuis le début, constitue le pivot décisionnaire du projet. De par la pluralité de leurs compétences, les membres du CA interviennent sur différents postes - relation aux partenaires, comptabilité, secrétariat, communication, technique,...</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(418, 119, 'Eveniet perspiciatis et et sed.', 'Maiores et dignissimos.', 'Mollitia non enim ad.', 4, 'Aliquid maiores ipsa esse ullam cupiditate. Voluptatem deserunt doloremque magnam et impedit quo. Vel deserunt eius architecto commodi eum at. Facilis inventore vero animi unde doloribus.', NULL, NULL, NULL, NULL, NULL, NULL),
+(419, 117, 'Dolor vel consectetur debitis.', 'Animi tempore ut ut exercitationem.', 'Quia ad quas ut.', 6, 'Ut ducimus suscipit quia nostrum veritatis saepe ex. Aut neque sit numquam vel est sunt ab. Cupiditate excepturi non saepe in voluptatem vel rem quaerat. Magni aut eaque vel deleniti.', NULL, NULL, NULL, NULL, NULL, NULL),
+(420, 111, 'Deleniti enim rerum sequi.', 'Et nemo excepturi et.', 'Vero hic quia ut.', 1, 'Cum et facere fugiat sed earum iste suscipit voluptatem. Deserunt nobis doloribus enim ipsa dolores. Asperiores voluptates ut delectus sapiente quo. Rerum nihil sint placeat ipsa id ullam.', NULL, NULL, NULL, NULL, NULL, NULL),
+(421, 124, 'toute l\'année', 'Le chœur des sottises', 'Maison LAcaze d\'Orion', 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>1 samedi par mois de 10h à 13h + 12 ans </p>\r\n<p>Séance découverte le samedi 21 mars 2020 - prix libre à partir de 6 €<br />Reprise en septembre 2020 - 120 € à l\'année de sept à juin</p>\r\n<p>Un voyage vocal autour des chants du monde, avec polyrythmies et polyphonies, des chorégraphies aux petits oignons et une équipe déjantée ! Venez nous rejoindre au sein du Chœur des Sottises pour une année enchantée et partagée hors du commun !</p>\r\n</body>\r\n</html>', '2020-02-01 14:11:48', 'photo.32.lieu.vie.chorale.1.JPG', 'photo.32.lieu.vie.chorale.1.JPG', 'image/jpeg', 5288278, NULL),
+(422, 120, 'Vel quod dolorem perspiciatis.', 'Quis asperiores non qui.', 'Natus qui.', 8, 'Deleniti in quis hic. Ab architecto quas illum cum aut.', NULL, NULL, NULL, NULL, NULL, NULL),
+(423, 120, 'Doloremque unde fuga nostrum.', 'Dolorem dicta repellendus dolorum.', 'Dolorem molestiae aut.', 7, 'Qui dolore nobis in autem dicta adipisci. Perspiciatis ut vel quibusdam voluptatem consequuntur voluptatem. Possimus magnam earum non explicabo voluptas et.', NULL, NULL, NULL, NULL, NULL, NULL),
+(425, 105, 'top', 'PROJET ASSOCIATIF', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Lacaze aux sottises propose un projet au service de la cohésion sociale, à travers une mise en oeuvre éthique, une gouvernance démocratique, une dynamique de développement fondée sur un ancrage territorial et une mobilisation citoyenne. En encourageant l’hybridation entre culture, environnement et éducation populaire, Lacaze aux sottises entend favoriser l’inclusion et l’implication de tous dans un esprit de coopération et de solidarité. L’association participe largement au dynamisme social et économique de son territoire, dans une démarche de faire société ensemble. Lacaze aux sottises est un laboratoire d’idées et d’expérimentations pour une société plus juste, plus fraternelle et plus démocratique.</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(427, 104, 'AGITATEUR DE CURIOSITE', 'AGITATEUR DE CURIOSITE', NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\" dir=\"ltr\" style=\"text-align: justify;\"><span style=\"font-size: 11pt; font-family: helvetica, arial, sans-serif;\">Depuis 2009, <span style=\"color: #ba372a;\"><strong>Lacaze aux sottises</strong></span> s’investit en itinérance dans la mise en place de projets artistiques, festifs et populaires, en partenariat avec de nombreux acteurs, au travers de sa saison territoriale dont le festival Fête des sottises ! ou encore des lieux de fabrique, afin de contribuer à la diversité culturelle, à la qualité de vie et à l’attractivité de son territoire.</span></p>\r\n</body>\r\n</html>', '2020-01-19 10:52:10', 'photoc.ciekiroul.fetedubois.jpg', 'photoc.ciekiroul.fetedubois.jpg', 'image/jpeg', 732709, NULL),
+(428, 115, 'Vero excepturi nihil harum sit et.', 'Rerum quasi possimus.', 'Qui voluptatem asperiores.', 9, 'Soluta distinctio placeat nesciunt quam hic perspiciatis. Est neque ipsam sequi. Error consequatur vero sint qui rerum vel aut provident.', NULL, NULL, NULL, NULL, NULL, NULL),
+(429, 120, 'Qui at molestiae commodi.', 'Distinctio commodi dolorem voluptas.', 'Itaque vel voluptatibus vero.', 0, 'Et tempore enim eius. Maiores laboriosam qui pariatur nam minus architecto consequatur animi. Nulla voluptate iste enim. Architecto aliquid amet eveniet voluptatem.', NULL, NULL, NULL, NULL, NULL, NULL),
+(430, 126, 'intro', NULL, NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\" style=\"text-align: justify;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Sans l\'engagement citoyen de bénévoles, la culture pour tous en milieu rural ne pourrait exister. Alors si vous pensez que cette dernière doit être un pilier fort de nos sociétés, n\'hésitez plus ! Venez prendre part à la vie associative de Lacaze aux sottises, une grande aventure collective où chacun s\'investit à sa façon, <span style=\"color: black;\">des moments d\'échange, de transmission, de partage et de franche rigolade !</span></span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(431, 107, 'Bénévoles', 'BÉNÉVOLES', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Construite avec le soutien de nombreux bénévoles fidèles, la vie associative est au coeur du projet, riche de rencontres intergénérationnelles, d’apprentissage, de partage de compétences et de savoir-faire. Environ 50 personnes s’impliquent à l’année à nos cotés, pour monter jusqu’à 120 personnes sur le festival Fête des sottises !</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(432, 112, 'cie', 'Cie l\'Homme Debout', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Il y a au cœur du travail de la compagnie l’Homme Debout la collaboration avec les habitants des lieux. Il y a l’envie de transformer l’espace public au profit d’images poétiques et oniriques. Il y a la lenteur, la recherche de légèreté. Il y a la profonde conviction que là où l’on développe l’action culturelle il fait meilleur vivre ensemble. Il y a là une frontière ténue entre imaginaire et réalité. Il y a des histoires de géants, des histoires de petites gens, des histoires d’Hommes en fait. Il n’y a pas de « il était une fois » il n’y a pas de « FIN » non plus. Il y a des poèmes et des peintures en mouvement.</span></p>\r\n</body>\r\n</html>', '2020-01-27 14:56:14', 'photo11.c.hommedebout2.jpeg', 'photo11.c.hommedebout2.jpeg', 'image/jpeg', 174018, NULL),
+(433, 109, 'presentation', 'Spectacle vivant sous le signe de l’itinérance et de la coopération', NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>L’itinérance est une des pierres angulaires de l’action de Lacaze aux sottises depuis ses prémices. Elle permet un véritable maillage culturel du territoire. L’idée est d’apporter le spectacle vivant au plus près des habitants, au plus près du monde rural à travers les arts de la rue ! </p>\r\n<p> </p>\r\n<p>Depuis 12 ans, Lacaze aux sottises n’a de cesse au travers de ses projets artistiques, festifs et populaires de tisser des partenariats avec de nombreux acteurs qu’ils soient institutionnels, associatifs ou encore coopératifs.</p>\r\n<p> </p>\r\n<p>C’est au travers de la saison territoriale dont le festival Fête des sottises ! ou encore des lieux de fabrique et des actions de médiation que Lacaze aux sottises contribue à la diversité culturelle, à la qualité de vie et à l’attractivité de son territoire.</p>\r\n<p> </p>\r\n<p>Lacaze aux sottises participe également à la transition de la société, en accompagnant les personnes dans l’exercice de leur liberté, à travers de nombreuses actions pédagogiques, en s’adressant à tous notamment à des structures spécialisées dans une dynamique d’éducation populaire, en tant que facilitatrice de relations entre les personnes et les cultures - culture du spectacle vivant, culture individuelle et collective, culture citoyenne, culture sociale, culture locale.</p>\r\n</body>\r\n</html>', '2020-01-27 08:20:38', 'photo.h.saison.JPG', 'photo.h.saison.JPG', 'image/jpeg', 4339505, NULL),
+(435, 124, 'toute l\'année', 'Le club nature des sottises', 'Maison LAcaze d\'Orion', 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Tous les mercredis après-midi (hors vacances scolaires) de 15h à 17h - à partir du 22 avril 2020</p>\r\n<p>Pour les enfants de 6 à 10 ans<br />30 € du 22 avril au 24 juin 2020<br />Reprise en septembre 2020 - 120 € à l\'année de sept à juin</p>\r\n<p>Activités nature entre copains-pines pour découvrir les richesses de la nature et entreprendre mille actions pour la protéger. Au gré de leur imagination, de leurs préoccupations et de leurs motivations, d’une rencontre à l’autre les enfants seront encouragés à être force de propositions.</p>\r\n</body>\r\n</html>', '2020-02-07 07:16:16', 'photo.33.mediation.jardin.peda.4..JPG', 'photo.33.mediation.jardin.peda.4..JPG', 'image/jpeg', 4595327, NULL),
+(436, 119, 'Qui sit ut sapiente fugit ullam.', 'Beatae sequi nemo.', 'Ut quam ut.', 8, 'Est quo et id est illum veniam eos. Placeat labore maxime ab aut aut. Fuga occaecati ut ea et. Repellendus amet commodi quia consequuntur quod vel.', NULL, NULL, NULL, NULL, NULL, NULL),
+(437, 125, 'Explicabo optio sit ea consequatur omnis.', 'Sint reprehenderit labore quo.', 'Mollitia dignissimos qui.', 7, 'Soluta ducimus maiores id non eius ipsa. Qui sed inventore commodi voluptatibus corporis. Rerum aut ipsam magnam sit officia assumenda accusamus aut. Nesciunt est qui minus. Aut iusto quasi molestiae earum commodi placeat qui.', NULL, NULL, NULL, NULL, NULL, NULL),
+(439, 108, 'adhésion', 'ADHÉRER À LACAZE AUX SOTTISES C\'EST...', NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Soutenir un projet humain, militant et formidablement curieux !<br />Rendre possible un rêve collectif !</span></p>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Contribu</span><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">er à la vie associative</span></p>\r\n<ul>\r\n<li class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">en prenant part aux instances décisionnaires, conseil d’administration, AG, commission,..</span></li>\r\n<li class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">en prenant part aux chantiers participatifs ou encore en étant bénévole lors de manifestations</span></li>\r\n</ul>\r\n<p>Accéder aux services et activités</p>\r\n<ul>\r\n<li>Espaces partagés du tiers lieu</li>\r\n<li>Bureaux, salle d’activité, centre de ressources, bricothéque, éco-lieu</li>\r\n<li>Parc de matériel</li>\r\n<li>Soirées du tiers lieu </li>\r\n<li>Ateliers de curiosité</li>\r\n<li>Formations bénévole</li>\r\n<li>Rendez-vous des producteurs</li>\r\n<li>Commandes groupées</li>\r\n</ul>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(441, 120, 'Voluptas aliquid et est.', 'Maiores ducimus assumenda.', 'Ex non.', 8, 'Earum magnam incidunt modi perferendis ea et non. Aut illo dolor minus non aperiam nemo et porro. Sequi voluptatem quos deserunt omnis in sint est. Tenetur cumque eos ipsum et dolor provident. Nihil laboriosam deleniti quibusdam dolorem.', NULL, NULL, NULL, NULL, NULL, NULL),
+(442, 123, 'rdv prod', 'Le rendez-vous des producteurs', NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Chaque lundi, des producteurs vous donnent rendez-vous de 17h à 18h30 à la Maison LAcaze.<br />Vous pourrez ainsi repartir avec du pain, des œufs, des légumes de notre éco lieu,…</p>\r\n</body>\r\n</html>', '2020-02-01 11:04:53', 'photo30bis.courges.jpg', 'photo30bis.courges.jpg', 'image/jpeg', 2063135, NULL),
+(443, 128, 'adhérer', 'Comment adhérer ?', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Pour les particuliers à partir de 5 €</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Pour les structures à partir de 50 €</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">L’adhésion est également l\'occasion de faire un don ouvrant droit à une déduction d\'impôts égale à 66% du don. 100€ donnés = 34€ dépensés.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">En envoyant un chèque à lʼordre de Lacaze aux sottises à lʼadresse suivante : Lacaze aux sottises, 11 route de Lasbordes, 64390 Orion.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">En vous connectant à la plateforme Hello Asso</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">lien internet : Hello asso - Lacaze aux sottises - adhésion</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(444, 116, 'Blanditiis atque ad qui et autem.', 'Nisi nihil doloremque.', 'Qui excepturi.', 5, 'Qui necessitatibus nostrum consequatur quibusdam voluptas. Dignissimos magni reiciendis labore corporis laudantium dolorem. Aut hic odio ex minus.', NULL, NULL, NULL, NULL, NULL, NULL),
+(445, 107, 'Équipe', 'ÉQUIPE', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Aujourd’hui, l’équipe professionnelle compte 3 salariés permanents, renforcés par 3 intermittents volants et une équipe de 10 intermittents supplémentaires lors du festival Fête des sottises ! Afin que Lacaze aux sottises puisse continuer sa mission de service public, l’association doit pérenniser son équipe professionnelle. Pour se faire, un soutien financier fort de la part des partenaires institutionnels est nécessaire.</span></p>\r\n</body>\r\n</html>', '2020-01-26 10:23:24', 'photog.equipe.JPG', 'photog.equipe.JPG', 'image/jpeg', 2032349, NULL),
+(446, 126, 'être bénévole', 'Sur les événements', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\" style=\"text-align: justify;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Venez nous rejoindre sur nos événements – le festival Fête des sottises ! entre le 18 et le 28 juillet ou encore sur les temps forts, les sorties de résidence,... - en intégrant les équipes technique, bistrot, p’tite resto, accueil artiste, accueil public, brigade verte ….</span></p>\r\n</body>\r\n</html>', '2020-02-03 10:21:20', 'photo.43.jpg', 'photo.43.jpg', 'image/jpeg', 4522009, NULL),
+(447, 117, 'Nesciunt velit consequatur hic accusantium.', 'Dolorem ut ex nemo.', 'Omnis odit quia.', 8, 'Odio consequuntur aperiam qui pariatur sit laborum est a. Et porro qui quo perspiciatis repellendus. Reprehenderit excepturi ut fuga. Similique sint est voluptatem laudantium.', NULL, NULL, NULL, NULL, NULL, NULL),
+(448, 116, 'Officia repellat id.', 'Voluptas iusto animi.', 'Fugit adipisci.', 6, 'Quos illum autem est id voluptatibus sint. Rerum est sequi inventore. Eaque sit provident repudiandae.', NULL, NULL, NULL, NULL, NULL, NULL),
+(449, 116, 'Magni quia ut eaque.', 'Vero nostrum exercitationem.', 'Qui a consequatur praesentium.', 6, 'Dolorem nihil eius magni aspernatur tenetur rerum. Sequi dolore distinctio est perspiciatis autem tempore. Ut quae iste reprehenderit.', NULL, NULL, NULL, NULL, NULL, NULL),
+(450, 118, 'Aut dolor quam minima est libero.', 'Doloremque dolores.', 'Natus ea qui est.', 2, 'Voluptatem eius inventore qui quam. Consequatur sapiente rerum sed ea autem voluptas. Saepe et harum beatae.', NULL, NULL, NULL, NULL, NULL, NULL),
+(453, 118, 'Eius velit adipisci consequuntur fuga id.', 'Dicta natus nulla.', 'Non accusantium nam mollitia autem.', 1, 'Possimus dolorem quis velit dignissimos corporis. Qui ipsum quia error rerum autem repudiandae. Totam quisquam perferendis quia praesentium eos iure molestiae dolorum. Dolores illum nulla rerum eaque qui consectetur.', NULL, NULL, NULL, NULL, NULL, NULL),
+(454, 115, 'Distinctio provident vero ullam voluptatem dolores.', 'Quis voluptatem.', 'Rerum quasi excepturi optio.', 3, 'Et ex fuga quis voluptatem quod. Aliquid aut est beatae repellendus esse ratione.', NULL, NULL, NULL, NULL, NULL, NULL),
+(456, 119, 'Consequatur est et assumenda qui.', 'Maxime velit facilis.', 'Neque odit ratione amet.', 6, 'Dolor nobis libero vel minima quia nulla quae. Velit non itaque consequatur dolorum dolorem libero. Ipsum ducimus distinctio explicabo et qui expedita ex possimus. Voluptatum sequi autem consectetur quam. Debitis vero natus laboriosam fuga maxime ad qui mollitia.', NULL, NULL, NULL, NULL, NULL, NULL),
+(457, 125, 'Illo quod vero sint.', 'Pariatur delectus atque.', 'Ipsum laboriosam est nihil.', 2, 'Deserunt in voluptatem deserunt accusamus qui est quod. Quidem odit unde quis ex. Blanditiis est autem est incidunt a aut dolorem consequatur.', NULL, NULL, NULL, NULL, NULL, NULL),
+(458, 114, 'Dates', 'Festival des Sottises - 12ème édition', NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Du vendredi 24 au dimanche 26 juillet</span></p>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Salies-de-Béarn</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(459, 104, 'ACTEUR ETHIQUE ECO-RESPONSABLE', 'ACTEUR ETHIQUE ECO-RESPONSABLE', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Lacaze aux sottises défend également des valeurs citoyennes, solidaires et écologiques inhérentes à un projet de société collectif plus juste, notamment au travers de son tiers-lieu, la Maison LAcaze à Orion, pensé comme un espace de vie sociale en milieu rural, construit dans l’esprit d’un développement durable. Vous y trouverez un éco-lieu, un espace de travail partagé et un parc de matériel mis à la location, un espace de documentation et d’accompagnement de projet en spectacle vivant et en agroécologie. Cette offre s’étoffera dans les années à venir d’une bricothèque et d’un laboratoire solidaire de transformation maraîchère et fruitière.</span></p>\r\n</body>\r\n</html>', '2020-01-19 10:53:53', 'photod..jardin.peda.2.JPG', 'photod..jardin.peda.2.JPG', 'image/jpeg', 4450232, NULL),
+(460, 120, 'Veniam nostrum nostrum quia nobis aut.', 'Doloremque vel sit.', 'Itaque totam pariatur commodi.', 0, 'Ducimus est mollitia rerum est quod eum quo. Harum sapiente repellat quo qui reprehenderit deleniti dignissimos. Doloribus quis provident molestias aut aspernatur voluptatem.', NULL, NULL, NULL, NULL, NULL, NULL),
+(462, 111, 'Voluptates odio ipsam porro aut.', 'Commodi nihil.', 'Qui saepe sunt.', 5, 'Architecto numquam adipisci quasi accusantium aliquam sequi. Iusto officia quia repudiandae numquam quas ratione. Deleniti ducimus vel tenetur ut vel voluptas.', NULL, NULL, NULL, NULL, NULL, NULL),
+(463, 118, 'Dicta sunt omnis eos expedita recusandae.', 'Quidem ut nisi quia.', 'Qui aut.', 5, 'Unde temporibus ex esse. Nesciunt dignissimos in similique in facilis temporibus.', NULL, NULL, NULL, NULL, NULL, NULL),
+(465, 128, 'Etre hébergeur', 'Etre hébergeur', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Afin d’héberger comme il se doit les artistes du festival Fête des sottises !, nous sommes à la recherche de familles d’accueil, sur Salies-de-Béarn et alentours, le temps du festival du jeudi 23 au lundi 27 juillet 2020, avec la mise à disposition d’un lit, accueil chaleureux, petit déjeuner,… de belles rencontres humaines en perspective !</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(466, 114, 'Prog', 'Au programme', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<ul>\r\n<li class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Une programmation variée O programme ! Chicken Street, La Baleine Cargo, L’Etabli, Le GIVB, L’ESAC-TO - Ecole de Cirque de Toulouse, La Marmaille, Sara &amp; Alberto, Duo Jacaranda, Janusz &amp; Jerry, Anonima Teatro, Typhus Bronx, Léandre,..</span></li>\r\n<li class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Une rencontre professionnelle avec la Fédération des Arts de la Rue de la Nouvelle-Aquitaine et le CNAREP de la Rochelle</span></li>\r\n<li class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Des initiations cirque, des jeux, un rallye,…</span></li>\r\n<li class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Un Bistrot et une P’tite Resto en circuit court, toilettes sèches tel un éco festival</span></li>\r\n</ul>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(467, 128, 'Être donateur – Mécène', 'Être donateur – Mécène', NULL, 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Auto-financée à 50%, Lacaze aux sottises a besoin du soutien de son territoire pour mener à bien son projet associatif. Ainsi, nous lançons auprès des particuliers et des entreprises un appel aux dons via une campagne de mécénat, afin de donner une couleur locale, festive et solidaire à vos impôts !</p>\r\n<h4>Don-Mécénat</h4>\r\n<p>Le mécénat ouvre le droit à une réduction d’impôts égale à 66 % du don pour les particuliers et à 60 % pour les entreprises. Exemple pour les particuliers : 100 € donnés = 34 € dépensés.</p>\r\n<h4>Comment faire ?</h4>\r\n<p>Envoyez un chèque accompagné de l’ensemble de vos coordonnées au 11 route de Lasbordes - 64390 Orion ou effectuez un virement – RIB fourni sur demande. Un reçu fiscal permettant la déduction de vos impôts vous sera transmis dès réception.</p>\r\n<p>Pour plus de renseignements, contactez-nous à lacazeauxsottises@gmail.com ou au 05 59 38 68 71.</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(469, 120, 'Tempora voluptas accusantium alias reprehenderit.', 'Quo eos.', 'Et magnam est enim totam.', 8, 'Vitae quos officiis voluptatibus cupiditate cupiditate enim. In numquam odio quam ipsum. Sit harum repellendus voluptates autem. Qui incidunt aut illo voluptatem.', NULL, NULL, NULL, NULL, NULL, NULL),
+(470, 118, 'Omnis dignissimos maiores.', 'Esse quasi.', 'Provident rerum eum.', 9, 'Et magnam quia quia a. Tempora quia ex id. Assumenda occaecati temporibus dolore maxime tenetur quis omnis. Rem inventore non labore quam nihil in voluptatibus.', NULL, NULL, NULL, NULL, NULL, NULL),
+(472, 125, 'Voluptas illum quaerat qui.', 'Temporibus facere vel ducimus.', 'Doloremque dolorem quae omnis.', 5, 'Nobis explicabo facere deserunt. Ratione delectus exercitationem odit. Corrupti qui magni ex eum et adipisci.', NULL, NULL, NULL, NULL, NULL, NULL),
+(473, 112, 'infos', 'Trois semaines, trois territoires, trois sculptures', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Afin de mettre en place un projet de présence artistique sur le territoire du Béarn des Gaves, nous avons sollicité la Cie l’Homme Debout, connue pour ses marionnettes géantes, ses installations ou encore ses ateliers participatifs.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">L’idée est de construire avec vous, avec l’ensemble de la population, trois sculptures entièrement réalisées en osier, tel le fruit d’une innombrable succession d’assemblages de brins insignifiants, qui mettent en jeu des personnages à forme humaine.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Afin que ces sculptures prennent part à la vie de notre territoire, elles seront implantées dans l’espace public apportant ainsi une touche de poésie au paysage. Elles rejoindront ainsi le coeur de Salies-de-Béarn, Sauveterre-de-Béarn et Navarrenx lors de trois inaugurations festives en présence notamment de toutes les personnes ayant participées à leurs créations.</span></p>\r\n</body>\r\n</html>', '2020-01-27 14:57:07', 'photo11.c.hommedebout1.jpeg', 'photo11.c.hommedebout1.jpeg', 'image/jpeg', 174581, NULL),
+(475, 119, 'Quis numquam voluptatem culpa totam porro.', 'Molestias recusandae non.', 'Qui et libero aperiam commodi.', 7, 'Velit provident animi et ex maxime culpa omnis repudiandae. Quasi occaecati aut fugit dolor. Dolorem ea voluptates assumenda.', NULL, NULL, NULL, NULL, NULL, NULL),
+(476, 125, 'Neque delectus itaque aut qui.', 'Hic hic possimus at.', 'Doloribus voluptatem voluptatem tempore.', 2, 'Doloribus natus a consectetur ipsa voluptatem atque animi quibusdam. Sed porro repudiandae reiciendis quibusdam ut ullam. Sit qui sit et nesciunt et aut. Hic officia magni officia eaque ut.', NULL, NULL, NULL, NULL, NULL, NULL),
+(477, 106, 'intro', NULL, NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Depuis 2009, Lacaze aux sottises mène un large travail de territoire en s’associant à de nombreux acteurs. Basé principalement sur le Pays Lacq – Orthez – Béarn des Gaves - 114 communes pour 77 000 habitants, notre champ d’intervention – local, départemental, régional, s’étoffe au rythme des partenariats et des sollicitations.La co-construction est un choix fort dans notre développement car elle renforce notre ancrage territorial et inscrit notre projet dans la durabilité. En s’associant à des partenaires les plus divers - institution, association, coopérative, structure spécialisée, cette démarche contribue au vivre ensemble, à l’ouverture sur le monde ainsi qu’au croisement des publics pour favoriser la mixité sociale, intergénérationnelle et multiculturelle. Ce projet de coopération territoriale se met en place chaque année, au cas par cas avec nos partenaires. Il nécessite un travail de fond, de longue haleine, un tissage de relations de qualité entre acteurs issus de milieux parfois très différents. La création de communs commence dès la première rencontre avec les partenaires.</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(480, 123, 'soirées', 'Les soirées du Tiers Lieu', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Pensé tel un lieu de rencontre et de convivialité, Lacaze aux sottises invite au croisement des publics dans une mixité sociale, culturelle et générationnelle. </p>\r\n<p>L’adhésion à Lacaze aux sottises est obligatoire pour accéder aux soirée du Tiers Lieu</p>\r\n<p>Adhésion structure 50 euros / Adhésion individuelle prix libre à partir de 5 euros</p>\r\n<p>Bistrot sur place</p>\r\n<p>Soirées en auberge espagnole</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(481, 113, 'intro', NULL, NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">En s’appuyant sur la venue d’artistes sur le territoire, Lacazeaux sottises - association d’Education Populaire - met en place des actions de médiation ponctuelles ou régulières à destination de différents publics, favorisant l’épanouissement individuel et collectif.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">À travers son projet pluriel, Lacaze aux sottises se positionne comme support pédagogique à destination</span></p>\r\n<ul>\r\n<li class=\"Textbody\" style=\"line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">du grand public</span></li>\r\n<li class=\"Textbody\" style=\"line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">des structures spécifiques telles que ITEP, ESAT, EHPAD,...</span></li>\r\n<li class=\"Textbody\" style=\"line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">des publics scolaires et loisirs</span></li>\r\n</ul>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(483, 124, 'toute l\'année', 'Les cours de bureautique de Christophe', 'Maison LAcaze d\'Orion', 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>1 mardi tous les 15 jours de 14h à 15h30 - à partir du 17 mars 2020</p>\r\n<p>+ 12 ans<br />15€ la séance ou 120€  du 17 mars au 30 juin 2020<br />Reprise en septembre 2020 - 130 € le carnet de 10 séances de sept à juin<br />Venez avec votre ordinateur<br />Résa - Christophe - calmus.christophe@gmail.com - 07 77 39 09 12<br /><br />O programme ! Bureautique générale, manipulation de l\'ordinateur, traitement de l\'image, utilisation d\'internet</p>\r\n</body>\r\n</html>', '2020-02-01 14:14:50', 'photo.34.lieu.vie.formation.jpg', 'photo.34.lieu.vie.formation.jpg', 'image/jpeg', 3757110, NULL),
+(484, 124, 'ponctuel', 'Atelier construction d’un four solaire', 'Maison LAcaze d\'Orion', 5, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Les 25 et 26 avril de 9h à 17h + 14 ans avec adulte + 18 ans</span><br /><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Quelques bases de bricolage sont nécessaires !</span><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Hébergement possible sur place</span><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">150€ par personne dont 30 euros d\'adhésion à l\'association humanitaire Bolivia Inti – Sud Soleil qui œuvre dans le développement et la diffusion d\'outils de cuisson écologique en Afrique et en Amérique du Sud.</span></p>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Venez construire votre four en 2 jours avec l\'aide de Paul. Vous repartirez avec votre propre four en peuplier équipé d’une balancelle pour une cuisson bien à l’ horizontale quels que soit le terrain et la saison !</span></p>\r\n</body>\r\n</html>', '2020-02-01 14:33:46', 'photo.35prémian 7 2019.JPG', 'photo.35prémian 7 2019.JPG', 'image/jpeg', 146724, NULL),
+(486, 105, 'left', 'SPECTACLE VIVANT', 'PROJET ITINÉRANT SUR LE TERRITOIRE', 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<h4><strong>Diffusion</strong></h4>\r\n<ul>\r\n<li>Saison culturelle en milieu rural co-construite vec différents partenaires</li>\r\n<li>Festival Fêtes des sottises !</li>\r\n</ul>\r\n<h4><strong>Aide à la création</strong></h4>\r\n<ul>\r\n<li>Lieux de fabrique</li>\r\n</ul>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(489, 118, 'Et et voluptas rerum atque.', 'Debitis commodi pariatur.', 'Ea est illo.', 4, 'Ea dolor exercitationem ducimus quidem nesciunt adipisci sunt. Quaerat exercitationem aut quia quod modi. Quas et tenetur voluptatum quae qui.', NULL, NULL, NULL, NULL, NULL, NULL),
+(490, 118, 'Vero aperiam fugit molestias illo.', 'Modi mollitia sequi voluptas quisquam.', 'Perferendis autem est id.', 4, 'Iure maxime sit nemo omnis quaerat sit. Quos natus aliquid saepe. Sed occaecati enim dolores qui. Aliquid explicabo consectetur eos quo qui sint dolore.', NULL, NULL, NULL, NULL, NULL, NULL),
+(491, 122, 'bureau partagé', 'Espace de bureau à partager', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\">Rejoignez notre espace de coworking au sein de la Maison LAcaze où des postes de travail sont à votre disposition afin de partager notre aventure collective et émulatrice, avec des ordinateurs, 1 connexion en ADSL, 1 imprimante, 1 scanner, 1 espace cuisine.</span></p>\r\n</body>\r\n</html>', '2020-02-01 09:32:46', 'photo17.buro.JPG', 'photo17.buro.JPG', 'image/jpeg', 748843, NULL),
+(492, 105, 'right', 'DÉVELOPPEMENT DURABLE', 'Tiers-Lieu La maison Lacaze', 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<ul>\r\n<li>Éco-Lieu</li>\r\n<li>Espace de travail partagé</li>\r\n<li>Parc de matériel</li>\r\n<li>Centre de ressources</li>\r\n<li>Bricothèque</li>\r\n<li>Laboratoire de transformation</li>\r\n</ul>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(493, 119, 'Modi molestias adipisci qui quam culpa.', 'Aliquam officia et facilis.', 'Sed illo quos.', 8, 'Sit recusandae ad dolorem sed sunt doloribus ea earum. In ad nam debitis sit. At soluta sint omnis ullam. Eos unde earum ea ratione alias delectus.', NULL, NULL, NULL, NULL, NULL, NULL),
+(494, 106, 'left', 'ITINERANCE - SPECTACLE VIVANT', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">L’itinérance est une des pierres angulaires de notre action car elle permet un véritable maillage culturel du territoire. Nous apportons le spectacle vivant au plus près des habitants, au plus près du monde rural à travers les arts de rue et notre chapiteau. Pour chaque projet, nous investissons un lieu différent.</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(498, 119, 'Nobis adipisci tempore eos.', 'Facere quos pariatur.', 'Est amet qui at.', 3, 'Vitae et laboriosam magnam et. Sit ratione at itaque. Consequatur exercitationem distinctio quo aut.', NULL, NULL, NULL, NULL, NULL, NULL),
+(499, 112, 'atelier participatif', 'Atelier participatif', NULL, 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Venez prendre part à l’aventure !</p>\r\n<p> </p>\r\n<p>Du 29 septembre au 4 octobre à Salies-de-Béarn</p>\r\n<p>Du 6 au 11 octobre à Sauveterre-de-Béarn</p>\r\n<p>Du 13 au 17 octobre à Navarrenx</p>\r\n<p>Les lieux restent à définir </p>\r\n<p> </p>\r\n<p>Pour le grand public lors d’ateliers ouverts</p>\r\n<p>+ de 15 ans</p>\r\n<p>- de 15 ans accompagné d\'un adulte</p>\r\n<p>Du mardi au vendredi de 15h30 à 19h30</p>\r\n<p>Les week-ends de 14h à 18h</p>\r\n<p>Pour les publics spécifiques</p>\r\n<p>De 7 à 77 ans - écoles, structures de loisirs, structures spécialisées ITEP, EPHAD, ESAT,...</p>\r\n<p>Sur rendez-vous en semaine de 9h30 à 12h30</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(500, 114, 'Prix', 'Prix libre', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Afin de conserver l’accessibilité à tous au festival et de défendre un projet solidaire, nous militons pour le prix libre – une billetterie solidaire, à savoir un appel aux dons via les chapeaux à l’issue des spectacles ou du guichet à don en valorisant le mécénat culturel ouvrant droit à une réduction d’impôts.</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `section` (`id`, `belong_to_page_id`, `name`, `title`, `sub_title`, `appearance_order`, `content`, `updated_at`, `image_name`, `image_original_name`, `image_mime_type`, `image_size`, `image_dimensions`) VALUES
+(501, 105, 'bottom', 'ÉDUCATION POPULAIRE', 'A LA RENCONTRE DES PUBLICS DANS UNE DYNAMIQUE D’ÉDUCATION POPULAIRE', 5, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\" style=\"text-align: center;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Actions pédagogiques autour du spectacle vivant et du développement durable à destination des scolaires, des structures spécifiques, des bénévoles et du grand public</span></p>\r\n<ul>\r\n<li class=\"Standard\" style=\"text-align: center;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Rencontres</span></li>\r\n<li class=\"Standard\" style=\"text-align: center;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Ateliers, stages</span></li>\r\n<li class=\"Standard\" style=\"text-align: center;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Formations</span></li>\r\n<li class=\"Standard\" style=\"text-align: center;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Visites ludiques</span></li>\r\n<li class=\"Standard\" style=\"text-align: center;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Chantiers participatifs</span></li>\r\n</ul>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(502, 104, 'ALCHIMISTE DE LIEN SOCIAL', 'ALCHIMISTE DE LIEN SOCIAL', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Facilitatrice de relations entre les personnes et les cultures - culture du spectacle vivant, culture du vivant végétal, culture individuelle et collective, culture citoyenne, culture sociale, culture locale, Lacaze aux sottises entend participer à la transition de la société, en accompagnant les personnes dans l’exercice de leur liberté, à travers de nombreuses actions pédagogiques, en s’adressant à tous notamment à des structures spécialisées.</span></p>\r\n</body>\r\n</html>', '2020-01-19 10:56:08', 'photo.44.lieu.activité.chantier.repas.6.JPG', 'photo.44.lieu.activité.chantier.repas.6.JPG', 'image/jpeg', 3843272, NULL),
+(503, 104, 'Chiffres', NULL, NULL, 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\"> </span></p>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">En 2019, la programmation a réuni plus de<strong><span style=\"font-size: 14pt; color: #ba372a;\"> 21 000 spectateurs</span></strong>, <strong><span style=\"color: #ba372a; font-size: 14pt;\">2150 personnes</span></strong> ont bénéficié des actions pédagogiques, <span style=\"font-size: 14pt; color: #ba372a;\"><strong>63 représentations</strong></span> ont été proposées, rassemblant 38 <span style=\"font-size: 14pt; color: #ba372a;\"><strong>compagnies</strong></span>. <span style=\"color: #ba372a;\"><strong><span style=\"font-size: 14pt;\">91 artistes</span></strong></span> venus de France et de l’étranger ont pu partager leur travail. <span style=\"color: #ba372a;\"><strong><span style=\"font-size: 14pt;\">190 heures d’ateliers</span></strong></span> ont été proposées par<strong><span style=\"color: #ba372a; font-size: 14pt;\"> 88 intervenants</span></strong>. <strong><span style=\"color: #ba372a; font-size: 14pt;\">145 partenaires</span></strong> ont soutenu le projet, <span style=\"color: #ba372a; font-size: 14pt;\"><strong>10 partenaires institutionnels</strong></span>, <span style=\"color: #ba372a; font-size: 14pt;\"><strong>34 partenaires de projet</strong></span> et <span style=\"color: #ba372a; font-size: 14pt;\"><strong>101 partenaires privés</strong></span>. <strong><span style=\"color: #ba372a; font-size: 14pt;\">4 permanents</span></strong>, <strong><span style=\"color: #ba372a; font-size: 14pt;\">1 service civique</span></strong> et un noyau de <strong><span style=\"color: #ba372a; font-size: 14pt;\">50 bénévoles</span></strong> se sont mobilisés sur l’année notamment sur les<span style=\"color: #ba372a; font-size: 14pt;\"><strong> 6 chantiers participatifs</strong></span>, rejoints par <strong><span style=\"color: #ba372a; font-size: 14pt;\">10 techniciens</span></strong> et <span style=\"color: #ba372a; font-size: 14pt;\"><strong>120 bénévoles</strong></span> durant le festival, à l’année <strong><span style=\"color: #ba372a; font-size: 14pt;\">150 adhérents</span></strong>.</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(504, 106, 'right', 'TIERS -LIEU', 'DEVELOPPEMENT DURABLE', 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Après avoir sillonné son territoire pour aller au devant du monde rural, Lacaze aux sottises invite la population locale et plus largement tous les publics à investir la Maison LAcaze, un corps de ferme du XVIIIe siècle rénové selon des méthodes éco-responsables. Situé à Orion, au coeur du Béarn, à mi-chemin entre Salies de Béarn et Orthez, Navarrenx et Sauveterre ou encore entre Pau et Bayonne, notre tiers-lieu se veut être un espace de vie sociale, de partage, de convivialité et de vivre ensemble afin de contribuer au dynamisme et à l’attractivité du territoire, de lutter contre l’isolement et la fracture sociale - bien présents en zone de revitalisation rurale où peu de lieux de convivialité existent.</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(505, 106, 'last', 'PROJET EN RÉZO’NANCE', NULL, 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p><strong><span style=\"color: #ba372a;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Lacaze aux sottises s’inscrit dans de nombreux réseaux professionnels.</span></span></strong></p>\r\n<h4><strong><span style=\"color: #ba372a;\">Spectacle Vivant</span></strong></h4>\r\n<h5>En local</h5>\r\n<p>&gt;<strong> Un nouveau collectif d’acteurs culturels en milieu rural</strong> - Arts pluriels - Chacam - Morlanne sur la place - Tempête d\'idées - L\'union fait la jongle - Les Triporteurs -  Le Pingouin alternatif - qui se lance dans l’organisation d’un nouveau rendez-vous populaire Le Festi\'Chap, un festival à dominante musicale sous chapiteau </p>\r\n<h5>En région</h5>\r\n<p class=\"Standard\">&gt; <strong>Les FR, les Fabriques Réunies</strong> - 6 structures - CNAREP sur le Pont (17), Liburnia - Fest’arts (33), Musicalarue (40), Graine de Rue (87), Hameka (64), Lacaze aux sottises (64) - qui se fédèrent pour travailler collégialement autour de la création dans l’espace public. </p>\r\n<p>&gt; <strong>Grand’rue</strong>, la Fédération des Arts de la rue de la Nouvelle Aquitaine rassemble les professionnels dans leur diversité et forme un collectif de compétences actives et plurielles. La Fédération défend une éthique et des intérêts communs liés à la spécificité de création dans l’espace public.</p>\r\n<h5>En national</h5>\r\n<p>&gt; <strong>Le Syndicat des cirques et compagnies de création</strong>  qui défend une politique publique en faveur de l’art et de la culture qui, dans le spectacle vivant, s’appuie sur les quatre piliers que ce sont le cirque, la danse, la musique et le théâtre ainsi que les droits des salariés de ces secteurs d\'activité.</p>\r\n<h4><span style=\"color: #ba372a;\"><strong>Développement Durable</strong></span></h4>\r\n<h5>En local</h5>\r\n<p><span style=\"color: #000000;\">&gt; <strong>Les tiers-lieux du Béarn des Gaves :</strong> La Station, la Fab’rique et l’Épicerie sans fin et Lacaze aux sottises rédigent une charte pour définir des objectifs collectifs, un socle de valeurs et mettre en commun des compétences, des activités et des outils de communication... Une autre façon de coopérer. </span></p>\r\n<h5>En département</h5>\r\n<p><span style=\"color: #000000;\">&gt; <strong>Le CPIE Béarn -</strong> l’association « Environnement et Développement Durable en Béarn » est un réseau d’associations, œuvrant pour une éducation à l’environnement vers un développement durable de tous les publics. </span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(506, 108, 'Comment adhérer?', 'COMMENT ADHÉRER ?', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Pour les particuliers - à partir de 5€</p>\r\n<p>Pour les structures - à partir de 50€</p>\r\n<p> </p>\r\n<p>L’adhésion est également l\'occasion de faire un don ouvrant droit à une déduction d\'impôts égale à 66% du don. 100€ donnés = 34€ dépensés.</p>\r\n<p> </p>\r\n<p>En envoyant un chèque à lʼordre de Lacaze aux sottises à lʼadresse suivante</p>\r\n<p>Lacaze aux sottises, 11 route de Lasbordes, 64490 Orion</p>\r\n<p>En vous connectant à la plateforme Hello Asso</p>\r\n<p>lien internet : Hello asso - Lacaze aux sottises – adhésion</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(507, 113, 'content', 'VOIR', NULL, 2, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<h4>Sortie de résidence</h4>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">A l’issue de chaque résidence, nous invitons les compagnies à présenter leur spectacle en cours de création. Les sorties de résidence permettent aux artistes de confronter leur travail aux publics et à ces derniers, de découvrir la démarche de création.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n<h4>Répétition publique</h4>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">A l’occasion des accueils en résidence, nous organisons des répétitions publiques, un rendez-vous intimiste avec un groupe de personne, pour découvrir le travail de création, discuter avec les artistes...</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n<h4>Happening</h4>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Dans le cadre de résidence in situ, au sein de structures spécialisée ITEP, ESAT, EHPAD, CHP, des rendez-vous, des impromptus, des performances artistiques peuvent s’imaginer afin de susciter la curiosité, créer la surprise, émerveiller, créer une mémoire collective positive, aller à la rencontre de tous,...</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(508, 113, 'content', 'DÉCOUVRIR', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<h4>Visite de lieux culturels</h4>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Afin de découvrir l’envers du décor, des visites de lieux culturels du territoire peuvent être imaginées, notamment des visites techniques pour appréhender le jargon du milieu professionnel du spectacle vivant. Nous proposons notamment la découverte de notre chapiteau !</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(509, 113, 'content', 'RENCONTRER, ECHANGER', NULL, 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<h4 class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\">Bords de scène, temps d’échange</h4>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Il s’agit de temps de discussion, après le spectacle, où le public peut poser des questions, faire des remarques et échanger à bâton rompu avec les artistes. Chaque bord de scène est l’occasion de comprendre le message d’un spectacle, mais aussi d’appréhender le travail de création.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n<h4>Rencontre avec les artistes</h4>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">A l’occasion des résidences, nous invitons le grand public à venir à la rencontre des artistes lors de discussion dans les librairies, cafés, galeries du territoire,..</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(510, 113, 'content', 'FAIRE', NULL, 5, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<h4>Ateliers de pratique artistique</h4>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Nous profitons de la présence d’artistes sur le territoire pour imaginer des ateliers de pratique artistique ponctuels avec un groupe de personne donné.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n<h4>Les créations collectives</h4>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Intégrer des volontaires à la création artistique a déjà été expérimenté lors de la venue de la Cie La Machine en 2018. Cette année un nouveau projet participatif va voir le jour avec la cie L’Homme debout. Celle-ci et Lacaze aux sottises vont proposer au grand public et à des structures spécialisées, des écoles,... de construire des sculptures en osier, sculptures qui seront ensuite exposées dans les 3 grandes villes de notre territoire.</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(511, 113, 'content', 'S\'APPROPRIER', NULL, 6, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<h4>Collectage</h4>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Le collectage de parole est une démarche anthropologique sur un territoire donné, il permet de transmettre une mémoire et de prendre une photo à un instant T de façon poétique.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Lors de l’accueil de la Cie Midi à l’Ouest début juillet des temps de recueil de paroles des habitants du territoire sur la thématique du vivre en Béarn des Gaves seront proposés.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\"> </span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Le travail de collectage des Conversations Utopiques commencé l’année dernière sur le festival continuera cette année avec un collectage en amont de notre AG selon le planning ci-dessous. Une 1ère restitution de ce travail sera proposée lors de l’AG.</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(512, 113, 'RDV', 'Rendez-Vous...', NULL, 7, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>… Mardi 21 avril sur Sauveterre-de-Béarn<br />10h - 12h30 à La Station<br />14h30 - 17h au Bar de la mairie<br />17h30 - 19h à L’Epicerie Sans Fin<br /><br />… Mercredi 22 avril sur Navarrenx<br />9h-13h sur le marché de Navarrenx<br />15h-18h chez Olivier Photo<br /><br />… Jeudi 23 avril sur Salies-de-Béarn<br />9h-13 h sur le marché de Salies-de-Béarn<br />16h-19h au Moment Librairie</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(517, 112, 'AAA', NULL, NULL, 5, 'testtest', NULL, NULL, NULL, NULL, NULL, NULL),
+(518, 112, 'AAA', NULL, NULL, 5, 'testtest', NULL, NULL, NULL, NULL, NULL, NULL),
+(519, 112, 'A', NULL, NULL, 1, 'test', NULL, NULL, NULL, NULL, NULL, NULL),
+(520, 114, 'Bénévolat', 'Appel à bénévole et à hébergeur', NULL, 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Chaque année environ 120 bénévoles participent au festival et aux chantiers en amont de celui-ci. Sans ces forces vives, le festival n’existerait pas ! Rejoignez-nous.</p>\r\n<p>Nous avons également besoin d’aide pour héberger les artistes le temps du festival à Salies-de-Béarn et aux alentours. Si vous avez une chambre de libre et que vous adorez le festival, n’hésitez plus… c’est un soutien précieux !</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(521, 122, 'lieu de réunion', 'Lieu de réunion et d’activité à investir', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\">Investissez notre lieu de vie fraîchement rénové, une salle d\'environ 60 m² équipée d’un vidéoprojecteur, d’une cuisine, de comptoir,.. pour y organiser une réunion, des activités, le temps d’une demie journée, d’une journée.</span></p>\r\n</body>\r\n</html>', '2020-02-01 09:38:33', 'photo18.bar.asso.1.JPG', 'photo18.bar.asso.1.JPG', 'image/jpeg', 3335974, NULL),
+(522, 122, 'privatisation', 'Maison LAcaze dans son entièreté à privatiser', NULL, 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\">Profitez de notre magnifique cadre pour vous mettre au vert en louant notre lieu dans son entièreté pour y organiser votre événement, votre stage, votre séjour vacances, le temps d’une journée, d’une semaine, en profitant de nos infrastructures - possibilité d’hébergement - en dur ou sous tente et de nos activités.</span></p>\r\n</body>\r\n</html>', '2020-02-01 09:39:34', 'photo19..vue.globale.maison.jpg', 'photo19..vue.globale.maison.jpg', 'image/jpeg', 752227, NULL),
+(523, 122, 'dentre de documentation', 'Centre de documentation à explorer', NULL, 5, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"text-align: justify;\"><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Dans un espace détente, sont mis à votre disposition des revues spécialisées, des livres, des dvd, des jeux,... autour des thématiques expérimentées sur le Tiers Lieu : spectacle vivant, développement durable, éducation à la citoyenneté et à la solidarité internationale...</span></p>\r\n</body>\r\n</html>', '2020-02-01 09:41:06', 'photo.20..centre.ressrouces..JPG', 'photo.20..centre.ressrouces..JPG', 'image/jpeg', 675409, NULL),
+(524, 122, 'bricothèque', 'Bricothèque à exploiter', NULL, 6, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\">Espace ouvert à tous, bricoleur du dimanche, constructeur plus expérimenté, professionnel, recycleur d\'objets et autres dynamiques constructives pour favoriser le Do It Yourself et une mise en commun d\'outils et de compétences.</span></p>\r\n</body>\r\n</html>', '2020-02-01 09:42:06', 'photo.21.bricotheque rangé .JPG', 'photo.21.bricotheque rangé .JPG', 'image/jpeg', 2768543, NULL),
+(525, 122, 'éco-lieu', 'Eco lieu à découvrir', NULL, 7, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Tel un support pédagogique, le Tiers Lieu propose de découvrir d’autres façons de produire et de consommer en respectant l’Homme et l’Environnement à travers des réflexions autour de l’éco-construction, l’agro-écologie, la production d’énergie verte, la gestion de l’eau et des déchets en pratique éco responsable... L’idée est d’inviter les publics à visiter, expérimenter et essaimer ces alternatives notamment les bénéficiaires de structures spécialisées, de structures scolaires ou encore de loisirs.</p>\r\n<p>Venez alors découvrir le lieu et ses expérimentations au travers :</p>\r\n<ul>\r\n<li>de visites ludiques, de visites naturalistes sur le site et aux alentours</li>\r\n<li>d\'ateliers découverte - ateliers pratiques (cuisine, jardin, bricolage) ; animations sensorielles (balade autour des 5 sens) ; expériences scientifiques (observation d’insectes) ; ateliers créatifs (land ‘art, mandala végétal)</li>\r\n<li>d\'ateliers participatifs pour ceux qui veulent mettre la main à la pâte !</li>\r\n</ul>\r\n</body>\r\n</html>', '2020-02-01 09:44:03', 'photo.22..serre.2.JPG', 'photo.22..serre.2.JPG', 'image/jpeg', 10449212, NULL),
+(526, 122, 'location matériel', 'Parc de matériel à louer', NULL, 8, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\">Structures</span></u><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\"> - différentes structures pour l’organisation de vos évènements, gradins - fabrication possible sur commande, planchers, Protent, caravane bar, comptoirs de bar, braséros, toilettes sèches,...</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\">Chapiteau</span></u><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\"> - véritable théâtre ambulant à taille humaine, le chapiteau peut accueillir jusqu’à 600 personnes. Chapiteau rouge, 16 mètres de diamètre, 2 mâts, 1 coupole, montage - 1 journée, démontage - 1 journée, avec 2 monteurs professionnels et 6 bénévoles.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\">Sonorisation</span></u><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\"> - parc de matériel permettant de sonoriser vos événements. De la simple conférence au concert de taille moyenne, système de diffusion, table mixage numérique et analogique, micro, DI...</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><u><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\">Éclairage</span></u><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif;\"> - de l’éclairage de spectacle professionnel, à la guirlande guinguette en passant par la boule à facette,...</span></p>\r\n</body>\r\n</html>', '2020-02-01 09:44:58', 'photo.23..lieu.stockage.gradin.jpg', 'photo.23..lieu.stockage.gradin.jpg', 'image/jpeg', 2247484, NULL),
+(527, 123, 'visites', 'Les visites du Tiers Lieu', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Etant dans une démarche respectueuse de l’environnement : nous proposons des solutions innovantes au sein de notre tiers lieu pensé tel un éco lieu. Venez découvrir nos alternatives !</p>\r\n<h4>Visite ludique de la Maison LAcaze</h4>\r\n<p>La découverte de la Maison LAcaze peut se faire sur rdv tout au long de l’année, soit en autonomie soit en guidée. Renseignement et prise de rendez-vous recommandés pour les individus et les écoles, structures de loisirs, structures spécialisées (ITEP, EPHAD, ESAT,...).</p>\r\n<h4>2 week-ends - 2 jardins</h4>\r\n<p>La Maison LAcaze et Le Château d’Orion<br />10h - 12h30 / 14h – 18h<br />Possibilité de pique-niquer le midi<br /><strong><br /></strong>Les Rendez-vous aux jardins en 2020<br />Samedi 6 et Dimanche 7 Juin 2020<br /><br />Bienvenue dans mon jardin au naturel<br />Samedi 13 et Dimanche 14 Juin 2020</p>\r\n<h5>Zoom sur</h5>\r\n<p>A la Maison LAcaze… Rallye découverte du Tiers Lieu les 6 et 13 juin à 15h - 1h30 - prix libre - tout public</p>\r\n</body>\r\n</html>', '2020-02-01 12:41:22', 'photo.31..mare.1.JPG', 'photo.31..mare.1.JPG', 'image/jpeg', 6832744, NULL),
+(528, 124, 'ponctuel', 'Stage clown', 'Maison LAcaze d’Orion', 6, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Du 29 octobre au 1<sup>er</sup> novembre - de 10h à 17h + 18 ans</span><br /><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Hébergement possible sur place</span><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">160 euros les 4 jours</span><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Attention nombre de places limitées, inscrivez-vous dès maintenant !</span><br /><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Le corps, la voix, l’espace, le mouvement, l’écoute, le silence, le geste, l’imaginaire, moi et les autres. Le clown, c’est une autre esthétique, une autre forme artistique pour découvrir le théâtre classique. Le clown, c’est l’humanité et la liberté à l’état brut !</span></p>\r\n</body>\r\n</html>', '2020-02-01 14:37:58', 'photo36.lieu.vie.atelier.clown.jpg', 'photo36.lieu.vie.atelier.clown.jpg', 'image/jpeg', 204613, NULL),
+(529, 124, 'do it', 'Atelier soins naturels au potager', 'Médiathèque d\'Orthez', 8, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">15 février de 10h à 13h</span><br /><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Pour jardiniers amateurs,</span> <span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">+ 18 ans</span><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Accès libre</span><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Résa - Médiathèque d\'Orthez -</span> <span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">05 59 69 36 68</span><br /><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif;\">Tout est dans la nature ! Dans cet atelier, découvrez des trucs et astuces naturels pour le soin de votre jardin. Purins, huiles essentielles, aromathérapie et autres curiosités vous aideront à chouchouter vos plantations. Apprenez à reconnaître et à traiter les petites affections de votre potager !</span></p>\r\n</body>\r\n</html>', '2020-02-01 14:47:45', 'photo.37.purin.jpg', 'photo.37.purin.jpg', 'image/jpeg', 141272, NULL),
+(530, 124, 'do it', 'Découverte du pain au levain', 'Maison LAcaze d\'Orion', 9, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>21 mars de 14h à 18h</p>\r\n<p>4 € + 6 ans avec adulte / adhérent<br />6 € + de 16 ans  <br />Venez avec votre tablier ou vêtement de rechange.<br />Résa - CPIE - <a href=\"mailto:cpiebearn@cpiebearn.fr\">cpiebearn@cpiebearn.fr</a> - 05 59 36 28 98<br /><br />Pétrir, façonner et cuire au feu de bois du pain au levain naturel... tel est l\'objectif de cette journée conviviale autour de la boulangerie artisanale ! Entre l\'explication des différentes étapes de fabrication du blé et de la farine et la mise en pratique de la panification au levain naturel, Etienne vous propose de venir mettre la main à la pâte pour découvrir ou approfondir la pratique de la boulange. Chacun dégustera et repartira avec son pain.</p>\r\n</body>\r\n</html>', '2020-02-01 14:49:00', 'photo.38..lieu.activité.atelier.1.JPG', 'photo.38..lieu.activité.atelier.1.JPG', 'image/jpeg', 2598474, NULL),
+(531, 124, 'do it', 'Atelier cosmétique naturelle', 'Médiathèque de Mourenx', 10, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>16 mai de 10h à 13h + 6 ans avec adulte, + 12 ans<br /><br />Accès libre<br />Ramenez votre p’tit pot<br />Résa - Médiathèque de Mourenx - 05 59 80 58 80</p>\r\n<p>Venez fabriquer vos propres produits cosmétiques respectueux de l\'environnement tout en respectant votre budget ! Michèle, médecin, saura vous alerter sur les modes d’administration, les propriétés et les précautions d’emploi des différentes plantes et huiles. A l\'issue de cet atelier, vous repartirez muni de vos préparations et d\'un document \"mini-recettes et conseils\".</p>\r\n</body>\r\n</html>', '2020-02-01 14:50:19', 'photo39.comestique 1.jpg', 'photo39.comestique 1.jpg', 'image/jpeg', 310758, NULL),
+(532, 124, 'do it', 'Atelier de produits ménagers au naturel', 'Maison LAcaze d\'Orion', 11, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>19 septembre de 15h à 18h, + 6 ans avec adulte, + 12 ans<br /><br />Prix libre à partir de 6 €<br />Ramenez votre p’tit pot<br />Résa - CPIE - cpiebearn@cpiebearn.fr - 05 59 36 28 98<br /><br />De la lessive, du liquide vaisselle, une éponge zéro déchet ou un warp à la cire d\'abeille… Venez fabriquer divers produits ménagers respectueux de l\'environnement, une alternative à ceux vendus en commerce. Michèle, médecin, saura vous accompagner dans la confection de ces produits et24 sur l\'utilisation des huiles essentielles dans les produits ménagers. Chacun repartira avec sa préparation.</p>\r\n</body>\r\n</html>', '2020-02-01 14:51:20', 'photo.40produit-menager-naturel-sain.jpg', 'photo.40produit-menager-naturel-sain.jpg', 'image/jpeg', 52481, NULL),
+(533, 124, 'do it', 'Atelier couture', 'Maison LAcaze d\'Orion', 12, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>24 octobre de 10h à 18h + 12 ans<br /><br />Prix libre à partir de 12 €<br />Venez muni de tissus à recycler et d\'une machine à coudre si possible<br /><br />Venez fabriquer des accessoires et des habits en réutilisant des tissus voués à la poubelle. Caroline vous accompagnera sur cette alternative aux achats vestimentaires peu éthiques. Chacun repartira avec sa création.</p>\r\n</body>\r\n</html>', '2020-02-01 14:52:41', 'photo.41.couture.jpg', 'photo.41.couture.jpg', 'image/jpeg', 103484, NULL),
+(534, 124, 'do it', 'Atelier cosmétique naturelle', 'Maison LAcaze d\'Orion', 13, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>7 novembre de 15h à 18h<br /><br />+ 6 ans avec adulte + 12 ans<br />Prix libre à partir de 6 €<br />Ramenez votre p’tit pot<br /><br />Venez fabriquer vos propres produits cosmétiques respectueux de l\'environnement tout en respectant votre budget ! Michèle, médecin, saura vous alerter sur les modes d’administration, les propriétés et les précautions d’emploi des différentes plantes et huiles. A l\'issu de cet atelier, vous pourrez repartir muni de vos préparations et d\'un document \"mini-recettes et conseils\".</p>\r\n</body>\r\n</html>', '2020-02-01 14:57:16', 'undefined.jpg', 'undefined.jpg', 'image/jpeg', 16086, NULL),
+(535, 127, 'soutient', 'Comment nous soutenir ?', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<h4>Être donateur – Mécène</h4>\r\n<p>Auto-financée à 50%, Lacaze aux sottises a besoin du soutien de son territoire pour mener à bien son projet associatif. Ainsi, nous lançons auprès des particuliers et des entreprises un appel aux dons via une campagne de mécénat, afin de donner une couleur locale, festive et solidaire à vos impôts !</p>\r\n<h4>Don-Mécénat</h4>\r\n<p>Le mécénat ouvre le droit à une réduction d’impôts égale à 66 % du don pour les particuliers et à 60 % pour les entreprises. Exemple pour les particuliers : 100 € donnés = 34 € dépensés.</p>\r\n<h4>Comment faire ?</h4>\r\n<p>Envoyez un chèque accompagné de l’ensemble de vos coordonnées au 11 route de Lasbordes - 64390 Orion ou effectuez un virement – RIB fourni sur demande. Un reçu fiscal permettant la déduction de vos impôts vous sera transmis dès réception.<br />Pour plus de renseignements, contactez-nous à lacazeauxsottises@gmail.com ou au 05 59 38 68 71.</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(536, 126, 'être bénévole', 'Sur les chantiers', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Standard\" style=\"text-align: justify;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Pour les personnes désireuses de mettre la main à la pâte, Lacaze aux sottises propose un chantier participatif par mois. Bricoler, peindre, jardiner, cuisiner, faire des sirops, des conserves,... tout en expérimentant et en apprenant les uns des autres. Aucune compétence n\'est requise juste l\'envie de partager. Nous y fabriquons des éléments pour nos différentes manifestations ou encore nous œuvrons à l’aménagement de notre tiers lieu.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Sur un week-end, de 9h30 à 18h, parfois agrémentés d\'une formation, toujours ponctués d\'une soirée conviviale, les chantiers à la Maison LAcaze sont à chaque fois de bons moments !</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; line-height: normal;\"><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Possibilité de dormir sur place - sur inscription. Repas offert.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Les 7 et 8 mars</span><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Les 25 et 26 avril</span><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Les 16 et 17 mai</span><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Les 13 et 14 juin</span><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Les 18 et 19 juillet</span><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Les 19 et 20 septembre</span><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Les 24 et 25 octobre</span><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Les 7 et 8 novembre</span></p>\r\n</body>\r\n</html>', '2020-02-03 10:22:59', 'photo.44.lieu.activité.chantier.repas.6.JPG', 'photo.44.lieu.activité.chantier.repas.6.JPG', 'image/jpeg', 3843272, NULL),
+(537, 126, 'être bénévole', 'Formation bénévole', NULL, 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Formation bois</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Les 16 et 17 mai</span><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\\, sans-serif\'; color: black;\">+ 12 ans avec adulte, + 18 ans</span><br /><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Jeu de découpe, de conception... venez découvrir l’utilisation des machines de base du travail du bois tout en fabriquant des jeux en bois en matériaux recyclés.</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Formation soudure</span></p>\r\n<p class=\"Textbody\" style=\"margin-bottom: .0001pt; text-align: justify;\"><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\',sans-serif; color: black;\">Les 24 et 25 octobre</span><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\\, sans-serif\'; color: black;\">+ 18 ans</span><br /><span style=\"font-size: 11.0pt; line-height: 115%; font-family: \'Helvetica\\, sans-serif\'; color: black;\">Apportez de la ferraille, et si vous avez, venez avec votre équipement.</span><br /><br /><span style=\"font-size: 11.0pt; font-family: \'Helvetica\',sans-serif; color: black;\">Souder, assembler, imaginer... Bricolages ludiques et présentation du fonctionnement du poste à souder sont au menu de cet atelier destiné aux curieux âgés de plus de 18 ans. Pour l\'occasion Paul se transforme en véritable maître des techniques de soudure.</span></p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(538, 130, 'lacaze recrute', 'Lacaze aux sottises recrute...', NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>A partir de mi-février 2020, Lacaze aux sottises recrute 3 volontaires en service civique</p>\r\n<ul>\r\n<li>Vie associative autour de l\'éco-lieu, 26h/semaine durant 10 mois</li>\r\n<li>Vie associative autour de l\'accueil des compagnies, 26h/semaine durant 10 mois</li>\r\n<li>Vie associative autour de l\'accompagnement du bénévolat, 26h/semaine durant 10 mois</li>\r\n</ul>\r\n</body>\r\n</html>', '2020-02-11 16:49:34', 'undefined.jpg', 'undefined.jpg', 'image/jpeg', 16086, NULL),
+(539, 130, 'candidature off festival', 'Appel à candidature pour le off du festival...', NULL, 1, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Pour le off du festival Fête des sottises !, nous vous invitons à remplir le formulaire accessible <a title=\"Formulaire candidature off 2020.\" href=\"{{asset(\'images\\Formulaire%20candidature%20off%202020.pdf\')}}\">ici</a> et à nous le retourner par mail à <a href=\"mailto:lacazeauxsottises@gmail.com\">lacazeauxsottises@gmail.com</a></p>\r\n<p>La sélection sera réalisée le 7 mars</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(540, 130, 'Appel à résidence 2021', 'Appel à résidence pour 2021...', NULL, 3, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Pour les demandes de résidence de création, nous vous invitons à remplir le formulaire accessible <a title=\"formulaire residence artiste 2020\" href=\"{{asset(\'images\\formulaire residence artiste 2020.pdf\')}}\">ici</a> et à nous le retourner par mail à <a href=\"mailto:lacazeauxsottises@gmail.com\">lacazeauxsottises@gmail.com</a></p>\r\n<p>Les résidences pour 2020 sont closes</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL),
+(541, 130, 'Adhésion 2020', 'Adhésion 2020...', NULL, 4, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>Pour adhérer à Lacaze aux sottises, on vous guide, c\'est par <a href=\"hello%20asso\">ici</a>...</p>\r\n<p>Particulier - Prix libre à partir de 5 euros <br />Structure - Prix libre à partir de 50 euros</p>\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
+
 --
 -- Structure de la table `team`
 --
-DROP TABLE IF EXISTS `team`;
 
+DROP TABLE IF EXISTS `team`;
 CREATE TABLE IF NOT EXISTS `team` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -3202,228 +520,22 @@ CREATE TABLE IF NOT EXISTS `team` (
   `photo_size` int(11) DEFAULT NULL,
   `photo_dimensions` longtext COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:simple_array)',
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 16 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `team`
 --
-INSERT INTO
-  `team` (
-    `id`,
-    `name`,
-    `first_name`,
-    `role`,
-    `email`,
-    `updated_at`,
-    `photo_name`,
-    `photo_original_name`,
-    `photo_mime_type`,
-    `photo_size`,
-    `photo_dimensions`
-  )
-VALUES
-  (
-    1,
-    'Hernandez',
-    'Benoît',
-    'gov_body',
-    'nlouis@brunet.fr',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    2,
-    'Riou',
-    'Zoé',
-    'pro',
-    'thibault.rossi@philippe.fr',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    3,
-    'Sanchez',
-    'Émile',
-    'volunteer',
-    'bhoareau@lefort.org',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    4,
-    'Leveque',
-    'Dominique',
-    'volunteer',
-    'danielle.fleury@gilbert.net',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    5,
-    'Besnard',
-    'Thomas',
-    'volunteer',
-    'breton.patrick@allain.com',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    6,
-    'Hamon',
-    'Pauline',
-    'volunteer',
-    'bguillet@voila.fr',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    7,
-    'Rolland',
-    'Patricia',
-    'gov_body',
-    'robert09@jacques.com',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    8,
-    'Weiss',
-    'Margaud',
-    'pro',
-    'sylvie.lamy@laposte.net',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    9,
-    'Leclerc',
-    'Laetitia',
-    'volunteer',
-    'clerc.jeannine@noos.fr',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    10,
-    'Loiseau',
-    'Christophe',
-    'pro',
-    'blanchard.adrien@tiscali.fr',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    11,
-    'Hebert',
-    'Alice',
-    'volunteer',
-    'ialbert@tiscali.fr',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    12,
-    'Renard',
-    'Margot',
-    'pro',
-    'dominique88@godard.com',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    13,
-    'Legrand',
-    'Susan',
-    'volunteer',
-    'fontaine.adrienne@orange.fr',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    14,
-    'Fabre',
-    'Denise',
-    'pro',
-    'nchauveau@bouygtel.fr',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  ),
-  (
-    15,
-    'Letellier',
-    'Alix',
-    'gov_body',
-    'philippe.renault@orange.fr',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-  );
+
+INSERT INTO `team` (`id`, `name`, `first_name`, `role`, `email`, `updated_at`, `photo_name`, `photo_original_name`, `photo_mime_type`, `photo_size`, `photo_dimensions`) VALUES
+(74, 'Fabre', 'Denise', 'pro', 'nchauveau@bouygtel.fr', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
+
 --
 -- Structure de la table `user`
 --
-DROP TABLE IF EXISTS `user`;
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -3431,57 +543,40 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649F85E0677` (`username`)
-) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
-INSERT INTO
-  `user` (`id`, `username`, `roles`, `password`)
-VALUES
-  (
-    1,
-    'test',
-    '[\"ROLE_ADMIN\"]',
-    '$argon2id$v=19$m=65536,t=4,p=1$ZmNWTHMuYVJ3N2NoQ2VheA$t9ymY9gyrEEY4F3NthOM7wGWjrfl3uu9a4wzQcsEHgY'
-  );
+
+INSERT INTO `user` (`id`, `username`, `roles`, `password`) VALUES
+(2, 'test', '[\"ROLE_ADMIN\"]', '$argon2id$v=19$m=65536,t=4,p=1$MnRlREw4SXVzT0FQdjlGLg$AT6/9pVyAmvjfQJQU/2Kf4N00HJsCxyNx9TN3X9rUsw'),
+(5, 'press_user', '[]', '$argon2id$v=19$m=65536,t=4,p=1$ZkdUTUM1S0I2dTFOdlFrcg$JjJol8j0cimRGa8JZ6RttgTzotVF0bTd6SJA9isGH30');
 
 --
 -- Contraintes pour les tables déchargées
 --
+
 --
 -- Contraintes pour la table `front_page`
 --
-ALTER TABLE
-  `front_page`
-ADD
-  CONSTRAINT `FK_2CDA0C4C8D0C9323` FOREIGN KEY (`tab_id`) REFERENCES `front_tab` (`id`);
+ALTER TABLE `front_page`
+  ADD CONSTRAINT `FK_2CDA0C4C8D0C9323` FOREIGN KEY (`tab_id`) REFERENCES `front_tab` (`id`);
 
 --
 -- Contraintes pour la table `performance`
 --
-ALTER TABLE
-  `performance`
-ADD
-  CONSTRAINT `FK_82D7968151458601` FOREIGN KEY (`company_name_id`) REFERENCES `company` (`id`),
-ADD
-  CONSTRAINT `FK_82D7968171F7E88B` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`);
+ALTER TABLE `performance`
+  ADD CONSTRAINT `FK_82D7968151458601` FOREIGN KEY (`company_name_id`) REFERENCES `company` (`id`),
+  ADD CONSTRAINT `FK_82D7968171F7E88B` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`);
 
 --
 -- Contraintes pour la table `section`
 --
-ALTER TABLE
-  `section`
-ADD
-  CONSTRAINT `FK_2D737AEFD261FDD1` FOREIGN KEY (`belong_to_page_id`) REFERENCES `front_page` (`id`);
-
+ALTER TABLE `section`
+  ADD CONSTRAINT `FK_2D737AEFD261FDD1` FOREIGN KEY (`belong_to_page_id`) REFERENCES `front_page` (`id`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
-;
-
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */
-;
-
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
-;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -135,11 +135,6 @@ class Performance
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
-
     public function getPrice(): ?float
     {
         return $this->price;
@@ -162,5 +157,10 @@ class Performance
         $this->isHighlight = $isHighlight;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }
