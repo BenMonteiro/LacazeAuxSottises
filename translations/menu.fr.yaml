@@ -1,11 +1,9 @@
-
-
 front:
     home: Accueil
     association: L'Association
-    saison: La Saison
+    season: La Saison
     festival: Le Festival
-    tiers-lieu: Le Tiers-Lieu
+    third-location: Le Tiers-Lieu
     volunteering: Le Bénévolat
     partners: Nos Partenaires
     support: Nous Soutenir
@@ -24,21 +22,21 @@ front:
     shared-spaces: Espaces et services partagés
     meetings: Les rendez-vous
     curiosity: Ateliers de curiosité
-    onYear: à l'année
-    onFest: durant le festival
     plural-projects: Projets Pluriels
     coop: Coopération Territoriale
     team: Équipe
     subscription: Adhésion
-    calendar: Calendrier
+    pro-meeting: Rencontres pro
+    arts-etc: Aux arts etc
+    infos: Infos pratiques
 
 back:
     home: Accueil
     association: L'Association
-    saison: La Saison
+    season: La Saison
     festival: Le Festival
-    tiers-lieu: Le Tiers-Lieu
-    benevolat: Le Bénévolat
+    third-location: Le Tiers-Lieu
+    volunteering: Le Bénévolat
     support: Nous Soutenir
     contact: Contact
     companies: compagnies

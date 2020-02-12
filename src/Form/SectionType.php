@@ -29,7 +29,8 @@ class SectionType extends AbstractType
 
                         return [];
                     }
-                }
+                },
+                'choice_translation_domain' => true
             ])
             ->add('title')
             ->add('subTitle')

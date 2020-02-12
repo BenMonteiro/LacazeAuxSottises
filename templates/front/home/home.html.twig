@@ -65,8 +65,9 @@
 			<img class="d-block w-75 mb-3 border-colored p-2" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}">
 			<a href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}">{{'general.downloadDoc'|trans({}, 'general')|capitalize}}</a>
 		</div>
-		<div class="col-6">
-			<h3 class="text-center">{{'general.focusOn'|trans({}, 'general')|capitalize}}
+		<div class="col-8 border-left border-danger ">
+			<h3 class="text-center">
+				{{'general.focusOn'|trans({}, 'general')|capitalize}}
 			</h3>
 			{% for section in sections %}
 				<div class="d-flex justify-content-around">

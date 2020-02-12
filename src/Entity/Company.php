@@ -108,17 +108,17 @@ class Company
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isInResidence;
+    private $isHosted;
 
     /**
      * @ORM\Column(type="date", nullable=true)
      */
-    private $inResidenceFrom;
+    private $isHostedFrom;
 
     /**
      * @ORM\Column(type="date", nullable=true)
      */
-    private $inResidenceUntil;
+    private $isHostedUntil;
 
     public function __construct()
     {
@@ -308,38 +308,38 @@ class Company
         return $this;
     }
 
-    public function getIsInResidence(): ?bool
+    public function getIsHosted(): ?bool
     {
-        return $this->isInResidence;
+        return $this->isHosted;
     }
 
-    public function setIsInResidence(bool $isInResidence): self
+    public function setIsHosted(bool $isHosted): self
     {
-        $this->isInResidence = $isInResidence;
+        $this->isHosted = $isHosted;
 
         return $this;
     }
 
-    public function getInResidenceFrom(): ?\DateTimeInterface
+    public function getIsHostedFrom(): ?\DateTimeInterface
     {
-        return $this->inResidenceFrom;
+        return $this->isHostedFrom;
     }
 
-    public function setInResidenceFrom(?\DateTimeInterface $inResidenceFrom): self
+    public function setisHostedFrom(?\DateTimeInterface $isHostedFrom): self
     {
-        $this->inResidenceFrom = $inResidenceFrom;
+        $this->isHostedFrom = $isHostedFrom;
 
         return $this;
     }
 
-    public function getInResidenceUntil(): ?\DateTimeInterface
+    public function getisHostedUntil(): ?\DateTimeInterface
     {
-        return $this->inResidenceUntil;
+        return $this->isHostedUntil;
     }
 
-    public function setInResidenceUntil(?\DateTimeInterface $inResidenceUntil): self
+    public function setisHostedUntil(?\DateTimeInterface $isHostedUntil): self
     {
-        $this->inResidenceUntil = $inResidenceUntil;
+        $this->isHostedUntil = $isHostedUntil;
 
         return $this;
     }

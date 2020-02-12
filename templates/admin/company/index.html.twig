@@ -33,8 +33,8 @@
 				<th>{{'general.theme'|trans({}, 'general')|capitalize}}</th>
 				<th>{{'company.show.duration'|trans({}, 'company')|capitalize}}</th>
 				<th>{{'company.show.audience'|trans({}, 'company')|capitalize}}</th>
-				<th>{{'company.isIn.residence?'|trans({}, 'company')|capitalize}}</th>
-				<th>{{'company.inResidence'|trans({}, 'company')|capitalize}}</th>
+				<th>{{'company.is.hosted?'|trans({}, 'company')|capitalize}}</th>
+				<th>{{'company.hosted'|trans({}, 'company')|capitalize}}</th>
 				<th>{{'general.website'|trans({}, 'general')|capitalize}}</th>
 				<th>{{'general.videoLink'|trans({}, 'general')|capitalize}}</th>
 				<th>{{'general.more.infos'|trans({}, 'general')|capitalize}}</th>
@@ -53,16 +53,16 @@
 					<td>{{ company.theme}}</td>
 					<td>{{ company.duration}}</td>
 					<td>{{ company.audience}}</td>
-					<td>{{ company.isInResidence ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}
+					<td>{{ company.isHosted ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}
 					</td>
 					<td>
-						{% if company.isInResidence %}
+						{% if company.isHosted %}
 							<p>
 								{{ 'general.from'|trans({}, 'general')|capitalize}}
-								{{ company.inResidenceFrom ? company.inResidenceFrom|format_date('medium') : '' }}</p>
+								{{ company.isHostedFrom ? company.isHostedFrom|format_date('medium') : '' }}</p>
 							<p>
 								{{ 'general.to'|trans({}, 'general')|capitalize}}
-								{{ company.inResidenceUntil ? company.inResidenceUntil|format_date('medium'): '' }}</p>
+								{{ company.isHostedUntil ? company.isHostedUntil|format_date('medium'): '' }}</p>
 						{% endif %}
 					</td>
 					<td class="text-break">{{ company.website }}</td>

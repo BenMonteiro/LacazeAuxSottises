@@ -6,9 +6,9 @@ Theme: Thème
 Duration: Durée
 Audience: Public
 More infos: Plus d'infos
-Is in residence: En résidence ?
-In residence from: En résidence du 
-In residence until: Au
+Is hosted: En résidence ?
+Is hosted from: En résidence du 
+Is hosted until: Au
 Website: Site web
 Video link: Lien vidéo
 Performances: Représentations
@@ -34,45 +34,29 @@ Month: Mois
 Day: Jour
 Hour: Heure
 Minute: Minute
+association: L'Association
+season: La Saison
+festival: Le Festival
+third-location: Le Tiers-Lieu
+volunteering: Le Bénévolat
+partners: Nos Partenaires
+support: Nous Soutenir
+contact: Contact
+home: Accueil
 asso: L'Asso
+plural-projects: Projets pluriels
+coop: Coopération térritoriale
+team: Équipe
+subscription: Adhésion
 presentation: Présentation
 prog: Programmation
 hostedCompanies: Cies Accueillies
 area-project: Projet de Territoire
+cultural-actions: Actions culturelles
+pro-meeting: Rencontres pro
+arts-etc: Aux arts etc 
+infos: Infos pratiques
+shared-spaces: Espaces et services partagés
+meetings: Les rendez-vous
+curiosity: Ateliers de curiosité
 Is highlight : Mettre en "Actu du mois"
-page:
-    presentation: Présentation
-    inDiffusion: Cies en Diffusion
-    prog: Programmation
-    culturalActions: Actions Culturelles
-    association:
-        label: L'Association
-        projects: Projets Pluriels
-        coop: Coopération Térritoriale
-        team: Équipe
-        subscription: Adhésion
-    season:
-        label: La Saison
-        inCreation: Cies en Création
-    fest:
-        label: Le Festival
-        tickets: Billeterie Solidaire
-        proMeeting: Rencontres Pro
-        funSpace: Espace Ludique
-        plus: Les P'tits +
-    place:
-        label: Le Tiers-Lieu
-        ecoPlace: Éco-Lieu
-        sharedSpaces: espaces partagés
-    activities:
-        label: Les Activités du Lieu
-        livingShows: spectacles vivants
-        sust_dev: développement durable
-    rentals: Les Locations
-    volunteering:
-        label: Le Bénévolat
-        onYear: À l'année
-        onFest: Durant Le Festival
-    partners: Nos Partenaires
-    support: nous soutenir
-    contact: Contacts

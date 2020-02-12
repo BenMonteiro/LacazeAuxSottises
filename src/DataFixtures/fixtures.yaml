@@ -7,8 +7,9 @@ App\Entity\Company:
         duration: "<numberBetween(15, 120)>"
         audience: "<sentence(3, true)>"
         moreInfos: "<sentence(15, true)>"
-        isInDiffusion: "<boolean(75)>"
-        isInCreation: "<boolean(25)>"
+        isHosted: "<boolean(50)>"
+        isHosedFrom: <dateTimeBetween("now", "+ 300 days")>
+        isHostedUntil: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
         website: "<domainName()>"
         videoLink: "<domainName()>"
 
@@ -22,7 +23,9 @@ App\Entity\Event:
         name: "<word()>"
         description: "<paragraph(3, true)>"
         startingDate: '<dateTimeBetween("now", "+ 300 days")>'
-        endingDate: '90%? <dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
+        endingDate: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
+        place: "<city()>"
+        isHighlight: "<boolean(50)>"
 
 App\Entity\Team:
     team{1..15}:
@@ -37,47 +40,132 @@ App\Entity\Performance:
         cityShow: "<city()>"
         placeShow: "<streetAddress()>"
         date: '<dateTimeBetween("-200 days", "now")>'
+        price: '<randomFloat(2, 0, 50)>'
         event: "@event*"
+        isHighlight: "<boolean(50)>"
 
 App\Entity\FrontTab:
-    tab_{association, saison, festival, tiers-lieu, locations, benevolat, partenaires, soutient, contact}:
+    tab_{home, association, season, festival, third-location, volunteering, partners, support, contact}:
         name: "<current()>"
+
 App\Entity\FrontPage:
-    page_{pres, projets-pluriels, coopération-territoriale, équipe, adhésion}:
+    home:
+        tab: "@tab_home"
+        name: "home"
+        pageSlug: $tab/$name
+        template: 'home'
+    asso:
         tab: "@tab_association"
-        name: "<current()>"
+        name: "asso"
         pageSlug: $tab/$name
-    page_{intoduction, calendrier, cies-accueillies, projet-de-territoire, action-culturelles}:
-        tab: "@tab_saison"
-        name: "<current()>"
+    projet-pluriels:
+        tab: "@tab_association"
+        name: "plural-projects"
         pageSlug: $tab/$name
-    page_{presentation, calendar, cie-accueillies, rencontres-pro, aux-arts-etc, actions-culturelles, infos-pratiques}:
+        template: 'plural_and_coop'
+    coop:
+        tab: "@tab_association"
+        name: "coop"
+        pageSlug: $tab/$name
+        template: 'plural_and_coop'
+    team:
+        tab: "@tab_association"
+        name: "team"
+        pageSlug: $tab/$name
+        template: 'equipe_adhesion'
+    subscription:
+        tab: "@tab_association"
+        name: "subscription"
+        pageSlug: $tab/$name
+        template: 'equipe_adhesion'
+    intro_saison:
+        tab: "@tab_season"
+        name: "presentation"
+        pageSlug: $tab/$name
+    prog_saison:
+        tab: "@tab_season"
+        name: "prog"
+        pageSlug: $tab/$name
+        template: 'calendar'
+    host_saison:
+        tab: "@tab_season"
+        name: "hostedCompanies"
+        pageSlug: $tab/$name
+        template: 'companies'
+    area_project:
+        tab: "@tab_season"
+        name: "area-project"
+        pageSlug: $tab/$name
+    cultural_saison:
+        tab: "@tab_season"
+        name: "cultural-actions"
+        pageSlug: $tab/$name
+        template: 'cultural_actions'
+    intro_fest:
         tab: "@tab_festival"
-        name: "<current()>"
+        name: "prog"
         pageSlug: $tab/$name
-    page_{prsentation, espaces-et-services-partages, les-rendez-vous, les-ateliers-de-curiosites}:
-        tab: "@tab_tiers-lieu"
-        name: "<current()>"
+        template: 'calendar'
+    prog_fest:
+        tab: "@tab_festival"
+        name: "calendar"
         pageSlug: $tab/$name
-    page_{locations}:
-        tab: "@tab_locations"
-        name: "<current()>"
+    host_fest:
+        tab: "@tab_festival"
+        name: "cies-accueillies"
         pageSlug: $tab/$name
-    page_{benevolat}:
-        tab: "@tab_benevolat"
-        name: "<current()>"
+    meeting_fest:
+        tab: "@tab_festival"
+        name: "rencontres-pro"
         pageSlug: $tab/$name
-    page_{partenaires}:
-        tab: "@tab_partenaires"
-        name: "<current()>"
+    art_fest:
+        tab: "@tab_festival"
+        name: "aux-arts-etc"
         pageSlug: $tab/$name
-    page_{soutient}:
-        tab: "@tab_soutient"
-        name: "<current()>"
+    cultural_fest:
+        tab: "@tab_festival"
+        name: "actions-culturelles"
         pageSlug: $tab/$name
-    page_{contact}:
+    infos_fest:
+        tab: "@tab_festival"
+        name: "infos-pratiques"
+        pageSlug: $tab/$name
+    intro_place:
+        tab: "@tab_third-location"
+        name: "presentation"
+        pageSlug: $tab/$name
+    spaces_place:
+        tab: "@tab_third-location"
+        name: "shared-spaces"
+        pageSlug: $tab/$name
+        template: 'shared_spaces'
+    meeting_place:
+        tab: "@tab_third-location"
+        name: "meetings"
+        pageSlug: $tab/$name
+        template: 'meetings'
+    curiosity_place:
+        tab: "@tab_third-location"
+        name: "curiosity"
+        pageSlug: $tab/$name
+        template: 'curiosity'
+    volunteering:
+        tab: "@tab_volunteering"
+        name: "volunteering"
+        pageSlug: $tab/$name
+        template: 'index'
+    partners:
+        tab: "@tab_partners"
+        name: "partners"
+        pageSlug: $tab/$name
+        template: 'index'
+    support:
+        tab: "@tab_support"
+        name: "support"
+        pageSlug: $tab/$name
+    contact:
         tab: "@tab_contact"
-        name: "<current()>"
+        name: "contact"
         pageSlug: $tab/$name
 
 App\Entity\Section:
@@ -88,3 +176,14 @@ App\Entity\Section:
         appearanceOrder: "<randomDigit()>"
         content: "<paragraph(3, true)>"
         belongToPage: "@page*"
+
+App\Entity\User:
+    user:
+        username: 'test'
+        password: 'test2020'
+        roles: 'ROLE_ADMIN'
+
+App\Entity\PressDocument:
+    docs{1..5}: 
+        name: "<word()>"
+        fileType: '<randomElement(["image", "file"])>' 
