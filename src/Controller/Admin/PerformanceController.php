@@ -106,6 +106,7 @@ class PerformanceController extends AdminController
                     ['id' => $this->eventId]
                 );
             }
+
             return $this->redirectToRoute('performance_index');
         }
 

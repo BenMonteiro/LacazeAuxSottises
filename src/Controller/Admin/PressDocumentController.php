@@ -40,6 +40,11 @@ class PressDocumentController extends AdminController
             $entityManager->persist($pressDocument);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'Le nouveau document a été ajouté avec succès !'
+            );
+
             return $this->redirectToRoute('press_document_index');
         }
 
@@ -50,45 +55,24 @@ class PressDocumentController extends AdminController
     }
 
     /**
-     * @Route("/{id}", name="press_document_show", methods={"GET"})
-     */
-    public function show(PressDocument $pressDocument): Response
-    {
-        return $this->render('admin/press_document/show.html.twig', [
-            'press_document' => $pressDocument,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="press_document_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, PressDocument $pressDocument): Response
-    {
-        $form = $this->createForm(PressDocumentType::class, $pressDocument);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('press_document_index');
-        }
-
-        return $this->render('admin/press_document/edit.html.twig', [
-            'press_document' => $pressDocument,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="press_document_delete", methods={"DELETE"})
      */
     public function delete(Request $request, PressDocument $pressDocument): Response
     {
+        $isValid = false;
+
         if ($this->isCsrfTokenValid('delete' . $pressDocument->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($pressDocument);
             $entityManager->flush();
+
+            $isValid = true;
         }
+
+        $this->addFlash(
+            $isValid ? 'notice' : 'error',
+            $isValid ? 'Ledocument a été supprimé avec succès !' : 'Une erreur est survenue, veuillez rééssayer ultérieurement'
+        );
 
         return $this->redirectToRoute('press_document_index');
     }

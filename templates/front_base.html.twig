@@ -15,24 +15,10 @@
 
 	<body>
 		<header>
-			{% block header %}
-				{% include( "menu/_front_menu.html.twig") %}
-			{% endblock %}
+			{% block header %}{% endblock %}
 		</header>
 
-		{% block pageTitle %}
-			<div class="pageTitleBar">
-				<div class="d-flex justify-content-center">
-					<p class="mt-3 pageTitle px-2">
-						{{ ('front.'~ page.name)|trans({}, 'menu')}}
-					</p>
-				</div>
-				<div id="titleLines">
-					<hr class="blackline">
-					<hr class="redline">
-				</div>
-			</div>
-		{% endblock %}
+		{% block pageTitle %}{% endblock %}
 		{% block body %}{% endblock %}
 		{% block javascripts %}
 			<script src="https://kit.fontawesome.com/f0017cd750.js" crossorigin="anonymous"></script>

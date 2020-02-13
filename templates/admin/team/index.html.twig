@@ -1,19 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_templates/index_template.html.twig' %}
 
 {% block title %}
 	{{'team.index'|trans({}, 'team')}}
-{% endblock %}
-
-{% block flashMessage %}
-	<div class="index-flash-message col-12 text-center bg-white">
-		{% for label, messages in app.flashes %}
-			{% for message in messages %}
-				<div class="flash-{{ label }}">
-					{{ message }}
-				</div>
-			{% endfor %}
-		{% endfor %}
-	</div>
 {% endblock %}
 
 {% block body %}

@@ -94,17 +94,20 @@ class EventController extends AdminController
      */
     public function delete(Request $request, Event $event): Response
     {
+        $isValid = false;
+
         if ($this->isCsrfTokenValid('delete' . $event->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($event);
             $entityManager->flush();
 
-            $this->addFlash(
-                'notice',
-                'L\'événement ' . $event->getName() . ' a été supprimé avec succès !'
-            );
+            $isValid = true;
         }
 
+        $this->addFlash(
+            $isValid ? 'notice' : 'error',
+            $isValid ? 'L\'événement ' . $event->getName() . ' a été supprimé avec succès !' : 'Une erreur est survenue, veuillez rééssayer ultérieurement'
+        );
         return $this->redirectToRoute('event_index');
     }
 }

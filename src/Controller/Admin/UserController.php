@@ -28,16 +28,20 @@ class UserController extends AdminController
      */
     public function delete(Request $request, User $user): Response
     {
+        $isValid = false;
+
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
 
-            $this->addFlash(
-                'notice',
-                'L\'utilisateur ' . $user->getUsername() . ' a été supprimé avec succès !'
-            );
+            $isValid = true;
         }
+
+        $this->addFlash(
+            $isValid ? 'notice' : 'error',
+            $isValid ? 'L\'utilisateur ' . $user->getUsername() . ' a été supprimé avec succès !' : 'Une erreur est survenue, veuillez rééssayer ultérieurement'
+        );
 
         return $this->redirectToRoute('user_index');
     }

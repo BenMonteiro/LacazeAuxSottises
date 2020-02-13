@@ -1,11 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_base.html.twig' %}
 
-{% block title %}New PressDocument
+{% block title %}
+	{{'press.create'|trans({}, 'press')|title}}
 {% endblock %}
-{% block header %}{% endblock %}
 
 {% block body %}
-	<h1>Create new PressDocument</h1>
+	<h1>
+		{{'press.create'|trans({}, 'press')|title}}
+	</h1>
 
 	{{ include('admin/press_document/_form.html.twig') }}
 

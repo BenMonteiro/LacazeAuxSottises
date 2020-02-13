@@ -96,16 +96,19 @@ class CompanyController extends AdminController
      */
     public function delete(Request $request, Company $company): Response
     {
+        $isValid = false;
         if ($this->isCsrfTokenValid('delete' . $company->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($company);
             $entityManager->flush();
 
-            $this->addFlash(
-                'notice',
-                'La compagnie ' . $company->getName() . ' a été supprimée avec succès !'
-            );
+            $isValid = true;
         }
+
+        $this->addFlash(
+            $isValid ? 'notice' : 'error',
+            $isValid ? 'La compagnie ' . $company->getName() . ' a été supprimée avec succès !' : 'Une erreur est survenue, veuillez rééssayer ultérieurement'
+        );
 
         return $this->redirectToRoute('company_index');
     }

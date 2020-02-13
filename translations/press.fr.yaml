@@ -1,4 +1,5 @@
 press:
     index: Liste des documents
+    create: Ajouter un document
     image: Image
     file: Fichier/Dossier

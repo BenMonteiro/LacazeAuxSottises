@@ -84,16 +84,20 @@ class TeamController extends AdminController
      */
     public function delete(Request $request, Team $team): Response
     {
+        $isValid = false;
+
         if ($this->isCsrfTokenValid('delete' . $team->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($team);
             $entityManager->flush();
 
-            $this->addFlash(
-                'notice',
-                'Le membre ' . $team->getName() . ' ' . $team->getFirstName() . ' a été supprimé avec succès !'
-            );
+            $isValid = true;
         }
+
+        $this->addFlash(
+            $isValid ? 'notice' : 'error',
+            $isValid ? 'Le membre ' . $team->getName() . ' ' . $team->getFirstName() . ' a été supprimé avec succès !' : 'Une erreur est survenue, veuillez rééssayer ultérieurement'
+        );
 
         return $this->redirectToRoute('team_index');
     }

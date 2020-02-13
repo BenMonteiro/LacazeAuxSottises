@@ -1,21 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_templates/no_menu_template.html.twig' %}
 
 {% block title %}
 	{{ event.name }}
-{% endblock %}
-
-{% block header %}{% endblock %}
-
-{% block flashMessage %}
-	<div class="flash-message col-12 text-center bg-white">
-		{% for label, messages in app.flashes %}
-			{% for message in messages %}
-				<div class="flash-{{ label }}">
-					{{ message }}
-				</div>
-			{% endfor %}
-		{% endfor %}
-	</div>
 {% endblock %}
 
 {% block body %}
@@ -57,17 +43,6 @@
 	<div class="row offset-1 col-10 mt-5 pt-5">
 		<h2 class=" ml-5 mb-3 font-weight-bold">{{ 'event.performances'|trans({}, 'event')|capitalize}}
 		</h2>
-		{% block flashMessage %}
-			<div class="flash-message col-12 text-center bg-white">
-				{% for label, messages in app.flashes %}
-					{% for message in messages %}
-						<div class="flash-{{ label }}">
-							{{ message }}
-						</div>
-					{% endfor %}
-				{% endfor %}
-			</div>
-		{% endblock %}
 		<table class="table table-sm table-striped table-bordered text-center">
 			<thead>
 				<tr>

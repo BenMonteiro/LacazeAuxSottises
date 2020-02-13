@@ -1,15 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'back_base.html.twig' %}
 
 {% block title %}
 	{{'log.log_in'|trans({}, 'security')|title}}
 {% endblock %}
 
-{% block header %}{% endblock %}
-
 {% block body %}
 	<form method="post">
 		{% if error %}
-			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			<div class="offset-3 col-6 alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
 
 		{% if app.user %}

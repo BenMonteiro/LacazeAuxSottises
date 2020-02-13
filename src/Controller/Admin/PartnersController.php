@@ -94,16 +94,20 @@ class PartnersController extends AdminController
      */
     public function delete(Request $request, Partners $partner): Response
     {
+        $isValid = false;
+
         if ($this->isCsrfTokenValid('delete' . $partner->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($partner);
             $entityManager->flush();
 
-            $this->addFlash(
-                'notice',
-                'Le partenaire ' . $partner->getName() . ' a été supprimé avec succès !'
-            );
+            $isValid = true;
         }
+
+        $this->addFlash(
+            $isValid ? 'notice' : 'error',
+            $isValid ? 'Le partenaire ' . $partner->getName() . ' a été supprimé avec succès !' : 'Une erreur est survenue, veuillez rééssayer ultérieurement'
+        );
 
         return $this->redirectToRoute('partners_index');
     }
