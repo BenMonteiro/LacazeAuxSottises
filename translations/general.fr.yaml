@@ -36,3 +36,5 @@ general:
     seasonDoc: plaquette
     downloadDoc: télécharger la plaquette
     focusOn: zoom sur 
+    date: date
+    hour: heure

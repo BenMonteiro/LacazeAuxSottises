@@ -2,7 +2,7 @@ page:
     name: page
     content: contenu de la page
 dashboard:
-    created_companies: compagnies crées dont 
+    companies: compagnies dont
     handle_companies: aller à la gestion des compagnies
     next_event: prochain événement
     from_date: à partir du

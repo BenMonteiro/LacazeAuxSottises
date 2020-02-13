@@ -15,6 +15,7 @@ Performances: Représentations
 Company name: Nom de la compagnie
 City show: Ville
 Place show: Lieu de la représentation
+Place: Lieu
 Date: Date
 Event: Événement
 Starting date: Début de l'événement
@@ -61,3 +62,8 @@ meetings: Les rendez-vous
 curiosity: Ateliers de curiosité
 Is highlight : Mettre en "Actu du mois"
 Price: Prix
+Type: Type
+File type: Type de document
+Browse: Télécharger
+ProgramImageFile: x
+Program image file: x

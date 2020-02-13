@@ -9,6 +9,7 @@ company:
     site: aller vers le site de la compagnie
     video: voir la vidéo
     hosted: en résidence du 
+    host: en résidence
     is:
         hosted?: en résidence ?
         hosted: sortie de résidence

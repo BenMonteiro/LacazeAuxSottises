@@ -28,7 +28,7 @@
 				<h3 class="offset-2">Événement du mois</h3>
 				{% for seasonEvent in seasonEvents  %}
 					{% if (seasonEvent.starting_date|date('M') == month)%}
-						<a class="calendar-link" href="{{ path('display_event', {'id': seasonEvent.id}) }}">
+						<a class="element-link" href="{{ path('display_event', {'id': seasonEvent.id}) }}">
 							<div class="text-center my-4">
 								<h3 class="text-decoration-none colored">{{ seasonEvent.starting_date|format_date(pattern="EEEE dd")|capitalize }}</h3>
 								<h4>{{ seasonEvent.name }}</h4>
@@ -39,7 +39,7 @@
 				<h3 class="offset-2">Spectacles du mois</h3>
 				{% for seasonPerf in seasonPerfs %}
 					{% if seasonPerf.date|date('M') == month %}
-						<a class="calendar-link" href="{{ path('display_company', {'id': seasonPerf.companyNameId}) }}">
+						<a class="element-link" href="{{ path('display_company', {'id': seasonPerf.companyNameId}) }}">
 							<div class="text-center my-4">
 								<h3 class="text-decoration-none colored">{{ seasonPerf.date|format_date(pattern="EEEE dd")|capitalize}}
 									-

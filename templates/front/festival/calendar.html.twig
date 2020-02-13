@@ -8,7 +8,7 @@
 
 	<div>
 		{% for festPerf in festPerfs %}
-			<a class="calendar-link" href="{{ path('display_company', {'id': festPerf.companyNameId}) }}">
+			<a class="element-link" href="{{ path('display_company', {'id': festPerf.companyNameId}) }}">
 				<div class="text-center my-4">
 					<h3 class="text-decoration-none colored">{{ festPerf.date|format_date('full')|capitalize}}
 						-

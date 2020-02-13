@@ -23,11 +23,10 @@ class PartnersType extends AbstractType
                 'choice_translation_domain' => 'partners'
             ])
             ->add('logoFile', VichImageType::class, [
-                'label' => 'Logo',
                 'required' => false,
                 'allow_delete' => true,
-                'download_label' => true,
-                'download_uri' => true,
+                'download_label' => false,
+                'download_uri' => false,
                 'image_uri' => true,
                 'asset_helper' => true,
             ]);

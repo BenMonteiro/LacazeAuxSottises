@@ -19,10 +19,9 @@ class CompanyType extends AbstractType
             ->add('showTitle')
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
-                'label' => 'Image de la compagnie',
                 'allow_delete' => true,
-                'download_label' => true,
-                'download_uri' => true,
+                'download_label' => false,
+                'download_uri' => false,
                 'image_uri' => true,
                 'asset_helper' => true,
             ])

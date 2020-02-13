@@ -24,11 +24,10 @@ class PressDocumentType extends AbstractType
                 'choice_translation_domain' => 'press'
             ])
             ->add('documentFile', VichFileType::class, [
-                'label' => 'Document',
                 'required' => true,
                 'allow_delete' => true,
-                'download_label' => true,
-                'download_uri' => true,
+                'download_label' => false,
+                'download_uri' => false,
                 'asset_helper' => true,
             ]);
     }

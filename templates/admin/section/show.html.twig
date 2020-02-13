@@ -30,7 +30,7 @@
 			</div>
 			<div>
 				<h4>{{'section.pageSlug'|trans({}, 'section')|capitalize}}</h4>
-				<p class="ml-3">{{ section.belongToPage }}</p>
+				<p class="ml-3">{{ ('front.' ~ section.belongToPage.tab)|trans({}, 'menu') }}/{{ ('front.' ~ section.belongToPage.name)|trans({}, 'menu')}}</p>
 			</div>
 		</aside>
 		<div class="col-9 d-flex mt-5">

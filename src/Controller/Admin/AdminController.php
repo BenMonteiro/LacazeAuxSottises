@@ -29,6 +29,7 @@ class AdminController extends AbstractController
     ): Response {
         return $this->render('admin/dashboard.html.twig', [
             'companyNb' => $companyRepository->count([]),
+            'hostedCompanies' => $companyRepository->count(['isHosted' => true]),
             'teamNb' => $teamRepository->count([]),
             'nextEvent' => $eventRepository->findNextEvent(),
             'tabs' => $this->tabList,

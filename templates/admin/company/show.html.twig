@@ -91,9 +91,8 @@
 				<table class="table table-sm table-striped table-bordered text-center">
 					<thead>
 						<tr>
-							<th>{{'perf.show.city'|trans({}, 'perf')|capitalize}}</th>
+							<th>{{'general.date'|trans({}, 'general')|capitalize}}</th>
 							<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
-							<th>Date</th>
 							<th>{{'perf.show.event'|trans({}, 'perf')|capitalize}}</th>
 							<th>
 								<a href="{{ path('performance_new', {'company_id': company.id}) }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
@@ -103,9 +102,16 @@
 					<tbody>
 						{% for performance in company.performances %}
 							<tr>
-								<td>{{ performance.cityShow }}</td>
-								<td>{{ performance.placeShow }}</td>
-								<td>{{ performance.date ? performance.date|date('d-m-Y H:i') : '' }}</td>
+								<td>
+									<div class="date-infos h-100 colored">
+										<p class="mb-0 font-weight-bold">{{ performance.date ? performance.date|format_date('medium') : '' }}</p>
+										<p>{{ performance.date ? performance.date|format_time('short') : '' }}</p>
+									</div>
+								</td>
+								<td>
+									<p>{{ performance.placeShow|title }}</p>
+									<p class="font-italic colored">{{ performance.cityShow }}</p>
+								</td>
 								<td>{{ performance.event}}</td>
 								<td>
 									<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit',{'id': performance.id, 'company_id': company.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>

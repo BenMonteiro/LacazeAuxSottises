@@ -36,11 +36,11 @@
 			{% for company in companies %}
 				<tr>
 					<td><img class="miniImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>
-					<td>{{ company.name }}</td>
-					<td>{{ company.showTitle}}</td>
+					<td class="colored font-weight-bold">{{ company.name }}</td>
+					<td class="font-italic">{{ company.showTitle}}</td>
 					<td>{{ company.description|slice(0,100)|raw }}...</td>
 					<td>{{ company.theme}}</td>
-					<td>{{ company.duration}}</td>
+					<td>{{ company.duration ~ ' min'}}</td>
 					<td>{{ company.audience}}</td>
 					<td>{{ company.isHosted ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}
 					</td>

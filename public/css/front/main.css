@@ -2,6 +2,12 @@ p {
     text-align: inherit;
 }
 
+.home-link,
+.fa-home {
+    color: #DA291C;
+    margin: 20px auto 0 20px
+}
+
 #landingPage {
     background-image: url(/images/landingPagePic.jpg);
     margin: 0;
@@ -124,7 +130,6 @@ hr.redline {
 
 
 .highlight-card {
-    width: 15%;
     height: 250px;
 }
 
@@ -195,16 +200,16 @@ hr.redline {
     z-index: 200;
 }
 
-.agenda>.tab-pane a.calendar-link,
-.calendar-link {
+.agenda>.tab-pane a.element-link,
+.element-link {
     color: black;
     margin: 0 20px 0 0;
     font-weight: bold;
     padding: 5px 10px;
 }
 
-.agenda>.tab-pane a.calendar-link:hover,
-.calendar-link:hover {
+.agenda>.tab-pane a.element-link:hover,
+.element-link:hover {
     color: #DA291C;
     background-color: unset;
     border-radius: 15px;

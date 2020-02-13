@@ -25,7 +25,10 @@
 								</div>
 								<div class="card-text text-center ">
 									<p class="stat mb-0">{{ companyNb }}</p>
-									<p class="mb-0">{{ 'dashboard.created_companies'|trans({}, 'adminPage') }}</p>
+									<p class="mb-0">{{ 'dashboard.companies'|trans({}, 'adminPage') }}</p>
+									<p>
+										<span class="stat-bis mb-0">{{ hostedCompanies }}</span>
+										{{ 'company.host'|trans({}, 'company') }}</p>
 								</div>
 							</div>
 							<a class="card-footer text-white" href="{{ path('company_index') }}">
@@ -48,7 +51,7 @@
 										<span class="stat">{{ nextEvent.name }}</span>
 									</p>
 									<p>{{ 'dashboard.from_date'|trans({}, 'adminPage') }}
-										<span class="stat-bis">{{ nextEvent.starting_date|date('d-m-Y') }}</span>
+										<span class="stat-bis">{{ nextEvent.starting_date|format_date('full') }}</span>
 									</p>
 								</div>
 							</div>

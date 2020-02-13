@@ -13,7 +13,7 @@
 
 	<div class="press-index">
 		{% if is_granted('ROLE_ADMIN') %}
-			<a class=" offset-1" href="{{ path('press_document_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+			<a class="badge badge-primary p-2 offset-1" href="{{ path('press_document_new') }}">{{'press.create'|trans({}, 'press')|capitalize}}</a>
 		{% endif %}
 
 		<div class="d-flex offset-1 mt-5 text-center">

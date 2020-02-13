@@ -38,10 +38,10 @@ class SectionType extends AbstractType
             ->add('content')
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
-                'label' => 'Image associée au paragraphe',
+                'label' => 'sectionImage',
                 'allow_delete' => true,
-                'download_label' => true,
-                'download_uri' => true,
+                'download_label' => false,
+                'download_uri' => false,
                 'image_uri' => true,
                 'asset_helper' => true,
             ]);

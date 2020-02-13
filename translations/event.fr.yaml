@@ -10,6 +10,7 @@ event:
     name: événement
     performances: représentations de l'événement
     highlight: actu du mois ?
+    place: lieu
     prog:
         PDF: programmation au format PDF
         image: image de couverture du programme

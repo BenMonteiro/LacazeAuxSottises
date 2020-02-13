@@ -19,7 +19,7 @@
 					</a>
 					<div class="dropdown-menu mr-3" aria-labelledby="navbarDropdownMenuLink">
 						{% for tab in tabs %}
-							<a class="dropdown-item" href="{{ path('admin_tab', {'id': tab.id }) }}">{{('back.'~tab.name)|trans({}, 'menu')}}
+							<a class="dropdown-item" href="{{ path('admin_tab', {'id': tab.id }) }}">{{('back.' ~ tab.name)|trans({}, 'menu')}}
 							</a>
 						{% endfor %}
 					</div>

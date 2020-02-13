@@ -1,7 +1,7 @@
 {% extends "front_base.html.twig" %}
 
 {% block title %}
-	{{ page.pageSlug }}
+	{{ ('front.' ~ page.tab)|trans({}, 'menu')}}/{{('front.' ~ page.name)|trans({}, 'menu')}}
 {% endblock %}
 
 {% block header %}

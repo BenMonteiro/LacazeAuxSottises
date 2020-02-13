@@ -16,10 +16,9 @@
 	<table class="table table-sm {{classDisplay}} table-striped text-center mb-5 pb-5">
 		<thead>
 			<tr>
-				<th>Date</th>
-				<th>Heure</th>
+				<th>{{'general.date'|trans({}, 'general')|capitalize}}</th>
+				<th>{{'general.hour'|trans({}, 'general')|capitalize}}</th>
 				<th>{{'company.label'|trans({}, 'company')|capitalize}}</th>
-				<th>{{'perf.show.city'|trans({}, 'perf')|capitalize}}</th>
 				<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
 				<th>{{ 'perf.price'|trans({}, 'perf')|capitalize }}</th>
 				<th>{{'perf.show.event'|trans({}, 'perf')|capitalize}}</th>
@@ -32,11 +31,17 @@
 		<tbody>
 			{% for performance in performances %}
 				<tr>
-					<td>{{ performance.date ? performance.date|format_date('medium') : '' }}</td>
-					<td>{{ performance.date ? performance.date|date('H:i') : '' }}</td>
-					<td>{{ performance.CompanyName}}</td>
-					<td>{{ performance.cityShow }}</td>
-					<td>{{ performance.placeShow }}</td>
+					<td class="date-infos h-100 colored font-weight-bold">{{ performance.date ? performance.date|format_date('medium') : '' }}</td>
+					<td class="date-infos h-100 colored">{{ performance.date ? performance.date|date('H:i') : '' }}</td>
+					<td>
+						<a class="text-reset" href="{{ path('display_company', {'id': performance.companyNameId})}}">
+							<h4 class=" text-decoration-none font-weight-bold">{{ performance.companyName }}</h4>
+						</a>
+					</td>
+					<td>
+						<p>{{ performance.placeShow|title }}</p>
+						<p class="font-italic colored">{{ performance.cityShow }}</p>
+					</td>
 					<td>{{ performance.price ? performance.price|format_currency('EUR') : 'perf.free'|trans({}, 'perf')|capitalize }}</td>
 					<td>{{ performance.event}}</td>
 					<td>{{ performance.isHighlight ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>

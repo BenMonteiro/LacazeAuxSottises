@@ -18,10 +18,11 @@
 		<thead>
 			<tr>
 				<th>{{'event.name'|trans({}, 'event')|capitalize}}</th>
-				<th>Descritption</th>
+				<th>{{'general.description'|trans({}, 'general')|capitalize}}</th>
 				<th>{{'event.start'|trans({}, 'event')|capitalize}}</th>
 				<th>{{'event.end'|trans({}, 'event')|capitalize}}</th>
 				<th>{{'event.hours'|trans({}, 'event')|capitalize}}</th>
+				<th>{{'event.place'|trans({}, 'event')|capitalize}}</th>
 				<th>{{'event.highlight'|trans({}, 'event')|capitalize}}</th>
 				<th>{{'event.prog.image'|trans({}, 'event')|capitalize}}</th>
 				<th>{{'event.prog.PDF'|trans({}, 'event')|capitalize}}</th>
@@ -33,11 +34,12 @@
 		<tbody>
 			{% for event in events %}
 				<tr>
-					<td>{{ event.name }}</td>
+					<td class="colored font-weight-bold">{{ event.name }}</td>
 					<td>{{ event.description|slice(0,100)|raw }}...</td>
-					<td>{{ event.startingDate ? event.startingDate|date('d-m-Y') : '' }}</td>
-					<td>{{ event.endingDate ? event.endingDate|date('d-m-Y') : '' }}</td>
+					<td class="colored font-weight-bold">{{ event.startingDate ? event.startingDate|format_date('medium') : '' }}</td>
+					<td class="colored font-weight-bold">{{ event.endingDate ? event.endingDate|format_date('medium'): '' }}</td>
 					<td>{{ event.hours }}</td>
+					<td>{{ event.place }}</td>
 					<td>{{ event.isHighlight ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
 					<td><img class="miniImage" src="{{ asset('images/uploads/eventProgram/' ~ event.programImage.name) }}"></td>
 					<td>
