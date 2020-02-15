@@ -4,7 +4,9 @@
 	<div class="d-flex justify-content-around mb-5">
 		{% for section in sections %}
 			{% if section.image.name %}
-				<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+				<div class="col-4">
+					<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+				</div>
 			{% endif %}
 		{% endfor %}
 	</div>

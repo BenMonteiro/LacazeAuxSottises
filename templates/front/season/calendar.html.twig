@@ -6,14 +6,15 @@
 
 	<h1>{{'seasonCalendar'|trans({}, 'general')}}</h1>
 
-	<ul class="nav nav-pills mt-5 offset-1 col-10 justify-content-around" id="pills-tab" role="tablist">
+	<ul class="nav nav-pills mt-5 mx-5 justify-content-between" id="pills-tab" role="tablist">
 		{% for month in months %}
 			{% set show = '' %}
 			{% if month == 'now'|date('M') %}
 				{% set show = 'active show' %}
 			{% endif %}
+
 			<li class="nav-item">
-				<a class="nav-link {{ show }}" id="pills-{{month}}-tab" data-toggle="pill" href="#pills-{{month}}" role="tab" aria-controls="pills-{{month}}" aria-selected="true">{{month}}</a>
+				<a class="nav-link {{ show }} text-center d-block" id="pills-{{month}}-tab" data-toggle="pill" href="#pills-{{month}}" role="tab" aria-controls="pills-{{month}}" aria-selected="true">{{month}}</a>
 			</li>
 		{% endfor %}
 	</ul>

@@ -1,10 +1,10 @@
 {% block header %}
 	<nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
 		<a class="navbar-brand" href="{{ path('page_show', {'pageSlug': 'home'}) }}"><img class='logo' src="{{asset('images/logo.jpg')}}"></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse nav-tabs nav d-md-flex flex-md-column" id="navbarNavAltMarkup" role="tablist">
+		<div class="collapse navbar-collapse nav-tabs nav d-md-flex flex-md-column multi-collapse" id="navbarNavAltMarkup" role="tablist">
 			<ul class="col-xl-8 col-lg-9 d-flex flex-wrap justify-content-center navbar-nav pr-xl-5 ml-md-auto ml-2">
 				{% for tab in tabs %}
 					{% if tab.pages|length > 1 %}
@@ -25,7 +25,7 @@
 
 	<div class="tab-content" id="nav-tabContent">
 		{% for tab in tabs %}
-			<div class="tab-pane fade" id="nav-{{tab.name}}" role="tabpanel" aria-labelledby="nav-{{tab.name}}-tab">
+			<div class="tab-pane fade multi-collapse" id="nav-{{tab.name}}" role="tabpanel" aria-labelledby="nav-{{tab.name}}-tab">
 				{% for page in tab.pages %}
 					<a href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">{{ ('front.'~page.name)|trans({}, 'menu') }}</a>
 				{% endfor %}

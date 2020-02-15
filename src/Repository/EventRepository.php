@@ -20,6 +20,9 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+    /**
+     * Find the next event to come up
+     */
     public function findNextEvent()
     {
         $conn = $this->getEntityManager()->getConnection();
@@ -34,6 +37,11 @@ class EventRepository extends ServiceEntityRepository
         return $conn->query($sql)->fetch();
     }
 
+    /**
+     * Is admitted that all events belong to the SeasonEvent and SeasonEvent dont have starting_date. 
+     * This request give all the Events that have a starting_date
+     * If an Event don't have starting_date is considered as a recurrent event so he d'ont appear as a SeasonEvent
+     * */
     public function findSeasonEvents()
     {
         $conn = $this->getEntityManager()->getConnection();

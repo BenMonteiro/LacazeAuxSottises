@@ -21,6 +21,7 @@ class SectionType extends AbstractType
                 'class' => FrontPage::class,
                 'choice_label' => 'name',
                 'group_by' => 'tab',
+                // Thanks to this attribute, the field is rightly prefilled
                 'choice_attr' => function ($choice, $key, $value) {
                     if (isset($_GET['page_id']) && $value === $_GET['page_id']) {
 

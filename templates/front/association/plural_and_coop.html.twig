@@ -17,26 +17,26 @@
 					{% if section.subTitle %}
 						<h5>{{ section.subTitle }}</h5>
 					{% endif %}
-					{{ section.content|raw }}
+					<p>{{ section.content|raw }}</p>
 				</article>
 			{% endif %}
 		{% endfor %}
-		<div class='d-flex my-3 align-items-center justify-content-around'>
+		<div class='d-md-flex mt-3 align-items-center justify-content-around'>
 			{% for section in sections %}
 				{% if section.name == 'left' %}
-					<article id="leftArticle" class="framedArticle col-6 mr-2">
+					<article id="leftArticle" class="framedArticle mb-3 col-md-6 mr-md-2">
 						{% if section.title %}
 							<h3 class="text-center colored">{{ section.title }}</h3>
 						{% endif %}
 						{% if section.subTitle %}
 							<h5 class="text-center">{{ section.subTitle }}</h5>
 						{% endif %}
-						{{ section.content|raw }}
+						<p>{{ section.content|raw }}</p>
 					</article>
 				{% endif %}
 
 				{% if section.name == 'right' %}
-					<article id="rightArticle" class="framedArticle col-6 ml-2">
+					<article id="rightArticle" class="framedArticle mb-3 col-md-6 ml-md-2">
 						{% if section.title %}
 							<h3 class="text-center colored">{{ section.title }}</h3>
 						{% endif %}

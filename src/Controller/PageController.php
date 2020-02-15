@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Controller of the front side of the project
+ */
 class PageController extends AbstractController
 {
     protected $pages;
@@ -25,12 +28,17 @@ class PageController extends AbstractController
         FrontPageRepository $frontPageRepository,
         FrontTabRepository $frontTabRepository
     ) {
+        /**
+         * Mandatory
+         * It appears on the menu 
+         */
         $this->pages = $frontPageRepository->findAll();
         $this->tabs = $frontTabRepository->findAll();
     }
 
     /**
      * @Route("/", name="blog")
+     * Entry point of the website
      */
     public function index(FrontPageRepository $frontPageRepository)
     {
@@ -39,6 +47,7 @@ class PageController extends AbstractController
 
     /**
      * @Route("page/{pageSlug}", name="page_show", requirements={"pageSlug"=".+?"}, methods={"GET"})
+     * This function handle the display of all pages of the website. Some datas are transmitted only in given conditions.Templates are found dynamically.
      */
     public function displayPage(
         FrontPage $frontPage,

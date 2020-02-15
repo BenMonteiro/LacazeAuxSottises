@@ -43,11 +43,11 @@ nav>ul {
     width: 100%;
     align-items: center;
     background-color: rgba(0, 0, 0, 1);
-    height: 50px;
-    padding: 20px;
     display: flex;
     justify-content: space-around;
+    padding: 5px 0;
     z-index: 200;
+    flex-wrap: wrap;
 }
 
 .tab-pane a {

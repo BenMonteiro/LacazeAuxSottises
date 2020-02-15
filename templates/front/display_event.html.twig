@@ -22,20 +22,24 @@
 {% endblock %}
 
 {% block body %}
-	<div class="d-flex my-5">
-		<img class="miniImage offset-3 col-5 " src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}">
-		<div class="offset-1 col-2 text-center">
+	<div class="d-md-flex my-5">
+		<div class="d-flex flex-md-column offset-md-1 col-md-2  offset-3 col-6 text-center">
 			{% if event.startingDate != null %}
-				<h4>{{'event.start'|trans({}, 'event')|capitalize}}</h4>
-				<p>{{ event.startingDate ? event.startingDate|format_date('full') : '' }}</p>
-				<h4>{{'event.end'|trans({}, 'event')|capitalize}}</h4>
-				<p>{{ event.endingDate ? event.endingDate|format_date('full') : '' }}</p>
+				<div>
+					<h4>{{'event.start'|trans({}, 'event')|capitalize}}</h4>
+					<p>{{ event.startingDate ? event.startingDate|format_date('full') : '' }}</p>
+				</div>
+				<div class="offset-1">
+					<h4>{{'event.end'|trans({}, 'event')|capitalize}}</h4>
+					<p>{{ event.endingDate ? event.endingDate|format_date('full') : '' }}</p>
+				</div>
 			{% endif %}
 			{% if event.hours != null %}
 				<h4>{{'event.hours'|trans({}, 'event')|capitalize}}</h4>
 				<p>{{ event.hours }}</p>
 			{% endif %}
 		</div>
+		<img class="offset-md-1 col-md-5 offset-2 col-8" src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}">
 	</div>
 
 	<div class="text-center offset-1 col-10">{{ event.description|raw }}</div>
@@ -46,7 +50,7 @@
 	<h2 class="offset-2 my-3 font-weight-bold">
 		{{ 'general.program'|trans({}, 'general')|capitalize}}
 	</h2>
-	<table class="table table-sm offset-2 col-8 text-center">
+	<table class="table table-sm offset-md-2 col-md-8  offset-1 col-10 text-center">
 		<thead>
 			<tr>
 				<th>{{'general.date'|trans({}, 'general')|capitalize}}</th>

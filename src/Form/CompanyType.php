@@ -9,6 +9,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
+/**
+ * This form include multiPerformanceForms
+ */
 class CompanyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)

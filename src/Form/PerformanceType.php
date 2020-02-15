@@ -21,6 +21,7 @@ class PerformanceType extends AbstractType
         $builder
             ->add('companyName', EntityType::class, [
                 'class' => Company::class,
+                // Thanks to this attribute, the field is rightly prefilled
                 'choice_attr' => function ($choice, $key, $value) {
                     if (isset($_GET['company_id']) && $value === $_GET['company_id']) {
 
@@ -40,6 +41,7 @@ class PerformanceType extends AbstractType
             ->add('isHighlight')
             ->add('event', EntityType::class, [
                 'class' => Event::class,
+                // Thanks to this attribute, the field is rightly prefilled
                 'choice_attr' => function ($choice, $key, $value) {
                     if (isset($_GET['event_id']) && $value === $_GET['event_id']) {
 

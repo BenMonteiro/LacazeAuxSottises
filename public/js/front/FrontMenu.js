@@ -1,5 +1,7 @@
 export default class FrontMenuBehaviour {
 
+    // Handle the behaviour of FrontMenu
+
     constructor() {
         this.menuBehaviour();
     }

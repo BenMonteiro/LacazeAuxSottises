@@ -17,7 +17,6 @@
         color: black;
         background-color: #DA291C;
         border-radius: 15px;
-        padding: 5px 10px;
         text-decoration: none;
     }
 
@@ -28,22 +27,106 @@
     .logo {
         width: 100px;
     }
+
+    .nav-pills>li {
+        width: 16%;
+    }
+
 }
 
 @media all and (max-width: 768px) {
     .tab-content {
-        top: 455px;
+        top: 450px;
         height: 50px;
-        z-index: 3;
+        z-index: 5;
     }
 
-    .tab-pane a {
-        font-size: 0.75em;
+    #pills-tab,
+    #pills-tabContent {
+        position: relative;
+        top: 20px
+    }
+
+    .agenda {
+        position: relative;
+        top: 0px;
+    }
+
+    .nav-link:hover {
+        border: none !important;
+        color: black !important
+    }
+
+    .nav-tabs .nav-link.active {
+        border: none !important;
+        color: black !important
+    }
+
+    .pageTitle {
+        font-size: 2.5em;
+    }
+
+    #titleLines {
+        top: -45px;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    h5 {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 0.75rem;
     }
 }
 
-@media all and (max-width:450px) {
+@media all and (max-width:500px) {
     .nav-link {
         padding: 0 !important
+    }
+
+    .tab-content {
+        position: relative;
+        top: 360px;
+        height: 50px;
+    }
+
+    .pageTitle {
+        font-size: 1.75em;
+    }
+
+    #titleLines {
+        top: -37.5px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    h5 {
+        font-size: 0.85rem;
+    }
+
+    p {
+        font-size: 0.75rem;
     }
 }

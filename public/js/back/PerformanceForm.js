@@ -1,5 +1,6 @@
 export default class PerformanceForm {
 
+    // This class allow to add a performance form included in company form
 
     constructor() {
         this.collectionHolder = $('div.perfs');

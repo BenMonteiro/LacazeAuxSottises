@@ -1,5 +1,7 @@
 export default class tinymceConfig {
 
+  // TinyMCE configurator class
+
   constructor() {
     this.config();
   }

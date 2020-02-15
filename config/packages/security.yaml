@@ -44,6 +44,7 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
+    # Users with ROLE_USER have access to the admin/press page only to download documents. They can't add or delete a document
     access_control:
         - { path: ^/admin/press, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }

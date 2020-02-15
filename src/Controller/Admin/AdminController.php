@@ -10,12 +10,19 @@ use App\Repository\TeamRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Default Controller of the administration side of the project
+ *  All AdminControllers extends from this Controller
+ */
 class AdminController extends AbstractController
 {
     protected $tabList;
 
     public function __construct(FrontTabRepository $frontTabRepository)
     {
+        /**
+         * Mandatory. All pages have to access this because it appears in the menu
+         */
         $this->tabList = $frontTabRepository->findAll();
     }
 

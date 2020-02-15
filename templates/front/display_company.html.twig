@@ -23,7 +23,7 @@
 
 {% block body %}
 	<div class="col-12 d-flex">
-		<aside class="col-2 my-5 border-right border-danger">
+		<aside class="col-lg-2  col-4 my-5 border-right border-danger">
 			{% if company.isHosted %}
 				<div>
 					<h4>{{ 'company.status'|trans({}, 'company')|capitalize}}</h4>
@@ -81,16 +81,16 @@
 				</div>
 			{% endif %}
 		</aside>
-		<div class="col-9 flex-column">
-			<div class="col-12 mb-5 ">
-				<img class="miniImage col-4 mt-5 mx-3 float-left" src="{{ asset('images/uploads/company/' ~ company.image.name) }}">
+		<div class="col-lg-10 col-8 flex-column">
+			<div class="col-11 mb-5">
+				<img class="miniImage col-md-4 col-12 mt-5 mx-3 float-left" src="{{ asset('images/uploads/company/' ~ company.image.name) }}">
 				<div class="col-12 text-justify my-5 pt-5">{{ company.description|raw }}</div>
 			</div>
 
-			<div class="row offset-1 col-11 mt-5 pt-5">
-				<h2 class=" ml-5 mb-3 font-weight-bold">{{ 'company.performances'|trans({}, 'company')|capitalize}}
+			<div class="row offset-lg-1 col-lg-11 mt-5 pt-5">
+				<h2 class=" ml-3 mb-3 font-weight-bold">{{ 'company.performances'|trans({}, 'company')|capitalize}}
 				</h2>
-				<table class="table table-sm offset-2 col-8 text-center">
+				<table class="table table-sm offset-lg-2 col-lg-8 text-center ml-3">
 					<thead>
 						<tr>
 							<th>{{'general.date'|trans({}, 'general')|capitalize}}</th>
