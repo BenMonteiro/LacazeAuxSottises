@@ -17,7 +17,7 @@
 	<div class=" offset-1 text-center col-10 mb-5">
 		{% for section in sections %}
 			{% if section.image.name %}
-				<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+				<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
 			{% endif %}
 		{% endfor %}
 	</div>

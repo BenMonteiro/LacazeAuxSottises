@@ -7,7 +7,7 @@
 			{% for section in sections %}
 				{% if section.name == 'prod meeting' %}
 					<div class="d-flex align-items-center col-12 mb-3">
-						<img class="col-lg-2 col-md-3 d-sm-block d-none img-thumbnail rounded" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+						<img class="col-lg-2 col-md-3 d-sm-block d-none img-thumbnail rounded" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
 						<article class="my-5 col-sm-8">
 							{% if section.title %}
 								<h3 class="colored">{{ section.title }}</h3>
@@ -27,7 +27,7 @@
 				{% if section.name == 'nights' %}
 					<section class=" d-flex align-items-center col-12 mb-3">
 						{% if section.image.name %}
-							<img class="col-lg-2 col-md-3 d-sm-block d-none img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+							<img class="col-lg-2 col-md-3 d-sm-block d-none img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
 						{% endif %}
 						<article class="h-100 col-sm-8">
 							{% if section.title %}
@@ -48,7 +48,7 @@
 				{% for placeEventPerf in placeEventPerfs %}
 					<div class="col-md-8 col-sm-10 col-8">
 						<li class="d-sm-flex">
-							<img class="miniImage img-thumbnail rounded" src="{{ asset('images/uploads/company/' ~ placeEventPerf.companyName.image.name) }}">
+							<img class="miniImage img-thumbnail rounded" src="{{ asset('images/uploads/company/' ~ placeEventPerf.companyName.image.name) }}" alt="{{placeEventPerf.companyName.imageDescription}}">
 
 							<div class="flex-column col-sm-2 mt-2">
 								<p>{{ placeEventPerf.date|format_date(pattern='EEEE dd MMMM')|capitalize }}</p>
@@ -81,7 +81,7 @@
 							{% endif %}
 							<p>{{ section.content|raw}}</p>
 						</article>
-						<img class="col-lg-2 col-md-3 d-sm-block d-none img-thumbnail rounded " src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+						<img class="col-lg-2 col-md-3 d-sm-block d-none img-thumbnail rounded " src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
 					</div>
 				{% endif %}
 			{% endfor %}

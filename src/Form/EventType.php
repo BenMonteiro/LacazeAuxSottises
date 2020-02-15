@@ -37,7 +37,8 @@ class EventType extends AbstractType
                 'download_uri' => false,
                 'image_uri' => true,
                 'asset_helper' => true,
-            ]);
+            ])
+            ->add('imageDescription');
     }
 
     public function configureOptions(OptionsResolver $resolver)

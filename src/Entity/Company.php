@@ -120,6 +120,11 @@ class Company
      */
     private $isHostedUntil;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageDescription;
+
     public function __construct()
     {
         $this->performances = new ArrayCollection();
@@ -342,5 +347,17 @@ class Company
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getImageDescription(): ?string
+    {
+        return $this->imageDescription;
+    }
+
+    public function setImageDescription(?string $imageDescription): self
+    {
+        $this->imageDescription = $imageDescription;
+
+        return $this;
     }
 }

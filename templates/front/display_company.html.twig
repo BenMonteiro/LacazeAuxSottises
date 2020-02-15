@@ -83,7 +83,7 @@
 		</aside>
 		<div class="col-lg-10 col-8 flex-column">
 			<div class="col-11 mb-5">
-				<img class="miniImage col-md-4 col-12 mt-5 mx-3 float-left" src="{{ asset('images/uploads/company/' ~ company.image.name) }}">
+				<img class="miniImage col-md-4 col-12 mt-5 mx-3 float-left" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
 				<div class="col-12 text-justify my-5 pt-5">{{ company.description|raw }}</div>
 			</div>
 

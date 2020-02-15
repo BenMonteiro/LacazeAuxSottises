@@ -8,7 +8,7 @@
 		<div id="partnersLogos" class="d-flex flex-wrap justify-content-around offset-1 col-10 mb-4">
 			{% for partner in partners %}
 				<div class="mb-2 mr-2">
-					<img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}">
+					<img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}">
 				</div>
 			{% endfor %}
 		</div>

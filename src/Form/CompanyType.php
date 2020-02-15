@@ -28,6 +28,7 @@ class CompanyType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
             ])
+            ->add('imageDescription')
             ->add('theme')
             ->add('duration')
             ->add('audience')

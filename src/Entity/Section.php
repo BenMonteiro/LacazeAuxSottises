@@ -83,6 +83,11 @@ class Section
      */
     private $belongToPageId;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageDescription;
+
     public function __construct()
     {
         $this->image = new EmbeddedFile();
@@ -208,6 +213,18 @@ class Section
     public function setBelongToPageId(int $belongToPage): self
     {
         $this->belongToPageId = $belongToPage; 
+
+        return $this;
+    }
+
+    public function getImageDescription(): ?string
+    {
+        return $this->imageDescription;
+    }
+
+    public function setImageDescription(?string $imageDescription): self
+    {
+        $this->imageDescription = $imageDescription;
 
         return $this;
     }

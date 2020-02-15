@@ -39,7 +39,7 @@
 				<p>{{ event.hours }}</p>
 			{% endif %}
 		</div>
-		<img class="offset-md-1 col-md-5 offset-2 col-8" src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}">
+		<img class="offset-md-1 col-md-5 offset-2 col-8" src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
 	</div>
 
 	<div class="text-center offset-1 col-10">{{ event.description|raw }}</div>
