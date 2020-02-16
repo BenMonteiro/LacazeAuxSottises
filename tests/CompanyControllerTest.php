@@ -53,7 +53,6 @@ class CompanyControllerTest extends WebTestCase
         yield ['/admin/page/112'];
         yield ['/admin/dashboard'];
         yield ['/'];
-        yield ['/accueil'];
         yield ['/company/' . $id];
         yield ['/admin/company/'];
         yield ['/admin/company/new'];

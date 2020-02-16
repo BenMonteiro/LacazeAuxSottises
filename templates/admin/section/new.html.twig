@@ -10,6 +10,11 @@
 
 		{{ include('admin/section/_form.html.twig') }}
 
-		<a class="badge badge-secondary p-2 mb-5" href="{{ path('section_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		{% if page is not null %}
+			<a class="badge badge-secondary p-2 mb-5" href="{{ path('page_list_show' , {'id': page}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		{% else %}
+			<a class="badge badge-secondary p-2 mb-5" href="{{ path('admin_dashboard') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		{% endif %}
+
 	</div>
 {% endblock %}

@@ -19,7 +19,7 @@ class PerformanceType extends AbstractType
     {
         $performance = new Performance;
         $builder
-            ->add('companyName', EntityType::class, [
+            ->add('company', EntityType::class, [
                 'class' => Company::class,
                 // Thanks to this attribute, the field is rightly prefilled
                 'choice_attr' => function ($choice, $key, $value) {

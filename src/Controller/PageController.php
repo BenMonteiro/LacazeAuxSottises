@@ -63,12 +63,12 @@ class PageController extends AbstractController
 
         $template = (empty($pageTemplate)) ? $defaultTemplate : 'front/' . $pageFolder . '/' . $pageTemplate . '.html.twig';
 
-        $homeEvents = ($frontPage->getPageSlug() === 'home') ? $eventRepository->findBy(['isHighlight' => true], ['startingDate' => 'ASC']) : null;
-        $homePerfs = ($frontPage->getPageSlug() === 'home') ? $performanceRepository->findBy(['isHighlight' => true], ['date' => 'ASC']) : null;
+        $homeEvents = ($frontPage->getPageSlug() === 'home') ? $eventRepository->findMonthEvents() : null;
+        $homePerfs = ($frontPage->getPageSlug() === 'home') ? $performanceRepository->findMonthPerfs() : null;
         $seasonEvents = ($frontPage->getPageSlug() === 'saison/calendrier') ? $eventRepository->findSeasonEvents() : null;
         $seasonPerformances = ($frontPage->getPageSlug() === 'saison/calendrier') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'saison'])], ['date' => 'ASC']) : null;
-        $festPerformances = ($frontPage->getPageSlug() === 'festival/calendrier') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'festival'])], ['date' => 'ASC']) : null;
-        $placeEventPerfs = ($frontPage->getPageSlug() === 'tiers-lieu/les-rendez-vous') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'soirées du tiers-lieu'])], ['date' => 'ASC']) : null;
+        $festPerformances = ($frontPage->getPageSlug() === 'festival/calendrier') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'Festival Fête des sottises !'])], ['date' => 'ASC']) : null;
+        $placeEventPerfs = ($frontPage->getPageSlug() === 'tiers-lieu/les-rendez-vous') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'Soirées du Tiers-Lieu'])], ['date' => 'ASC']) : null;
         $partners = ($frontPage->getPageSlug() === 'partenaires/partenaires') ? $partnersRepository->findAll() : null;
 
 

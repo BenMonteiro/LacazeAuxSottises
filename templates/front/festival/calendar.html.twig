@@ -8,16 +8,16 @@
 
 	<div>
 		{% for festPerf in festPerfs %}
-			<a class="element-link" href="{{ path('display_company', {'id': festPerf.companyNameId}) }}">
+			<a class="element-link" href="{{ path('display_company', {'id': festPerf.company.id}) }}">
 				<div class="text-center my-4">
 					<h3 class="text-decoration-none colored">{{ festPerf.date|format_date('full')|capitalize}}
 						-
 						<span class="text-dark font-weight-lighter">{{ festPerf.cityShow }}</span>
 					</h3>
-					<h4>{{ festPerf.companyName }}</h4>
-					<p class="colored font-italic">{{ festPerf.companyName.showTitle}}
+					<h4>{{ festPerf.company }}</h4>
+					<p class="colored font-italic">{{ festPerf.company.showTitle}}
 						-
-						<span>{{ festPerf.companyName.duration}}min</span>
+						<span>{{ festPerf.company.duration}}min</span>
 					</p>
 				</div>
 			</a>

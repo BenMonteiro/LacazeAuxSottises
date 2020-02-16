@@ -37,6 +37,20 @@ class EventRepository extends ServiceEntityRepository
         return $conn->query($sql)->fetch();
     }
 
+    public function findMonthEvents()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT * 
+        FROM event
+        WHERE MONTH(starting_date)  = MONTH(NOW())
+        AND is_highlight = true
+        ORDER BY starting_date ASC
+            ';
+
+        return $conn->query($sql)->fetchAll();
+    }
+
     /**
      * Is admitted that all events belong to the SeasonEvent and SeasonEvent dont have starting_date. 
      * This request give all the Events that have a starting_date

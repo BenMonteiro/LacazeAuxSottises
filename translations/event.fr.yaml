@@ -6,6 +6,7 @@ event:
     start: date de début
     end: date de fin
     hours: horaires
+    hours/date: dates et horaires
     program: programmation
     name: événement
     performances: représentations de l'événement

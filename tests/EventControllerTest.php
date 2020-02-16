@@ -47,7 +47,7 @@ class EventControllerTest extends WebTestCase
 
     public function urlProvider()
     {
-        $id = 33;
+        $id = 35;
         yield ['/admin/event/'];
         yield ['/admin/event/new'];
         yield ['/admin/event/' . $id];

@@ -46,7 +46,7 @@ class TeamControllerTest extends WebTestCase
 
     public function urlProvider()
     {
-        $id = 67;
+        $id = 74;
         yield ['/admin/team/'];
         yield ['/admin/team/new'];
         yield ['/admin/team/' . $id . '/edit'];

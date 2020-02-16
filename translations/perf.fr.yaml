@@ -5,7 +5,7 @@ perf:
     create: créer une nouvelle représentation
     edit: modifier une représentation
     index: liste des représentations
-    companyName: Nom de la compagnie
+    company: Nom de la compagnie
     price: prix
     free: prix libre
     highlight: actu du mois ?

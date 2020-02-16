@@ -46,7 +46,7 @@ class PerformanceControllerTest extends WebTestCase
 
     public function urlProvider()
     {
-        $id = 208;
+        $id = 251;
         yield ['/admin/performance/'];
         yield ['/admin/performance/new'];
         yield ['/admin/performance/' . $id . '/edit'];
@@ -97,8 +97,6 @@ class PerformanceControllerTest extends WebTestCase
 
         $crawler = $this->client->followRedirect();
 
-        $this->assertSelectorTextContains('h1', $perf->getCompanyName());
-
         $this->assertSelectorTextNotContains('table', $perf->getCityShow());
 
         $this->assertSelectorTextContains('table', $entry);
@@ -125,8 +123,6 @@ class PerformanceControllerTest extends WebTestCase
 
         $crawler = $this->client->followRedirect();
 
-        $this->assertSelectorTextContains('h1', $perf->getCompanyName());
-
         $this->assertSelectorTextNotContains('table', $perf->getCityShow());
     }
 
@@ -137,7 +133,7 @@ class PerformanceControllerTest extends WebTestCase
                 'testAdd',
                 'performance' =>
                 [
-                    'performance[companyName]' => 81,
+                    'performance[company]' => 86,
                     'performance[cityShow]' => 'testAdd',
                     'performance[placeShow]' => 'place du marché'
                 ]

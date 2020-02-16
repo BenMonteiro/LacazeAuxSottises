@@ -32,7 +32,9 @@ general:
     program: Programmation
     highlights: actus du mois 
     events: événements
+    no_events: pas d'événements de prévus ce moi-ci
     perfs: spectacles
+    no_perfs: pas de spectacles de prévus ce moi-ci
     seasonDoc: plaquette
     downloadDoc: télécharger la plaquette
     focusOn: zoom sur 

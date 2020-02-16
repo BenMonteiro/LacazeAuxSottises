@@ -21,7 +21,7 @@ class EventController extends AdminController
     public function index(EventRepository $eventRepository): Response
     {
         return $this->render('admin/event/index.html.twig', [
-            'events' => $eventRepository->findAll(),
+            'events' => $eventRepository->findBy([], ['startingDate' => 'ASC']),
             'tabs' => $this->tabList,
         ]);
     }

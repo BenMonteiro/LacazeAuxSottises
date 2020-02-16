@@ -16,17 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class SectionController extends AdminController
 {
     /**
-     * @Route("/", name="section_index", methods={"GET"})
-     */
-    public function index(SectionRepository $sectionRepository): Response
-    {
-        return $this->render('admin/section/index.html.twig', [
-            'sections' => $sectionRepository->findAll(),
-            'tabs' => $this->tabList,
-        ]);
-    }
-
-    /**
      * @Route("/new", name="section_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -51,11 +40,15 @@ class SectionController extends AdminController
                     ['id' => $_GET['page_id']]
                 );
             }
-            return $this->redirectToRoute('section_index');
+
+            return $this->redirectToRoute('admin_dashboard');
         }
+
+        $page = (isset($_GET['page_id'])) ? $_GET['page_id'] : null;
 
         return $this->render('admin/section/new.html.twig', [
             'section' => $section,
+            'page' => $page,
             'form' => $form->createView(),
         ]);
     }
@@ -92,7 +85,8 @@ class SectionController extends AdminController
                     ['id' => $_GET['page_id']]
                 );
             }
-            return $this->redirectToRoute('section_index');
+
+            return $this->redirectToRoute('admin_dashboard');
         }
 
         return $this->render('admin/section/edit.html.twig', [
@@ -117,12 +111,14 @@ class SectionController extends AdminController
             );
         }
 
+
         if (isset($_GET['page_id'])) {
             return $this->redirectToRoute(
                 'page_list_show',
                 ['id' => $_GET['page_id']]
             );
         }
-        return $this->redirectToRoute('section_index');
+
+        return $this->redirectToRoute('admin_dashboard');
     }
 }

@@ -47,7 +47,7 @@
 			<thead>
 				<tr>
 					<th>{{'general.date'|trans({}, 'general')|capitalize}}</th>
-					<th>{{'perf.companyName'|trans({}, 'perf')|capitalize}}</th>
+					<th>{{'perf.company'|trans({}, 'perf')|capitalize}}</th>
 					<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
 					<th>
 						<a href="{{ path('performance_new', {'event_id': event.id}) }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
@@ -64,8 +64,8 @@
 							</div>
 						</td>
 						<td>
-							<a class="text-reset" href="{{ path('display_company', {'id': performance.companyNameId})}}">
-								<h4 class=" text-decoration-none font-weight-bold">{{ performance.companyName }}</h4>
+							<a class="text-reset" href="{{ path('display_company', {'id': performance.company.id})}}">
+								<h4 class=" text-decoration-none font-weight-bold">{{ performance.company }}</h4>
 							</a>
 						</td>
 						<td>

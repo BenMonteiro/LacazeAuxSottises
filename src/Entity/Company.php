@@ -74,7 +74,7 @@ class Company
     private $videoLink;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Performance", mappedBy="companyName", cascade="all", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Performance", mappedBy="company", cascade="all", orphanRemoval=true)
      * @Assert\Valid()
      */
     private $performances;
@@ -229,7 +229,7 @@ class Company
 
     public function addPerformance(Performance $performance): self
     {
-        $performance->setCompanyName($this);
+        $performance->setcompany($this);
         $this->performances->add($performance);
 
         return $this;
@@ -240,8 +240,8 @@ class Company
         if ($this->performances->contains($performance)) {
             $this->performances->removeElement($performance);
             // set the owning side to null (unless already changed)
-            if ($performance->getCompanyName() === $this) {
-                $performance->setCompanyName(null);
+            if ($performance->getcompany() === $this) {
+                $performance->setcompany(null);
             }
         }
 

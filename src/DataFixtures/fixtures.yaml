@@ -49,7 +49,7 @@ App\Entity\Team:
 
 App\Entity\Performance:
     performance{1..50}:
-        companyName: "@company*"
+        company: "@company*"
         cityShow: "<city()>"
         placeShow: "<streetAddress()>"
         date: '<dateTimeBetween("now", "+ 200 days")>'

@@ -20,12 +20,7 @@ class Performance
      * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="performances")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $companyName;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $companyNameId;
+    private $company;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -63,26 +58,14 @@ class Performance
         return $this->id;
     }
 
-    public function getCompanyName(): ?Company
+    public function getCompany(): ?Company
     {
-        return $this->companyName;
+        return $this->company;
     }
 
-    public function setCompanyName(?Company $companyName): self
+    public function setCompany(?Company $company): self
     {
-        $this->companyName = $companyName;
-
-        return $this;
-    }
-
-    public function getCompanyNameId(): ?int
-    {
-        return $this->companyNameId;
-    }
-
-    public function setCompanyNameId(int $companyName): self
-    {
-        $this->companyNameId = $companyName;
+        $this->company = $company;
 
         return $this;
     }

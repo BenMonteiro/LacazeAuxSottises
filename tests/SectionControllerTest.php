@@ -48,7 +48,6 @@ class SectionControllerTest extends WebTestCase
     public function urlProvider()
     {
         $id = 405;
-        yield ['/admin/section/'];
         yield ['/admin/section/new'];
         yield ['/admin/section/' . $id];
         yield ['/admin/section/' . $id . '/edit'];
@@ -70,9 +69,7 @@ class SectionControllerTest extends WebTestCase
 
         $crawler = $this->client->followRedirect();
 
-        $this->assertSelectorTextContains('h1', 'Liste Des Paragraphes');
-
-        $this->assertSelectorTextContains('table', $entry);
+        $this->assertSelectorTextContains('h1', 'Bonjour');
     }
 
     /**
@@ -99,11 +96,7 @@ class SectionControllerTest extends WebTestCase
 
         $crawler = $this->client->followRedirect();
 
-        $this->assertSelectorTextContains('h1', 'Liste Des Paragraphes');
-
-        $this->assertSelectorTextNotContains('table', $section->getName());
-
-        $this->assertSelectorTextContains('table', $entry);
+        $this->assertSelectorTextContains('h1', 'Bonjour');
     }
 
     /**
@@ -130,9 +123,7 @@ class SectionControllerTest extends WebTestCase
 
         $crawler = $this->client->followRedirect();
 
-        $this->assertSelectorTextContains('h1', 'Liste Des Paragraphes');
-
-        $this->assertSelectorTextNotContains('table', $section->getName());
+        $this->assertSelectorTextContains('h1', 'Bonjour');
     }
 
     public function provideAddSectionData()

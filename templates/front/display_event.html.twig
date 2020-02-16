@@ -24,37 +24,40 @@
 {% block body %}
 	<div class="d-md-flex my-5">
 		<div class="d-flex flex-md-column offset-md-1 col-md-2  offset-3 col-6 text-center">
-			{% if event.startingDate != null %}
+			{% if event.startingDate != null and event.hours == null %}
 				<div>
 					<h4>{{'event.start'|trans({}, 'event')|capitalize}}</h4>
-					<p>{{ event.startingDate ? event.startingDate|format_date('full') : '' }}</p>
+					<p>{{ event.startingDate ? event.startingDate|format_date('full')|capitalize : '' }}</p>
 				</div>
 				<div class="offset-1">
 					<h4>{{'event.end'|trans({}, 'event')|capitalize}}</h4>
-					<p>{{ event.endingDate ? event.endingDate|format_date('full') : '' }}</p>
+					<p>{{ event.endingDate ? event.endingDate|format_date('full')|capitalize : '' }}</p>
 				</div>
-			{% endif %}
-			{% if event.hours != null %}
-				<h4>{{'event.hours'|trans({}, 'event')|capitalize}}</h4>
+			{% elseif event.hours != null and event.startingDate != null %}
+				<h4>{{'event.hours/date'|trans({}, 'event')|capitalize}}</h4>
 				<p>{{ event.hours }}</p>
 			{% endif %}
 		</div>
-		<img class="offset-md-1 col-md-5 offset-2 col-8" src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
+		{% if event.programImage.name %}
+			<img class="offset-md-1 col-md-5 offset-2 col-8" src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
+		{% endif %}
 	</div>
 
 	<div class="text-center offset-1 col-10">{{ event.description|raw }}</div>
 	<div class="text-center mt-5">
-		<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
+		{% if event.programPDF.name %}
+			<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
+		{% endif %}
 	</div>
 
 	<h2 class="offset-2 my-3 font-weight-bold">
-		{{ 'general.program'|trans({}, 'general')|capitalize}}
+		{{ 'general.perfs'|trans({}, 'general')|capitalize}}
 	</h2>
 	<table class="table table-sm offset-md-2 col-md-8  offset-1 col-10 text-center">
 		<thead>
 			<tr>
 				<th>{{'general.date'|trans({}, 'general')|capitalize}}</th>
-				<th>{{'perf.companyName'|trans({}, 'perf')|capitalize}}</th>
+				<th>{{'perf.company'|trans({}, 'perf')|capitalize}}</th>
 				<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
 			</tr>
 		</thead>
@@ -68,8 +71,8 @@
 						</div>
 					</td>
 					<td>
-						<a class="text-reset" href="{{ path('display_company', {'id': performance.companyNameId})}}">
-							<h4 class=" text-decoration-none font-weight-bold">{{ performance.companyName }}</h4>
+						<a class="text-reset" href="{{ path('display_company', {'id': performance.company.id})}}">
+							<h4 class=" text-decoration-none font-weight-bold">{{ performance.company }}</h4>
 						</a>
 					</td>
 					<td>
