@@ -47,11 +47,19 @@ class EventControllerTest extends WebTestCase
 
     public function urlProvider()
     {
-        $id = 35;
+        $this->setUp();
+
+        $event = $this->entityManager
+            ->getRepository(Event::class)
+            ->findOneBy([]);
+
+        $id = $event->getId();
+
         yield ['/admin/event/'];
         yield ['/admin/event/new'];
         yield ['/admin/event/' . $id];
         yield ['/admin/event/' . $id . '/edit'];
+        yield ['/event/' . $id];
     }
 
     /**

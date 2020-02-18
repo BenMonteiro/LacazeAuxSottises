@@ -47,7 +47,14 @@ class PartnerControllerTest extends WebTestCase
 
     public function urlProvider()
     {
-        $id = 132;
+        $this->setUp();
+
+        $partner = $this->entityManager
+            ->getRepository(Partners::class)
+            ->findOneBy([]);
+
+        $id = $partner->getId();
+
         yield ['/admin/partners/'];
         yield ['/admin/partners/new'];
         yield ['/admin/partners/' . $id . '/edit'];

@@ -71,7 +71,7 @@ class PressDocumentController extends AdminController
 
         $this->addFlash(
             $isValid ? 'notice' : 'error',
-            $isValid ? 'Ledocument a été supprimé avec succès !' : 'Une erreur est survenue, veuillez rééssayer ultérieurement'
+            $isValid ? 'Le document a été supprimé avec succès !' : 'Une erreur est survenue, veuillez rééssayer ultérieurement'
         );
 
         return $this->redirectToRoute('press_document_index');

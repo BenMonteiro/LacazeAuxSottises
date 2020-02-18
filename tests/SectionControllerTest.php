@@ -2,6 +2,7 @@
 
 namespace App\Tests;
 
+use App\Entity\FrontPage;
 use App\Entity\Section;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -47,7 +48,14 @@ class SectionControllerTest extends WebTestCase
 
     public function urlProvider()
     {
-        $id = 405;
+        $this->setUp();
+
+        $section = $this->entityManager
+            ->getRepository(Section::class)
+            ->findOneBy([]);
+
+        $id = $section->getId();
+
         yield ['/admin/section/new'];
         yield ['/admin/section/' . $id];
         yield ['/admin/section/' . $id . '/edit'];
@@ -56,7 +64,7 @@ class SectionControllerTest extends WebTestCase
     /**
      * @dataProvider provideAddSectionData
      */
-    public function testAddSection($entry, $formDatas)
+    public function testAddSection($formDatas)
     {
         $this->dbConnect();
 
@@ -75,7 +83,7 @@ class SectionControllerTest extends WebTestCase
     /**
      * @dataProvider provideEditSectionData
      */
-    public function testEditSection($entry, $formDatas)
+    public function testEditSection($formDatas)
     {
         $section = $this->entityManager
             ->getRepository(Section::class)
@@ -128,13 +136,20 @@ class SectionControllerTest extends WebTestCase
 
     public function provideAddSectionData()
     {
+        $this->setUp();
+
+        $page = $this->entityManager
+            ->getRepository(FrontPage::class)
+            ->findOneBy([]);
+
+        $id = $page->getId();
+
         return [
             'add' => [
-                'SectionAdd',
                 'section' =>
                 [
                     'section[name]' => 'SectionAdd',
-                    'section[belongToPage]' => 112,
+                    'section[belongToPage]' => $id,
                     'section[appearanceOrder]' => 1,
                     'section[content]' => 'test'
                 ]
@@ -146,11 +161,9 @@ class SectionControllerTest extends WebTestCase
     {
         return [
             'edit' => [
-                'SectionEdit',
                 'section' =>
                 [
                     'section[name]' => 'SectionEdit',
-                    'section[belongToPage]' => 112,
                     'section[appearanceOrder]' => 5,
                     'section[content]' => 'testtest'
                 ]

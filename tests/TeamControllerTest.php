@@ -46,7 +46,14 @@ class TeamControllerTest extends WebTestCase
 
     public function urlProvider()
     {
-        $id = 74;
+        $this->setUp();
+
+        $team = $this->entityManager
+            ->getRepository(Team::class)
+            ->findOneBy([]);
+
+        $id = $team->getId();
+
         yield ['/admin/team/'];
         yield ['/admin/team/new'];
         yield ['/admin/team/' . $id . '/edit'];

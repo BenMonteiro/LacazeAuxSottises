@@ -47,7 +47,13 @@ class CompanyControllerTest extends WebTestCase
 
     public function urlProvider()
     {
-        $id = 86;
+        $this->setUp();
+
+        $company = $this->entityManager
+            ->getRepository(Company::class)
+            ->findOneBy([]);
+
+        $id = $company->getId();
 
         yield ['/login'];
         yield ['/admin/page/112'];

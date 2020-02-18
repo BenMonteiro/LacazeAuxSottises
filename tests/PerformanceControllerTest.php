@@ -3,6 +3,7 @@
 namespace App\Tests;
 
 use App\Entity\Performance;
+use App\Entity\Company;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class PerformanceControllerTest extends WebTestCase
@@ -46,7 +47,14 @@ class PerformanceControllerTest extends WebTestCase
 
     public function urlProvider()
     {
-        $id = 251;
+        $this->setUp();
+
+        $perf = $this->entityManager
+            ->getRepository(Performance::class)
+            ->findOneBy([]);
+
+        $id = $perf->getId();
+
         yield ['/admin/performance/'];
         yield ['/admin/performance/new'];
         yield ['/admin/performance/' . $id . '/edit'];
@@ -128,12 +136,20 @@ class PerformanceControllerTest extends WebTestCase
 
     public function provideAddPerfData()
     {
+        $this->setUp();
+
+        $company = $this->entityManager
+            ->getRepository(Company::class)
+            ->findOneBy([]);
+
+        $id = $company->getId();
+
         return [
             'add' => [
                 'testAdd',
                 'performance' =>
                 [
-                    'performance[company]' => 86,
+                    'performance[company]' => $id,
                     'performance[cityShow]' => 'testAdd',
                     'performance[placeShow]' => 'place du marché'
                 ]

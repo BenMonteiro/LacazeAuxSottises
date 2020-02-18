@@ -8,6 +8,7 @@ use App\Entity\Event;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,9 +16,14 @@ use function foo\func;
 
 class PerformanceType extends AbstractType
 {
+
+    protected $companyFieldType;
+    protected $companyFieldOptions = [];
+
+
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $performance = new Performance;
         $builder
             ->add('company', EntityType::class, [
                 'class' => Company::class,
