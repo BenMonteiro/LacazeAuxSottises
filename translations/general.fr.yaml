@@ -4,6 +4,18 @@ seasonCalendar: Calendrier de la saison
 festCalendar: Calendrier du Festival Fête des sottises
 from: du 
 to: au
+Jan: Janv.
+Feb: Févr.
+Mar: Mars
+Apr: Avril
+May: Mai
+Jun: Juin
+Jul: Juillet
+Aug: Août
+Sep: Sept.
+Oct: Oct.
+Nov: Nov.
+Dec: Déc.
 general:
     from: du 
     to: au

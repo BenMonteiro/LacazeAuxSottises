@@ -14,3 +14,7 @@ framework:
     #fragments: true
     php_errors:
         log: true
+
+    assets: 
+       version: '%app_version%'
+       version_format: '%%s?version=%%s'
