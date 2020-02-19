@@ -60,7 +60,7 @@ h3 {
     text-align: inherit;
 }
 
-.pageTitleBar {
+#pageTitleBar {
     margin-top: 115px;
 }
 
@@ -72,7 +72,7 @@ h3 {
     background-color: white;
 }
 
-#titleLines {
+.titleLines {
     position: relative;
     top: -50px;
     z-index: 2;

@@ -40,9 +40,15 @@ class PageController extends AbstractController
      * @Route("/", name="blog")
      * Entry point of the website
      */
-    public function index()
+    public function index(EventRepository $eventRepository, SectionRepository $sectionRepository, PerformanceRepository $performanceRepository)
     {
-        return $this->render('front/landing_page.html.twig');
+        return $this->render('front/landing_page.html.twig', [
+            'season' => $eventRepository->findOneBy(['name' => 'saison']),
+            'sections' => $sectionRepository->findBy(['belongToPage' => 'home']),
+            'homePerfs' => $performanceRepository->findMonthPerfs(),
+            'homeEvents' => $eventRepository->findMonthEvents()
+
+        ]);
     }
 
     /**
