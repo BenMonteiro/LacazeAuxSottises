@@ -32,15 +32,15 @@ class PageController extends AbstractController
          * Mandatory
          * It appears on the menu 
          */
-        $this->pages = $frontPageRepository->findAll();
-        $this->tabs = $frontTabRepository->findAll();
+        $this->pages = $frontPageRepository->findBy([], ['number' => 'ASC']);
+        $this->tabs = $frontTabRepository->findBy([], ['number' => 'ASC']);
     }
 
     /**
      * @Route("/", name="blog")
      * Entry point of the website
      */
-    public function index(FrontPageRepository $frontPageRepository)
+    public function index()
     {
         return $this->render('front/landing_page.html.twig');
     }

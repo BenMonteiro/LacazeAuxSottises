@@ -73,7 +73,7 @@ class Section
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\FrontPage", inversedBy="pageSections")
+     * @ORM\ManyToOne(targetEntity="App\Entity\FrontPage", inversedBy="pageSections", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $belongToPage;
@@ -212,7 +212,7 @@ class Section
 
     public function setBelongToPageId(int $belongToPage): self
     {
-        $this->belongToPageId = $belongToPage; 
+        $this->belongToPageId = $belongToPage;
 
         return $this;
     }

@@ -1,0 +1,4 @@
+App\Entity\Partners:
+    partner{1..30}:
+        name: "<company()>"
+        type: '<randomElement(["prod_dist", "partners"])>'

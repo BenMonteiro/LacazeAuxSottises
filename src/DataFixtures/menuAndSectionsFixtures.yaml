@@ -1,65 +1,32 @@
-App\Entity\Company:
-    company{1..20}:
-        name: "<company()>"
-        description: "<paragraph(3, true)>"
-        showTitle: "<sentence(4, true)>"
-        theme: "<word()>"
-        duration: "<numberBetween(15, 120)>"
-        audience: "<sentence(3, true)>"
-        moreInfos: "<sentence(15, true)>"
-        isHosted: "<boolean(50)>"
-        isHostedFrom: <dateTimeBetween("now", "+ 300 days")>
-        isHostedUntil: '<dateTimeBetween($isHostedFrom, $isHostedFrom "+ 2 days ")>'
-        website: "<url()>"
-        videoLink: "<url()>"
-
-App\Entity\Partners:
-    partner{1..30}:
-        name: "<company()>"
-        type: '<randomElement(["prod_dist", "partners"])>'
-
-App\Entity\Event:
-    event{1..7}:
-        name: "<word()>"
-        description: "<paragraph(3, true)>"
-        startingDate: '<dateTimeBetween("now", "+ 300 days")>'
-        endingDate: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
-        place: "<city()>"
-        isHighlight: "<boolean(50)>"
-    event_season:
-        name: "saison"
-        description: "<paragraph(3, true)>"
-        isHighlight: false
-    event_fest:
-        name: "festival"
-        startingDate: '<dateTimeBetween("now", "+ 300 days")>'
-        endingDate: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
-        place: "<city()>"
-        isHighlight: true
-    event_soirées:
-        name: "soirées du tiers-lieu"
-        isHighlight: false
-
-App\Entity\Team:
-    team{1..15}:
-        name: "<lastName()>"
-        firstName: "<firstName()>"
-        role: '<randomElement(["volunteer", "gov_body", "pro"])>'
-        email: "<email()>"
-
-App\Entity\Performance:
-    performance{1..50}:
-        company: "@company*"
-        cityShow: "<city()>"
-        placeShow: "<streetAddress()>"
-        date: '<dateTimeBetween("now", "+ 200 days")>'
-        price: '<randomFloat(2, 0, 50)>'
-        event: "@event*"
-        isHighlight: "<boolean(50)>"
-
 App\Entity\FrontTab:
-    tab_{home, association, season, festival, third-location, volunteering, partners, support, contact}:
-        name: "<current()>"
+    tab_home:
+        name: "home"
+        number: "1"
+    tab_association:
+        name: "association"
+        number: "2"
+    tab_season:
+        name: "season"
+        number: "3"
+    tab_festival:
+        name: "festival"
+        number: "4"
+    tab_third-location:
+        name: "third-location"
+        number: "5"
+    tab_volunteering:
+        name: "volunteering"
+        number: "6"
+    tab_partners:
+        name: "partners"
+        number: "7"
+    tab_support:
+        name: "support"
+        number: "8"
+    tab_contact:
+        name: "contact"
+        number: "9"
+
 
 App\Entity\FrontPage:
     page_home:
@@ -67,119 +34,145 @@ App\Entity\FrontPage:
         name: "home"
         pageSlug: 'home'
         template: 'home'
+        number: "0"
     page_asso:
         tab: "@tab_association"
         name: "asso"
         pageSlug: $tab/$name
+        number: "1"
     page_projet-pluriels:
         tab: "@tab_association"
         name: "plural-projects"
         pageSlug: $tab/$name
         template: 'plural_and_coop'
+        number: "2"
     page_coop:
         tab: "@tab_association"
         name: "coop"
         pageSlug: $tab/$name
         template: 'plural_and_coop'
+        number: "3"
     page_team:
         tab: "@tab_association"
         name: "team"
         pageSlug: $tab/$name
         template: 'equipe_adhesion'
+        number: "4"
     page_subscription:
         tab: "@tab_association"
         name: "subscription"
         pageSlug: $tab/$name
         template: 'equipe_adhesion'
+        number: "5"
     page_intro_saison:
         tab: "@tab_season"
         name: "presentation"
         pageSlug: $tab/$name
+        number: "6"
     page_prog_saison:
         tab: "@tab_season"
         name: "prog"
         pageSlug: 'saison/calendrier'
         template: 'calendar'
+        number: "7"
     page_host_saison:
         tab: "@tab_season"
         name: "hostedCompanies"
         pageSlug: $tab/$name
         template: 'companies'
+        number: "8"
     page_area_project:
         tab: "@tab_season"
         name: "area-project"
         pageSlug: $tab/$name
+        number: "9"
     page_cultural_saison:
         tab: "@tab_season"
         name: "cultural-actions"
         pageSlug: $tab/$name
         template: 'cultural_actions'
+        number: "10"
     page_intro_fest:
         tab: "@tab_festival"
         name: "presentation"
         pageSlug: $tab/$name
+        number: "11"
     page_prog_fest:
         tab: "@tab_festival"
         name: "prog"
         pageSlug: 'festival/calendrier'
         template: 'calendar'
+        number: "12"
     page_host_fest:
         tab: "@tab_festival"
         name: "hostedCompanies"
         pageSlug: $tab/$name
+        number: "13"
     page_meeting_fest:
         tab: "@tab_festival"
         name: "pro-meeting"
         pageSlug: $tab/$name
+        number: "14"
     page_art_fest:
         tab: "@tab_festival"
         name: "arts-etc"
         pageSlug: $tab/$name
+        number: "15"
     page_cultural_fest:
         tab: "@tab_festival"
         name: "cultural-actions"
         pageSlug: $tab/$name
+        number: "16"
     page_infos_fest:
         tab: "@tab_festival"
         name: "infos"
         pageSlug: $tab/$name
+        number: "17"
     page_intro_place:
         tab: "@tab_third-location"
         name: "presentation"
         pageSlug: $tab/$name
+        number: "18"
     page_spaces_place:
         tab: "@tab_third-location"
         name: "shared-spaces"
         pageSlug: $tab/$name
         template: 'shared_spaces'
+        number: "19"
     page_meeting_place:
         tab: "@tab_third-location"
         name: "meetings"
         pageSlug: 'tiers-lieu/les-rendez-vous'
         template: 'meetings'
+        number: "20"
     page_curiosity_place:
         tab: "@tab_third-location"
         name: "curiosity"
         pageSlug: $tab/$name
         template: 'curiosity'
+        number: "21"
     page_volunteering:
         tab: "@tab_volunteering"
         name: "volunteering"
         pageSlug: $tab/$name
         template: 'index'
+        number: "22"
     page_partners:
         tab: "@tab_partners"
         name: "partners"
         pageSlug: 'partenaires/partenaires'
         template: 'index'
+        number: "23"
     page_support:
         tab: "@tab_support"
         name: "support"
         pageSlug: $tab/$name
+        number: "24"
     page_contact:
         tab: "@tab_contact"
         name: "contact"
         pageSlug: $tab/$name
+        number: "25"
 
 App\Entity\Section:
     section{1..120}:
@@ -301,8 +294,3 @@ App\Entity\Section:
         appearanceOrder: "3"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_curiosity_place"
-
-App\Entity\PressDocument:
-    docs{1..5}: 
-        name: "<word()>"
-        fileType: '<randomElement(["image", "file"])>' 

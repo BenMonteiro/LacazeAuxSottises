@@ -24,7 +24,7 @@ class FrontPage
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\FrontTab", inversedBy="pages")
+     * @ORM\ManyToOne(targetEntity="App\Entity\FrontTab", inversedBy="pages", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $tab;
@@ -48,6 +48,11 @@ class FrontPage
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $template;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $number;
 
     public function __construct()
     {
@@ -155,5 +160,17 @@ class FrontPage
     public function __toString()
     {
         return $this->pageSlug;
+    }
+
+    public function getNumber(): ?int
+    {
+        return $this->number;
+    }
+
+    public function setNumber(int $number): self
+    {
+        $this->number = $number;
+
+        return $this;
     }
 }

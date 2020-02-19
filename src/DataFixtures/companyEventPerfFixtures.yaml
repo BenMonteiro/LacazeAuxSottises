@@ -1,0 +1,51 @@
+App\Entity\Company:
+    company{1..20}:
+        name: "<company()>"
+        description: "<paragraph(3, true)>"
+        showTitle: "<sentence(4, true)>"
+        theme: "<word()>"
+        duration: "<numberBetween(15, 120)>"
+        audience: "<sentence(3, true)>"
+        moreInfos: "<sentence(15, true)>"
+        isHosted: "<boolean(50)>"
+        isHostedFrom: <dateTimeBetween("now", "+ 300 days")>
+        isHostedUntil: '<dateTimeBetween($isHostedFrom, $isHostedFrom "+ 2 days ")>'
+        website: "<url()>"
+        videoLink: "<url()>"
+        imageDescription: "image"
+
+App\Entity\Event:
+    event{1..7}:
+        name: "<word()>"
+        description: "<paragraph(3, true)>"
+        startingDate: '<dateTimeBetween("now", "+ 300 days")>'
+        endingDate: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
+        place: "<city()>"
+        isHighlight: "<boolean(50)>"
+        imageDescription: "image"
+    event_season:
+        name: "saison"
+        description: "<paragraph(3, true)>"
+        isHighlight: false
+        imageDescription: "image"
+    event_fest:
+        name: "festival"
+        startingDate: '<dateTimeBetween("now", "+ 300 days")>'
+        endingDate: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
+        place: "<city()>"
+        isHighlight: true
+        imageDescription: "image"
+    event_soirées:
+        name: "soirées du tiers-lieu"
+        isHighlight: false
+        imageDescription: "image"
+
+App\Entity\Performance:
+    performance{1..50}:
+        company: "@company*"
+        cityShow: "<city()>"
+        placeShow: "<streetAddress()>"
+        date: '<dateTimeBetween("now", "+ 200 days")>'
+        price: '<randomFloat(2, 0, 50)>'
+        event: "@event*"
+        isHighlight: "<boolean(50)>"

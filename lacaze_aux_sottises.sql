@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 16 fév. 2020 à 17:18
+-- Généré le :  mer. 19 fév. 2020 à 13:24
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -141,6 +141,7 @@ CREATE TABLE IF NOT EXISTS `front_page` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `page_slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `template` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `number` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_2CDA0C4C8D0C9323` (`tab_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=131 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -149,33 +150,33 @@ CREATE TABLE IF NOT EXISTS `front_page` (
 -- Déchargement des données de la table `front_page`
 --
 
-INSERT INTO `front_page` (`id`, `tab_id`, `name`, `page_slug`, `template`) VALUES
-(104, 38, 'asso', 'association/asso', ''),
-(105, 38, 'plural-projects', 'association/projets-pluriels', 'plural_and_coop'),
-(106, 38, 'coop', 'association/coopération-territoriale', 'plural_and_coop'),
-(107, 38, 'team', 'association/équipe', 'equipe_adhesion'),
-(108, 38, 'subscription', 'association/adhésion', 'equipe_adhesion'),
-(109, 39, 'presentation', 'saison/intoduction', NULL),
-(110, 39, 'prog', 'saison/calendrier', 'calendar'),
-(111, 39, 'hostedCompanies', 'saison/cies-accueillies', 'companies'),
-(112, 39, 'area-project', 'saison/projet-de-territoire', NULL),
-(113, 39, 'cultural-actions', 'saison/action-culturelles', 'cultural_actions'),
-(114, 40, 'presentation', 'festival/presentation', NULL),
-(115, 40, 'prog', 'festival/programmation', NULL),
-(116, 40, 'hostedCompanies', 'festival/cie-accueillies', NULL),
-(117, 40, 'pro-meeting', 'festival/rencontres-pro', NULL),
-(118, 40, 'arts-etc', 'festival/aux-arts-etc', NULL),
-(119, 40, 'cultural-actions', 'festival/actions-culturelles', NULL),
-(120, 40, 'infos', 'festival/infos-pratiques', NULL),
-(121, 41, 'presentation', 'tiers-lieu/presentation', NULL),
-(122, 41, 'shared-spaces', 'tiers-lieu/espaces-et-services-partages', 'shared_spaces'),
-(123, 41, 'meetings', 'tiers-lieu/les-rendez-vous', 'meetings'),
-(124, 41, 'curiosity', 'tiers-lieu/les-ateliers-de-curiosites', 'curiosity'),
-(126, 43, 'volunteering', 'benevolat/benevolat', 'index'),
-(127, 44, 'partners', 'partenaires/partenaires', 'index'),
-(128, 45, 'support', 'soutient/soutient', NULL),
-(129, 46, 'contact', 'contact/contact', NULL),
-(130, 37, 'home', 'home', 'home');
+INSERT INTO `front_page` (`id`, `tab_id`, `name`, `page_slug`, `template`, `number`) VALUES
+(104, 38, 'asso', 'association/asso', '', 1),
+(105, 38, 'plural-projects', 'association/projets-pluriels', 'plural_and_coop', 2),
+(106, 38, 'coop', 'association/coopération-territoriale', 'plural_and_coop', 3),
+(107, 38, 'team', 'association/équipe', 'equipe_adhesion', 4),
+(108, 38, 'subscription', 'association/adhésion', 'equipe_adhesion', 5),
+(109, 39, 'presentation', 'saison/intoduction', NULL, 6),
+(110, 39, 'prog', 'saison/calendrier', 'calendar', 7),
+(111, 39, 'hostedCompanies', 'saison/cies-accueillies', 'companies', 8),
+(112, 39, 'area-project', 'saison/projet-de-territoire', NULL, 9),
+(113, 39, 'cultural-actions', 'saison/action-culturelles', 'cultural_actions', 10),
+(114, 40, 'presentation', 'festival/presentation', NULL, 11),
+(115, 40, 'prog', 'festival/programmation', NULL, 12),
+(116, 40, 'hostedCompanies', 'festival/cie-accueillies', NULL, 13),
+(117, 40, 'pro-meeting', 'festival/rencontres-pro', NULL, 14),
+(118, 40, 'arts-etc', 'festival/aux-arts-etc', NULL, 15),
+(119, 40, 'cultural-actions', 'festival/actions-culturelles', NULL, 16),
+(120, 40, 'infos', 'festival/infos-pratiques', NULL, 17),
+(121, 41, 'presentation', 'tiers-lieu/presentation', NULL, 18),
+(122, 41, 'shared-spaces', 'tiers-lieu/espaces-et-services-partages', 'shared_spaces', 19),
+(123, 41, 'meetings', 'tiers-lieu/les-rendez-vous', 'meetings', 20),
+(124, 41, 'curiosity', 'tiers-lieu/les-ateliers-de-curiosites', 'curiosity', 21),
+(126, 43, 'volunteering', 'benevolat/benevolat', 'index', 22),
+(127, 44, 'partners', 'partenaires/partenaires', 'index', 23),
+(128, 45, 'support', 'soutient/soutient', NULL, 24),
+(129, 46, 'contact', 'contact/contact', NULL, 25),
+(130, 37, 'home', 'home', 'home', 0);
 
 -- --------------------------------------------------------
 
@@ -187,6 +188,7 @@ DROP TABLE IF EXISTS `front_tab`;
 CREATE TABLE IF NOT EXISTS `front_tab` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `number` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -194,16 +196,16 @@ CREATE TABLE IF NOT EXISTS `front_tab` (
 -- Déchargement des données de la table `front_tab`
 --
 
-INSERT INTO `front_tab` (`id`, `name`) VALUES
-(37, 'home'),
-(38, 'association'),
-(39, 'season'),
-(40, 'festival'),
-(41, 'third-location'),
-(43, 'volunteering'),
-(44, 'partners'),
-(45, 'support'),
-(46, 'contact');
+INSERT INTO `front_tab` (`id`, `name`, `number`) VALUES
+(37, 'home', 1),
+(38, 'association', 2),
+(39, 'season', 3),
+(40, 'festival', 4),
+(41, 'third-location', 5),
+(43, 'volunteering', 6),
+(44, 'partners', 7),
+(45, 'support', 8),
+(46, 'contact', 9);
 
 -- --------------------------------------------------------
 

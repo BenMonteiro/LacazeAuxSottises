@@ -28,6 +28,11 @@ class FrontTab
      */
     private $pages;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $number;
+
     public function __construct()
     {
         $this->pages = new ArrayCollection();
@@ -84,5 +89,17 @@ class FrontTab
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getNumber(): ?int
+    {
+        return $this->number;
+    }
+
+    public function setNumber(int $number): self
+    {
+        $this->number = $number;
+
+        return $this;
     }
 }

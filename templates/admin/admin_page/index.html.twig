@@ -9,7 +9,7 @@
 		<h1>{{('front.' ~ tab.name)|trans({}, 'menu')}}
 		</h1>
 	</div>
-	{% set classDisplay = 'sectionList' %}
+	{% set classDisplay = 'index' %}
 	{% if tab.pages|length <= 2  %}
 		{% set classDisplay = 'oneSection' %}
 	{% endif %}
@@ -21,15 +21,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for page in tab.pages %}
-				<tr>
-					<td>
-						{{ ('front.' ~ page.tab)|trans({}, 'menu')}}/{{('front.'~page.name)|trans({}, 'menu')}}
-					</td>
-					<td>
-						<a class="badge badge-secondary my-2 p-2" href="{{ path('page_list_show', {'id': page.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
-					</td>
-				</tr>
+			{% for page in pages %}
+				{% if page.tab.id == tab.id %}
+					<tr>
+						<td>
+							{{ ('front.' ~ page.tab)|trans({}, 'menu')}}/{{('front.'~page.name)|trans({}, 'menu')}}
+						</td>
+						<td>
+							<a class="badge badge-secondary my-2 p-2" href="{{ path('page_list_show', {'id': page.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+						</td>
+					</tr>
+				{% endif %}
 			{% else %}
 				<tr>
 					<td colspan="9">{{'general.noRecords'|trans({}, 'general')|capitalize}}</td>

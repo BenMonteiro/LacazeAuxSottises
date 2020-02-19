@@ -23,7 +23,7 @@ class AdminController extends AbstractController
         /**
          * Mandatory. All pages have to access this because it appears in the menu
          */
-        $this->tabList = $frontTabRepository->findAll();
+        $this->tabList = $frontTabRepository->findBy([], ['number' => 'ASC']);
     }
 
     /**
