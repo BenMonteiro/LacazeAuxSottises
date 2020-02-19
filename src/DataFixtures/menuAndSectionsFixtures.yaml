@@ -182,6 +182,7 @@ App\Entity\Section:
         appearanceOrder: "<randomDigit()>"
         content: "<paragraph(3, true)>"
         belongToPage: "@page*"
+        imageDescription: "image"
     section_top:
         name: "top"
         title: "<sentence(3, true)>"
@@ -189,6 +190,7 @@ App\Entity\Section:
         appearanceOrder: "1"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_coop"
+        imageDescription: "image"
     section_left:
         name: "left"
         title: "<sentence(3, true)>"
@@ -196,6 +198,7 @@ App\Entity\Section:
         appearanceOrder: "2"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_coop"
+        imageDescription: "image"
     section_right:
         name: "right"
         title: "<sentence(3, true)>"
@@ -203,6 +206,7 @@ App\Entity\Section:
         appearanceOrder: "3"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_coop"
+        imageDescription: "image"
     section_bottom:
         name: "bottom"
         title: "<sentence(3, true)>"
@@ -210,6 +214,7 @@ App\Entity\Section:
         appearanceOrder: "4"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_coop"
+        imageDescription: "image"
     section_last:
         name: "last"
         title: "<sentence(3, true)>"
@@ -217,6 +222,7 @@ App\Entity\Section:
         appearanceOrder: "5"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_coop"
+        imageDescription: "image"
     project_section_top:
         name: "top"
         title: "<sentence(3, true)>"
@@ -224,6 +230,7 @@ App\Entity\Section:
         appearanceOrder: "1"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_projet-pluriels"
+        imageDescription: "image"
     project_section_left:
         name: "left"
         title: "<sentence(3, true)>"
@@ -231,6 +238,7 @@ App\Entity\Section:
         appearanceOrder: "2"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_projet-pluriels"
+        imageDescription: "image"
     project_section_right:
         name: "right"
         title: "<sentence(3, true)>"
@@ -238,6 +246,7 @@ App\Entity\Section:
         appearanceOrder: "3"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_projet-pluriels"
+        imageDescription: "image"
     project_section_bottom:
         name: "bottom"
         title: "<sentence(3, true)>"
@@ -245,6 +254,7 @@ App\Entity\Section:
         appearanceOrder: "4"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_projet-pluriels"
+        imageDescription: "image"
     project_section_last:
         name: "last"
         title: "<sentence(3, true)>"
@@ -252,6 +262,7 @@ App\Entity\Section:
         appearanceOrder: "5"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_projet-pluriels"
+        imageDescription: "image"
     meeting_pro_meeting:
         name: "prod meeting"
         title: "<sentence(3, true)>"
@@ -259,6 +270,7 @@ App\Entity\Section:
         appearanceOrder: "1"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_meeting_place"
+        imageDescription: "image"
     meeting_nights:
         name: "nights"
         title: "<sentence(3, true)>"
@@ -266,6 +278,7 @@ App\Entity\Section:
         appearanceOrder: "2"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_meeting_place"
+        imageDescription: "image"
     meeting_visit:
         name: "visit"
         title: "<sentence(3, true)>"
@@ -273,6 +286,7 @@ App\Entity\Section:
         appearanceOrder: "3"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_meeting_place"
+        imageDescription: "image"
     curiosity_year{1..2}:
         name: "all year"
         title: "<sentence(3, true)>"
@@ -280,6 +294,7 @@ App\Entity\Section:
         appearanceOrder: "1"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_curiosity_place"
+        imageDescription: "image"
     curiosity_punctual{1..2}:
         name: "punctual"
         title: "<sentence(3, true)>"
@@ -287,6 +302,7 @@ App\Entity\Section:
         appearanceOrder: "2"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_curiosity_place"
+        imageDescription: "image"
     curiosity_do_it{1..2}:
         name: "do it"
         title: "<sentence(3, true)>"
@@ -294,3 +310,4 @@ App\Entity\Section:
         appearanceOrder: "3"
         content: "<paragraph(3, true)>"
         belongToPage: "@page_curiosity_place"
+        imageDescription: "image"

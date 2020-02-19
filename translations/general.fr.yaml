@@ -40,3 +40,10 @@ general:
     focusOn: zoom sur 
     date: date
     hour: heure
+    third_location:
+        prod_meetings: Le Rendez-vous des Producteurs
+        nights: Les Soirées du Tiers-Lieu
+        visits: Les Visites du Tiers-Lieu
+        all_year: tout au long de l'année
+        punctual: le temps d'un instant
+        do_it_yourself: les ateliers Do It Yourself

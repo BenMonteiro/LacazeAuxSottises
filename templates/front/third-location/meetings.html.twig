@@ -3,7 +3,7 @@
 {% block body %}
 	<div class="container-fluid">
 		<div>
-			<h2 class="colored">Le Rendez-vous des Producteurs</h2>
+			<h2 class="colored">{{ 'general.third_location.prod_meetings'|trans({}, 'general') }}</h2>
 			{% for section in sections %}
 				{% if section.name == 'prod meeting' %}
 					<div class="d-flex align-items-center col-12 mb-3">
@@ -22,7 +22,7 @@
 			{% endfor %}
 		</div>
 		<div>
-			<h2 class="colored">Les Soirées du Tiers-Lieu</h2>
+			<h2 class="colored">{{ 'general.third_location.nights'|trans({}, 'general') }}</h2>
 			{% for section in sections %}
 				{% if section.name == 'nights' %}
 					<section class=" d-flex align-items-center col-12 mb-3">
@@ -68,7 +68,7 @@
 			</ul>
 		</div>
 		<div>
-			<h2 class="colored">Les Visites du Tiers-Lieu</h2>
+			<h2 class="colored">{{ 'general.third_location.visits'|trans({}, 'general') }}</h2>
 			{% for section in sections %}
 				{% if section.name == 'visit' %}
 					<div class="d-flex align-items-center col-12 mb-3">

@@ -5,7 +5,7 @@
 
 		{% include('/front/_intro_section_template.html.twig') %}
 
-		<h2 class="mb-3">Tout au long de l'année</h2>
+		<h2 class="mb-3">{{ 'general.third_location.all_year'|trans({}, 'general')|title }}</h2>
 		{% for section in sections %}
 			{% if section.name == "all year" %}
 				<section class=" d-sm-flex align-items-center col-12 mb-3">
@@ -23,7 +23,7 @@
 			{% endif %}
 		{% endfor %}
 
-		<h2 class="mb-3 mt-5">Le temps d’un instant</h2>
+		<h2 class="mb-3 mt-5">{{ 'general.third_location.punctual'|trans({}, 'general')|title }}</h2>
 		{% for section in sections %}
 			{% if section.name == 'punctual' %}
 				<div class="d-sm-flex align-items-center col-12 mb-3">
@@ -41,7 +41,7 @@
 			{% endif %}
 		{% endfor %}
 
-		<h2 class="mb-3 mt-5">Les ateliers Do it yourself</h2>
+		<h2 class="mb-3 mt-5">{{ 'general.third_location.do_it_yourself'|trans({}, 'general')|title }}</h2>
 		{% for section in sections %}
 			{% if section.name == 'do it' %}
 				<div class=" d-sm-flex align-items-center col-12 mb-3">
