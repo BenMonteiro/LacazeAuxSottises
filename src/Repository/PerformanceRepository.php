@@ -25,8 +25,7 @@ class PerformanceRepository extends ServiceEntityRepository
 
         $sql = 'SELECT * 
         FROM performance
-        WHERE MONTH(date)  = MONTH(NOW())
-        AND is_highlight = true
+        Where is_highlight = true
         ORDER BY date ASC
             ';
 

@@ -1,7 +1,14 @@
 /*-----------------------------------------------------------------------------------------General--------------------------------------------------------------------------------------------*/
 
-p {
+@font-face {
+    font-family: 'MyriadPro';
+    src: url(/public/polices/MyriadPro-Regular.otf)
+}
+
+p,
+span {
     text-align: inherit;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
 }
 
 .bg-colored {
@@ -22,6 +29,26 @@ p {
     margin: 20px auto 0 20px
 }
 
+
+.redCircle {
+    position: absolute;
+    top: 330px;
+    left: -300px;
+    width: 900px;
+    opacity: 0.7;
+}
+
+.blackCube {
+    position: absolute;
+    top: 450px;
+    left: -300px;
+    width: 100%;
+    height: 80%;
+    opacity: 0.7;
+}
+
+
+
 /*--------------------------------------------------------------------------------------Landing Page------------------------------------------------------------------------------------------*/
 
 #landingPage {
@@ -36,54 +63,75 @@ p {
 
 .accessButton {
     position: absolute;
-    bottom: 20%;
-    border-radius: 20px 5px 20px 5px;
-    background-color: #DA291C;
-    color: black;
-    font-weight: bold;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: transparent;
     z-index: 999
+}
+
+.accessLink {
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.accessLink:hover {
+    color: #DA291C;
 }
 
 /*--------------------------------------------------------------------------------------Titles------------------------------------------------------------------------------------------*/
 
+h1,
+h2,
+h3,
+h4,
+h5,
+.pageTitle {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 h1 {
+    font-size: 1em;
     text-align: center;
     font-weight: bold;
     color: #DA291C;
     margin: 1rem auto;
-    text-decoration: underline;
 }
 
 h4,
 h3 {
-    text-decoration: underline;
     text-align: inherit;
+    font-size: 1em;
 }
 
 #pageTitleBar {
-    margin-top: 115px;
+    margin-top: 80px;
 }
 
 .pageTitle {
-    font-size: 3em;
+    font-size: 1.25em;
     display: inline-block;
     align-content: center;
     z-index: 3;
     background-color: white;
+
+}
+
+.homeTitle {
+    z-index: 3;
+    background-color: white;
+    text-decoration: none;
+    line-height: 1;
 }
 
 .titleLines {
     position: relative;
-    top: -50px;
+    top: -20px;
     z-index: 2;
-    width: 95%;
-    left: 2.5%
-}
-
-hr {
-    border-top: solid;
-    height: 3px !important;
-    margin: 0.5px 10px 0.5px 10px;
 }
 
 h2 {
@@ -93,20 +141,20 @@ h2 {
     background-color: white;
 }
 
-div>hr.titleBar {
+div>img.titleBar {
     position: relative;
-    bottom: 30px;
+    bottom: 25px;
     z-index: 1;
-    width: 95%;
-    left: 2.5%
+    left: 15%;
+    width: 70%;
+    height: 18px;
 }
 
 .miniTitleBar {
     position: relative;
-    bottom: 30px;
+    bottom: 35px;
     z-index: 1;
-    width: 80%;
-    left: 10%
+    width: 70%;
 }
 
 hr.blackline {
@@ -133,6 +181,25 @@ hr.redline {
 
 .partnerLogo {
     width: 70px
+}
+
+.image-frame {
+    position: relative;
+    z-index: 2;
+}
+
+.image-top-page {
+    width: 60%;
+    height: 60%;
+    position: relative;
+    left: -50%;
+    z-index: 1;
+}
+
+.image-top {
+    position: relative;
+    display: flex;
+    width: 100%
 }
 
 
@@ -181,7 +248,19 @@ hr.redline {
     background-color: #DA291C;
 }
 
+.greyFrame {
+    background-color: grey
+}
+
+.redFrame {
+    background-color: #DA291C
+}
+
 /*--------------------------------------------------------------------------------------Agenda------------------------------------------------------------------------------------------*/
+
+.nav-pills .nav-link {
+    color: #DA291C !important
+}
 
 .nav-pills .nav-link.active {
     color: black !important;
@@ -227,6 +306,11 @@ hr.redline {
     text-decoration: none;
 }
 
+.calendarBar {
+    z-index: 1;
+    height: 18px;
+}
+
 /*--------------------------------------------------------------------------------------Company ------------------------------------------------------------------------------------------*/
 
 .company-image-div {
@@ -235,16 +319,16 @@ hr.redline {
 }
 
 .company-frame {
-    width: 200px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
     z-index: 3;
 }
 
 .company-image {
     position: absolute;
-    bottom: 20%;
-    width: 190px;
-    height: 250px;
+    bottom: 5%;
+    width: 240px;
+    height: 230px;
     z-index: 2;
 }
 

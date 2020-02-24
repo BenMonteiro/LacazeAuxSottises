@@ -10,8 +10,8 @@
 		{% if season.programImage.name == null and sections == null and homeEvents == null and homePerfs == null  %}
 			{% set display = 'd-none' %}
 		{% endif %}
-		<a class="{{ display }}" href="{{ path('page_show', {'pageSlug': 'home'}) }}">
-			<button class=" accessButton offset-xl-5 col-xl-2 offset-md-4 col-md-4 offset-3 col-6 btn btn-danger btn-lg py-3">{{'general.siteAccess'|trans({}, 'general')|capitalize}}</button>
+		<a class=" accessLink {{ display }} " href="{{ path('page_show', {'pageSlug': 'home'}) }}">
+			<div class=" accessButton"></div>
 		</a>
 	</body>
 {% endblock %}

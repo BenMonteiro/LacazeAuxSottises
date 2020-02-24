@@ -4,28 +4,17 @@
 
 	{% include('/front/_intro_section_template.html.twig') %}
 
-	<div class="container-fluid card-columns">
+	<div class="container-fluid offset-2 col-8 card-columns">
 		{% for section in sections %}
 			{% if section.name == 'content' %}
 				<article class="card bg-light p-3 text-center">
 					{% if section.title %}
-						<h3 class="text-center colored">{{ section.title }}</h3>
+						<h3 class="text-center colored mb-0">{{ section.title }}</h3>
 					{% endif %}
 					{% if section.subTitle %}
 						<h4>{{ section.subTitle }}</h4>
 					{% endif %}
 					{{ section.content|raw }}
-				</article>
-			{% endif %}
-			{% if section.name == 'RDV' %}
-				<article id="bottomArticle" class=" card bg-colored p-3 text-center text-white border rounded">
-					{% if section.title %}
-						<h3>{{ section.title }}</h3>
-					{% endif %}
-					{% if section.subTitle %}
-						<h4>{{ section.subTitle }}</h4>
-					{% endif %}
-					<div class="text-white">{{ section.content|raw }}</div>
 				</article>
 			{% endif %}
 		{% endfor %}

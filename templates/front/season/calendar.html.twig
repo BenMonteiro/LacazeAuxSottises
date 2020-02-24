@@ -4,10 +4,7 @@
 
 	{% include('/front/_intro_section_template.html.twig') %}
 
-	<h1>{{'seasonCalendar'|trans({}, 'general')}}
-		{{'now'|date('Y')}}</h1>
-
-	<ul class="nav nav-pills mt-5 mx-5 justify-content-between" id="pills-tab" role="tablist">
+	<ul class="nav nav-pills mt-2 offset-2 col-8 justify-content-between" id="pills-tab" role="tablist">
 		{% for month in months %}
 			{% set show = '' %}
 			{% if month == 'now'|date('M') %}
@@ -20,7 +17,12 @@
 		{% endfor %}
 	</ul>
 
+
 	<div class="tab-content agenda mb-3" id="pills-tabContent">
+
+		<div class="mt-5 offset-3 col-6">
+			<img class="calendarBar" src="{{asset('images/title-bar.jpg')}}">
+		</div>
 		{% for month in months %}
 			{% set show = '' %}
 			{% if month == 'now'|date('M') %}
@@ -42,42 +44,33 @@
 			{% endfor %}
 
 			<div class="tab-pane fade {{ show }}" id="pills-{{month}}" role="tabpanel" aria-labelledby="pills-{{month}}-tab">
-				<h3 class="offset-2">{{'general.events'|trans({}, 'general')|capitalize}}</h3>
 				{% if monthEvents|length >= 1 %}
 					{% for seasonEvent in monthEvents %}
 						<a class="element-link" href="{{ path('display_event', {'id': seasonEvent.id}) }}">
-							<div class="text-center my-4">
-								<h3 class="text-decoration-none colored">{{ seasonEvent.starting_date|format_date(pattern="EEEE dd")|capitalize }}
-									-
-									<span class="text-dark font-weight-lighter font-italic">{{seasonEvent.place}}</span>
+							<div class="text-center">
+								<h3 class="text-decoration-none colored mb-0">{{ seasonEvent.starting_date|format_date(pattern="EEEE d MMMM")|capitalize }}
 								</h3>
+								<p class="text-dark font-weight-lighter font-italic mb-0">{{seasonEvent.place}}</p>
 								<h4>{{ seasonEvent.name }}</h4>
 							</div>
 						</a>
 					{% endfor %}
 				{% else %}
-					<p class="offset-3 colored">{{'general.no_events'|trans({}, 'general')|capitalize}}</p>
+					<p class="mt-5 text-center">{{'general.no_events'|trans({}, 'general')|capitalize}}</p>
 				{% endif %}
 
-				<h3 class="offset-2">{{'general.perfs'|trans({}, 'general')|capitalize}}</h3>
 				{% if monthPerfs|length >= 1 %}
 					{% for seasonPerf in monthPerfs %}
 						<a class="element-link" href="{{ path('display_company', {'id': seasonPerf.company.id}) }}">
-							<div class="text-center my-4">
-								<h3 class="text-decoration-none colored">{{ seasonPerf.date|format_date(pattern="EEEE dd")|capitalize}}
-									-
-									<span class="text-dark font-weight-lighter font-italic">{{ seasonPerf.cityShow }}</span>
+							<div class="text-center ">
+								<h3 class="text-decoration-none colored mb-0">{{ seasonPerf.date|format_date(pattern="EEEE d MMMM")|capitalize}}
 								</h3>
-								<h4>{{ seasonPerf.company.name }}</h4>
-								<p class="colored font-italic">{{ seasonPerf.company.showTitle}}
-									-
-									<span>{{ seasonPerf.company.duration}}min</span>
-								</p>
+								<p class="text-dark font-weight-lighter font-italic mb-0">{{ seasonPerf.cityShow }}</p>
+								<h4 class="mb-0">{{ seasonPerf.company.name }},
+									{{ seasonPerf.company.showTitle}}</h4>
 							</div>
 						</a>
 					{% endfor %}
-				{% else %}
-					<p class="offset-3 colored">{{'general.no_perfs'|trans({}, 'general')|capitalize}}</p>
 				{% endif %}
 			</div>
 		{% endfor %}

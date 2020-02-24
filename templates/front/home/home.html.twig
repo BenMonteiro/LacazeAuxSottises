@@ -1,15 +1,13 @@
-{% extends "front_templates/page_template.html.twig" %}
+{% extends "front_templates/home_template.html.twig" %}
 
 {% block body %}
 
 	<div class="container-fluid">
-		<h1>{{'general.highlights'|trans({}, 'general')|capitalize}}
-			{{'now'|format_date(pattern='MMMM')|capitalize}}</h1>
 		{% if homeEvents %}
 			<h3 class="my-3 colored ml-5">{{'general.events'|trans({}, 'general')|capitalize}}</h3>
 			<div class="row justify-content-around">
 				{% for event in homeEvents %}
-					{% if event.startingDate|date('M') == 'Apr'|date('M') %}
+					{% if event.startingDate|date('M') == 'Mar'|date('M') %}
 						<div class="highlight-card col-lg-2 col-4 card px-0 border border-danger">
 							<img src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name)}}" class="card-img-top" alt="{{event.imageDescription}}">
 							<div class="d-flex flex-column justify-content-center card-body py-0">
@@ -31,7 +29,7 @@
 			<h3 class="my-3 colored ml-5">{{'general.perfs'|trans({}, 'general')|capitalize}}</h3>
 			<div class="row justify-content-around mb-3">
 				{% for perf in homePerfs %}
-					{% if perf.date|date('M') == 'now'|date('M') %}
+					{% if perf.date|date('M') == 'Mar'|date('M') %}
 						<div class="col-lg-2 col-md-4 col-6">
 							<div class=" highlight-card card  px-0 border border-danger mb-2">
 								<img src="{{asset('images/uploads/company/' ~ perf.company.image.name)}}" class="card-img-top" alt="{{perf.company.imageDescription}}">
@@ -60,34 +58,45 @@
 				{% endfor %}
 			</div>
 		{% endif %}
-		{% if homePerfs == null and homeEvents == null %}
-			<h5 class="colored">Pas d'événements ce mois-ci</h5>
-			<p>
-				La saison de lacaze aux sottises se déroule de Mars à Décembre.</p>
-		{% endif %}
-
+		<div class="offset-lg-5 col-lg-2 col-md-4 col-6">
+			<div class=" highlight-card card  px-0 border border-danger mb-2">
+				<a class="element-link text-decoration-none text-center" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}">
+					<img class="card-img-top" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}" alt="{{season.imageDescription}}">
+				</a>
+			</div>
+		</div>
 	</div>
 
-	<div class=" container-fluid d-flex justify-content-around my-3">
-		<div class="col-md-4 col-6">
-			<h3>{{'general.seasonDoc'|trans({}, 'general')|capitalize}}
-				{{ 'now'|date('Y')}}
-			</h3>
-			<img class="d-block w-75 mb-3 border-colored p-2" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}" alt="{{season.imageDescription}}">
-			<a href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}">{{'general.downloadDoc'|trans({}, 'general')|capitalize}}</a>
-		</div>
-		<div class="col-md-8 col-6 border-left border-danger ">
-			<h3 class="text-center">
-				{{'general.focusOn'|trans({}, 'general')|capitalize}}
-			</h3>
+	<div class=" container-fluid d-flex my-3">
+		<div class="text-center col-12">
+			<div>
+				<div class="d-flex justify-content-center">
+					<h5 class="mt-3 homeTitle px-4">
+						{{'general.focusOn'|trans({}, 'general')|capitalize}}
+					</h5>
+				</div>
+				<div>
+					<img class="miniTitleBar" src="{{asset('images/title-bar.jpg')}}">
+				</div>
+			</div>
 			{% for section in sections %}
-				<div class="d-flex justify-content-around">
-					{% if section.image.name %}
-						<img class="col-md-4 d-none d-md-block mb-2" src="{{asset('images/uploads/paragraphImage/' ~ section.image.name)}}" alt="{{section.imageDescription}}">
-					{% endif %}
-					<div class="col-md-8 col-12">
-						<h5 class="colored">{{ section.title }}</h5>
-						<p>{{ section.content|raw }}</p>
+				{% set homeFrame = '' %}
+				{% if section.appearanceOrder == 1 %}
+					{% set homeFrame = 'greyFrame' %}
+				{% endif %}
+				{% if section.appearanceOrder == 2 %}
+					{% set homeFrame = 'redFrame' %}
+				{% endif %}
+
+				<div class="{{ homeFrame }} offset-2 col-8 p-2 mb-2">
+					<div class="text-center">
+						{% if section.image.name %}
+							<img class=" col-md-4 d-none d-md-block mb-2" src=" {{asset('images/uploads/paragraphImage/' ~ section.image.name)}} " alt=" {{section.imageDescription}} ">
+						{% endif %}
+						<div>
+							<h5>{{ section.title }}</h5>
+							<p>{{ section.content|raw }}</p>
+						</div>
 					</div>
 				</div>
 			{% endfor %}

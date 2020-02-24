@@ -34,7 +34,7 @@ general:
     website: site web
     videoLink: lien vidéo
     home: accueil
-    welcome: bienvenu
+    welcome: bienvenu !
     siteAccess: accéder au site
     actions: actions
     hello: bonjour
@@ -42,7 +42,8 @@ general:
     theme: theme
     description: description
     program: Programmation
-    highlights: actus du mois 
+    highlight: actu
+    month: du mois
     events: événements
     no_events: pas d'événements de prévus ce moi-ci
     perfs: spectacles
