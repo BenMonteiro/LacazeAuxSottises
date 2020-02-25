@@ -2,10 +2,10 @@
 	<nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
 		<img class="cycliste" src="{{ asset('images/MONOCYCLISTE-PMS285.png')}} ">
 		<a class="mx-3 mt-4 navbar-brand" href="{{ path('page_show', {'pageSlug': 'home'}) }}"><img class='logo' src="{{asset('images/logo.jpg')}}" alt="logo association"></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class=" col-9 collapse navbar-collapse nav-tabs nav d-md-flex flex-md-column multi-collapse mt-5" id="navbarNavAltMarkup" role="tablist">
+		<div class=" col-9 collapse navbar-collapse nav d-md-flex flex-md-column multi-collapse mt-5" id="navbarNavDropdown">
 			<ul class="d-flex flex-wrap navbar-nav w-100 justify-content-around">
 				{% for tab in tabs %}
 					{% set odd = '' %}
@@ -17,8 +17,17 @@
 						{% set odd = '' %}
 					{% endif %}
 					{% if tab.pages|length > 1 %}
-						<li class="{{ odd }}">
-							<a class="nav-item nav-link" href="" id="nav-{{tab.name}}-tab" data-toggle="tab" data-target="#nav-{{tab.name}}" role="tab" aria-controls="nav-{{tab.name}}">{{ ('front.'~tab.name)|trans({}, 'menu') }}</a>
+						<li class="{{ odd }} dropdown ">
+							<a class="nav-item nav-link dropdown-toggle" href="" id="nav-{{tab.name}}-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ ('front.'~tab.name)|trans({}, 'menu') }}</a>
+							<div class="dropdown-menu fade multi-collapse" id="nav-{{tab.name}}" aria-labelledby="nav-{{tab.name}}-dropdown">
+								{% for page in pages %}
+									{% if page.tab.id == tab.id %}
+										<a class="dropdown-item" href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">
+											<i class="fas fa-circle "></i>
+											{{ ('front.'~page.name)|trans({}, 'menu') }}</a>
+									{% endif %}
+								{% endfor %}
+							</div>
 						</li>
 					{% else %}
 						<li class="{{ odd }}">
@@ -33,16 +42,4 @@
 			</ul>
 		</div>
 	</nav>
-
-	<div class="tab-content" id="nav-tabContent">
-		{% for tab in tabs %}
-			<div class="tab-pane fade multi-collapse" id="nav-{{tab.name}}" role="tabpanel" aria-labelledby="nav-{{tab.name}}-tab">
-				{% for page in pages %}
-					{% if page.tab.id == tab.id %}
-						<a href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">{{ ('front.'~page.name)|trans({}, 'menu') }}</a>
-					{% endif %}
-				{% endfor %}
-			</div>
-		{% endfor %}
-	</div>
 {% endblock %}

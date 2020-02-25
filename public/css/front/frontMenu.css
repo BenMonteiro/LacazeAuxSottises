@@ -25,12 +25,24 @@ nav li {
     border-radius: 5px
 }
 
+.dropdown-items li a {
+    list-style-type: disc !important;
+    padding-left: 0;
+    background-color: transparent;
+}
+
+.dropdown-menu {
+    padding: 0;
+    border: none;
+    background-color: white;
+}
+
 .transform-10 {
     transform: rotate(5deg);
 }
 
 .transform-350 {
-    transform: rotate(-5deg) !important;
+    transform: rotate(-5deg);
 }
 
 li.transform-10>a {
@@ -44,18 +56,20 @@ li.transform-350>a {
 .cycliste {
     position: relative;
     width: 50px;
-    left: 73%;
+    left: 70%;
     top: -16%;
     z-index: 50;
 }
 
-.transform-350 {
-    transform: rotate(350deg);
+.dropdown-item {
+    padding-left: 0
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.dropdown-item:hover {
     border: none;
-    color: #DA291C !important
+    color: #DA291C !important;
+    background-color: transparent;
 }
 
 .nav-tabs {
@@ -74,42 +88,12 @@ nav>ul {
     list-style: none;
 }
 
-.tab-content {
+.fa-circle {
+    font-size: 0.5rem;
     position: relative;
-    top: 140px;
-    height: 55px;
-}
-
-.tab-content>.active {
-    position: fixed;
-    width: 100%;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 1);
-    display: flex;
-    justify-content: space-around;
-    padding: 5px 0;
-    z-index: 200;
-    flex-wrap: wrap;
-}
-
-.tab-pane a {
-    color: #DA291C;
-    margin: 0 20px 0 0;
-    font-weight: bold;
-    padding: 5px 10px;
-}
-
-.tab-pane a:hover {
-    color: black;
-    background-color: #DA291C;
-    border-radius: 15px;
-    text-decoration: none;
-}
-
-.tab-wrap {
-    white-space: nowrap;
+    bottom: 2px
 }
 
 .logo {
-    width: 100px;
+    width: 100px !important;
 }
