@@ -19,17 +19,28 @@ class PerformanceRepository extends ServiceEntityRepository
         parent::__construct($registry, Performance::class);
     }
 
-    public function findMonthPerfs()
+    public function findMonthPerf()
     {
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = 'SELECT * 
         FROM performance
-        Where is_highlight = true
+        WHERE MONTH(date)  = MONTH(NOW())
+        AND is_highlight = true
         ORDER BY date ASC
             ';
 
         return $conn->query($sql)->fetchAll();
+    }
+
+    public function findMonthPerfs()
+    {
+        return $this->createQueryBuilder('perf')
+            ->andWhere('month(perf.date) = month(now())')
+            ->andWhere('perf.isHighlight = true')
+            ->orderBy('perf.date', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 
     // /**

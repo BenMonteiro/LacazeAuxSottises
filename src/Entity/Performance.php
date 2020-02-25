@@ -17,7 +17,7 @@ class Performance
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="performances")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="performances", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $company;
@@ -38,7 +38,7 @@ class Performance
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="performances")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="performances", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $event;

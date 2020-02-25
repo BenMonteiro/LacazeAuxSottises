@@ -34,6 +34,7 @@ class CompanyEventPerfsFixtures extends Fixture
                 $object->setProgramImageFile($imageFile);
                 $manager->persist($object);
             }
+            $manager->persist($object);
             $manager->flush();
         }
     }

@@ -7,7 +7,7 @@
 			<h3 class="my-3 colored ml-5">{{'general.events'|trans({}, 'general')|capitalize}}</h3>
 			<div class="row justify-content-around">
 				{% for event in homeEvents %}
-					{% if event.startingDate|date('M') == 'Mar'|date('M') %}
+					{% if event.startingDate|date('M') == 'now'|date('M') %}
 						<div class="highlight-card col-lg-2 col-4 card px-0 border border-danger">
 							<img src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name)}}" class="card-img-top" alt="{{event.imageDescription}}">
 							<div class="d-flex flex-column justify-content-center card-body py-0">
@@ -28,7 +28,7 @@
 		{% if homePerfs %}
 			<div class="row justify-content-around mb-3">
 				{% for perf in homePerfs %}
-					{% if perf.date|date('M') == 'May'|date('M') %}
+					{% if perf.date|date('M') == 'now'|date('M') %}
 						<div class="col-lg-2 col-md-4 col-6">
 							<div class=" highlight-card card  px-0 border border-danger mb-2">
 								<img src="{{asset('images/uploads/company/' ~ perf.company.image.name)}}" class="card-img-top" alt="{{perf.company.imageDescription}}">
@@ -36,7 +36,7 @@
 									<p class="text-decoration-none text-muted text-small text-center my-1">
 										{{perf.date|format_date(pattern='EEEE dd')|capitalize}}
 										-
-										{{perf.city_show}}
+										{{perf.cityShow}}
 									</p>
 									{% if perf.event != 'saison' %}
 										<a class="element-link text-decoration-none text-center" href="{{path('display_event', {'id': perf.event.id})}}">
