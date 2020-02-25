@@ -1,11 +1,11 @@
 {% block header %}
 	<nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
 		<img class="cycliste" src="{{ asset('images/MONOCYCLISTE-PMS285.png')}} ">
-		<a class="mx-3 mt-4 navbar-brand" href="{{ path('page_show', {'pageSlug': 'home'}) }}"><img class='logo' src="{{asset('images/logo.jpg')}}" alt="logo association"></a>
+		<a class="mx-3 mt-md-4 mt-2 navbar-brand" href="{{ path('page_show', {'pageSlug': 'home'}) }}"><img class='logo' src="{{asset('images/logo.jpg')}}" alt="logo association"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class=" col-9 collapse navbar-collapse nav d-md-flex flex-md-column multi-collapse mt-5" id="navbarNavDropdown">
+		<div class="col-lg-9 collapse navbar-collapse nav multi-collapse mt-5" id="navbarNavDropdown">
 			<ul class="d-flex flex-wrap navbar-nav w-100 justify-content-around">
 				{% for tab in tabs %}
 					{% set odd = '' %}
@@ -17,7 +17,7 @@
 						{% set odd = '' %}
 					{% endif %}
 					{% if tab.pages|length > 1 %}
-						<li class="{{ odd }} dropdown ">
+						<li class="{{ odd }} dropdown">
 							<a class="nav-item nav-link dropdown-toggle" href="" id="nav-{{tab.name}}-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ ('front.'~tab.name)|trans({}, 'menu') }}</a>
 							<div class="dropdown-menu fade multi-collapse" id="nav-{{tab.name}}" aria-labelledby="nav-{{tab.name}}-dropdown">
 								{% for page in pages %}
@@ -30,13 +30,15 @@
 							</div>
 						</li>
 					{% else %}
-						<li class="{{ odd }}">
-							{% for page in tab.pages %}
-								{% if tab.name != 'home' %}
+						{% for page in tab.pages %}
+							{% if tab.name != 'home' %}
+								<li class="{{ odd }}">
+
 									<a class="nav-link" href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">{{ ('front.'~page.name)|trans({}, 'menu') }}</a>
-								{% endif %}
-							{% endfor %}
-						</li>
+								</li>
+
+							{% endif %}
+						{% endfor %}
 					{% endif %}
 				{% endfor %}
 			</ul>

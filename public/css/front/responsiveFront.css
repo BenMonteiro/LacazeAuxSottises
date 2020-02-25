@@ -1,11 +1,19 @@
-@media all and (max-width: 1000px) {
+@media all and (max-width: 1001px) {
     .nav-link {
-        font-size: 1em;
         margin-right: 0px;
     }
 
-    nav>ul {
+    nav ul {
         list-style: none;
+    }
+
+    nav li {
+        width: 20%;
+        margin: 0 2.5% 2% 2.5%
+    }
+
+    .cycliste {
+        top: 7%;
     }
 
     .tab-pane a {
@@ -34,11 +42,11 @@
 
 }
 
-@media all and (max-width: 768px) {
-    .tab-content {
-        top: 450px;
-        height: 50px;
-        z-index: 5;
+@media all and (max-width: 769px) {
+
+    .cycliste {
+        left: 90%;
+        top: -38%;
     }
 
     #pills-tab,
@@ -54,41 +62,13 @@
 
     .nav-link:hover {
         border: none !important;
-        color: black !important
-    }
-
-    .nav-tabs .nav-link.active {
-        border: none !important;
-        color: black !important
-    }
-
-    .pageTitle {
-        font-size: 2.5em;
+        color: #DA291C !important
     }
 
     #titleLines {
         top: -45px;
     }
 
-    h2 {
-        font-size: 1.75rem;
-    }
-
-    h3 {
-        font-size: 1.5rem;
-    }
-
-    h4 {
-        font-size: 1.25rem;
-    }
-
-    h5 {
-        font-size: 1rem;
-    }
-
-    p {
-        font-size: 0.75rem;
-    }
 }
 
 @media all and (max-width:500px) {
@@ -102,31 +82,7 @@
         height: 50px;
     }
 
-    .pageTitle {
-        font-size: 1.75em;
-    }
-
     #titleLines {
         top: -37.5px;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    h3 {
-        font-size: 1.25rem;
-    }
-
-    h4 {
-        font-size: 1rem;
-    }
-
-    h5 {
-        font-size: 0.85rem;
-    }
-
-    p {
-        font-size: 0.75rem;
     }
 }

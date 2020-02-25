@@ -56,13 +56,13 @@ li.transform-350>a {
 .cycliste {
     position: relative;
     width: 50px;
-    left: 70%;
+    left: 73.5%;
     top: -16%;
     z-index: 50;
 }
 
 .dropdown-item {
-    padding-left: 0
+    padding-left: 3px
 }
 
 .nav-link:hover,
@@ -70,18 +70,6 @@ li.transform-350>a {
     border: none;
     color: #DA291C !important;
     background-color: transparent;
-}
-
-.nav-tabs {
-    border-bottom: none
-}
-
-.nav-tabs .nav-link.active {
-    border: none !important;
-    padding: 5px 10px;
-    color: #DA291C !important;
-    background-color: black;
-    border-color: white;
 }
 
 nav>ul {
@@ -96,4 +84,8 @@ nav>ul {
 
 .logo {
     width: 100px !important;
+}
+
+.dropdown-toggle::after {
+    vertical-align: 0;
 }

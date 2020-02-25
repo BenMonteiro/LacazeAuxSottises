@@ -24,8 +24,9 @@ class PerformanceType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('company', EntityType::class, [
+        if (isset($_GET['company_id'])) {
+            $this->companyFieldType = EntityType::class;
+            $this->companyFieldOptions = [
                 'class' => Company::class,
                 // Thanks to this attribute, the field is rightly prefilled
                 'choice_attr' => function ($choice, $key, $value) {
@@ -37,7 +38,14 @@ class PerformanceType extends AbstractType
                         return [];
                     }
                 }
-            ])
+            ];
+        } else {
+            $this->companyFieldType = TextType::class;
+            $this->companyFieldOptions = [];
+        }
+
+        $builder
+            ->add('company', $this->companyFieldType, $this->companyFieldOptions)
             ->add('cityShow')
             ->add('placeShow')
             ->add('date')

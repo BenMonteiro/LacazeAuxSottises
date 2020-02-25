@@ -7,7 +7,7 @@
 	{% if page.name == 'plural-projects' %}
 		{% set bg = 'bg-light' %}
 	{% endif %}
-	<div class="offset-1 col-10 {{ bg }} py-3 mb-3">
+	<div class="offset-2 col-8 {{ bg }} py-3 mb-3">
 		{% for section in sections %}
 			{% if section.name == 'top' %}
 				<article class="col-12 text-center">
@@ -15,7 +15,7 @@
 						<h3 class="colored">{{ section.title }}</h3>
 					{% endif %}
 					{% if section.subTitle %}
-						<h5>{{ section.subTitle }}</h5>
+						<h5>{{ section.subTitle|lower|capitalize }}</h5>
 					{% endif %}
 					<p>{{ section.content|raw }}</p>
 				</article>
@@ -24,24 +24,24 @@
 		<div class='d-md-flex mt-3 align-items-center justify-content-around'>
 			{% for section in sections %}
 				{% if section.name == 'left' %}
-					<article id="leftArticle" class="framedArticle mb-3 col-md-6 mr-md-2">
+					<article class="framedArticle dot mb-3 col-md-6 mr-md-2">
 						{% if section.title %}
 							<h3 class="text-center colored">{{ section.title }}</h3>
 						{% endif %}
 						{% if section.subTitle %}
-							<h5 class="text-center">{{ section.subTitle }}</h5>
+							<h5 class="text-center">{{ section.subTitle|lower|capitalize }}</h5>
 						{% endif %}
 						<p>{{ section.content|raw }}</p>
 					</article>
 				{% endif %}
 
 				{% if section.name == 'right' %}
-					<article id="rightArticle" class="framedArticle mb-3 col-md-6 ml-md-2">
+					<article class="framedArticle red-dot mb-3 col-md-6 ml-md-2">
 						{% if section.title %}
 							<h3 class="text-center colored">{{ section.title }}</h3>
 						{% endif %}
 						{% if section.subTitle %}
-							<h5 class="text-center">{{ section.subTitle }}</h5>
+							<h5 class="text-center">{{ section.subTitle|lower|capitalize }}</h5>
 						{% endif %}
 						<p>{{ section.content|raw }}</p>
 					</article>
@@ -51,12 +51,12 @@
 
 		{% for section in sections %}
 			{% if section.name == 'bottom' %}
-				<article id="bottomArticle" class="framedArticle offset-1 col-10 mb-3">
+				<article class="framedArticle solid offset-1 col-10 mb-3">
 					{% if section.title %}
 						<h3 class="text-center colored">{{ section.title }}</h3>
 					{% endif %}
 					{% if section.subTitle %}
-						<h5 class="text-center">{{ section.subTitle }}</h5>
+						<h5 class="text-center">{{ section.subTitle|lower|capitalize }}</h5>
 					{% endif %}
 					<p class="text-center">{{ section.content|raw }}</p>
 				</article>
@@ -66,12 +66,12 @@
 
 	{% for section in sections %}
 		{% if section.name == 'last' %}
-			<article id="lastArticle" class="framedArticle offset-1 col-10 mb-3">
+			<article class="framedArticle dash offset-2 col-8 mb-3">
 				{% if section.title %}
 					<h3>{{ section.title }}</h3>
 				{% endif %}
 				{% if section.subTitle %}
-					<h4>{{ section.subTitle }}</h4>
+					<h4>{{ section.subTitle|lower|capitalize }}</h4>
 				{% endif %}
 				<p>{{ section.content|raw }}</p>
 			</article>

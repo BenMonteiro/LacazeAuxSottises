@@ -2,11 +2,11 @@
 
 {% block body %}
 
-	<div class="offset-1 col-10">
+	<div class="offset-2 col-8">
 		{% for section in sections %}
 			<article class="mb-5">
 				{% if section.title %}
-					<h3 class="colored">{{ section.title }}</h3>
+					<h3 class="colored">{{ section.title|lower|capitalize }}</h3>
 				{% endif %}
 				{% if section.subTitle %}
 					<h4>{{ section.subTitle }}</h4>
@@ -15,10 +15,15 @@
 			</article>
 		{% endfor %}
 	</div>
-	<div class=" offset-1 text-center col-10 mb-5">
+	<div class=" d-flex justify-content-around flex-wrap">
 		{% for section in sections %}
 			{% if section.image.name %}
-				<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+				<div class=" d-flex flex-column align-items-center justify-content-between col-lg-3 col-md-4 col-sm-6 col-12 my-3">
+					<div class="company-image-div mb-0">
+						<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+						<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+					</div>
+				</div>
 			{% endif %}
 		{% endfor %}
 	</div>

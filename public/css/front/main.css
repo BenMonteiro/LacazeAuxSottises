@@ -6,9 +6,15 @@
 }
 
 p,
-span {
+span,
+li {
     text-align: inherit;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    font-size: 1em;
+}
+
+.text-justify {
+    margin-bottom: 0 !important;
 }
 
 .bg-colored {
@@ -222,26 +228,24 @@ hr.redline {
     border-radius: 20px;
 }
 
-#leftArticle {
+.dot {
     border: dotted
 }
 
-#rightArticle {
+.red-dot {
     border: dotted #DA291C;
 }
 
-#bottomArticle {
-    border: solid
-}
-
-#lastArticle {
+.dash {
     border: dashed
 }
 
-.red-dot-borders {
-    border: dashed #DA291C 2px;
-    border-radius: 20px;
-    padding: 20px
+.red-dash {
+    border: dashed #DA291C;
+}
+
+.solid {
+    border: solid;
 }
 
 .card-header {
@@ -309,6 +313,7 @@ hr.redline {
 .calendarBar {
     z-index: 1;
     height: 18px;
+    width: 100%
 }
 
 /*--------------------------------------------------------------------------------------Company ------------------------------------------------------------------------------------------*/
@@ -319,7 +324,7 @@ hr.redline {
 }
 
 .company-frame {
-    width: 250px;
+    min-width: 250px;
     height: 250px;
     z-index: 3;
 }

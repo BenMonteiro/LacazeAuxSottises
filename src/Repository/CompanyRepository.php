@@ -19,6 +19,17 @@ class CompanyRepository extends ServiceEntityRepository
         parent::__construct($registry, Company::class);
     }
 
+    public function findCompanies()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT id, name
+        FROM company
+            ';
+
+        return $conn->query($sql)->fetchAll();
+    }
+
     // /**
     //  * @return Company[] Returns an array of Company objects
     //  */
