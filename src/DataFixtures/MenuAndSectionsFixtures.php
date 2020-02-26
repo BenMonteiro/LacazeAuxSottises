@@ -4,19 +4,31 @@ namespace App\DataFixtures;
 
 use Nelmio\Alice\Loader\NativeLoader;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\Common\DataFixtures\FixtureInterface;
 
-class MenuAndSectionsFixtures extends Fixture
+class MenuAndSectionsFixtures extends Fixture implements FixtureInterface, ContainerAwareInterface
 {
+
+    private $container;
+
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
     public function load(ObjectManager $manager)
     {
+        $webPath = $this->container->getParameter('app_path_to_web');
+
         $loader = new NativeLoader();
         $objectSet = $loader->loadFile(__DIR__ . '/menuAndSectionsFixtures.yaml')->getObjects();
         foreach ($objectSet as $object) {
             if (method_exists($object, 'setImageFile')) {
-                $src = "C:/wamp64/www/P5/Lacaze_aux_sottises/public/images/uploads/paragraphImage/640x360.png";
+                $src = $webPath . '/images/uploads/paragraphImage/640x360.png';
                 $file = $this->setFile($src, '640x360.png', 'png');
 
                 $object->setImageFile($file);
