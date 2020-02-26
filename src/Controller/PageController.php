@@ -21,12 +21,23 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PageController extends AbstractController
 {
+    protected $eventRepository;
+    protected $performanceRepository;
+    protected $companyRepository;
+    protected $partnersRepository;
+    protected $sectionRepository;
+    protected $frontPage;
     protected $pages;
     protected $tabs;
 
     public function __construct(
         FrontPageRepository $frontPageRepository,
-        FrontTabRepository $frontTabRepository
+        FrontTabRepository $frontTabRepository,
+        EventRepository $eventRepository,
+        PerformanceRepository $performanceRepository,
+        CompanyRepository $companyRepository,
+        PartnersRepository $partnersRepository,
+        SectionRepository $sectionRepository
     ) {
         /**
          * Mandatory
@@ -34,65 +45,87 @@ class PageController extends AbstractController
          */
         $this->pages = $frontPageRepository->findBy([], ['number' => 'ASC']);
         $this->tabs = $frontTabRepository->findBy([], ['number' => 'ASC']);
+
+        $this->eventRepository = $eventRepository;
+        $this->performanceRepository = $performanceRepository;
+        $this->companyRepository = $companyRepository;
+        $this->partnersRepository = $partnersRepository;
+        $this->sectionRepository = $sectionRepository;
     }
 
     /**
      * @Route("/", name="blog")
      * Entry point of the website
      */
-    public function index(EventRepository $eventRepository, SectionRepository $sectionRepository, PerformanceRepository $performanceRepository)
+    public function index(SectionRepository $sectionRepository)
     {
         return $this->render('front/landing_page.html.twig', [
-            'season' => $eventRepository->findOneBy(['name' => 'saison']),
+            'season' => $this->eventRepository->findOneBy(['name' => 'saison']),
             'sections' => $sectionRepository->findBy(['belongToPage' => 'home']),
-            'homePerfs' => $performanceRepository->findMonthPerfs(),
-            'homeEvents' => $eventRepository->findMonthEvents()
+            'homePerfs' => $this->performanceRepository->findMonthPerfs(),
+            'homeEvents' => $this->eventRepository->findMonthEvents()
 
         ]);
     }
 
     /**
      * @Route("page/{pageSlug}", name="page_show", requirements={"pageSlug"=".+?"}, methods={"GET"})
-     * This function handle the display of all pages of the website. Some datas are transmitted only in given conditions.Templates are found dynamically.
+     * This function handle the display of all pages of the website.Templates are found dynamically.
      */
     public function displayPage(
-        FrontPage $frontPage,
-        SectionRepository $sectionRepository,
-        EventRepository $eventRepository,
-        PerformanceRepository $performanceRepository,
-        CompanyRepository $companyRepository,
-        PartnersRepository $partnersRepository
+        FrontPage $frontPage
     ): Response {
+
+        $page = $frontPage->getPageSlug();
+
         $pageFolder = $frontPage->getTab();
         $pageTemplate = $frontPage->getTemplate();
         $defaultTemplate = 'front/page_default.html.twig';
 
         $template = (empty($pageTemplate)) ? $defaultTemplate : 'front/' . $pageFolder . '/' . $pageTemplate . '.html.twig';
 
-        $homeEvents = ($frontPage->getPageSlug() === 'home') ? $eventRepository->findMonthEvents() : null;
-        $homePerfs = ($frontPage->getPageSlug() === 'home') ? $performanceRepository->findMonthPerfs() : null;
-        $seasonEvents = ($frontPage->getPageSlug() === 'saison/calendrier') ? $eventRepository->findSeasonEvents() : null;
-        $seasonPerformances = ($frontPage->getPageSlug() === 'saison/calendrier') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'saison'])], ['date' => 'ASC']) : null;
-        $festPerformances = ($frontPage->getPageSlug() === 'festival/calendrier') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'Festival Fête des sottises !'])], ['date' => 'ASC']) : null;
-        $placeEventPerfs = ($frontPage->getPageSlug() === 'tiers-lieu/les-rendez-vous') ? $performanceRepository->findBy(['event' => $eventRepository->findBy(['name' => 'Soirées du Tiers-Lieu'])], ['date' => 'ASC']) : null;
-        $partners = ($frontPage->getPageSlug() === 'partenaires/partenaires') ? $partnersRepository->findAll() : null;
-
-
-        return $this->render($template, [
+        $data = [
             'page' => $frontPage,
             'pages' => $this->pages,
             'tabs' => $this->tabs,
-            'sections' => $sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
-            'companies' => $companyRepository->findBy([], ['name' => 'ASC']),
-            'season' => $eventRepository->findOneBy(['name' => 'saison']),
-            'seasonEvents' => $seasonEvents,
-            'seasonPerfs' => $seasonPerformances,
-            'festPerfs' => $festPerformances,
-            'placeEventPerfs' => $placeEventPerfs,
-            'partners' => $partners,
-            'homeEvents' => $homeEvents,
-            'homePerfs' => $homePerfs
-        ]);
+            'sections' => $this->sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
+            'season' => $this->eventRepository->findOneBy(['name' => 'saison']),
+        ];
+
+        $data = $this->completeViewData($page, $data);
+
+        return $this->render($template, $data);
+    }
+
+    /**
+     *  This function handle the datas to transmit to the views
+     */
+    public function completeViewData($page, $data)
+    {
+        switch ($page) {
+            case 'home':
+                $data['homeEvents'] = $this->eventRepository->findMonthEvents();
+                $data['homePerfs'] = $this->performanceRepository->findMonthPerfs();
+                break;
+            case 'saison/calendrier':
+                $data['seasonEvents'] = $this->eventRepository->findSeasonEvents();
+                $data['seasonPerfs'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'saison'])], ['date' => 'ASC']);
+                break;
+            case 'festival/calendrier':
+                $data['festPerfs'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'Festival Fête des sottises !'])], ['date' => 'ASC']);
+                break;
+            case 'tiers-lieu/les-rendez-vous':
+                $data['placeEventPerfs'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'Soirées du Tiers-Lieu'])], ['date' => 'ASC']);
+                break;
+            case 'partenaires/partenaires':
+                $data['partners'] = $this->partnersRepository->findAll();
+                break;
+            case 'season/hostedCompanies':
+                $data['companies'] = $this->companyRepository->findBy([], ['name' => 'ASC']);
+                break;
+        }
+
+        return $data;
     }
 
 
@@ -111,9 +144,9 @@ class PageController extends AbstractController
     /**
      * @Route("event/{id<\d+>}", name="display_event", methods={"GET"})
      */
-    public function displayEventCard(Event $event, PerformanceRepository $performanceRepository): Response
+    public function displayEventCard(Event $event): Response
     {
-        $eventPerfs = $performanceRepository->findBy(['event' => $event], ['date' => 'ASC']);
+        $eventPerfs = $this->performanceRepository->findBy(['event' => $event], ['date' => 'ASC']);
 
         return $this->render('front/display_event.html.twig', [
             'pages' => $this->pages,
