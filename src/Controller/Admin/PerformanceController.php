@@ -6,8 +6,6 @@ use App\Entity\Performance;
 use App\Form\PerformanceType;
 use App\Repository\PerformanceRepository;
 use App\Controller\Admin\AdminController;
-use App\Repository\CompanyRepository;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -69,6 +67,7 @@ class PerformanceController extends AdminController
         } elseif (isset($_GET['event_id'])) {
             $this->eventId = $_GET['event_id'];
         }
+
         return $this->render('admin/performance/new.html.twig', [
             'performance' => $performance,
             'form' => $form->createView(),
@@ -158,14 +157,5 @@ class PerformanceController extends AdminController
             );
         }
         return $this->redirectToRoute('performance_index');
-    }
-
-    /**
-     * @Route("/companies", name="performance_companies", methods={"POST"})
-     */
-    public function DataToJson(CompanyRepository $companyRepository)
-    {
-        $companies = $companyRepository->findCompanies();
-        return new JsonResponse(json_encode($companies));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Performance;
 use App\Entity\Company;
+use App\Repository\CompanyRepository;
 use App\Entity\Event;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -11,16 +12,21 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
-use function foo\func;
+use Symfony\Component\Routing\RouterInterface;
+use App\Form\DataTransformer\CompanyTransformer;
 
 class PerformanceType extends AbstractType
 {
-
+    private $transformer;
+    private $router;
     protected $companyFieldType;
     protected $companyFieldOptions = [];
 
-
+    public function __construct(CompanyTransformer $transformer, RouterInterface $router)
+    {
+        $this->transformer = $transformer;
+        $this->router = $router;
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -29,6 +35,10 @@ class PerformanceType extends AbstractType
             $this->companyFieldOptions = [
                 'class' => Company::class,
                 // Thanks to this attribute, the field is rightly prefilled
+                'attr' => [
+                    'class' => 'js-company-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('utility_companies'),
+                ],
                 'choice_attr' => function ($choice, $key, $value) {
                     if (isset($_GET['company_id']) && $value === $_GET['company_id']) {
 
@@ -41,7 +51,13 @@ class PerformanceType extends AbstractType
             ];
         } else {
             $this->companyFieldType = TextType::class;
-            $this->companyFieldOptions = [];
+            $this->companyFieldOptions = [
+                'invalid_message' => 'That is not a valid company',
+                'attr' => [
+                    'class' => 'js-company-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('utility_companies')
+                ]
+            ];
         }
 
         $builder
@@ -66,6 +82,8 @@ class PerformanceType extends AbstractType
                     }
                 }
             ]);
+        $builder->get('company')
+            ->addModelTransformer($this->transformer);
     }
 
     public function configureOptions(OptionsResolver $resolver)

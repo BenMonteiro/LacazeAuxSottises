@@ -6,6 +6,6 @@ import Tinymce from "./Tinymce.js";
 
 new Tinymce();
 
-import Autocompetion from "./Autocompletion.js";
+import Autocomplete from "./Autocomplete.js";
 
-new Autocompetion();
+new Autocomplete();

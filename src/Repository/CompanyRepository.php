@@ -19,15 +19,17 @@ class CompanyRepository extends ServiceEntityRepository
         parent::__construct($registry, Company::class);
     }
 
-    public function findCompanies()
+    /**
+     * @return Company[]
+     */
+    public function findAllMatching(string $query, int $limit = 5)
     {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = 'SELECT id, name
-        FROM company
-            ';
-
-        return $conn->query($sql)->fetchAll();
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.name LIKE :query')
+            ->setParameter('query', '%' . $query . '%')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
     }
 
     // /**
