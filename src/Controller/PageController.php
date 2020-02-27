@@ -59,7 +59,7 @@ class PageController extends AbstractController
      */
     public function index(SectionRepository $sectionRepository)
     {
-        return $this->render('front/landing_page.html.twig', [
+        return $this->render('front_pages/landing_page.html.twig', [
             'season' => $this->eventRepository->findOneBy(['name' => 'saison']),
             'sections' => $sectionRepository->findBy(['belongToPage' => 'home']),
             'homePerfs' => $this->performanceRepository->findMonthPerfs(),
@@ -80,9 +80,9 @@ class PageController extends AbstractController
 
         $pageFolder = $frontPage->getTab();
         $pageTemplate = $frontPage->getTemplate();
-        $defaultTemplate = 'front/page_default.html.twig';
+        $defaultTemplate = 'front_pages/page_default.html.twig';
 
-        $template = (empty($pageTemplate)) ? $defaultTemplate : 'front/' . $pageFolder . '/' . $pageTemplate . '.html.twig';
+        $template = (empty($pageTemplate)) ? $defaultTemplate : 'front_pages/' . $pageFolder . '/' . $pageTemplate . '.html.twig';
 
         $data = [
             'page' => $frontPage,
@@ -134,7 +134,7 @@ class PageController extends AbstractController
      */
     public function displayCompanyCard(Company $company): Response
     {
-        return $this->render('front/display_company.html.twig', [
+        return $this->render('front_pages/display_company_card.html.twig', [
             'pages' => $this->pages,
             'tabs' => $this->tabs,
             'company' => $company,
@@ -148,7 +148,7 @@ class PageController extends AbstractController
     {
         $eventPerfs = $this->performanceRepository->findBy(['event' => $event], ['date' => 'ASC']);
 
-        return $this->render('front/display_event.html.twig', [
+        return $this->render('front_pages/display_event_card.html.twig', [
             'pages' => $this->pages,
             'tabs' => $this->tabs,
             'event' => $event,

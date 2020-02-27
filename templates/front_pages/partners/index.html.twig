@@ -3,11 +3,11 @@
 {% block body %}
 	<div class="container-fluid">
 
-		{% include('/front/_intro_section_template.html.twig') %}
+		{% include('/front_pages/_intro_section_template.html.twig') %}
 
 		<div id="partnersLogos" class="d-flex flex-wrap justify-content-around offset-1 col-10 mb-4">
 			{% for partner in partners %}
-				{% if partner.logo.name %}
+				{% if partner.logo %}
 					<div class="mb-2 mr-2">
 						<img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}">
 					</div>
@@ -16,7 +16,7 @@
 			{% endfor %}
 		</div>
 		<div class="d-flex justify-content-center">
-			<h2 class="text-center mb-3 px-2">Nos Producteurs, Nos Distributeurs</h2>
+			<h2 class="text-center mb-3 px-2">{{'partner.productors'|trans({}, 'partners')|title}}</h2>
 		</div>
 		<div class="miniTitleBar">
 			<hr class="redline">
@@ -34,7 +34,7 @@
 		</p>
 
 		<div class="d-flex justify-content-center">
-			<h2 class="text-center mb-3 px-2">Les Partenaires</h2>
+			<h2 class="text-center mb-3 px-2">{{'partner.partner'|trans({}, 'partners')|title}}</h2>
 		</div>
 		<div>
 			<hr class="redline miniTitleBar">

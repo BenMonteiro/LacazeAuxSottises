@@ -2,7 +2,7 @@
 
 {% block body %}
 
-	{% include('/front/_intro_section_template.html.twig') %}
+	{% include('/front_pages/_intro_section_template.html.twig') %}
 
 	<div class="d-flex justify-content-center">
 		<h2 class="text-center mb-3 px-2">Être Bénévole</h2>
@@ -15,7 +15,7 @@
 			{% if section.name != 'intro' %}
 				<article class="mr-2 mt-5">
 					<div class="d-flex align-items-center mb-3">
-						{% if section.image.name %}
+						{% if section.image %}
 							<img class="col-3 mr-3 img-thumbnail p-1" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
 						{% endif %}
 						{% if section.title %}

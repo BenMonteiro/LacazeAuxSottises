@@ -5,14 +5,14 @@
 {% endblock %}
 {% block body %}
 	<div class="d-md-flex my-5">
-		{% if event.programImage.name %}
+		{% if event.programImage %}
 			<img class="offset-md-1 col-md-5 offset-2 col-8" src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
 		{% endif %}
 	</div>
 
 	<div class="text-center offset-1 col-10">{{ event.description|raw }}</div>
 	<div class="text-center mt-5">
-		{% if event.programPDF.name %}
+		{% if event.programPDF %}
 			<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
 		{% endif %}
 	</div>

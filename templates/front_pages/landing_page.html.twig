@@ -1,4 +1,4 @@
-{% extends 'front_base.html.twig' %}
+{% extends 'front_layout.html.twig' %}
 
 {% block title %}
 	{{'general.welcome'|trans({}, 'general')|title}}
@@ -6,10 +6,7 @@
 
 {% block body %}
 	<body id="landingPage">
-		{% set display = 'd-block' %}
-		{% if season.programImage.name == null and sections == null and homeEvents == null and homePerfs == null  %}
-			{% set display = 'd-none' %}
-		{% endif %}
+		{% set display = (season.programImage == null and sections == null and homeEvents == null and homePerfs == null) ? 'd-none' : 'd-block' %}
 		<a class=" accessLink {{ display }} " href="{{ path('page_show', {'pageSlug': 'home'}) }}">
 			<div class=" accessButton"></div>
 		</a>

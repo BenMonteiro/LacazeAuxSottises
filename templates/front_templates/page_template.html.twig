@@ -1,11 +1,11 @@
-{% extends "front_base.html.twig" %}
+{% extends "front_layout.html.twig" %}
 
 {% block title %}
 	{{ ('front.' ~ page.tab)|trans({}, 'menu')}}/{{('front.' ~ page.name)|trans({}, 'menu')}}
 {% endblock %}
 
 {% block header %}
-	{% include( "menu/_front_menu.html.twig") %}
+	{% include( "front_templates/_front_menu.html.twig") %}
 {% endblock %}
 
 {% block pageTitle %}
