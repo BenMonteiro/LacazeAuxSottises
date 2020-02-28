@@ -3,38 +3,50 @@
 {% block body %}
 	<div class="container-fluid">
 		<div>
-			<h2 class="colored">{{ 'general.third_location.prod_meetings'|trans({}, 'general') }}</h2>
+			<h2 class="colored text-center font-weight-bold">{{ 'general.third_location.prod_meetings'|trans({}, 'general') }}</h2>
 			{% for section in sections %}
 				{% if section.name == 'prod meeting' %}
-					<div class="d-flex align-items-center col-12 mb-3">
-						<img class="col-lg-2 col-md-3 d-sm-block d-none img-thumbnail rounded" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-						<article class="my-5 col-sm-8">
+					<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
+						{% if section.image.name %}
+							<div class="d-flex flex-column align-items-center my-3">
+								<div class="company-image-div">
+									<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+									<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+								</div>
+							</div>
+						{% endif %}
+						<article class="my-5 col-md-7">
 							{% if section.title %}
-								<h3 class="colored">{{ section.title }}</h3>
+								<h2 class="colored">{{ section.title }}</h2>
 							{% endif %}
 							{% if section.subTitle %}
-								<h4>{{ section.subTitle }}</h4>
+								<h3>{{ section.subTitle }}</h3>
 							{% endif %}
 							<p>{{ section.content|raw}}</p>
 						</article>
-					</div>
+					</section>
 				{% endif %}
 			{% endfor %}
 		</div>
 		<div>
-			<h2 class="colored">{{ 'general.third_location.nights'|trans({}, 'general') }}</h2>
+			<h2 class="colored text-center font-weight-bold">{{ 'general.third_location.nights'|trans({}, 'general') }}</h2>
 			{% for section in sections %}
 				{% if section.name == 'nights' %}
-					<section class=" d-flex align-items-center col-12 mb-3">
+					<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 						{% if section.image.name %}
-							<img class="col-lg-2 col-md-3 d-sm-block d-none img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+							<div class="d-flex flex-column align-items-center my-3">
+								<div class="company-image-div">
+									<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+									<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+								</div>
+							</div>
 						{% endif %}
-						<article class="h-100 col-sm-8">
+						<article class="h-100 col-md-7">
 							{% if section.title %}
-								<h3 class="colored">{{ section.title }}</h3>
+								<h2 class="colored">{{ section.title }}</h2>
 							{% endif %}
 							{% if section.subTitle %}
-								<h4>{{ section.subTitle }}</h4>
+								<h3>{{ section.subTitle }}</h3>
 							{% endif %}
 							<p class="text-justify">{{ section.content|raw}}</p>
 						</article>
@@ -44,45 +56,57 @@
 		</div>
 
 		<div id="calendar" class="my-5">
-			<ul class="list-unstyled">
+			<h2 class="colored text-center font-weight-bold">{{ 'general.third_location.program'|trans({}, 'general')|title }}</h2>
+			<ul class="d-flex justify-content-around flex-wrap list-unstyled">
 				{% for placeEventPerf in placeEventPerfs %}
-					<div class="col-md-8 col-sm-10 col-8">
-						<li class="d-sm-flex">
-							<img class="miniImage img-thumbnail rounded" src="{{ asset('images/uploads/company/' ~ placeEventPerf.company.image.name) }}" alt="{{placeEventPerf.company.imageDescription}}">
-
-							<div class="flex-column col-sm-2 mt-2">
-								<p>{{ placeEventPerf.date|format_date(pattern='EEEE dd MMMM')|capitalize }}</p>
-								<p>
-									Prix libre
-								</p>
-							</div>
-							<div class="offset-sm-1 mt-2">
-								<p>{{ placeEventPerf.date|date('H') }}h{{ placeEventPerf.date|date('i') }}
-									-
-									{{ placeEventPerf.company.theme|raw }}</p>
-							</div>
-						</li>
-						<hr class="my-2 redline">
+					<div class=" d-flex flex-column align-items-center col-lg-3 col-md-4 col-sm-6 col-12 mt-3">
+						<a href="{{path('display_company', {'id': placeEventPerf.company.id })}}">
+							<li>
+								<div class="d-flex flex-column align-items-center mt-3">
+									<div class="company-image-div">
+										<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+										<img class="company-image" src="{{ asset('images/uploads/company/' ~ placeEventPerf.company.image.name) }}" alt="{{placeEventPerf.company.imageDescription}}">
+									</div>
+								</div>
+								<div class=" text-center">
+									<p>{{ placeEventPerf.date|format_date(pattern='EEEE dd MMMM')|capitalize }}</p>
+									<p>
+										{{ placeEventPerf.price ? placeEventPerf.price|format_currency('EUR') : 'perf.free'|trans({}, 'perf')|capitalize }}
+									</p>
+									<p>{{ placeEventPerf.date|date('H') }}h{{ placeEventPerf.date|date('i') }}
+										-
+										{{ placeEventPerf.company.name|raw }}</p>
+								</div>
+							</li>
+						</a>
 					</div>
 				{% endfor %}
 			</ul>
 		</div>
+
 		<div>
-			<h2 class="colored">{{ 'general.third_location.visits'|trans({}, 'general') }}</h2>
+			<h2 class="colored text-center font-weight-bold">{{ 'general.third_location.visits'|trans({}, 'general') }}</h2>
 			{% for section in sections %}
 				{% if section.name == 'visit' %}
-					<div class="d-flex align-items-center col-12 mb-3">
-						<article class="my-2 col-sm-8">
+					<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
+						{% if section.image.name %}
+							<div class="d-flex flex-column align-items-center my-3">
+								<div class="company-image-div">
+									<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+									<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+								</div>
+							</div>
+						{% endif %}
+						<article class="h-100 col-md-7">
 							{% if section.title %}
-								<h3 class="colored">{{ section.title }}</h3>
+								<h2 class="colored">{{ section.title }}</h2>
 							{% endif %}
 							{% if section.subTitle %}
-								<h4>{{ section.subTitle }}</h4>
+								<h3>{{ section.subTitle }}</h3>
 							{% endif %}
-							<p>{{ section.content|raw}}</p>
+							<p class="text-justify">{{ section.content|raw}}</p>
 						</article>
-						<img class="col-md-3 d-sm-block d-none img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-					</div>
+					</section>
 				{% endif %}
 			{% endfor %}
 		</div>

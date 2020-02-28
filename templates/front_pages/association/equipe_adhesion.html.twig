@@ -6,10 +6,10 @@
 		{% for section in sections %}
 			<article class="mb-5">
 				{% if section.title %}
-					<h3 class="colored">{{ section.title|lower|capitalize }}</h3>
+					<h2 class="colored">{{ section.title|lower|capitalize }}</h2>
 				{% endif %}
 				{% if section.subTitle %}
-					<h4>{{ section.subTitle }}</h4>
+					<h3>{{ section.subTitle }}</h3>
 				{% endif %}
 				<p class="text-justify">{{ section.content|raw}}</p>
 			</article>
@@ -17,7 +17,7 @@
 	</div>
 	<div class=" d-flex justify-content-around flex-wrap">
 		{% for section in sections %}
-			{% if section.image %}
+			{% if section.image.name %}
 				<div class=" d-flex flex-column align-items-center justify-content-between col-lg-3 col-md-4 col-sm-6 col-12 my-3">
 					<div class="company-image-div mb-0">
 						<img class="company-frame" src="{{ asset('images/cadre.png') }}">

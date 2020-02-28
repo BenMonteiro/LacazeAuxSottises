@@ -4,30 +4,37 @@
 
 	{% include('/front_pages/_intro_section_template.html.twig') %}
 
-	<div class="d-flex justify-content-center">
-		<h2 class="text-center mb-3 px-2">Être Bénévole</h2>
+	<div class="d-flex text-center justify-content-center">
+		<h2 class="mt-3 pageTitle px-4">
+			{{'general.be_volunteer'|trans({}, 'general')|capitalize}}
+		</h2>
 	</div>
-	<div class="miniTitleBar">
-		<hr class="redline">
+	<div class="text-center">
+		<img class="miniTitleBar" src="{{asset('images/trait-rouge.png')}}">
 	</div>
-	<div class="offset-1 col-10 mb-3">
-		{% for section in sections %}
-			{% if section.name != 'intro' %}
-				<article class="mr-2 mt-5">
-					<div class="d-flex align-items-center mb-3">
-						{% if section.image %}
-							<img class="col-3 mr-3 img-thumbnail p-1" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
-						{% endif %}
-						{% if section.title %}
-							<h3 class=" h-100 colored">{{ section.title }}</h3>
-						{% endif %}
+	{% for section in sections %}
+		{% if section.name != 'intro' %}
+			<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
+				<div class="">
+					{% if section.image.name %}
+						<div class="d-flex flex-column align-items-center my-3">
+							<div class="company-image-div">
+								<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+								<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+							</div>
+						</div>
 					</div>
+				{% endif %}
+				<article class="d-flex col-md-7 flex-column text-sm-left text-center">
+					{% if section.title %}
+						<h2 class=" h-100 colored">{{ section.title }}</h2>
+					{% endif %}
 					{% if section.subTitle %}
-						<h4>{{ section.subTitle }}</h4>
+						<h3>{{ section.subTitle }}</h3>
 					{% endif %}
 					{{ section.content|raw }}
 				</article>
-			{% endif %}
-		{% endfor %}
-	</div>
+			</section>
+		{% endif %}
+	{% endfor %}
 {% endblock %}

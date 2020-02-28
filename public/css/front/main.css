@@ -5,12 +5,18 @@
     src: url(/public/polices/MyriadPro-Regular.otf)
 }
 
+body {
+    overflow-x: hidden;
+}
+
 p,
 span,
-li {
+li,
+a {
     text-align: inherit;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
     font-size: 1em;
+    margin: 0
 }
 
 .text-justify {
@@ -38,26 +44,37 @@ li {
 
 .redCircle {
     position: absolute;
-    top: 330px;
-    left: -300px;
+    top: -300px;
+    right: -500px;
     width: 900px;
     opacity: 0.7;
 }
 
-.blackCube {
-    position: absolute;
-    top: 450px;
-    left: -300px;
-    width: 100%;
-    height: 80%;
-    opacity: 0.7;
+a {
+    color: inherit;
 }
 
+a:hover {
+    text-decoration: none;
+    color: #DA291C
+}
+
+hr.redline {
+    color: #DA291C;
+    border: solid 1px
+}
 
 
 /*--------------------------------------------------------------------------------------Landing Page------------------------------------------------------------------------------------------*/
 
-#landingPage {
+.accessLink {
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: transparent;
+    z-index: 999;
     background-image: url(/images/landingPagePic.jpg);
     margin: 0;
     padding: 0;
@@ -65,28 +82,6 @@ li {
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-}
-
-.accessButton {
-    position: absolute;
-    bottom: 0px;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    background-color: transparent;
-    z-index: 999
-}
-
-.accessLink {
-    color: black;
-    font-size: 2em;
-    font-weight: bold;
-    text-align: center;
-
-}
-
-.accessLink:hover {
-    color: #DA291C;
 }
 
 /*--------------------------------------------------------------------------------------Titles------------------------------------------------------------------------------------------*/
@@ -101,17 +96,18 @@ h5,
 }
 
 h1 {
-    font-size: 1em;
-    text-align: center;
-    font-weight: bold;
-    color: #DA291C;
     margin: 1rem auto;
 }
 
-h4,
+h2 {
+    text-align: inherit;
+    font-size: 1.25em;
+}
+
 h3 {
     text-align: inherit;
     font-size: 1em;
+    margin: inherit
 }
 
 #pageTitleBar {
@@ -127,48 +123,35 @@ h3 {
 
 }
 
-.homeTitle {
-    z-index: 3;
-    background-color: white;
-    text-decoration: none;
-    line-height: 1;
-}
-
 .titleLines {
     position: relative;
     top: -20px;
     z-index: 2;
 }
 
-h2 {
-    display: inline-block;
-    align-content: center;
-    z-index: 3;
-    background-color: white;
-}
-
 div>img.titleBar {
     position: relative;
-    bottom: 25px;
+    bottom: 23px;
     z-index: 1;
     left: 15%;
     width: 70%;
     height: 18px;
 }
 
-.miniTitleBar {
+.sectionTitleBar {
     position: relative;
-    bottom: 35px;
+    bottom: 33px;
     z-index: 1;
     width: 70%;
+    height: 18px;
 }
 
-hr.blackline {
-    color: black
-}
-
-hr.redline {
-    color: #DA291C;
+.miniTitleBar {
+    position: relative;
+    bottom: 33px;
+    z-index: 1;
+    width: 50%;
+    height: 18px;
 }
 
 /*--------------------------------------------------------------------------------------Images------------------------------------------------------------------------------------------*/

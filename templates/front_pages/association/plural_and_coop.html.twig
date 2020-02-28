@@ -12,10 +12,10 @@
 			{% if section.name == 'top' %}
 				<article class="col-12 text-center">
 					{% if section.title %}
-						<h3 class="colored">{{ section.title }}</h3>
+						<h2 class="colored">{{ section.title }}</h2>
 					{% endif %}
 					{% if section.subTitle %}
-						<h5>{{ section.subTitle|lower|capitalize }}</h5>
+						<h3 class="font-weight-bold">{{ section.subTitle|lower|capitalize }}</h3>
 					{% endif %}
 					<p>{{ section.content|raw }}</p>
 				</article>
@@ -24,24 +24,24 @@
 		<div class='d-md-flex mt-3 align-items-center justify-content-around'>
 			{% for section in sections %}
 				{% if section.name == 'left' %}
-					<article class="framedArticle dot mb-3 col-md-6 mr-md-2">
+					<article class="text-center framedArticle dot col-md-6 mr-md-2">
 						{% if section.title %}
-							<h3 class="text-center colored">{{ section.title }}</h3>
+							<h2 class=" colored">{{ section.title }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h5 class="text-center">{{ section.subTitle|lower|capitalize }}</h5>
+							<h3 class="font-weight-bold mb-2">{{ section.subTitle|lower|capitalize }}</h3>
 						{% endif %}
 						<p>{{ section.content|raw }}</p>
 					</article>
 				{% endif %}
 
 				{% if section.name == 'right' %}
-					<article class="framedArticle red-dot mb-3 col-md-6 ml-md-2">
+					<article class="text-center framedArticle red-dot col-md-6 ml-md-2">
 						{% if section.title %}
-							<h3 class="text-center colored">{{ section.title }}</h3>
+							<h2 class=" colored">{{ section.title }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h5 class="text-center">{{ section.subTitle|lower|capitalize }}</h5>
+							<h3 class="font-weight-bold">{{ section.subTitle|lower|capitalize }}</h3>
 						{% endif %}
 						<p>{{ section.content|raw }}</p>
 					</article>
@@ -51,14 +51,14 @@
 
 		{% for section in sections %}
 			{% if section.name == 'bottom' %}
-				<article class="framedArticle solid offset-1 col-10 mb-3">
+				<article class="text-center framedArticle solid offset-1 col-10 mt-3">
 					{% if section.title %}
-						<h3 class="text-center colored">{{ section.title }}</h3>
+						<h2 class=" colored">{{ section.title }}</h2>
 					{% endif %}
 					{% if section.subTitle %}
-						<h5 class="text-center">{{ section.subTitle|lower|capitalize }}</h5>
+						<h3 class="font-weight-bold">{{ section.subTitle|lower|capitalize }}</h3>
 					{% endif %}
-					<p class="text-center">{{ section.content|raw }}</p>
+					<p>{{ section.content|raw }}</p>
 				</article>
 			{% endif %}
 		{% endfor %}
@@ -66,14 +66,14 @@
 
 	{% for section in sections %}
 		{% if section.name == 'last' %}
-			<article class="framedArticle dash offset-2 col-8 mb-3">
+			<article class="text-center framedArticle dash offset-2 col-8 my-3">
 				{% if section.title %}
-					<h3>{{ section.title }}</h3>
+					<h2 class="colored">{{ section.title }}</h2>
 				{% endif %}
 				{% if section.subTitle %}
-					<h4>{{ section.subTitle|lower|capitalize }}</h4>
+					<h3 class="font-weight-bold">{{ section.subTitle|lower|capitalize }}</h3>
 				{% endif %}
-				<p>{{ section.content|raw }}</p>
+				<div class="my-1">{{ section.content|raw }}</div>
 			</article>
 		{% endif %}
 	{% endfor %}

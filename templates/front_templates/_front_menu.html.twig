@@ -8,21 +8,25 @@
 		<div class="col-lg-9 collapse navbar-collapse nav multi-collapse mt-5" id="navbarNavDropdown">
 			<ul class="d-flex flex-wrap navbar-nav w-100 justify-content-around">
 				{% for tab in tabs %}
-					{% set odd = '' %}
+					{% set transform = '' %}
 					{% if tab.number == 3 %}
-						{% set odd = 'transform-10' %}
+						{% set transform = 'transform-10' %}
 					{% elseif tab.number == 6 %}
-						{% set odd = 'transform-350' %}
+						{% set transform = 'transform-350' %}
 					{% else %}
-						{% set odd = '' %}
+						{% set transform = '' %}
+					{% endif %}
+					{% set active = '' %}
+					{% if page is defined and  page.tab == tab.name %}
+						{% set active = 'active' %}
 					{% endif %}
 					{% if tab.pages|length > 1 %}
-						<li class="{{ odd }} dropdown">
-							<a class="nav-item nav-link dropdown-toggle" href="" id="nav-{{tab.name}}-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ ('front.'~tab.name)|trans({}, 'menu') }}</a>
-							<div class="dropdown-menu fade multi-collapse" id="nav-{{tab.name}}" aria-labelledby="nav-{{tab.name}}-dropdown">
+						<li class="{{ transform }} dropdown">
+							<a class="nav-item nav-link dropdown-toggle {{ active }}" href="" id="nav-{{tab.name}}-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ ('front.'~tab.name)|trans({}, 'menu') }}</a>
+							<div class="dropdown-menu multi-collapse" id="nav-{{tab.name}}" aria-labelledby="nav-{{tab.name}}-dropdown">
 								{% for page in pages %}
 									{% if page.tab.id == tab.id %}
-										<a class="dropdown-item" href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">
+										<a class="dropdown-item  text-wrap" href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">
 											<i class="fas fa-circle "></i>
 											{{ ('front.'~page.name)|trans({}, 'menu') }}</a>
 									{% endif %}
@@ -32,11 +36,9 @@
 					{% else %}
 						{% for page in tab.pages %}
 							{% if tab.name != 'home' %}
-								<li class="{{ odd }}">
-
-									<a class="nav-link" href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">{{ ('front.'~page.name)|trans({}, 'menu') }}</a>
+								<li class="{{ transform }}">
+									<a class="nav-link {{ active }}" href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">{{ ('front.'~page.name)|trans({}, 'menu') }}</a>
 								</li>
-
 							{% endif %}
 						{% endfor %}
 					{% endif %}

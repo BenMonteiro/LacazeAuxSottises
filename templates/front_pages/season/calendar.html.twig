@@ -21,7 +21,7 @@
 	<div class="tab-content agenda mb-3" id="pills-tabContent">
 
 		<div class="mt-4 offset-3 col-6">
-			<img class="calendarBar" src="{{asset('images/title-bar.jpg')}}">
+			<img class="calendarBar" src="{{asset('images/trait-rouge.png')}}">
 		</div>
 		{% for month in months %}
 			{% set show = '' %}
@@ -48,30 +48,33 @@
 					{% for seasonEvent in monthEvents %}
 						<a class="element-link" href="{{ path('display_event', {'id': seasonEvent.id}) }}">
 							<div class="text-center">
-								<h3 class="text-decoration-none colored mb-0">{{ seasonEvent.starting_date|format_date(pattern="EEEE d MMMM")|capitalize }}
-								</h3>
+								<h2 class="text-decoration-none colored mb-0">{{ seasonEvent.starting_date|format_date(pattern="EEEE d MMMM")|capitalize }}
+								</h2>
 								<p class="text-dark font-weight-lighter font-italic mb-0">{{seasonEvent.place}}</p>
-								<h4>{{ seasonEvent.name }}</h4>
+								<h2>{{ seasonEvent.name }}</h2>
 							</div>
 						</a>
 					{% endfor %}
-				{% else %}
-					<p class="mt-5 text-center">{{'general.no_events'|trans({}, 'general')|capitalize}}</p>
 				{% endif %}
 
 				{% if monthPerfs|length >= 1 %}
 					{% for seasonPerf in monthPerfs %}
 						<a class="element-link" href="{{ path('display_company', {'id': seasonPerf.company.id}) }}">
 							<div class="text-center ">
-								<h3 class="text-decoration-none colored mb-0">{{ seasonPerf.date|format_date(pattern="EEEE d MMMM")|capitalize}}
-								</h3>
+								<h2 class="text-decoration-none colored mb-0">{{ seasonPerf.date|format_date(pattern="EEEE d MMMM")|capitalize}}
+								</h2>
 								<p class="text-dark font-weight-lighter font-italic mb-0">{{ seasonPerf.cityShow }}</p>
-								<h4 class="mb-0">{{ seasonPerf.company.name }},
-									{{ seasonPerf.company.showTitle}}</h4>
+								<h2 class="mb-0">{{ seasonPerf.company.name }},
+									{{ seasonPerf.company.showTitle}}</h2>
 							</div>
 						</a>
 					{% endfor %}
 				{% endif %}
+
+				{% if monthPerfs|length == 0 and monthEvents|length == 0 %}
+					<p class="mt-5 text-center">{{'general.no_events'|trans({}, 'general')|capitalize}}</p>
+				{% endif %}
+
 			</div>
 		{% endfor %}
 	</div>

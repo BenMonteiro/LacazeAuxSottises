@@ -4,8 +4,8 @@
 	<img class="redCircle" src="{{asset('images/TRAIT.rouge.jpg')}}">
 	<div class=" d-none offset-xl-2 col-xl-8 d-md-flex flex-wrap justify-content-around mb-5">
 		{% for section in sections %}
-			{% if section.image %}
-				<div class="d-flex flex-column align-items-center col-lg-3 col-md-4 col-sm-6 col-12 my-3">
+			{% if section.image.name %}
+				<div class="d-flex flex-column align-items-center col-lg-4 col-sm-6 col-12 my-3">
 					<div class="company-image-div">
 						<img class="company-frame" src="{{ asset('images/cadre.png') }}">
 						<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
@@ -16,12 +16,12 @@
 	</div>
 	<div class="offset-md-2 col-md-8">
 		{% for section in sections %}
-			<article class="mb-5 mx-5">
+			<article class="mb-5">
 				{% if section.title %}
 					<h3 class="font-weight-bold colored mb-0">{{ section.title|lower|capitalize }}</h3>
 				{% endif %}
 				{% if section.subTitle %}
-					<h4 class="font-weight-bold colored">{{ section.subTitle }}</h4>
+					<h3 class="mb-2">{{ section.subTitle }}</h3>
 				{% endif %}
 				<p class="text-justify">{{ section.content|raw}}</p>
 			</article>

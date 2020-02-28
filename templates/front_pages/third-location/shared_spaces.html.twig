@@ -6,16 +6,19 @@
 		{% include('/front_pages/_intro_section_template.html.twig') %}
 		{% for section in sections %}
 			{% if section.name != 'intro' %}
-				<section class=" d-sm-flex align-items-center col-12 mb-3">
-					<div class="offset-sm-0 col-sm-4 offset-3 col-6 mb-3">
-						<img class="assoIntroImage img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+				<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
+					<div class="d-flex flex-column align-items-center my-3">
+						<div class="company-image-div">
+							<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+							<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+						</div>
 					</div>
-					<article class="framedArticle red-dot h-100 col-sm-7 ">
+					<article class="framedArticle red-dot h-100 col-md-7">
 						{% if section.title %}
-							<h3 class="colored">{{ section.title }}</h3>
+							<h2 class="colored">{{ section.title }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h4>{{ section.subTitle }}</h4>
+							<h3>{{ section.subTitle }}</h3>
 						{% endif %}
 						<p class="text-justify">{{ section.content|raw}}</p>
 					</article>

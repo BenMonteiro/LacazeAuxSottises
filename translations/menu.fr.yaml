@@ -7,7 +7,7 @@ front:
     volunteering: Bénévolat
     partners: Partenaires
     support: Soutien
-    contact: + d'infos
+    contact: + D'infos
     asso: Lacaze...
     presentation: Présentation
     prog: Calendrier
@@ -32,17 +32,17 @@ front:
 
 back:
     home: Accueil
-    association: L'Association
-    season: La Saison
-    festival: Le Festival
-    third-location: Le Tiers-Lieu
-    volunteering: Le Bénévolat
-    support: Nous Soutenir
-    contact: Contact
+    association: Association
+    season: Saison
+    festival: Festival
+    third-location: Tiers-Lieu
+    volunteering: Bénévolat
+    support: Soutien
+    contact: + D'infos
     companies: compagnies
     events: Événements
     performances: représentations
-    partners: Nos Partenaires
+    partners: Partenaires
     partner: Partenaires
     team: équipe
     sections: pages

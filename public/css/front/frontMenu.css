@@ -31,10 +31,23 @@ nav li {
     background-color: transparent;
 }
 
+.nav-link:hover {
+    color: #DA291C !important
+}
+
+.nav-link.active {
+    color: #DA291C !important
+}
+
 .dropdown-menu {
-    padding: 0;
+    padding: 0 0 0 3px;
+    margin-top: 0;
     border: none;
-    background-color: white;
+    background-color: #DA291C;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 .transform-10 {
@@ -56,7 +69,7 @@ li.transform-350>a {
 .cycliste {
     position: relative;
     width: 50px;
-    left: 72.5%;
+    left: 71.8%;
     top: -15%;
     z-index: 50;
 }
@@ -65,10 +78,9 @@ li.transform-350>a {
     padding-left: 3px
 }
 
-.nav-link:hover,
 .dropdown-item:hover {
     border: none;
-    color: #DA291C !important;
+    color: white !important;
     background-color: transparent;
 }
 
@@ -88,4 +100,5 @@ nav>ul {
 
 .dropdown-toggle::after {
     vertical-align: 0;
+    content: none;
 }

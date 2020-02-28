@@ -5,57 +5,72 @@
 
 		{% include('/front_pages/_intro_section_template.html.twig') %}
 
-		<h2 class="mb-3">{{ 'general.third_location.all_year'|trans({}, 'general')|title }}</h2>
+		<h2 class="font-weight-bold colored offset-2 mb-3">{{ 'general.third_location.all_year'|trans({}, 'general')|title }}</h2>
 		{% for section in sections %}
 			{% if section.name == "all year" %}
-				<section class=" d-sm-flex align-items-center col-12 mb-3">
-					<img class="col-sm-4 offset-sm-0 offset-3 col-6 img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-					<article class="h-100 col-sm-8 col-11">
+				<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
+					<div class="d-flex flex-column align-items-center my-3">
+						<div class="company-image-div">
+							<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+							<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+						</div>
+					</div>
+					<article class="h-100 col-md-7 text-sm-left text-center">
 						{% if section.title %}
-							<h3 class="colored">{{ section.title }}</h3>
+							<h2 class="colored">{{ section.title }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h4>{{ section.subTitle }}</h4>
+							<h3>{{ section.subTitle }}</h3>
 						{% endif %}
-						<p class="text-justify">{{ section.content|raw}}</p>
+						<p>{{ section.content|raw}}</p>
 					</article>
 				</section>
 			{% endif %}
 		{% endfor %}
 
-		<h2 class="mb-3 mt-5">{{ 'general.third_location.punctual'|trans({}, 'general')|title }}</h2>
+		<h2 class="font-weight-bold colored offset-2 mb-3">{{ 'general.third_location.punctual'|trans({}, 'general')|title }}</h2>
 		{% for section in sections %}
 			{% if section.name == 'punctual' %}
-				<div class="d-sm-flex align-items-center col-12 mb-3">
-					<img class="col-sm-4 offset-sm-0 offset-3 col-6 img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-					<article class="h-100 col-sm-8 col-11">
+				<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
+					<div class="d-flex flex-column align-items-center my-3">
+						<div class="company-image-div">
+							<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+							<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+						</div>
+					</div>
+					<article class="h-100 col-md-7 text-sm-left text-center">
 						{% if section.title %}
-							<h3 class="colored">{{ section.title }}</h3>
+							<h2 class="colored">{{ section.title }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h4>{{ section.subTitle }}</h4>
+							<h3>{{ section.subTitle }}</h3>
 						{% endif %}
-						<p class="text-justify">{{ section.content|raw}}</p>
+						<p>{{ section.content|raw}}</p>
 					</article>
-				</div>
+				</section>
 			{% endif %}
 		{% endfor %}
 
-		<h2 class="mb-3 mt-5">{{ 'general.third_location.do_it_yourself'|trans({}, 'general')|title }}</h2>
+		<h2 class="font-weight-bold colored offset-2 mb-3">{{ 'general.third_location.do_it_yourself'|trans({}, 'general')|title }}</h2>
 		{% for section in sections %}
 			{% if section.name == 'do it' %}
-				<div class=" d-sm-flex align-items-center col-12 mb-3">
-					<img class="col-sm-4 offset-sm-0 offset-3 col-6 img-thumbnail" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-					<article class="h-100 col-sm-8 col-11">
+				<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
+					<div class="d-flex flex-column align-items-center my-3">
+						<div class="company-image-div">
+							<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+							<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+						</div>
+					</div>
+					<article class="h-100 col-md-7 text-sm-left text-center">
 						{% if section.title %}
-							<h3 class="colored">{{ section.title }}</h3>
+							<h2 class="colored">{{ section.title }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h4>{{ section.subTitle }}</h4>
+							<h3>{{ section.subTitle }}</h3>
 						{% endif %}
-						<p class="text-justify">{{ section.content|raw}}</p>
+						<p>{{ section.content|raw}}</p>
 					</article>
-				</div>
+				</section>
 			{% endif %}
 		{% endfor %}
 	</div>

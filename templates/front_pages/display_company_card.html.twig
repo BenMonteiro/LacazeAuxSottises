@@ -1,124 +1,55 @@
-{% extends 'front_layout.html.twig' %}
+{% extends "front_templates/company_template.html.twig" %}
 
 {% block title %}
 	{{ company.name}}
 {% endblock %}
 
-{% block pageTitle %}
-	<div>
-		<a class="home-link" href="{{ path('page_show', {'pageSlug': 'home'}) }}">
-			<i class="fas fa-2x fa-home"></i>
-		</a>
-		<div class="d-flex justify-content-center">
-			<p class="mt-3 pageTitle px-2">
-				{{ company.name}}
-			</p>
-		</div>
-		<div id="titleLines">
-			<hr class="blackline">
-			<hr class="redline">
-		</div>
-	</div>
-{% endblock %}
-
 {% block body %}
-	<div class="col-12 d-flex">
-		<aside class="col-lg-2  col-4 my-5 border-right border-danger">
-			{% if company.isHosted %}
-				<div>
-					<h4>{{ 'company.status'|trans({}, 'company')|capitalize}}</h4>
-					<p class="ml-3 colored font-italic">
-						{{ 'company.is.hosted'|trans({}, 'company')|capitalize }}
-					</p>
-				</div>
-				<p>
-					{{ 'company.hosted'|trans({}, 'company')|capitalize}}
-					{{ company.isHostedFrom ? company.isHostedFrom|format_date('medium') : '' }}
-					<br>
-					{{ 'general.to'|trans({}, 'general')|capitalize}}
-					{{ company.isHostedUntil ? company.isHostedUntil|format_date('medium'): '' }}</p>
-			{% endif %}
-			<div>
-				<h4>{{ 'company.show.title'|trans({}, 'company')|capitalize }}
-					:
-				</h4>
-				<p class="ml-3">{{ company.showTitle }}</p>
-			</div>
-			<div>
-				<h4>{{ 'company.show.theme'|trans({}, 'company')|capitalize }}
-					:</h4>
-				<p class="ml-3">{{ company.theme }}</p>
-			</div>
-			<div>
-				<h4>{{'company.show.duration'|trans({}, 'company')|capitalize}}
-					:</h4>
-				<p class="ml-3">{{ company.duration }}
-					{{'general.minutes'|trans({}, 'general') }}</p>
-			</div>
-			<div>
-				<h4>{{'company.show.audience'|trans({}, 'company')|capitalize}}
-					:</h4>
-				<p class="ml-3">{{ company.audience }}</p>
-			</div>
-			<div>
-				<h4>{{'general.more.infos'|trans({}, 'general')|capitalize}}
-					:</h4>
-				<p class="ml-3">{{ company.moreInfos|raw }}</p>
-			</div>
-			{% if company.website != null %}
-				<div>
-					<h4>{{'general.website'|trans({}, 'general')|capitalize}}
-						:</h4>
-					<a class="ml-3" href="{{ company.website }}">{{'company.site'|trans({}, 'company')|capitalize }}</a>
-				</div>
-			{% endif %}
+	<div class="offset-2 col-8">
 
-			{% if company.website != null %}
-				<div>
-					<h4>{{'general.videoLink'|trans({}, 'general')|capitalize}}
-						:</h4>
-					<a class="ml-3" href="{{ company.videoLink}}">{{'company.video'|trans({}, 'company')|capitalize }}</a>
+		<div class="d-flex">
+			<div class="d-flex flex-column align-items-center my-3">
+				<div class="company-image-div">
+					<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+					<img class="company-image" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
 				</div>
-			{% endif %}
-		</aside>
-		<div class="col-lg-10 col-8 flex-column">
-			<div class="col-11 mb-5">
-				<img class="miniImage col-md-4 col-12 mt-5 mx-3 float-left" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
-				<div class="col-12 text-justify my-5 pt-5">{{ company.description|raw }}</div>
 			</div>
+			<div class="d-flex flex-column ml-4 mt-4">
+				{% if company.isHosted %}
+					<div>
+						<p class=" colored font-italic">
+							{{ 'company.is.hosted'|trans({}, 'company')|capitalize }}
+						</p>
+					</div>
+					<p>
+						{{ 'company.hosted'|trans({}, 'company')|capitalize}}
+						{{ company.isHostedFrom ? company.isHostedFrom|format_date('medium') : '' }}
+						<br>
+						{{ 'general.to'|trans({}, 'general')|capitalize}}
+						{{ company.isHostedUntil ? company.isHostedUntil|format_date('medium'): '' }}</p>
+				{% endif %}
+				<p class="colored">{{ company.showTitle }}
+					-
+					{{ company.duration }}{{'general.minutes'|trans({}, 'general') }}</p>
+				<p class="">{{ company.theme }}</p>
+				<p class="">{{ company.audience }}</p>
 
-			<div class="row offset-lg-1 col-lg-11 mt-5 pt-5">
-				<h2 class=" ml-3 mb-3 font-weight-bold">{{ 'company.performances'|trans({}, 'company')|capitalize}}
-				</h2>
-				<table class="table table-sm offset-lg-2 col-lg-8 text-center ml-3">
-					<thead>
-						<tr>
-							<th>{{'general.date'|trans({}, 'general')|capitalize}}</th>
-							<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for performance in company.performances %}
-							<tr>
-								<td>
-									<div class="date-infos h-100 colored">
-										<p class="mb-0 font-weight-bold">{{ performance.date ? performance.date|format_date('medium') : '' }}</p>
-										<p>{{ performance.date ? performance.date|format_time('short') : '' }}</p>
-									</div>
-								</td>
-								<td>
-									<p>{{ performance.placeShow|title }}</p>
-									<p class="font-italic colored">{{ performance.cityShow }}</p>
-								</td>
-							{% else %}
-								<tr>
-									<td colspan="8">{{'general.noRecords'|trans({}, 'general')}}</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</tbody>
-				</table>
+
 			</div>
 		</div>
+		<div class="text-center my-5">{{ company.description|raw }}</div>
+		<p class="mb-3">
+			<small>{{ company.moreInfos|raw }}</small>
+		</p>
+		{% if company.website != null %}
+			<div>
+				<a class="" href="{{ company.website }}">{{'company.site'|trans({}, 'company')|capitalize }}</a>
+			</div>
+		{% endif %}
+
+		{% if company.website != null %}
+			<a class="" href="{{ company.videoLink}}">{{'company.video'|trans({}, 'company')|capitalize }}</a>
+		{% endif %}
+
 	</div>
 {% endblock %}
