@@ -37,37 +37,17 @@ class EventRepository extends ServiceEntityRepository
         return $conn->query($sql)->fetch();
     }
 
+
     public function findMonthEvents()
     {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = 'SELECT * 
-        FROM event
-        WHERE MONTH(starting_date)  = MONTH(NOW())
-        AND is_highlight = true
-        ORDER BY starting_date ASC
-            ';
-
-        return $conn->query($sql)->fetchAll();
+        return $this->createQueryBuilder('event')
+            ->andWhere('month(event.startingDate) = month(now())')
+            ->andWhere('event.isHighlight = true')
+            ->orderBy('event.startingDate', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 
-    /**
-     * Is admitted that all events belong to the SeasonEvent and SeasonEvent dont have starting_date. 
-     * This request give all the Events that have a starting_date
-     * If an Event don't have starting_date is considered as a recurrent event so he d'ont appear as a SeasonEvent
-     * */
-    public function findSeasonEvents()
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = 'SELECT * 
-        FROM event
-        WHERE starting_date  IS NOT NULL
-        ORDER BY starting_date ASC
-            ';
-
-        return $conn->query($sql)->fetchAll();
-    }
 
     // /**
     //  * @return Event[] Returns an array of Event objects

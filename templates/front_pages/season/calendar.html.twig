@@ -29,49 +29,39 @@
 				{% set show = 'active show' %}
 			{% endif %}
 
-			{% set monthEvents = [] %}
-			{% for seasonEvent in seasonEvents  %}
-				{% if (seasonEvent.starting_date|date('M') == month)%}
-					{% set monthEvents = monthEvents|merge([seasonEvent]) %}
-				{% endif %}
-			{% endfor %}
 
 			{% set monthPerfs = [] %}
-			{% for seasonPerf in seasonPerfs  %}
-				{% if (seasonPerf.date|date('M') == month)%}
-					{% set monthPerfs = monthPerfs|merge([seasonPerf])  %}
+			{% for perf in performances  %}
+				{% if (perf.date|date('M') == month)%}
+					{% set monthPerfs = monthPerfs|merge([perf])  %}
 				{% endif %}
 			{% endfor %}
 
 			<div class="tab-pane fade {{ show }}" id="pills-{{month}}" role="tabpanel" aria-labelledby="pills-{{month}}-tab">
-				{% if monthEvents|length >= 1 %}
-					{% for seasonEvent in monthEvents %}
-						<a class="element-link" href="{{ path('display_event', {'id': seasonEvent.id}) }}">
-							<div class="text-center">
-								<h2 class="text-decoration-none colored mb-0">{{ seasonEvent.starting_date|format_date(pattern="EEEE d MMMM")|capitalize }}
-								</h2>
-								<p class="text-dark font-weight-lighter font-italic mb-0">{{seasonEvent.place}}</p>
-								<h2>{{ seasonEvent.name }}</h2>
-							</div>
-						</a>
-					{% endfor %}
-				{% endif %}
-
-				{% if monthPerfs|length >= 1 %}
-					{% for seasonPerf in monthPerfs %}
-						<a class="element-link" href="{{ path('display_company', {'id': seasonPerf.company.id}) }}">
+				{% for perf in monthPerfs %}
+					{% if perf.event == 'saison' %}
+						<a class="element-link" href="{{ path('display_company', {'id': perf.company.id}) }}">
 							<div class="text-center ">
-								<h2 class="text-decoration-none colored mb-0">{{ seasonPerf.date|format_date(pattern="EEEE d MMMM")|capitalize}}
+								<h2 class="text-decoration-none colored mb-0">{{ perf.date|format_date(pattern="EEEE d MMMM")|title}}
 								</h2>
-								<p class="text-dark font-weight-lighter font-italic mb-0">{{ seasonPerf.cityShow }}</p>
-								<h2 class="mb-0">{{ seasonPerf.company.name }},
-									{{ seasonPerf.company.showTitle}}</h2>
+								<p class="text-dark font-weight-lighter font-italic mb-0">{{ perf.cityShow }}</p>
+								<h2 class="mb-0">{{ perf.company.name }},
+									{{ perf.company.showTitle}}</h2>
 							</div>
 						</a>
-					{% endfor %}
-				{% endif %}
+					{% elseif perf.event != 'saison' and perf.event != 'Soirées du Tiers-Lieu' %}
+						<a class="element-link" href="{{ path('display_event', {'id': perf.event.id}) }}">
+							<div class="text-center">
+								<h2 class="text-decoration-none colored mb-0">{{ perf.event.startingDate|format_date(pattern="EEEE d MMMM")|title }}
+								</h2>
+								<p class="text-dark font-weight-lighter font-italic mb-0">{{perf.event.place}}</p>
+								<h2>{{ perf.event.name }}</h2>
+							</div>
+						</a>
+					{% endif %}
+				{% endfor %}
 
-				{% if monthPerfs|length == 0 and monthEvents|length == 0 %}
+				{% if monthPerfs|length == 0 %}
 					<p class="mt-5 text-center">{{'general.no_events'|trans({}, 'general')|capitalize}}</p>
 				{% endif %}
 

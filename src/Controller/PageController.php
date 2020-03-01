@@ -108,8 +108,7 @@ class PageController extends AbstractController
                 $data['homePerfs'] = $this->performanceRepository->findMonthPerfs();
                 break;
             case 'saison/calendrier':
-                $data['seasonEvents'] = $this->eventRepository->findSeasonEvents();
-                $data['seasonPerfs'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'saison'])], ['date' => 'ASC']);
+                $data['performances'] = $this->seasonPerfs();
                 break;
             case 'festival/calendrier':
                 $data['festPerfs'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'Festival Fête des sottises !'])], ['date' => 'ASC']);
@@ -120,12 +119,35 @@ class PageController extends AbstractController
             case 'partenaires/partenaires':
                 $data['partners'] = $this->partnersRepository->findAll();
                 break;
-            case 'season/hostedCompanies':
+            case 'saison/cies-accueillies':
                 $data['companies'] = $this->companyRepository->findBy([], ['name' => 'ASC']);
                 break;
         }
 
         return $data;
+    }
+
+
+    public function seasonPerfs()
+    {
+        $performances = $this->performanceRepository->findBy([], ['date' => 'ASC']);
+        $seasonPerfs = [];
+        $perfEvents = [];
+
+        foreach ($performances as $perf) {
+            if ($perf->getEvent() == 'saison') {
+                array_push($seasonPerfs, $perf);
+            } elseif ($perf->getEvent() != 'saison') {
+                array_push($perfEvents, $perf);
+            }
+        };
+
+        $perfUniqueEvents =  array_unique($perfEvents);
+        $perfs =  array_merge($seasonPerfs, $perfUniqueEvents);
+
+        asort($perfs);
+
+        return $perfs;
     }
 
 

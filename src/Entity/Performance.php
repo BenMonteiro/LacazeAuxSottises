@@ -144,6 +144,7 @@ class Performance
 
     public function __toString()
     {
-        return $this->name;
+        $date = $this->getDate();
+        return $date->format('d-m-Y');
     }
 }

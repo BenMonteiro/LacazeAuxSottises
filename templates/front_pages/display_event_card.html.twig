@@ -15,12 +15,12 @@
 		{% endif %}
 		<div class="col-8 mt-4">
 			{% if event.startingDate != event.endingDate and event.endingDate is defined %}
-				<p>{{'from'|trans({}, 'general')}}
+				<p>{{'from'|trans({}, 'general')|capitalize}}
 					{{event.startingDate|date('d')}}
 					{{'to'|trans({}, 'general')}}
 					{{event.endingDate|date('d M')}}</p>
 			{% elseif (event.startingDate == event.endingDate or event.endingDate is null) and event.startingDate is defined %}
-				<p>{{event.startingDate|format_date('full')}}</p>
+				<p>{{event.startingDate|format_date('full')|title}}</p>
 			{% endif %}
 			<p class="mb-2">{{event.place}}</p>
 			<p>{{ event.description|raw }}</p>
