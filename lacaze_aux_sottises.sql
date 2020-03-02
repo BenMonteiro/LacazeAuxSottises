@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 02 mars 2020 à 16:21
+-- Généré le :  lun. 02 mars 2020 à 21:11
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   `image_description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_hidden` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `company`
@@ -78,9 +78,26 @@ INSERT INTO `company` (`id`, `name`, `show_title`, `description`, `theme`, `audi
 (116, 'Les Francas', NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Soirée jeux de société avec Les Francas', 'Tout public', 60, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.25.rippley.jpg', 'web.25.rippley.jpg', 'image/jpeg', 6611839, '2948,2845', '2020-03-02 15:14:33', 'Plateau de jeux avec une bille et des maillets', 1),
 (117, 'Chorales', NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Rencontre de chorales - au Château d’Orion', 'Tout public', 60, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.26.jpg', 'web.26.jpg', 'image/jpeg', 2562920, '1848,1849', '2020-03-02 15:13:34', 'chorales chantant devant un public', 1),
 (118, 'Cie Laluberlu', '40, Chants d\'amour à perte de voix', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Concert avec la cie Laluberlu - 40, Chants d\'amour à perte de voix', 'Tout public', 59, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.27.c.laluberlu.jpg', 'web.27.c.laluberlu.jpg', 'image/jpeg', 494677, '959,958', '2020-03-02 15:14:57', 'Femme avec un accordéon', 1),
-(119, 'Cie Hors Sujet', NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Soirée veillée avec la cie Hors Suje', 'Tout public', 60, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'index.png', 'index.png', 'image/png', 10988, '250,250', '2020-03-02 14:27:33', 'Logo de la compagnie', 1),
-(120, 'Intimatopia', NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>15 pers. sur inscription</p>\r\n</body>\r\n</html>', 'Jeux de rôle avec Intimatopia', '+ 16ans', 120, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'photo.29[Taille originale] Brown and White Recording Studio Logo.png', 'photo.29[Taille originale] Brown and White Recording Studio Logo.png', 'image/png', 24108, '500,500', '2020-02-16 14:21:14', 'logo intimatopia', 1),
-(128, 'Cie Chicken Street', 'Poilu, purée de guerre', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', NULL, 'Tout public', 50, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.1.ChickenStreet-POILU©photo_FrançoisMary.jpg', 'web.1.ChickenStreet-POILU©photo_FrançoisMary.jpg', 'image/jpeg', 263288, '650,650', '2020-03-02 16:20:23', 'per', 0);
+(119, 'Cie Hors Sujet', NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Soirée veillée avec la cie Hors Suje', 'Tout public', 60, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.28.laure.jpg', 'web.28.laure.jpg', 'image/jpeg', 170498, '650,650', '2020-03-02 20:19:05', 'Logo de la compagnie', 1),
+(120, 'Intimatopia', NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n<p>15 pers. sur inscription</p>\r\n</body>\r\n</html>', 'Jeux de rôle avec Intimatopia', '+ 16ans', 120, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.29.jeu.role.jpg', 'web.29.jeu.role.jpg', 'image/jpeg', 266163, '650,633', '2020-03-02 20:19:35', 'logo intimatopia', 1),
+(128, 'Cie Chicken Street', 'Poilu, purée de guerre', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', NULL, 'Tout public', 50, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.1.ChickenStreet-POILU©photo_FrançoisMary.jpg', 'web.1.ChickenStreet-POILU©photo_FrançoisMary.jpg', 'image/jpeg', 263288, '650,650', '2020-03-02 16:20:23', 'per', 0),
+(129, 'Cie Chicken Street', 'Le magnifique bon à rien', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Théatre d\'objets', 'Tout public', 50, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.2.magnifiquebonrien.daniele.touret.jpg', 'web.2.magnifiquebonrien.daniele.touret.jpg', 'image/jpeg', 843290, '650,631', '2020-03-02 20:25:15', 'Panneau sur une palette avec des photos de western', 0),
+(130, 'Initiation aux arts, etc...', 'Initiation aux arts du cirque, jeux en bois', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'cirque', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(131, 'Brana Project', 'Swing & songs', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Concert', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.3.januszjerryduo.jpg', 'web.3.januszjerryduo.jpg', 'image/jpeg', 278468, '650,645', '2020-03-02 20:36:24', 'deux hommes dos à dos', 0),
+(132, 'Anonimo Teatro', 'La Route', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Road-movie marionnettique', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.4.laroute©A.Djurovic2.jpg', 'web.4.laroute©A.Djurovic2.jpg', 'image/jpeg', 64683, '650,650', '2020-03-02 20:38:35', 'voitures miniatures', 0),
+(133, 'Anonimo Teatro', 'Muppets Rapsody', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Récital pour boules de poils', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(134, 'Caus\'rue', NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', NULL, 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(135, 'Le choeur des sottises', NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'chant chorale', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(136, 'GIVB', 'Ne le dis surtout pas !', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Théatre de rue', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.5.givb.crédit.Viewbyvie.jpg', 'web.5.givb.crédit.Viewbyvie.jpg', 'image/jpeg', 201252, '650,637', '2020-03-02 20:50:33', 'Homme avec les mains sur la tête', 0),
+(137, 'Typhus Bronx', 'Le délirium du papillon', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'clown caustique', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.6.TyphusBronx©FabienDEBRABANDERE.jpg', 'web.6.TyphusBronx©FabienDEBRABANDERE.jpg', 'image/jpeg', 286009, '650,648', '2020-03-02 20:53:18', 'clown dans la pénombre', 0),
+(138, 'Dj Melusine', 'Dj set', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Ethno techno - techno swing', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.8.melusine.jpg', 'web.8.melusine.jpg', 'image/jpeg', 63386, '650,653', '2020-03-02 20:57:03', 'Femme en train de mixer', 0),
+(139, 'La Micro duo', 'Concert', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Chanson', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.9.La.Micro.Bus.jpg', 'web.9.La.Micro.Bus.jpg', 'image/jpeg', 383048, '650,650', '2020-03-02 20:59:08', 'Bus miniature', 0),
+(140, 'Leandre', 'Rien à dire', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'clown', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.10.Rien.a.direc.Alejandro.Ardilla.tif', 'web.10.Rien.a.direc.Alejandro.Ardilla.tif', 'image/tiff', 6796044, '650,650', '2020-03-02 21:01:54', 'Homme tirant sur une de ses chaussettes', 0),
+(141, 'La Marmaille', 'La Marmaille en scène', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Fanfare festive', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.11.La Marmaille_Douche_HD_carré_©Christelle Quessada.jpg', 'web.11.La Marmaille_Douche_HD_carré_©Christelle Quessada.jpg', 'image/jpeg', 634503, '768,808', '2020-03-02 21:04:05', 'Hommes et femmes en maillot dans des douches avec des instruments de musique', 0),
+(142, 'Cie Baleine-Cargo', 'Je cherche un homme', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Théâtre de rue', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.12.La baleine-cargo .jpg', 'web.12.La baleine-cargo .jpg', 'image/jpeg', 216124, '650,654', '2020-03-02 21:06:20', 'groupe de gens autour de tonneaux', 0),
+(143, 'Duo Jacaranda', 'Concert', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Bossa Nova', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.13.Duojacaranda2019 copie.png', 'web.13.Duojacaranda2019 copie.png', 'image/png', 858330, '650,645', '2020-03-02 21:07:49', 'groupe avec une femme qui chante et un homme qui joue de la guitare', 0),
+(144, 'ESACTO- Le Lido - Collectif Douce violence', 'Sur le fil du rasoir', '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Nouveau cirque', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.14.Christophe_trouilhet_lido_nb.jpg', 'web.14.Christophe_trouilhet_lido_nb.jpg', 'image/jpeg', 73559, '650,629', '2020-03-02 21:09:25', 'acrobates', 0),
+(145, 'Le bal du samedi soir', NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'Bal éclectique et populaire', 'Tout public', 1, 0, NULL, NULL, NULL, NULL, '<!DOCTYPE html>\r\n<html>\r\n<head>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>', 'web.15.dj.jpg', 'web.15.dj.jpg', 'image/jpeg', 374616, '650,624', '2020-03-02 21:10:58', 'Table de mixage', 0);
 
 -- --------------------------------------------------------
 
@@ -381,7 +398,7 @@ CREATE TABLE IF NOT EXISTS `performance` (
   PRIMARY KEY (`id`),
   KEY `IDX_82D79681979B1AD6` (`company_id`),
   KEY `IDX_82D7968171F7E88B` (`event_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=281 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=306 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `performance`
@@ -414,7 +431,32 @@ INSERT INTO `performance` (`id`, `company_id`, `event_id`, `city_show`, `place_s
 (274, 115, 41, 'Orthez', 'Lac de Biron', '2020-09-25 00:00:00', NULL, 0),
 (275, 115, 42, 'Navarrenx, Sauveterre-de-Béarn, Salies-de-Béarn', 'Navarrenx, Sauveterre-de-Béarn, Salies-de-Béarn', '2020-10-18 00:00:00', NULL, 0),
 (279, 128, 38, 'Sorde-l’Abbay', 'Abbaye Saint Jean', '2020-07-20 21:00:00', NULL, 0),
-(280, 128, 38, 'Oraàs', 'Préau de la salle communale', '2020-07-20 21:00:00', NULL, 0);
+(280, 128, 38, 'Oraàs', 'Préau de la salle communale', '2020-07-20 21:00:00', NULL, 0),
+(281, 129, 38, 'Puyoô', 'Place de la mairie', '2020-07-21 21:00:00', NULL, 0),
+(282, 129, 38, 'Araux', 'Place de la mairie', '2020-07-23 21:00:00', NULL, 0),
+(283, 130, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-24 15:00:00', NULL, 0),
+(284, 130, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-26 15:00:00', NULL, 0),
+(285, 131, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-24 19:30:00', NULL, 0),
+(286, 132, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-24 21:00:00', NULL, 0),
+(287, 132, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-25 18:00:00', NULL, 0),
+(288, 133, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-25 21:00:00', NULL, 0),
+(289, 133, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-26 18:00:00', NULL, 0),
+(290, 134, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-26 11:00:00', NULL, 0),
+(291, 135, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-26 12:30:00', NULL, 0),
+(292, 136, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-25 21:00:00', NULL, 0),
+(293, 136, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-24 21:30:00', NULL, 0),
+(294, 137, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-24 22:30:00', NULL, 0),
+(295, 137, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-25 22:30:00', NULL, 0),
+(296, 109, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-24 21:00:00', NULL, 0),
+(297, 109, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-25 18:00:00', NULL, 0),
+(298, 138, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-24 23:30:00', NULL, 0),
+(299, 139, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-25 19:30:00', NULL, 0),
+(300, 140, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-25 22:30:00', NULL, 0),
+(301, 141, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-25 23:30:00', NULL, 0),
+(302, 142, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-26 18:00:00', NULL, 0),
+(303, 143, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-26 19:30:00', NULL, 0),
+(304, 144, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-26 21:00:00', NULL, 0),
+(305, 145, 30, 'Salies-de-Béarn', 'Salies-de-Béarn', '2020-07-26 22:30:00', NULL, 0);
 
 -- --------------------------------------------------------
 

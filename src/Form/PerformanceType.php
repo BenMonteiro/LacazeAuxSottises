@@ -35,7 +35,7 @@ class PerformanceType extends AbstractType
         $uri = $_SERVER["REQUEST_URI"];
         $url = trim(parse_url($uri, PHP_URL_PATH), "/");
 
-        if (isset($_GET['company_id']) or $url == 'admin/company/new') {
+        if (isset($_GET['company_id']) or preg_match('#admin/company/#', $url)) {
             $this->companyFieldType = EntityType::class;
             $this->companyFieldOptions = [
                 'class' => Company::class,
