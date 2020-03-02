@@ -74,11 +74,11 @@
 
 				<div class="{{ homeFrame }} offset-2 col-8 p-2 mb-2">
 					<div class="text-center">
-						{% if section.image.name %}
+						{% if section.image.name and section.image.mimeType != 'application/pdf' %}
 							<div class="d-flex">
 								<img class=" col-md-4 d-none d-md-block mb-2" src=" {{asset('images/uploads/paragraphImage/' ~ section.image.name)}} " alt=" {{section.imageDescription}} ">
-								<div class="col-md-8 mt-2">
-									<h2 class="text-left colored">{{ section.title|lower|capitalize }}</h2>
+								<div class="col-md-8 text-left mt-2">
+									<h2 class=" colored">{{ section.title|lower|capitalize }}</h2>
 									<p>{{ section.content|raw }}</p>
 								</div>
 							</div>
@@ -86,6 +86,9 @@
 							<div class="mt-2">
 								<h2 class="colored">{{ section.title|lower|capitalize }}</h2>
 								<p>{{ section.content|raw }}</p>
+								{% if section.image.name and section.image.mimeType == 'application/pdf' %}
+									<a class="text-break colored" href="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" download>{{'general.download_form'|trans({}, 'general')|capitalize}}</a>
+								{% endif %}
 							</div>
 						{% endif %}
 					</div>
@@ -93,4 +96,6 @@
 			{% endfor %}
 		</div>
 	</div>
+	<img class=" d-md-block d-none homeRedCircle" src="{{asset('images/TRAIT.rouge.jpg')}}">
+	<img class=" d-md-block d-none pageBorder" src="{{asset('images/demi-carré.jpg')}}">
 {% endblock %}

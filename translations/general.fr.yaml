@@ -54,6 +54,7 @@ general:
     date: date
     hour: heure
     be_volunteer: être bénévole
+    download_form: télécharger le formulaire
     third_location:
         prod_meetings: Le Rendez-vous des Producteurs
         nights: Les Soirées du Tiers-Lieu

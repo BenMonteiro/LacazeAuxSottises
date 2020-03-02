@@ -28,17 +28,18 @@ class PerformanceType extends AbstractType
         $this->router = $router;
     }
 
+
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if (isset($_GET['company_id'])) {
+        $uri = $_SERVER["REQUEST_URI"];
+        $url = trim(parse_url($uri, PHP_URL_PATH), "/");
+
+        if (isset($_GET['company_id']) or $url == 'admin/company/new') {
             $this->companyFieldType = EntityType::class;
             $this->companyFieldOptions = [
                 'class' => Company::class,
                 // Thanks to this attribute, the field is rightly prefilled
-                'attr' => [
-                    'class' => 'js-company-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('utility_companies'),
-                ],
                 'choice_attr' => function ($choice, $key, $value) {
                     if (isset($_GET['company_id']) && $value === $_GET['company_id']) {
 
@@ -58,6 +59,8 @@ class PerformanceType extends AbstractType
                     'data-autocomplete-url' => $this->router->generate('utility_companies')
                 ]
             ];
+            $builder->get('company')
+                ->addModelTransformer($this->transformer);
         }
 
         $builder
@@ -82,8 +85,6 @@ class PerformanceType extends AbstractType
                     }
                 }
             ]);
-        $builder->get('company')
-            ->addModelTransformer($this->transformer);
     }
 
     public function configureOptions(OptionsResolver $resolver)

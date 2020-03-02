@@ -47,7 +47,23 @@ a {
     top: -300px;
     right: -500px;
     width: 900px;
-    opacity: 0.7;
+}
+
+.homeRedCircle {
+    position: absolute;
+    bottom: 90px;
+    right: 100px;
+    width: 500px;
+    z-index: -3;
+
+}
+
+.pageBorder {
+    position: absolute;
+    top: 750px;
+    left: 100px;
+    width: 500px;
+    z-index: -3;
 }
 
 a {

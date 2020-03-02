@@ -52,7 +52,6 @@ class Section
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="paragraph_image", fileNameProperty="image.name", size="image.size", mimeType="image.mimeType", originalName="image.originalName")
-     * @Assert\Image
      * 
      * @var File
      */

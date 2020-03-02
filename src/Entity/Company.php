@@ -78,7 +78,6 @@ class Company
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Performance", mappedBy="company", cascade="all", orphanRemoval=true)
-     * @Assert\Valid()
      */
     private $performances;
 
