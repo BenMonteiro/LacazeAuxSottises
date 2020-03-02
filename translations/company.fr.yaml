@@ -10,6 +10,7 @@ company:
     video: voir la vidéo
     hosted: en résidence du 
     host: en résidence
+    hidden: compagnie masquée
     is:
         hosted?: en résidence ?
         hosted: sortie de résidence

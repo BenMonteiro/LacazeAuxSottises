@@ -120,7 +120,7 @@ class PageController extends AbstractController
                 $data['partners'] = $this->partnersRepository->findAll();
                 break;
             case 'saison/cies-accueillies':
-                $data['companies'] = $this->companyRepository->findBy([], ['name' => 'ASC']);
+                $data['companies'] = $this->companyRepository->findBy(['isHidden' => false], ['name' => 'ASC']);
                 break;
         }
 

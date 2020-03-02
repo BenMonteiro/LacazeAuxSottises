@@ -17,6 +17,7 @@
 			<tr>
 				<th>{{'general.image'|trans({}, 'general')|capitalize}}</th>
 				<th>{{'company.name'|trans({}, 'company')|capitalize}}</th>
+				<th>{{'company.hidden'|trans({}, 'company')|capitalize}}</th>
 				<th>{{'company.show.title'|trans({}, 'company')|capitalize}}</th>
 				<th>{{'general.description'|trans({}, 'general')|capitalize}}</th>
 				<th>{{'general.theme'|trans({}, 'general')|capitalize}}</th>
@@ -37,6 +38,7 @@
 				<tr>
 					<td><img class="miniImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>
 					<td class="colored font-weight-bold">{{ company.name }}</td>
+					<td>{{ company.isHidden ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
 					<td class="font-italic">{{ company.showTitle}}</td>
 					<td>{{ company.description|slice(0,100)|raw }}...</td>
 					<td>{{ company.theme}}</td>
