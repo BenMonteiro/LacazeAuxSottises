@@ -36,7 +36,7 @@ class CompanyEventPerfsFixtures extends Fixture implements FixtureInterface, Con
 
                 $src1 = $webPath . '/images/uploads/eventProgram/eventProgram/VISUALISATION_LACAZE_PLAQUETTE SAISON 2020_V9.pdf';
                 $src2 = $webPath . '/images/uploads/eventProgram/LOGO_LACAZE_NOIR.jpg';
-                $pdfFile = $this->setFile($src1, 'présentation projet 2020.pdf', 'pdf');
+                $pdfFile = $this->setFile($src1, 'VISUALISATION_LACAZE_PLAQUETTE SAISON 2020_V9.pdf', 'pdf');
                 $imageFile = $this->setFile($src2, 'LOGO_LACAZE_NOIR.jpg', 'jpg');
 
                 $object->setProgramPDFFile($pdfFile);
