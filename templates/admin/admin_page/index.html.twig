@@ -25,7 +25,7 @@
 				{% if page.tab.id == tab.id %}
 					<tr>
 						<td>
-							{{ ('front.' ~ page.tab)|trans({}, 'menu')}}/{{('front.'~page.name)|trans({}, 'menu')}}
+							{{('front.' ~ page.tab)|trans({}, 'menu')}}/{{('front.'~page.name)|trans({}, 'menu')}}
 						</td>
 						<td>
 							<a class="badge badge-secondary my-2 p-2" href="{{ path('page_list_show', {'id': page.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>

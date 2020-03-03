@@ -321,18 +321,18 @@ div>img.titleBar {
 
 /*--------------------------------------------------------------------------------------Company ------------------------------------------------------------------------------------------*/
 
-.company-image-div {
+.cubic-image-div {
     position: relative;
     display: flex;
 }
 
-.company-frame {
+.image-frame {
     min-width: 250px;
     height: 250px;
     z-index: 3;
 }
 
-.company-image {
+.cubic-image {
     position: absolute;
     bottom: 5%;
     width: 240px;

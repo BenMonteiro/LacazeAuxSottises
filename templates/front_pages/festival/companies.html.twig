@@ -6,9 +6,9 @@
 		{% for company in companies %}
 			<div class=" d-flex flex-column align-items-center col-lg-3 col-md-4 col-sm-6 col-12 my-3">
 				<a class="element-link" href="{{path('display_company',{'id':company.id})}}">
-					<div class="company-image-div mb-0">
-						<img class="company-frame" src="{{ asset('images/cadre.png') }}">
-						<img class="company-image" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
+					<div class="cubic-image-div mb-0">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+						<img class="cubic-image" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
 					</div>
 				</a>
 				<h2 class="mb-0">{{company.name}}</h2>

@@ -2,14 +2,14 @@
 
 {% block body %}
 
-	<img class=" d-md-block d-none redCircle" src="{{asset('images/TRAIT.rouge.jpg')}}">
+	<img class=" d-md-block d-none redCircle" src="{{asset('images/TRAIT.rouge.jpg')}}" alt="cercle pointillé rouge">
 	<div class=" d-none offset-xl-2 col-xl-8 d-md-flex flex-wrap justify-content-around mb-5">
 		{% for section in sections %}
 			{% if section.image.name %}
 				<div class="d-flex flex-column align-items-center col-lg-4 col-sm-6 col-12 my-3">
-					<div class="company-image-div">
-						<img class="company-frame" src="{{ asset('images/cadre.png') }}">
-						<img class="company-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+					<div class="cubic-image-div">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir autour de l'image">
+						<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
 					</div>
 				</div>
 			{% endif %}

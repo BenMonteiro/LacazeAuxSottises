@@ -8,9 +8,9 @@
 				{% if event.startingDate|date('M') == 'now'|date('M') %}
 					<div class="col-md-4 col-sm-6 col-12 text-center my-3">
 						<a class="element-link d-flex flex-column justify-content-between" href="{{path('display_event',{'id':event.id})}}">
-							<div class="company-image-div mb-0">
-								<img class="company-frame" src="{{ asset('images/cadre.png') }}">
-								<img src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name)}}" class="company-image" alt="{{event.imageDescription}}">
+							<div class="cubic-image-div mb-0">
+								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+								<img src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name)}}" class="cubic-image" alt="{{event.imageDescription}}">
 							</div>
 						</a>
 						<h3>{{event.name}}</h3>
@@ -28,9 +28,9 @@
 				{% if perf.date|date('M') == 'now'|date('M') %}
 					<div class="col-lg-4 col-md-4 col-sm-6 col-12 text-center my-3">
 						<a class="element-link d-flex flex-column justify-content-between" href="{{path('display_company',{'id':perf.company.id})}}">
-							<div class="company-image-div mb-0">
-								<img class="company-frame" src="{{ asset('images/cadre.png') }}">
-								<img class="company-image" src="{{asset('images/uploads/company/' ~ perf.company.image.name)}}" alt="{{perf.company.imageDescription}}">
+							<div class="cubic-image-div mb-0">
+								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+								<img class="cubic-image" src="{{asset('images/uploads/company/' ~ perf.company.image.name)}}" alt="{{perf.company.imageDescription}}">
 							</div>
 							<h3>{{perf.company}}</h3>
 							<p class="text-decoration-none text-muted text-small text-center my-1">
@@ -48,9 +48,9 @@
 		{% endif %}
 		<div class="col-lg-4 col-md-4 col-sm-6 col-12 text-center my-3">
 			<a class="element-link element-link d-flex flex-column justify-content-between" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}">
-				<div class="company-image-div mb-0">
-					<img class="company-frame" src="{{ asset('images/cadre.png') }}">
-					<img class="company-image" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}" alt="{{season.imageDescription}}">
+				<div class="cubic-image-div mb-0">
+					<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+					<img class="cubic-image" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}" alt="{{season.imageDescription}}">
 				</div>
 			</a>
 		</div>
@@ -65,7 +65,7 @@
 					</h2>
 				</div>
 				<div>
-					<img class="sectionTitleBar" src="{{asset('images/title-bar.jpg')}}">
+					<img class="sectionTitleBar" src="{{asset('images/title-bar.jpg')}}" alt="barre grise">
 				</div>
 			</div>
 			{% for section in sections %}
@@ -96,6 +96,6 @@
 			{% endfor %}
 		</div>
 	</div>
-	<img class=" d-md-block d-none homeRedCircle" src="{{asset('images/TRAIT.rouge.jpg')}}">
-	<img class=" d-md-block d-none pageBorder" src="{{asset('images/demi-carré.jpg')}}">
+	<img class=" d-md-block d-none homeRedCircle" src="{{asset('images/TRAIT.rouge.jpg')}}" alt="cercle pointillé rouge">
+	<img class=" d-md-block d-none pageBorder" src="{{asset('images/demi-carré.jpg')}}" alt="demi-carré rouge">
 {% endblock %}
