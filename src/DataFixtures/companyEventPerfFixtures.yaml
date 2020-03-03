@@ -13,6 +13,7 @@ App\Entity\Company:
         website: "<url()>"
         videoLink: "<url()>"
         imageDescription: "image"
+        isHidden: "<boolean(15)>"
 
 App\Entity\Event:
     event{1..7}:
