@@ -144,7 +144,7 @@ class Performance
 
     public function __toString()
     {
-        $date = $this->getDate();
-        return $date->format('d-m-Y');
+        $event = $this->getEvent()->getName();
+        return $event;
     }
 }

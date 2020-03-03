@@ -4,23 +4,54 @@
 
 	{% include('/front_pages/_intro_section_template.html.twig') %}
 
-	<h1>{{'festCalendar'|trans({}, 'general')}}</h1>
-
 	<div>
-		{% for festPerf in festPerfs %}
-			<a class="element-link" href="{{ path('display_company', {'id': festPerf.company.id}) }}">
-				<div class="text-center my-4">
-					<h3 class="text-decoration-none colored">{{ festPerf.date|format_date('full')|capitalize}}
-						-
-						<span class="text-dark font-weight-lighter">{{ festPerf.cityShow }}</span>
-					</h3>
-					<h4>{{ festPerf.company }}</h4>
-					<p class="colored font-italic">{{ festPerf.company.showTitle}}
-						-
-						<span>{{ festPerf.company.duration}}min</span>
-					</p>
+		<div class="accordion ">
+			<button class="p-3 border rounded-top offset-4 col-4" type="button" data-toggle="collapse" data-target="#collapsePrelude" aria-expanded="true" aria-controls="collapseOne">
+				<h2 class="m-auto">{{'general.prelude'|trans({}, 'general')|capitalize}}</h2>
+			</button>
+			<div id="collapsePrelude" class="collapse offset-2 col-8">
+				{% for preludePerfs in festPrelude %}
+					<a class="element-link" href="{{ path('display_company', {'id': preludePerfs.company.id}) }}">
+						<div class="text-center">
+							<h2 class="text-decoration-none colored">{{ preludePerfs.date|format_date('full')|capitalize}}
+							</h2>
+							<h2>{{preludePerfs.date|date('H')}}h{{preludePerfs.date|date('i')}}</h2>
+							<p class="text-dark font-weight-lighter">{{ preludePerfs.cityShow }}</p>
+							<h2>{{ preludePerfs.company }},
+								{{ preludePerfs.company.showTitle}}</h2>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="accordion">
+			<button class="p-3 border rounded-bottom offset-4 col-4" type="button" data-toggle="collapse" data-target="#collapseFest" aria-expanded="true" aria-controls="collapseOne">
+				<h2 class="m-auto">{{'general.fest'|trans({}, 'general')|capitalize}}</h3>
+			</button>
+			<div id="collapseFest" class="collapse offset-2 col-8">
+				<div>
+					{% for date in festDates %}
+						<button class="bg-light p-2 border rounded-bottom offset-3 col-6" type="button" data-toggle="collapse" data-target="#collapseDate-{{ date|format_date(pattern='d') }}" aria-expanded="true" aria-controls="collapseOne">
+							<h2 class="text-decoration-none colored p-2">{{ date|format_date('full')|title}}</h2>
+						</button>
+						{% for festPerf in festPerfs %}
+							{% if date|format_date('full') == festPerf.date|format_date('full') %}
+								<div id="collapseDate-{{ festPerf.date|format_date(pattern='d') }}" class="collapse ">
+									<a class=" element-link" href=" {{ path('display_company', {'id': festPerf.company.id} ) }}">
+										<div class="text-center">
+											<h2>{{festPerf.date|date('H')}}h{{festPerf.date|date('i')}}</h2>
+											<p class="text-dark font-weight-lighter">{{ festPerf.cityShow }}</p>
+											<h2>{{ festPerf.company }},
+												{{ festPerf.company.showTitle}}</h2>
+										</div>
+									</a>
+								</div>
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
 				</div>
-			</a>
-		{% endfor %}
+			</div>
+		</div>
 	</div>
 {% endblock %}

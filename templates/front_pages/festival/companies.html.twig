@@ -1,0 +1,30 @@
+{% extends "front_templates/page_template.html.twig" %}
+
+{% block body %}
+
+	<div class="d-flex justify-content-around flex-wrap">
+		{% for company in companies %}
+			<div class=" d-flex flex-column align-items-center col-lg-3 col-md-4 col-sm-6 col-12 my-3">
+				<a class="element-link" href="{{path('display_company',{'id':company.id})}}">
+					<div class="company-image-div mb-0">
+						<img class="company-frame" src="{{ asset('images/cadre.png') }}">
+						<img class="company-image" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
+					</div>
+				</a>
+				<h2 class="mb-0">{{company.name}}</h2>
+				{% for perf in company.performances %}
+					{% if perf.event == 'Festival Fête des sottises !' or perf.event == 'Préambules sur le territoire' %}
+						<p class="font-italic colored m-0">
+							{{perf.date|format_date('full')|capitalize}}<br>
+						</p>
+						<p class="m-0">
+							{{perf.placeShow}}
+							-
+							{{perf.cityShow}}
+						</p>
+					{% endif %}
+				{% endfor %}
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

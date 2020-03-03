@@ -32,6 +32,54 @@ class CompanyRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findSeasonCompanies()
+    {
+        $companies =
+            $this->findBy(
+                ['isHidden' => false],
+                ['name' => 'ASC']
+            );
+
+        $festCompanies = [];
+
+        foreach ($companies as $company) {
+            $companyPerfs = $company->getPerformances();
+            foreach ($companyPerfs as $companyPerf) {
+                if ($companyPerf->getEvent() != 'Festival Fête des sottises !' and $companyPerf->getEvent() != 'Préambules sur le territoire') {
+                    array_push($festCompanies, $company);
+                }
+            }
+        }
+
+        $uniqueCompany = array_unique($festCompanies);
+
+        return $uniqueCompany;
+    }
+
+    public function findFestCompanies()
+    {
+        $companies =
+            $this->findBy(
+                ['isHidden' => false],
+                ['name' => 'ASC']
+            );
+
+        $festCompanies = [];
+
+        foreach ($companies as $company) {
+            $companyPerfs = $company->getPerformances();
+            foreach ($companyPerfs as $companyPerf) {
+                if ($companyPerf->getEvent() == 'Festival Fête des sottises !' or $companyPerf->getEvent() == 'Préambules sur le territoire') {
+                    array_push($festCompanies, $company);
+                }
+            }
+        }
+
+        $uniqueCompany = array_unique($festCompanies);
+
+        return $uniqueCompany;
+    }
+
     // /**
     //  * @return Company[] Returns an array of Company objects
     //  */

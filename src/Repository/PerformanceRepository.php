@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Performance;
+use App\Repository\EventRepository;
+use App\Repository\CompanyRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -14,8 +16,13 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  */
 class PerformanceRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    protected $eventRepository;
+    protected $companyRepository;
+
+    public function __construct(ManagerRegistry $registry, EventRepository $eventRepository, CompanyRepository $companyRepository)
     {
+        $this->eventRepository = $eventRepository;
+        $this->companyRepository = $companyRepository;
         parent::__construct($registry, Performance::class);
     }
 
@@ -29,6 +36,45 @@ class PerformanceRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function seasonPerfs()
+    {
+        $performances = $this->findBy([], ['date' => 'ASC']);
+        $seasonPerfs = [];
+        $perfEvents = [];
+
+        foreach ($performances as $perf) {
+            if ($perf->getEvent() == 'saison') {
+                array_push($seasonPerfs, $perf);
+            } elseif ($perf->getEvent() != 'saison') {
+                array_push($perfEvents, $perf);
+            }
+        };
+
+        $perfUniqueEvents =  array_unique($perfEvents);
+        $perfs =  array_merge($seasonPerfs, $perfUniqueEvents);
+
+        asort($perfs);
+
+        return $perfs;
+    }
+
+    public function festDates()
+    {
+        $dates = $this->findBy(['event' => $this->eventRepository->findBy(['name' => 'Festival Fête des sottises !'])], ['date' => 'ASC']);
+
+        $festDates = [];
+
+        foreach ($dates as $date) {
+            $date = $date->getDate();
+            $festDate = date_format($date, 'D d M Y');
+
+            array_push($festDates, $festDate);
+        }
+
+        $uniqueDates = array_unique($festDates);
+
+        return $uniqueDates;
+    }
     // /**
     //  * @return Performance[] Returns an array of Performance objects
     //  */

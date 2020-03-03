@@ -353,7 +353,17 @@ class Company
 
     public function __toString()
     {
-        return $this->name;
+        $uri = $_SERVER["REQUEST_URI"];
+        $url = parse_url($uri, PHP_URL_PATH);
+        if (preg_match('#festival/cies-accueillies#', $url)) {
+            if ($this->showTitle !== null) {
+                return $this->showTitle;
+            } else {
+                return $this->name;
+            }
+        } else {
+            return $this->name;
+        }
     }
 
     public function getImageDescription(): ?string

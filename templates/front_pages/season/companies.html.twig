@@ -13,15 +13,18 @@
 				</a>
 				<h2 class="mb-0">{{company.name}}</h2>
 				{% for perf in company.performances %}
-					<p class="font-italic colored m-0">
-						{{perf.date|format_date('full')|capitalize}}<br>
-					</p>
+					{% if perf.event != 'Festival Fête des sottises !' and perf.event != 'Préambules sur le territoire' %}
 
-					<p class="m-0">
-						{{perf.placeShow}}
-						-
-						{{perf.cityShow}}
-					</p>
+						<p class="font-italic colored m-0">
+							{{perf.date|format_date('full')|capitalize}}<br>
+						</p>
+
+						<p class="m-0">
+							{{perf.placeShow}}
+							-
+							{{perf.cityShow}}
+						</p>
+					{% endif %}
 				{% endfor %}
 			</div>
 		{% endfor %}

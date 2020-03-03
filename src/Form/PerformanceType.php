@@ -33,9 +33,18 @@ class PerformanceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $uri = $_SERVER["REQUEST_URI"];
-        $url = trim(parse_url($uri, PHP_URL_PATH), "/");
+        $url = parse_url($uri, PHP_URL_PATH);
 
-        if (isset($_GET['company_id']) or preg_match('#admin/company/#', $url)) {
+        if (preg_match('#admin/performance/new#', $url)) {
+            $this->companyFieldType = TextType::class;
+            $this->companyFieldOptions = [
+                'invalid_message' => 'That is not a valid company',
+                'attr' => [
+                    'class' => 'js-company-autocomplete',
+                    'data-autocomplete-url' => $this->router->generate('utility_companies')
+                ]
+            ];
+        } else {
             $this->companyFieldType = EntityType::class;
             $this->companyFieldOptions = [
                 'class' => Company::class,
@@ -50,17 +59,6 @@ class PerformanceType extends AbstractType
                     }
                 }
             ];
-        } else {
-            $this->companyFieldType = TextType::class;
-            $this->companyFieldOptions = [
-                'invalid_message' => 'That is not a valid company',
-                'attr' => [
-                    'class' => 'js-company-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('utility_companies')
-                ]
-            ];
-            $builder->get('company')
-                ->addModelTransformer($this->transformer);
         }
 
         $builder
@@ -85,6 +83,10 @@ class PerformanceType extends AbstractType
                     }
                 }
             ]);
+        if (preg_match('#admin/performance/new#', $url)) {
+            $builder->get('company')
+                ->addModelTransformer($this->transformer);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)

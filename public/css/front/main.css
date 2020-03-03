@@ -247,10 +247,6 @@ div>img.titleBar {
     border: solid;
 }
 
-.card-header {
-    background-color: #DA291C;
-}
-
 .greyFrame {
     background-color: grey
 }
@@ -313,6 +309,14 @@ div>img.titleBar {
     z-index: 1;
     height: 18px;
     width: 100%
+}
+
+.accordion .collapsing {
+    transition: 1s;
+}
+
+.accordion button {
+    background-color: #DA291C;
 }
 
 /*--------------------------------------------------------------------------------------Company ------------------------------------------------------------------------------------------*/

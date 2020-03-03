@@ -108,10 +108,18 @@ class PageController extends AbstractController
                 $data['homePerfs'] = $this->performanceRepository->findMonthPerfs();
                 break;
             case 'saison/calendrier':
-                $data['performances'] = $this->seasonPerfs();
+                $data['performances'] = $this->performanceRepository->seasonPerfs();
+                break;
+            case 'saison/cies-accueillies':
+                $data['companies'] = $this->companyRepository->findSeasonCompanies();
                 break;
             case 'festival/calendrier':
+                $data['festDates'] = $this->performanceRepository->festDates();
+                $data['festPrelude'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'Préambules sur le territoire'])], ['date' => 'ASC']);
                 $data['festPerfs'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'Festival Fête des sottises !'])], ['date' => 'ASC']);
+                break;
+            case 'festival/cies-accueillies':
+                $data['companies'] = $this->companyRepository->findFestCompanies();;
                 break;
             case 'tiers-lieu/les-rendez-vous':
                 $data['placeEventPerfs'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'Soirées du Tiers-Lieu'])], ['date' => 'ASC']);
@@ -119,37 +127,10 @@ class PageController extends AbstractController
             case 'partenaires/partenaires':
                 $data['partners'] = $this->partnersRepository->findAll();
                 break;
-            case 'saison/cies-accueillies':
-                $data['companies'] = $this->companyRepository->findBy(['isHidden' => false], ['name' => 'ASC']);
-                break;
         }
 
         return $data;
     }
-
-
-    public function seasonPerfs()
-    {
-        $performances = $this->performanceRepository->findBy([], ['date' => 'ASC']);
-        $seasonPerfs = [];
-        $perfEvents = [];
-
-        foreach ($performances as $perf) {
-            if ($perf->getEvent() == 'saison') {
-                array_push($seasonPerfs, $perf);
-            } elseif ($perf->getEvent() != 'saison') {
-                array_push($perfEvents, $perf);
-            }
-        };
-
-        $perfUniqueEvents =  array_unique($perfEvents);
-        $perfs =  array_merge($seasonPerfs, $perfUniqueEvents);
-
-        asort($perfs);
-
-        return $perfs;
-    }
-
 
     /**
      * @Route("company/{id<\d+>}", name="display_company", methods={"GET"})
