@@ -9,6 +9,12 @@ use App\Controller\Admin\AdminController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\PerformanceFormProvider;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Company;
+use Symfony\Component\Routing\RouterInterface;
+use App\Entity\Event;
 
 /**
  * @Route("admin/performance")
@@ -32,10 +38,59 @@ class PerformanceController extends AdminController
     /**
      * @Route("/new", name="performance_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, RouterInterface $router): Response
     {
+
+        $uri = $_SERVER["REQUEST_URI"];
+        $url = parse_url($uri, PHP_URL_PATH);
+
+        if (preg_match('#admin/performance/new#', $url) and !isset($_GET['company_id'])) {
+            $companyFieldType = TextType::class;
+            $companyFieldOptions = [
+                'invalid_message' => 'That is not a valid company',
+                'attr' => [
+                    'class' => 'js-company-autocomplete',
+                    'data-autocomplete-url' => $router->generate('utility_companies')
+                ]
+            ];
+        } else {
+            $companyFieldType = EntityType::class;
+            $companyFieldOptions = [
+                'class' => Company::class,
+                // Thanks to this attribute, the field is rightly prefilled
+                'choice_attr' => function ($choice, $key, $value) {
+                    if (isset($_GET['company_id']) && $value === $_GET['company_id']) {
+                        return ['selected' => ''];
+                    } else {
+                        return [];
+                    }
+                }
+            ];
+        }
+
+        $eventFieldType = EntityType::class;
+        $eventFieldOptions = [
+            'class' => Event::class,
+            // Thanks to this attribute, the field is rightly prefilled
+            'choice_attr' => function ($choice, $key, $value) {
+                if (isset($_GET['event_id']) && $value === $_GET['event_id']) {
+                    return ['selected' => ''];
+                } else {
+                    return [];
+                }
+            }
+
+        ];
+
+
         $performance = new Performance();
-        $form = $this->createForm(PerformanceType::class, $performance);
+        $form = $this->createForm(PerformanceType::class, $performance, [
+            'companyFieldType' => $companyFieldType,
+            'companyFieldOptions' => $companyFieldOptions,
+            'url' => $url,
+            'eventFieldType' => $eventFieldType,
+            'eventFieldOptions' => $eventFieldOptions
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

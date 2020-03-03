@@ -2,7 +2,7 @@
 
 {% block body %}
 
-	<div class="d-flex justify-content-around offset-2 col-8 flex-wrap">
+	<div class="d-flex justify-content-around  flex-wrap">
 		{% if homeEvents %}
 			{% for event in homeEvents %}
 				{% if event.startingDate|date('M') == 'now'|date('M') %}

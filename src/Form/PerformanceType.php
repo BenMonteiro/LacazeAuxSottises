@@ -3,66 +3,31 @@
 namespace App\Form;
 
 use App\Entity\Performance;
-use App\Entity\Company;
-use App\Repository\CompanyRepository;
 use App\Entity\Event;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Routing\RouterInterface;
 use App\Form\DataTransformer\CompanyTransformer;
 
 class PerformanceType extends AbstractType
 {
     private $transformer;
-    private $router;
     protected $companyFieldType;
     protected $companyFieldOptions = [];
 
-    public function __construct(CompanyTransformer $transformer, RouterInterface $router)
+    public function __construct(CompanyTransformer $transformer)
     {
         $this->transformer = $transformer;
-        $this->router = $router;
     }
 
 
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $uri = $_SERVER["REQUEST_URI"];
-        $url = parse_url($uri, PHP_URL_PATH);
-
-        if (preg_match('#admin/performance/new#', $url)) {
-            $this->companyFieldType = TextType::class;
-            $this->companyFieldOptions = [
-                'invalid_message' => 'That is not a valid company',
-                'attr' => [
-                    'class' => 'js-company-autocomplete',
-                    'data-autocomplete-url' => $this->router->generate('utility_companies')
-                ]
-            ];
-        } else {
-            $this->companyFieldType = EntityType::class;
-            $this->companyFieldOptions = [
-                'class' => Company::class,
-                // Thanks to this attribute, the field is rightly prefilled
-                'choice_attr' => function ($choice, $key, $value) {
-                    if (isset($_GET['company_id']) && $value === $_GET['company_id']) {
-
-                        return ['selected' => ''];
-                    } else {
-
-                        return [];
-                    }
-                }
-            ];
-        }
-
         $builder
-            ->add('company', $this->companyFieldType, $this->companyFieldOptions)
+            ->add('company', $options['companyFieldType'], $options['companyFieldOptions'])
             ->add('cityShow')
             ->add('placeShow')
             ->add('date')
@@ -70,20 +35,9 @@ class PerformanceType extends AbstractType
                 'required' => false
             ])
             ->add('isHighlight')
-            ->add('event', EntityType::class, [
-                'class' => Event::class,
-                // Thanks to this attribute, the field is rightly prefilled
-                'choice_attr' => function ($choice, $key, $value) {
-                    if (isset($_GET['event_id']) && $value === $_GET['event_id']) {
+            ->add('event', $options['eventFieldType'], $options['eventFieldOptions']);
 
-                        return ['selected' => ''];
-                    } else {
-
-                        return [];
-                    }
-                }
-            ]);
-        if (preg_match('#admin/performance/new#', $url)) {
+        if (preg_match('#admin/performance/new#', $options['url'])) {
             $builder->get('company')
                 ->addModelTransformer($this->transformer);
         }
@@ -93,7 +47,12 @@ class PerformanceType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Performance::class,
-            'translation_domain' => 'form'
+            'translation_domain' => 'form',
+            'companyFieldType' => null,
+            'companyFieldOptions' => [],
+            'url' => '',
+            'eventFieldOptions' => [],
+            'eventFieldType' => null
         ]);
     }
 }
