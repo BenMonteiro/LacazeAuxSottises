@@ -24,7 +24,7 @@ class PressDocumentType extends AbstractType
                 'choice_translation_domain' => 'press'
             ])
             ->add('documentFile', VichFileType::class, [
-                'required' => true,
+                'required' => false,
                 'allow_delete' => true,
                 'download_label' => false,
                 'download_uri' => false,

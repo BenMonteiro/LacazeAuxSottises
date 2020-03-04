@@ -27,7 +27,7 @@ class TeamControllerTest extends WebTestCase
         $this->client = static::createClient(
             [],
             [
-                'PHP_AUTH_USER' => 'test',
+                'PHP_AUTH_USER' => 'lacaze_admin',
                 'PHP_AUTH_PW' => 'test2020',
             ]
         );

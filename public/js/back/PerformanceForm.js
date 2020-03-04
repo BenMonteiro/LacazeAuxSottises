@@ -39,27 +39,27 @@ export default class PerformanceForm {
 
     addPerfForm() {
         // Get the data-prototype explained earlier
-        var prototype = this.collectionHolder.data('prototype');
+        let prototype = this.collectionHolder.data('prototype');
 
         // get the new index
-        var index = this.collectionHolder.data('index');
+        let index = this.collectionHolder.data('index');
 
         // Replace '__name__' in the prototype's HTML to
         // instead be a number based on how many items we have
-        var newForm = prototype.replace(/__name__/g, index);
+        let newForm = prototype.replace(/__name__/g, index);
 
         // increase the index with one for the next item
         this.collectionHolder.data('index', index + 1);
 
         // Display the form in the page in an li, before the "Add a tag" link li
-        var $newFormLi = $('<li class="list-unstyled"></li>').append(newForm);
+        let $newFormLi = $('<li class="list-unstyled"></li>').append(newForm);
         this.newLinkLi.before($newFormLi);
 
         this.addTagFormDeleteLink($newFormLi);
     }
 
     addTagFormDeleteLink(tagFormLi) {
-        var $removeFormButton = $('<button type="button">Supprimer la représentation</button>');
+        let $removeFormButton = $('<button type="button">Supprimer la représentation</button>');
         tagFormLi.append($removeFormButton);
 
         $removeFormButton.on('click', function (e) {

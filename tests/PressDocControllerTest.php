@@ -28,7 +28,7 @@ class PressDocControllerTest extends WebTestCase
         $this->client = static::createClient(
             [],
             [
-                'PHP_AUTH_USER' => 'test',
+                'PHP_AUTH_USER' => 'lacaze_admin',
                 'PHP_AUTH_PW' => 'test2020',
             ]
         );
@@ -73,7 +73,7 @@ class PressDocControllerTest extends WebTestCase
             ->getRepository(PressDocument::class)
             ->findOneBy(['name' => 'xxx.pdf']);
 
-        $this->assertSelectorTextContains('', $doc->getName());
+        $this->assertSelectorTextContains('p', $doc->getName());
     }
 
     public function testDeletePressDoc()
@@ -105,6 +105,7 @@ class PressDocControllerTest extends WebTestCase
                 'press_document' =>
                 [
                     'press_document[name]' => 'xxx.pdf',
+                    'press_document[tyoe]' => 'file',
                 ]
             ],
         ];

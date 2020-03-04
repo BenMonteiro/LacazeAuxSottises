@@ -7,7 +7,7 @@ export default class Autocomplete {
     autocomplete() {
         $(document).ready(function () {
             $('.js-company-autocomplete').each(function () {
-                var autocompleteUrl = $(this).data('autocomplete-url');
+                let autocompleteUrl = $(this).data('autocomplete-url');
                 $(this).autocomplete({
                     hint: false
                 }, [{

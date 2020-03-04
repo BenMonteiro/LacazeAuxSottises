@@ -40,19 +40,32 @@ class PerformanceController extends AdminController
      */
     public function new(Request $request, RouterInterface $router): Response
     {
-
-        $uri = $_SERVER["REQUEST_URI"];
-        $url = parse_url($uri, PHP_URL_PATH);
-
-        if (preg_match('#admin/performance/new#', $url) and !isset($_GET['company_id'])) {
-            $companyFieldType = TextType::class;
-            $companyFieldOptions = [
-                'invalid_message' => 'That is not a valid company',
-                'attr' => [
-                    'class' => 'js-company-autocomplete',
-                    'data-autocomplete-url' => $router->generate('utility_companies')
-                ]
-            ];
+        if (isset($_SERVER["REQUEST_URI"])) {
+            $uri = $_SERVER["REQUEST_URI"];
+            $url = parse_url($uri, PHP_URL_PATH);
+            if (preg_match('#admin/performance/new#', $url) and !isset($_GET['company_id'])) {
+                $companyFieldType = TextType::class;
+                $companyFieldOptions = [
+                    'invalid_message' => 'That is not a valid company',
+                    'attr' => [
+                        'class' => 'js-company-autocomplete',
+                        'data-autocomplete-url' => $router->generate('utility_companies')
+                    ]
+                ];
+            } else {
+                $companyFieldType = EntityType::class;
+                $companyFieldOptions = [
+                    'class' => Company::class,
+                    // Thanks to this attribute, the field is rightly prefilled
+                    'choice_attr' => function ($choice, $key, $value) {
+                        if (isset($_GET['company_id']) && $value === $_GET['company_id']) {
+                            return ['selected' => ''];
+                        } else {
+                            return [];
+                        }
+                    }
+                ];
+            }
         } else {
             $companyFieldType = EntityType::class;
             $companyFieldOptions = [
