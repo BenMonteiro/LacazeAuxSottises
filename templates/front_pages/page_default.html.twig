@@ -1,0 +1,31 @@
+{% extends "front_templates/page_template.html.twig" %}
+
+{% block body %}
+
+	<img class=" d-md-block d-none redCircle" src="{{asset('images/TRAIT.rouge.jpg')}}" alt="cercle pointillé rouge">
+	<div class=" d-none d-md-flex flex-wrap justify-content-around mb-5">
+		{% for section in sections %}
+			{% if section.image.name %}
+				<div class="d-flex flex-column align-items-center col-lg-4 col-sm-6 col-12 my-3">
+					<div class="cubic-image-div">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir autour de l'image">
+						<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+	<div class="offset-md-1 col-md-10">
+		{% for section in sections %}
+			<article class="mb-5">
+				{% if section.title %}
+					<h3 class="font-weight-bold colored mb-0">{{ section.title|lower|capitalize }}</h3>
+				{% endif %}
+				{% if section.subTitle %}
+					<h3 class="mb-2">{{ section.subTitle }}</h3>
+				{% endif %}
+				<div class="text-justify mb-0">{{ section.content|raw}}</div>
+			</article>
+		{% endfor %}
+	</div>
+{% endblock %}

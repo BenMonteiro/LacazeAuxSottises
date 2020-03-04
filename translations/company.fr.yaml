@@ -1,0 +1,21 @@
+company:
+    label: compagnie
+    name: nom de la compagnie
+    index: liste des compagnies
+    edit: modifier une compagnie
+    create: créer une nouvelle compagnie
+    status: statut
+    performances: représentations de la compagnie
+    site: aller vers le site de la compagnie
+    video: voir la vidéo
+    hosted: en résidence du 
+    host: en résidence
+    hidden: compagnie masquée
+    is:
+        hosted?: en résidence ?
+        hosted: sortie de résidence
+    show:
+        theme: thème
+        title: titre du spectacle
+        audience: public
+        duration: durée

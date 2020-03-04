@@ -1,0 +1,67 @@
+Save: Enregistrer
+Update: Mettre à jour
+seasonCalendar: Calendrier de la saison
+festCalendar: Calendrier du Festival Fête des sottises
+from: du 
+to: au
+Jan: Janv.
+Feb: Févr.
+Mar: Mars
+Apr: Avril
+May: Mai
+Jun: Juin
+Jul: Juillet
+Aug: Août
+Sep: Sept.
+Oct: Oct.
+Nov: Nov.
+Dec: Déc.
+general:
+    from: du 
+    to: au
+    create: ajouter
+    delete: supprimer
+    show: voir
+    edit: modifier
+    back: retour
+    noRecords: Aucune donnée disponible
+    name: nom
+    firstName: prénom
+    required: champs obligatoires
+    minutes: minutes
+    more:
+        infos: plus d'infos
+    website: site web
+    videoLink: lien vidéo
+    home: accueil
+    welcome: bienvenu !
+    siteAccess: accéder au site
+    actions: actions
+    hello: bonjour
+    image: image
+    theme: theme
+    description: description
+    program: Programmation
+    highlight: actu
+    month: du mois
+    events: événements
+    no_events: pas d'événements de prévus ce moi-ci
+    perfs: spectacles
+    no_perfs: pas de spectacles de prévus ce moi-ci
+    seasonDoc: plaquette
+    downloadDoc: télécharger la plaquette
+    focusOn: zoom sur 
+    date: date
+    hour: heure
+    be_volunteer: être bénévole
+    download_form: télécharger le formulaire
+    prelude: préambules sur le territoire
+    fest: festival in à Salies-de-Béarn
+    third_location:
+        prod_meetings: Le Rendez-vous des Producteurs
+        nights: Les Soirées du Tiers-Lieu
+        visits: Les Visites du Tiers-Lieu
+        all_year: tout au long de l'année
+        punctual: le temps d'un instant
+        do_it_yourself: les ateliers Do It Yourself
+        program: ô programme !

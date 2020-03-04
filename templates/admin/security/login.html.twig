@@ -1,0 +1,45 @@
+{% extends 'back_layout.html.twig' %}
+
+{% block title %}
+	{{'log.log_in'|trans({}, 'security')|title}}
+{% endblock %}
+
+{% block body %}
+	<form method="post">
+		{% if error %}
+			<div class="offset-3 col-6 mt-3 alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		{% if app.user %}
+			<div class="mb-3">
+				{{'log.connected_as'|trans({}, 'security')|capitalize}}
+				{{ app.user.username }},
+				<a href="{{ path('app_logout') }}" title="Deconnexion">{{'log.logout'|trans({}, 'security')|capitalize}}</a>
+				/
+				<a href="{{ path('admin_dashboard') }}" title="Aller à l'accueil administration">{{'log.dashboard'|trans({}, 'security')|capitalize}}</a>
+			</div>
+		{% endif %}
+
+		<h1 class="h3 mb-3 font-weight-normal">{{'log.sign_in'|trans({}, 'security')|capitalize}}</h1>
+		<div class="offset-3 col-6">
+			<label for="inputUsername">{{'Username'|trans({}, 'user')|capitalize}}</label>
+			<input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+			<label for="inputPassword">{{'Plain password'|trans({}, 'user')|capitalize}}</label>
+			<input type="password" name="password" id="inputPassword" class="form-control" required>
+
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+			<div class="checkbox mb-3">
+				<label>
+					<input type="checkbox" name="_remember_me">
+					{{'log.remember_me'|trans({}, 'security')|capitalize}}
+				</label>
+			</div>
+
+
+			<button class="btn btn-lg btn-primary" type="submit">
+				{{'log.sign_in'|trans({}, 'security')|capitalize}}
+			</button>
+		</div>
+	</form>
+{% endblock %}

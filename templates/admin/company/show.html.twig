@@ -1,0 +1,132 @@
+{% extends 'back_templates/no_menu_template.html.twig' %}
+
+{% block title %}
+	{{ company.name}}
+{% endblock %}
+
+{% block body %}
+	<div class="offset-9 col-4 mt-5 mr-5 text-center ">
+		<div class="d-flex justify-content-center ">
+			<div class="btn-showView mr-1">
+				<a class="badge badge-secondary p-2 " href="{{ path('company_index') }}" title="Retour à la page compagnie">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+			</div>
+			<div class="btn-showView ml-1">
+				<a class="badge badge-primary p-2" href="{{ path('company_edit', {'id': company.id}) }}" title="Modifier une compagnie">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+			</div>
+		</div>
+
+		<div class="btn-showView">{{ include('admin/company/_delete_form.html.twig') }}</div>
+	</div>
+
+	<h1 class="text-center text-danger font-weight-bold mt-3">{{ company.name}}</h1>
+
+	<div class="col-12 d-flex">
+		<aside class="col-2 my-5 border-right border-danger">
+			{% if company.isHosted %}
+				<div>
+					<h4>{{ 'company.status'|trans({}, 'company')|capitalize}}</h4>
+					<p class="ml-3 colored font-italic">
+						{{ 'company.is.hosted'|trans({}, 'company')|capitalize }}
+					</p>
+				</div>
+				<p>
+					{{ 'company.hosted'|trans({}, 'company')|capitalize}}
+					{{ company.isHostedFrom ? company.isHostedFrom|format_date('medium') : '' }}
+					<br>
+					{{ 'general.to'|trans({}, 'general')|capitalize}}
+					{{ company.isHostedUntil ? company.isHostedUntil|format_date('medium'): '' }}</p>
+			{% endif %}
+			<div>
+				<h4>{{ 'company.show.title'|trans({}, 'company')|capitalize }}
+					:
+				</h4>
+				<p class="ml-3">{{ company.showTitle }}</p>
+			</div>
+			<div>
+				<h4>{{ 'company.show.theme'|trans({}, 'company')|capitalize }}
+					:</h4>
+				<p class="ml-3">{{ company.theme }}</p>
+			</div>
+			<div>
+				<h4>{{'company.show.duration'|trans({}, 'company')|capitalize}}
+					:</h4>
+				<p class="ml-3">{{ company.duration }}
+					{{'general.minutes'|trans({}, 'general') }}</p>
+			</div>
+			<div>
+				<h4>{{'company.show.audience'|trans({}, 'company')|capitalize}}
+					:</h4>
+				<p class="ml-3">{{ company.audience }}</p>
+			</div>
+			<div>
+				<h4>{{'general.more.infos'|trans({}, 'general')|capitalize}}
+					:</h4>
+				<p class="ml-3">{{ company.moreInfos|raw }}</p>
+			</div>
+			{% if company.website != null %}
+				<div>
+					<h4>{{'general.website'|trans({}, 'general')|capitalize}}
+						:</h4>
+					<a class="ml-3" href="{{ company.website }}" title="Site web compagnie">{{'company.site'|trans({}, 'company')|capitalize }}</a>
+				</div>
+			{% endif %}
+
+			{% if company.website != null %}
+				<div>
+					<h4>{{'general.videoLink'|trans({}, 'general')|capitalize}}
+						:</h4>
+					<a class="ml-3" href="{{ company.videoLink}}" title="Lien vers une vidéo de la compagnie">{{'company.video'|trans({}, 'company')|capitalize }}</a>
+				</div>
+			{% endif %}
+		</aside>
+		<div class="col-9 flex-column">
+			<div class="col-12 mb-5 ">
+				<img class="miniImage col-4 mt-5 mx-3 float-left" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
+				<div class="col-12 text-justify my-5 pt-5">{{ company.description|raw }}</div>
+			</div>
+
+			<div class="row offset-1 col-11 mt-5 pt-5">
+				<h2 class=" ml-5 mb-3 font-weight-bold">{{ 'company.performances'|trans({}, 'company')|capitalize}}
+				</h2>
+				<table class="table table-sm table-striped table-bordered text-center">
+					<thead>
+						<tr>
+							<th>{{'general.date'|trans({}, 'general')|capitalize}}</th>
+							<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
+							<th>{{'perf.show.event'|trans({}, 'perf')|capitalize}}</th>
+							<th>
+								<a href="{{ path('performance_new', {'company_id': company.id}) }}" title="Ajouter une représentation à la compagnie">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for performance in company.performances %}
+							<tr>
+								<td>
+									<div class="date-infos h-100 colored">
+										<p class="mb-0 font-weight-bold">{{ performance.date ? performance.date|format_date('medium') : '' }}</p>
+										<p>{{ performance.date ? performance.date|format_time('short') : '' }}</p>
+									</div>
+								</td>
+								<td>
+									<p>{{ performance.placeShow|title }}</p>
+									<p class="font-italic colored">{{ performance.cityShow }}</p>
+								</td>
+								<td>{{ performance.event}}</td>
+								<td>
+									<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit',{'id': performance.id, 'company_id': company.id}) }}" title="Modifier la représentation">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+									{% include ('/admin/performance/_delete_form.html.twig') %}
+								</td>
+
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="8">{{'general.noRecords'|trans({}, 'general')}}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

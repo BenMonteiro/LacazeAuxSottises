@@ -1,0 +1,15 @@
+{% set eventId = '' %}
+{% if (event.id) is defined %}
+	{% set eventId = event.id %}
+{% endif %}
+
+{% set companyId = '' %}
+{% if (company.id) is defined %}
+	{% set companyId = company.id %}
+{% endif %}
+
+<form method="post" action="{{ path('performance_delete', {'id': performance.id, 'event_id': eventId, 'company_id': companyId}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+	<input type="hidden" name="_method" value="DELETE">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ performance.id) }}">
+	<button class="btn badge badge-danger my-2 p-2">{{'general.delete'|trans({}, 'general')|capitalize}}</button>
+</form>

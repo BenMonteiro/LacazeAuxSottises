@@ -1,0 +1,42 @@
+{% extends 'back_templates/index_template.html.twig' %}
+
+{% block title %}
+	{{'user.index'|trans({}, 'user')|title}}
+{% endblock %}
+
+{% block body %}
+	<div id="adminPageTitle">
+		<h1>{{'user.index'|trans({}, 'user')|title}}</h1>
+	</div>
+
+	{% set classDisplay = 'index' %}
+	{% if users|length <= 1  %}
+		{% set classDisplay = 'oneElement' %}
+	{% endif %}
+	<table class="table table-sm table-striped {{classDisplay}} text-center mb-5 pb-5">
+		<thead class="position-relative">
+			<tr>
+				<th>{{'Username'|trans({}, 'user')|capitalize}}</th>
+				<th>{{'Role'|trans({}, 'user')|capitalize}}</th>
+				<th>
+					<a href="{{ path('user_register') }}" title="Ajouter un utilisateur">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+				<tr>
+					<td>{{ user.username }}</td>
+					<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+					<td>
+						{{ include('admin/user/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="9">{{'general.noRecords'|trans({}, 'general')|capitalize}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

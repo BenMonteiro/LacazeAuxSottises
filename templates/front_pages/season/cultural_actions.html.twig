@@ -1,0 +1,22 @@
+{% extends "front_templates/page_template.html.twig" %}
+
+{% block body %}
+
+	{% include('/front_pages/_intro_section_template.html.twig') %}
+
+	<div class="container-fluid offset-lg-1 col-lg-10 card-columns">
+		{% for section in sections %}
+			{% if section.name == 'content' %}
+				<article class="card bg-light p-3 text-center">
+					{% if section.title %}
+						<h2 class="text-center colored mb-0">{{ section.title }}</h2>
+					{% endif %}
+					{% if section.subTitle %}
+						<h3>{{ section.subTitle }}</h3>
+					{% endif %}
+					<div class="mb-0">{{ section.content|raw }}</div>
+				</article>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}

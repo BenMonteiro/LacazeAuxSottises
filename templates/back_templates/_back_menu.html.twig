@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+	{% if is_granted('ROLE_ADMIN') %}
+		<a class="navbar-brand" href="{{ path('admin_dashboard') }}" title="Aller à l'acceuil administration"><img class='logo' src="{{asset('images/logo.jpg')}}" alt="logo association"></a>
+	{% endif %}
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+		<ul class="navbar-nav col-xl-6 col-lg-8 flex-wrap justify-content-center mr-5 ml-auto">
+			{% if is_granted('ROLE_ADMIN') %}
+				<li class="nav-item">
+					<a class="nav-link back-nav-link" href="{{ path('admin_dashboard') }}">
+						<i class="fas fa-1x fa-home"></i>
+					</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle back-nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{'back.sections'|trans({}, 'menu')|capitalize }}
+					</a>
+					<div class="dropdown-menu mr-3" aria-labelledby="navbarDropdownMenuLink">
+						{% for tab in tabs %}
+							<a class="dropdown-item" href="{{ path('admin_tab', {'id': tab.id }) }}">{{('back.' ~ tab.name)|trans({}, 'menu')}}
+							</a>
+						{% endfor %}
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link back-nav-link" href="{{ path('company_index') }}">{{'back.companies'|trans({}, 'menu')|capitalize }}
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link back-nav-link" href="{{ path('event_index') }}">{{'back.events'|trans({}, 'menu')|capitalize }}
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link back-nav-link" href="{{ url('performance_index') }}">{{'back.performances'|trans({}, 'menu')|capitalize }}
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link back-nav-link" href="{{ path('partners_index') }}">{{'back.partner'|trans({}, 'menu')|capitalize }}
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link back-nav-link" href="{{ path('team_index') }}">{{'back.team'|trans({}, 'menu')|capitalize }}
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link back-nav-link" href="{{ path('user_index') }}">{{'back.user'|trans({}, 'menu')|capitalize }}
+					</a>
+				</li>
+			{% endif %}
+			<li class="nav-item">
+				<a class="nav-link back-nav-link" href="{{ path('press_document_index') }}">{{'back.pressDoc'|trans({}, 'menu')|capitalize }}
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link badge badge-danger text-white align-middle" href="{{ path('app_logout') }}">{{'log.logout'|trans({}, 'security')|capitalize}}</a>
+			</li>
+		</ul>
+	</div>
+</nav>

@@ -1,0 +1,63 @@
+{% extends "front_templates/page_template.html.twig" %}
+
+{% block body %}
+
+	{% include('/front_pages/_intro_section_template.html.twig') %}
+
+	<div>
+		<div class="accordion">
+			<h2 class="m-auto">
+				<button class="p-3 border rounded-top offset-3 col-6" type="button" data-toggle="collapse" data-target="#collapsePrelude" aria-expanded="true" aria-controls="collapseOne">
+					{{'general.prelude'|trans({}, 'general')|capitalize}}
+				</button>
+			</h2>
+			<div id="collapsePrelude" class="collapse">
+				{% for preludePerfs in festPrelude %}
+					<a class="element-link" href="{{ path('display_company', {'id': preludePerfs.company.id}) }}" title="Voir le fiche de la compagnie">
+						<div class="text-center">
+							<h2 class="text-decoration-none colored">{{ preludePerfs.date|format_date('full')|capitalize}}
+							</h2>
+							<h2>{{preludePerfs.date|date('H')}}h{{preludePerfs.date|date('i')}}</h2>
+							<p class="text-dark font-weight-lighter">{{ preludePerfs.cityShow }}</p>
+							<h2>{{ preludePerfs.company }},
+								{{ preludePerfs.company.showTitle}}</h2>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="accordion">
+			<h2 class="m-auto">
+				<button class="p-3 border rounded-bottom offset-3 col-6" type="button" data-toggle="collapse" data-target="#collapseFest" aria-expanded="true" aria-controls="collapseOne">
+					{{'general.fest'|trans({}, 'general')|capitalize}}
+				</button>
+			</h2>
+			<div id="collapseFest" class="collapse">
+				<div>
+					{% for date in festDates %}
+						<h2 class="text-decoration-none colored m-0">
+							<button class="bg-light p-2 border rounded-0 offset-3 col-6" type="button" data-toggle="collapse" data-target=".collapseDate-{{ date|format_date(pattern='d') }}" aria-expanded="true" aria-controls="collapseOne">
+								{{ date|format_date('full')|title}}
+							</button>
+						</h2>
+						{% for festPerf in festPerfs %}
+							<div class="collapseDate-{{ festPerf.date|format_date(pattern='d') }} collapse ">
+								{% if date|format_date('full') == festPerf.date|format_date('full') %}
+									<a class=" element-link" href=" {{ path('display_company', {'id': festPerf.company.id} ) }}" title="Voir le fiche de la compagnie">
+										<div class="text-center">
+											<h2>{{festPerf.date|date('H')}}h{{festPerf.date|date('i')}}</h2>
+											<p class="text-dark font-weight-lighter">{{ festPerf.cityShow }}</p>
+											<h2>{{ festPerf.company }},
+												{{ festPerf.company.showTitle}}</h2>
+										</div>
+									</a>
+								{% endif %}
+							</div>
+						{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,97 @@
+@media all and (max-width: 1001px) {
+    .nav-link {
+        margin-right: 0px;
+    }
+
+    nav ul {
+        list-style: none;
+    }
+
+    nav li {
+        width: 20%;
+        margin: 0 2.5% 2% 2.5%
+    }
+
+    .cycliste {
+        top: 7%;
+    }
+
+    .tab-pane a {
+        margin: 0 10px 0 0;
+        font-weight: bold;
+    }
+
+    .tab-pane a:hover {
+        color: black;
+        background-color: #DA291C;
+        border-radius: 15px;
+        text-decoration: none;
+    }
+
+    .tab-wrap {
+        white-space: nowrap;
+    }
+
+    .nav-pills>li {
+        width: 16%;
+    }
+
+}
+
+@media all and (max-width: 769px) {
+
+    .cycliste {
+        left: 90%;
+        top: -33%;
+        width: 40px
+    }
+
+    #pills-tab,
+    #pills-tabContent {
+        position: relative;
+        top: 20px
+    }
+
+    .agenda {
+        position: relative;
+        top: 0px;
+    }
+
+    #titleLines {
+        top: -45px;
+    }
+
+    .logo {
+        width: 75px;
+    }
+
+    nav li {
+        width: 25%;
+        margin: 0 2.5% 2% 2.5%
+    }
+
+    .miniTitleBar {
+        width: 75%
+    }
+
+    .card-columns {
+        column-count: 2;
+    }
+
+}
+
+@media all and (max-width:500px) {
+    .tab-content {
+        position: relative;
+        top: 360px;
+        height: 50px;
+    }
+
+    #titleLines {
+        top: -37.5px;
+    }
+
+    .card-columns {
+        column-count: 1;
+    }
+}

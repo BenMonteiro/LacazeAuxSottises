@@ -1,0 +1,26 @@
+{
+  "name": "lacaze_aux_sottises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenMonteiro/LacazeAuxSottises.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenMonteiro/LacazeAuxSottises/issues"
+  },
+  "homepage": "https://github.com/BenMonteiro/LacazeAuxSottises#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-buster": "^1.1.0"
+  }
+}

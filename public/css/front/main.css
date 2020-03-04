@@ -1,0 +1,337 @@
+/*-----------------------------------------------------------------------------------------General--------------------------------------------------------------------------------------------*/
+
+@font-face {
+    font-family: 'MyriadPro';
+    src: url(/public/polices/MyriadPro-Regular.otf)
+}
+
+body {
+    overflow-x: hidden;
+}
+
+body p,
+body p span,
+body li,
+a {
+    text-align: inherit;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1em;
+    margin: 0
+}
+
+.bg-colored {
+    background-color: #DA291C;
+}
+
+.colored {
+    color: #DA291C
+}
+
+.border-colored {
+    border: solid 3px #DA291C
+}
+
+.home-link,
+.fa-home {
+    color: #DA291C;
+    margin: 20px auto 0 20px
+}
+
+
+.redCircle {
+    position: absolute;
+    top: -300px;
+    right: -500px;
+    width: 900px;
+}
+
+.homeRedCircle {
+    position: absolute;
+    bottom: 90px;
+    right: 100px;
+    width: 500px;
+    z-index: -3;
+
+}
+
+.pageBorder {
+    position: absolute;
+    top: 750px;
+    left: 100px;
+    width: 500px;
+    z-index: -3;
+}
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #DA291C
+}
+
+hr.redline {
+    color: #DA291C;
+    border: solid 1px
+}
+
+
+/*--------------------------------------------------------------------------------------Landing Page------------------------------------------------------------------------------------------*/
+
+.accessLink {
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: transparent;
+    z-index: 999;
+    background-image: url(/images/landingPagePic.jpg);
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/*--------------------------------------------------------------------------------------Titles------------------------------------------------------------------------------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.pageTitle {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+    margin: 1rem auto;
+}
+
+h2 {
+    text-align: inherit;
+    font-size: 1.25em;
+}
+
+h3 {
+    text-align: inherit;
+    font-size: 1em;
+    margin: inherit
+}
+
+#pageTitleBar {
+    margin-top: 120px;
+}
+
+.pageTitle {
+    font-size: 1.25em;
+    display: inline-block;
+    align-content: center;
+    z-index: 3;
+    background-color: white;
+
+}
+
+.titleLines {
+    position: relative;
+    top: -20px;
+    z-index: 2;
+}
+
+div>img.titleBar {
+    position: relative;
+    bottom: 23px;
+    z-index: 1;
+    left: 15%;
+    width: 70%;
+    height: 18px;
+}
+
+.sectionTitleBar {
+    position: relative;
+    bottom: 33px;
+    z-index: 1;
+    width: 70%;
+    height: 18px;
+}
+
+.miniTitleBar {
+    position: relative;
+    bottom: 33px;
+    z-index: 1;
+    width: 50%;
+    height: 18px;
+}
+
+/*--------------------------------------------------------------------------------------Images------------------------------------------------------------------------------------------*/
+
+.assoIntroImage {
+    border-radius: 10px;
+    width: 400px;
+}
+
+
+.miniImage {
+    border-radius: 80px;
+    width: 200px;
+    height: 150px;
+}
+
+.partnerLogo {
+    width: 50px
+}
+
+.image-frame {
+    position: relative;
+    z-index: 2;
+}
+
+.image-top-page {
+    width: 60%;
+    height: 60%;
+    position: relative;
+    left: -50%;
+    z-index: 1;
+}
+
+.image-top {
+    position: relative;
+    display: flex;
+    width: 100%
+}
+
+
+/*--------------------------------------------------------------------------------------Articles------------------------------------------------------------------------------------------*/
+
+
+.highlight-card {
+    height: 250px;
+}
+
+
+.highlight-card>img {
+    height: 55%;
+}
+
+
+.framedArticle {
+    padding: 30px;
+    border: 2px;
+    border-radius: 20px;
+}
+
+.dot {
+    border: dotted
+}
+
+.red-dot {
+    border: dotted #DA291C;
+}
+
+.dash {
+    border: dashed
+}
+
+.red-dash {
+    border: dashed #DA291C;
+}
+
+.solid {
+    border: solid;
+}
+
+.greyFrame {
+    background-color: grey
+}
+
+.redFrame {
+    background-color: #DA291C
+}
+
+/*--------------------------------------------------------------------------------------Agenda------------------------------------------------------------------------------------------*/
+
+.nav-pills .nav-link {
+    color: #DA291C
+}
+
+.nav-pills .nav-link.active {
+    color: black;
+    background-color: #DA291C;
+}
+
+.nav-pills .nav-link:hover {
+    color: black;
+    background-color: #DA291C;
+    border: none
+}
+
+.agenda {
+    position: relative;
+    top: 0px;
+}
+
+.agenda>.active {
+    position: relative;
+    display: block;
+    width: 100%;
+    align-items: center;
+    background-color: white;
+    height: 50px;
+    padding: 20px;
+    justify-content: space-around;
+    z-index: 200;
+}
+
+.agenda>.tab-pane a.element-link,
+.element-link {
+    color: black;
+    margin: 0 20px 0 0;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.agenda>.tab-pane a.element-link:hover,
+.element-link:hover {
+    color: #DA291C;
+    background-color: unset;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.calendarBar {
+    z-index: 1;
+    height: 18px;
+    width: 100%
+}
+
+.accordion .collapsing {
+    transition: 1s;
+}
+
+.accordion button {
+    background-color: #DA291C;
+}
+
+/*--------------------------------------------------------------------------------------Company ------------------------------------------------------------------------------------------*/
+
+.cubic-image-div {
+    position: relative;
+    display: flex;
+}
+
+.image-frame {
+    min-width: 250px;
+    height: 250px;
+    z-index: 3;
+}
+
+.cubic-image {
+    position: absolute;
+    bottom: 5%;
+    width: 240px;
+    height: 230px;
+    z-index: 2;
+}

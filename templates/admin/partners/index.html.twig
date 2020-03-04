@@ -1,0 +1,46 @@
+{% extends 'back_templates/index_template.html.twig' %}
+
+{% block title %}
+	{{'partner.index'|trans({},'partners')|title}}
+{% endblock %}
+
+{% block body %}
+	<div id="adminPageTitle">
+		<h1>{{'partner.index'|trans({},'partners')|title}}</h1>
+	</div>
+
+	{% set classDisplay = 'index' %}
+	{% if partners|length <= 1  %}
+		{% set classDisplay = 'oneElement' %}
+	{% endif %}
+	<table class="table table-sm {{classDisplay}} table-striped text-center mb-5 pb-5">
+		<thead>
+			<tr>
+				<th>{{'partner.logo'|trans({}, 'partners')|capitalize}}</th>
+				<th>{{'partner.name'|trans({}, 'partners')|capitalize}}</th>
+				<th>{{'partner.type'|trans({}, 'partners')|capitalize}}</th>
+				<th>
+					<a href="{{ path('partners_new') }}" title="Ajouter un partenaire">{{'general.create'|trans({}, 'general')|capitalize}}</th>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for partner in partners %}
+				<tr>
+					<td><img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}"></td>
+					<td class="colored font-weight-bold">{{ partner.name }}</td>
+					<td>{{ ('partner.' ~ partner.type)|trans({}, 'partners')|capitalize }}</td>
+					<td>
+						<a class="badge badge-primary my-2 p-2" href="{{ path('partners_edit', {'id': partner.id}) }}" title="Modifier un partenaire">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+						{{ include('admin/partners/_delete_form.html.twig') }}
+
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">{{'general.noRecords'|trans({}, 'general')}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

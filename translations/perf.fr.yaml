@@ -1,0 +1,15 @@
+perf:
+    label: représentation
+    add: ajouter une représentation
+    delete: supprimer la représentation
+    create: créer une nouvelle représentation
+    edit: modifier une représentation
+    index: liste des représentations
+    company: Nom de la compagnie
+    price: prix
+    free: prix libre
+    highlight: actu du mois ?
+    show:
+        city: ville
+        place: adresse
+        event: événement

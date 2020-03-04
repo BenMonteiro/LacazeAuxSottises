@@ -1,0 +1,111 @@
+<?php
+
+namespace App\Repository;
+
+use App\Entity\Company;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Persistence\ManagerRegistry;
+
+/**
+ * @method Company|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Company|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Company[]    findAll()
+ * @method Company[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class CompanyRepository extends ServiceEntityRepository
+{
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, Company::class);
+    }
+
+    /**
+     * @return Company[]
+     */
+    public function findAllMatching(string $query, int $limit = 5)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.name LIKE :query')
+            ->setParameter('query', '%' . $query . '%')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findSeasonCompanies()
+    {
+        $companies =
+            $this->findBy(
+                ['isHidden' => false],
+                ['name' => 'ASC']
+            );
+
+        $festCompanies = [];
+
+        foreach ($companies as $company) {
+            $companyPerfs = $company->getPerformances();
+            foreach ($companyPerfs as $companyPerf) {
+                if ($companyPerf->getEvent() != 'Festival Fête des sottises !' and $companyPerf->getEvent() != 'Préambules sur le territoire') {
+                    array_push($festCompanies, $company);
+                }
+            }
+        }
+
+        $uniqueCompany = array_unique($festCompanies);
+
+        return $uniqueCompany;
+    }
+
+    public function findFestCompanies()
+    {
+        $companies =
+            $this->findBy(
+                ['isHidden' => false],
+                ['name' => 'ASC']
+            );
+
+        $festCompanies = [];
+
+        foreach ($companies as $company) {
+            $companyPerfs = $company->getPerformances();
+            foreach ($companyPerfs as $companyPerf) {
+                if ($companyPerf->getEvent() == 'Festival Fête des sottises !' or $companyPerf->getEvent() == 'Préambules sur le territoire') {
+                    array_push($festCompanies, $company);
+                }
+            }
+        }
+
+        $uniqueCompany = array_unique($festCompanies);
+
+        return $uniqueCompany;
+    }
+
+    // /**
+    //  * @return Company[] Returns an array of Company objects
+    //  */
+    /*
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    */
+
+    /*
+    public function findOneBySomeField($value): ?Company
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
+}

@@ -1,0 +1,103 @@
+nav {
+    height: 140px;
+}
+
+.navbar {
+    padding-bottom: 1.5rem;
+}
+
+.navbar-collapse {
+    background-color: inherit;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    font-size: 1em;
+    padding: 5px 10px;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+nav li {
+    display: block;
+    background-color: black;
+    margin: 0 5px 5px 0;
+    border-radius: 5px
+}
+
+.dropdown-items li a {
+    padding-left: 0;
+    background-color: transparent;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #DA291C
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    color: #DA291C
+}
+
+.dropdown-menu {
+    padding: 0 0 0 3px;
+    margin-top: 0;
+    border: none;
+    background-color: #DA291C;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.transform-10 {
+    transform: rotate(5deg);
+}
+
+.transform-350 {
+    transform: rotate(-5deg);
+}
+
+li.transform-10>a {
+    transform: rotate(-5deg);
+}
+
+li.transform-350>a {
+    transform: rotate(5deg);
+}
+
+.cycliste {
+    position: relative;
+    width: 50px;
+    left: 71.8%;
+    top: -15%;
+    z-index: 50;
+}
+
+.dropdown-item {
+    padding-left: 3px
+}
+
+.dropdown-item:hover {
+    border: none;
+    color: white;
+    background-color: transparent;
+}
+
+nav>ul {
+    list-style: none;
+}
+
+.fa-circle {
+    font-size: 0.5rem;
+    position: relative;
+    bottom: 2px
+}
+
+.logo {
+    width: 100px;
+}
+
+.dropdown-toggle::after {
+    vertical-align: 0;
+    content: none;
+}

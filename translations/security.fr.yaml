@@ -1,0 +1,8 @@
+log:
+    log_in: connexion administration
+    connected_as: Vous êtes connecté en tant que
+    logout: déconnexion
+    sign_in: connexion
+    remember_me: se souvenir de moi
+    dashboard: aller à l'accueil d'administration
+    

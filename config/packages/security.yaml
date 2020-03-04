@@ -1,13 +1,40 @@
 security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: 'auto'
+        App\Entity\User:
+            algorithm: auto
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: null }
+        back_users:
+            memory:
+                users:
+                    lacaze_admin: {password: '$argon2id$v=19$m=65536,t=4,p=1$MnRlREw4SXVzT0FQdjlGLg$AT6/9pVyAmvjfQJQU/2Kf4N00HJsCxyNx9TN3X9rUsw', roles: ['ROLE_ADMIN']}
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: username
+        chain_provider:
+            chain:
+                providers: ['back_users', 'app_user_provider']
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: lazy
+            provider: 'chain_provider'
+            guard:
+                authenticators:
+                    - App\Security\LoginAuthenticator
+            logout:
+                path: app_logout
+                target: app_login
+            remember_me:
+                secret: '%kernel.secret%'
+                always_remember_me: true
+            http_basic: ~
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -17,6 +44,7 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
+    # Users with ROLE_USER have access to the admin/press page only to download documents. They can't add or delete a document
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin/press, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }

@@ -1,0 +1,20 @@
+{% extends 'back_layout.html.twig' %}
+
+{% block title %}
+	{{'perf.create'|trans({}, 'perf')|title}}
+{% endblock %}
+
+{% block body %}
+	<h1>{{'perf.create'|trans({}, 'perf')|title}}</h1>
+	<div class="ml-3">
+		{{ include('admin/performance/_form.html.twig') }}
+
+		{% if event_id is not null %}
+			<a class="badge badge-secondary p-2" href="{{ path('event_show', {'id': event_id}) }}" title="Retour à la page événement de la représentation">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		{% elseif company_id is not null %}
+			<a class="badge badge-secondary p-2" href="{{ path('company_show', {'id': company_id}) }}" title="Retour à la page compagnie de la représentation">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		{% else %}
+			<a class="badge badge-secondary p-2" href="{{ path('performance_index') }}" title="Retour à la page des représentations">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		{% endif %}
+	</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'back_templates/index_template.html.twig' %}
+
+{% block title %}
+	{{'perf.index'|trans({}, 'perf')|title}}
+{% endblock %}
+
+{% block body %}
+	<div id="adminPageTitle">
+		<h1>{{'perf.index'|trans({}, 'perf')|title}}</h1>
+	</div>
+
+	{% set classDisplay = 'index' %}
+	{% if performances|length <= 2  %}
+		{% set classDisplay = 'oneElement' %}
+	{% endif %}
+	<table class="table table-sm {{classDisplay}} table-striped text-center mb-5 pb-5">
+		<thead>
+			<tr>
+				<th>{{'general.date'|trans({}, 'general')|capitalize}}</th>
+				<th>{{'general.hour'|trans({}, 'general')|capitalize}}</th>
+				<th>{{'company.label'|trans({}, 'company')|capitalize}}</th>
+				<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
+				<th>{{ 'perf.price'|trans({}, 'perf')|capitalize }}</th>
+				<th>{{'perf.show.event'|trans({}, 'perf')|capitalize}}</th>
+				<th>{{'perf.highlight'|trans({}, 'perf')|capitalize}}</th>
+				<th>
+					<a href="{{ path('performance_new') }}" title="Ajouter une représentation">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for performance in performances %}
+				<tr>
+					<td class="date-infos h-100 colored font-weight-bold">{{ performance.date ? performance.date|format_date('medium') : '' }}</td>
+					<td class="date-infos h-100 colored">{{ performance.date ? performance.date|date('H:i') : '' }}</td>
+					<td>
+						<a class="text-reset" href="{{ path('display_company', {'id': performance.company.id})}}" title="Voir la compagnie">
+							<h4 class=" text-decoration-none font-weight-bold">{{ performance.company.name }}</h4>
+						</a>
+					</td>
+					<td>
+						<p>{{ performance.placeShow|title }}</p>
+						<p class="font-italic colored">{{ performance.cityShow }}</p>
+					</td>
+					<td>{{ performance.price ? performance.price|format_currency('EUR') : 'perf.free'|trans({}, 'perf')|capitalize }}</td>
+					<td>{{ performance.event}}</td>
+					<td>{{ performance.isHighlight ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
+					<td>
+						<a class="badge badge-primary my-2 p-2 text-center" href="{{ path('performance_edit', {'id': performance.id}) }}" title="Modifier la représentation">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+						{{ include('admin/performance/_delete_form.html.twig') }}
+					</td>
+
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">{{'general.noRecords'|trans({}, 'general')}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,19 @@
+event:
+    label: événement
+    edit: modifier un événement
+    create: créer un nouvel événement
+    index: liste des événements
+    start: date de début
+    end: date de fin
+    hours: horaires
+    hours/date: dates et horaires
+    program: programmation
+    name: événement
+    performances: représentations de l'événement
+    highlight: actu du mois ?
+    place: lieu
+    prog:
+        PDF: programmation au format PDF
+        image: image de couverture du programme
+        upload: Programme du festival à télécharger
+May: Mai

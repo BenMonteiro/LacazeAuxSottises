@@ -1,0 +1,6 @@
+App\Entity\Team:
+    team{1..15}:
+        name: "<lastName()>"
+        firstName: "<firstName()>"
+        role: '<randomElement(["volunteer", "gov_body", "pro"])>'
+        email: "<email()>"

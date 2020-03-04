@@ -1,0 +1,15 @@
+{% extends 'back_layout.html.twig' %}
+
+{% block title %}
+	{{'partner.create'|trans({}, 'partners')|title}}
+{% endblock %}
+
+{% block body %}
+	<h1>{{'partner.create'|trans({}, 'partners')|title}}</h1>
+	<div class="ml-3">
+
+		{{ include('admin/partners/_form.html.twig') }}
+
+		<a class="badge badge-secondary p-2 mb-5" href="{{ path('partners_index') }}" title="Retour à la page partenaires">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+	</div>
+{% endblock %}

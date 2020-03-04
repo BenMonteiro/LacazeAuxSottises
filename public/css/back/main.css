@@ -1,0 +1,177 @@
+/*-----------------------------------------------------------------------------------------General--------------------------------------------------------------------------------------------*/
+p {
+    text-align: inherit;
+}
+
+img {
+    width: 200px;
+}
+
+.colored {
+    color: #DA291C
+}
+
+.btn-showView {
+    font-size: 1.3rem;
+}
+
+/*-----------------------------------------------------------------------------------------Titles--------------------------------------------------------------------------------------------*/
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #DA291C;
+    margin: 1rem auto;
+    text-decoration: underline;
+}
+
+h4,
+h3 {
+    text-decoration: underline;
+    text-align: inherit;
+}
+
+#adminPageTitle {
+    position: fixed;
+    text-align: center;
+    top: 170px;
+    width: 100%;
+    z-index: 20;
+    background-color: white;
+}
+
+/*-----------------------------------------------------------------------------------------Images--------------------------------------------------------------------------------------------*/
+.miniImage {
+    border-radius: 80px;
+    width: 200px;
+    height: 150px;
+}
+
+.partnerLogo {
+    width: 100px
+}
+
+.fileImageContainer {
+    height: 110px;
+}
+
+.fileImage {
+    width: 100px;
+    height: 100px
+}
+
+/*-----------------------------------------------------------------------------------------Form--------------------------------------------------------------------------------------------*/
+form label,
+form legend {
+    font-weight: bold;
+}
+
+label.required:before {
+    content: "* ";
+}
+
+div[id^="company_performances_"]>div:first-child {
+    display: none;
+}
+
+/*------------------------------------------------------------------------------------Flash Messages---------------------------------------------------------------------------------------*/
+.index-flash-message {
+    position: fixed;
+    top: 120px;
+    height: 50px;
+    text-align: center;
+    z-index: 3;
+    padding-top: 20px;
+}
+
+.flash-message {
+    height: 50px;
+    text-align: center;
+    z-index: 3;
+    padding-top: 20px;
+}
+
+.flash-notice {
+    color: green
+}
+
+.flash-error {
+    color: red
+}
+
+/*--------------------------------------------------------------------------------------Tables-----------------------------------------------------------------------------------------*/
+
+
+table.index thead {
+    position: sticky;
+    top: 250px;
+}
+
+table.index tbody {
+    position: relative;
+    top: 250px;
+}
+
+table.oneElement {
+    position: relative;
+    top: 250px;
+}
+
+table.oneSection {
+    position: relative;
+    top: 300px;
+}
+
+table.sectionList thead {
+    position: sticky;
+    top: 300px;
+}
+
+table.sectionList tbody {
+    position: relative;
+    top: 300px;
+}
+
+thead {
+    background-color: black;
+    z-index: 10;
+    color: #DA291C
+}
+
+.table td,
+.table th {
+    border: none;
+    vertical-align: middle;
+    padding: 0.8rem 0.3rem;
+}
+
+/*------------------------------------------------------------------------------------Press---------------------------------------------------------------------------------------*/
+
+.press-index {
+    position: relative;
+    top: 300px;
+}
+
+/*------------------------------------------------------------------------------------Dashboard---------------------------------------------------------------------------------------*/
+.admin-dashboard .stat {
+    font-size: 3em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px black;
+}
+
+.stat-bis {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px black;
+}
+
+.admin-dashboard p {
+    font-size: 1.2em;
+}
+
+.card-body-icon {
+    position: absolute;
+    right: 0.1em;
+    top: -0.2em;
+    font-size: 5rem;
+    opacity: 0.5;
+}

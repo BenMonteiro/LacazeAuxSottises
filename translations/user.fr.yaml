@@ -1,0 +1,10 @@
+Username: Identifiant
+Plain password: Mot de passe
+Roles: Rôle
+Role: Rôle
+Admin: Administrateur
+User: Visiteur
+user:
+    label: administrateurs
+    index: Liste des administrateurs
+    create: ajouter un administrateur

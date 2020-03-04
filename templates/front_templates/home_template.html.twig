@@ -1,0 +1,23 @@
+{% extends "front_layout.html.twig" %}
+
+{% block title %}
+	{{ ('front.' ~ page.tab)|trans({}, 'menu')}}/{{('front.' ~ page.name)|trans({}, 'menu')}}
+{% endblock %}
+
+{% block header %}
+	{% include( "front_templates/_front_menu.html.twig") %}
+{% endblock %}
+
+{% block pageTitle %}
+	<div id="pageTitleBar">
+		<div class="d-flex justify-content-center">
+			<h2 class="mt-3 pageTitle px-4 text-center">
+				{{'general.highlight'|trans({}, 'general')|capitalize}}<br>
+				{{ 'general.month'|trans({}, 'general')}}
+			</h2>
+		</div>
+		<div class="titleLines">
+			<img class="titleBar" src="{{asset('images/title-bar.jpg')}}" alt="barre grise">
+		</div>
+	</div>
+{% endblock %}

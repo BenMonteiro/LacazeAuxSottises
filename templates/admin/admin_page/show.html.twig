@@ -1,0 +1,58 @@
+{% extends 'back_templates/index_template.html.twig' %}
+
+{% block title %}
+	{{('front.' ~ page.tab)|trans({}, 'menu')}}/{{('front.' ~ page.name)|trans({}, 'menu')}}
+{% endblock %}
+
+{% block body %}
+	<div id="adminPageTitle" class="d-flex">
+		<h1 class="offset-2 col-8">
+			{{'section.index'|trans({}, 'section')|title}}
+			de la page :<br/>
+			{{('front.' ~ page.tab)|trans({}, 'menu')}}/{{('front.' ~ page.name)|trans({}, 'menu')}}
+		</h1>
+		<div class="btn-showView col-2 mt-5">
+			<a class="badge badge-secondary p-2" href="{{ path('admin_tab', {'id': page.tabId}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+		</div>
+	</div>
+	{% set classDisplay = 'sectionList' %}
+	{% if page.pageSections|length <= 2  %}
+		{% set classDisplay = 'oneSection' %}
+	{% endif %}
+	<table class="table table-sm table-striped {{classDisplay}} text-center mb-5 pb-5">
+		<thead>
+			<tr>
+				<th>{{'section.name'|trans({}, 'section')|capitalize}}</th>
+				<th>{{'section.title'|trans({}, 'section')|capitalize}}</th>
+				<th>{{'section.subTitle'|trans({}, 'section')|capitalize}}</th>
+				<th>{{'section.appearanceOrder'|trans({}, 'section')|capitalize}}</th>
+				<th>{{'section.content'|trans({}, 'section')|capitalize}}</th>
+				<th>{{'section.image'|trans({}, 'section')|capitalize}}</th>
+				<th>
+					<a href="{{ path('section_new', {'page_id': page.id}) }}" title="Ajouter un article">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for section in page.pageSections %}
+				<tr>
+					<td>{{section.name}}</td>
+					<td>{{section.title}}</td>
+					<td>{{section.subTitle}}</td>
+					<td>{{section.appearanceOrder}}</td>
+					<td>{{section.content|slice(0,100)|striptags}}...</td>
+					<td>{{section.image.name}}</td>
+					<td>
+						<a class="badge badge-secondary my-2 p-2" href="{{ path('section_show', {'id': section.id}) }}" title="Voir un aperçu de l'article">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+						<a class="badge badge-primary my-2 p-2" href="{{ path('section_edit', {'id': section.id, 'page_id': page.id}) }}" title="Modifier l'article">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+						{{ include('admin/section/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="9">{{'general.noRecords'|trans({}, 'general')|capitalize}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

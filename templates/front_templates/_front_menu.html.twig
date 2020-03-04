@@ -1,0 +1,49 @@
+{% block header %}
+	<nav class="navbar navbar-expand-md navbar-light bg-white fixed-top container">
+		<img class="cycliste" src="{{ asset('images/MONOCYCLISTE-PMS285.png')}}" alt="monocycliste">
+		<a class=" mt-md-4 mt-2 navbar-brand" href="{{ path('page_show', {'pageSlug': 'home'}) }}" title="Accueil"><img class='logo' src="{{asset('images/logo.jpg')}}" alt="logo association"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse nav multi-collapse mt-5" id="navbarNavDropdown">
+			<ul class="d-flex flex-wrap navbar-nav w-100 justify-content-around">
+				{% for tab in tabs %}
+					{% set transform = '' %}
+					{% if tab.number == 3 %}
+						{% set transform = 'transform-10' %}
+					{% elseif tab.number == 6 %}
+						{% set transform = 'transform-350' %}
+					{% else %}
+						{% set transform = '' %}
+					{% endif %}
+					{% set active = '' %}
+					{% if page is defined and  page.tab == tab.name %}
+						{% set active = 'active' %}
+					{% endif %}
+					{% if tab.pages|length > 1 %}
+						<li class="{{ transform }} dropdown">
+							<a class="nav-item nav-link dropdown-toggle {{ active }}" href="" id="nav-{{tab.name}}-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ ('front.'~tab.name)|trans({}, 'menu') }}</a>
+							<div class="dropdown-menu multi-collapse" id="nav-{{tab.name}}" aria-labelledby="nav-{{tab.name}}-dropdown">
+								{% for page in pages %}
+									{% if page.tab.id == tab.id %}
+										<a class="dropdown-item  text-wrap" href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">
+											<i class="fas fa-circle "></i>
+											{{ ('front.'~page.name)|trans({}, 'menu') }}</a>
+									{% endif %}
+								{% endfor %}
+							</div>
+						</li>
+					{% else %}
+						{% for page in tab.pages %}
+							{% if tab.name != 'home' %}
+								<li class="{{ transform }}">
+									<a class="nav-link {{ active }}" href="{{ path('page_show', {'pageSlug': page.pageSlug}) }}">{{ ('front.'~page.name)|trans({}, 'menu') }}</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</nav>
+{% endblock %}

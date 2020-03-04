@@ -1,0 +1,80 @@
+{% extends "front_templates/page_template.html.twig" %}
+
+{% block body %}
+	{% include('/front_pages/_intro_section_template.html.twig') %}
+
+	{% set bg = '' %}
+	{% if page.name == 'plural-projects' %}
+		{% set bg = 'bg-light' %}
+	{% endif %}
+	<div class="{{ bg }} py-3 mb-3">
+		{% for section in sections %}
+			{% if section.name == 'top' %}
+				<article class="col-12 text-center">
+					{% if section.title %}
+						<h2 class="colored">{{ section.title }}</h2>
+					{% endif %}
+					{% if section.subTitle %}
+						<h3 class="font-weight-bold">{{ section.subTitle|lower|capitalize }}</h3>
+					{% endif %}
+					<p>{{ section.content|raw }}</p>
+				</article>
+			{% endif %}
+		{% endfor %}
+		<div class='d-md-flex mt-3 align-items-center justify-content-around'>
+			{% for section in sections %}
+				{% if section.name == 'left' %}
+					<article class="text-center framedArticle dot col-md-5 mb-1">
+						{% if section.title %}
+							<h2 class=" colored">{{ section.title }}</h2>
+						{% endif %}
+						{% if section.subTitle %}
+							<h3 class="font-weight-bold mb-2">{{ section.subTitle|lower|capitalize }}</h3>
+						{% endif %}
+						<p>{{ section.content|raw }}</p>
+					</article>
+				{% endif %}
+
+				{% if section.name == 'right' %}
+					<article class="text-center framedArticle red-dot col-md-5 mb-1">
+						{% if section.title %}
+							<h2 class=" colored">{{ section.title }}</h2>
+						{% endif %}
+						{% if section.subTitle %}
+							<h3 class="font-weight-bold">{{ section.subTitle|lower|capitalize }}</h3>
+						{% endif %}
+						<p>{{ section.content|raw }}</p>
+					</article>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+		{% for section in sections %}
+			{% if section.name == 'bottom' %}
+				<article class="text-center framedArticle solid offset-1 col-10 mt-3">
+					{% if section.title %}
+						<h2 class=" colored">{{ section.title }}</h2>
+					{% endif %}
+					{% if section.subTitle %}
+						<h3 class="font-weight-bold">{{ section.subTitle|lower|capitalize }}</h3>
+					{% endif %}
+					<p>{{ section.content|raw }}</p>
+				</article>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	{% for section in sections %}
+		{% if section.name == 'last' %}
+			<article class="text-center framedArticle dash my-3">
+				{% if section.title %}
+					<h2 class="colored">{{ section.title }}</h2>
+				{% endif %}
+				{% if section.subTitle %}
+					<h3 class="font-weight-bold">{{ section.subTitle|lower|capitalize }}</h3>
+				{% endif %}
+				<div class="my-1">{{ section.content|raw }}</div>
+			</article>
+		{% endif %}
+	{% endfor %}
+{% endblock %}

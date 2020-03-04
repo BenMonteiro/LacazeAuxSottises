@@ -1,0 +1,88 @@
+{% extends 'back_templates/no_menu_template.html.twig' %}
+
+{% block title %}
+	{{ event.name }}
+{% endblock %}
+
+{% block body %}
+	<div class="offset-9 col-4 mt-5 mr-5 text-center ">
+		<div class="d-flex justify-content-center ">
+
+			<div class="btn-showView mr-1">
+				<a class="badge badge-secondary p-2 " href="{{ path('event_index') }}" title="Retour à la page événement">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+			</div>
+			<div class="btn-showView ml-1">
+				<a class="badge badge-primary p-2" href="{{ path('event_edit', {'id': event.id}) }}" title="Modifier l'événement">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+			</div>
+		</div>
+
+		<div class="btn-showView">{{ include('admin/event/_delete_form.html.twig') }}</div>
+	</div>
+	<h1>{{ event.name }}</h1>
+	<div class="d-flex my-5">
+		<img class="miniImage offset-3 col-5 " src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
+		<div class="offset-1 col-2 ">
+			{% if event.startingDate != null %}
+				<h4>{{'event.start'|trans({}, 'event')|capitalize}}</h4>
+				<p class="ml-3">{{ event.startingDate ? event.startingDate|format_date('full') : '' }}</p>
+				<h4>{{'event.end'|trans({}, 'event')|capitalize}}</h4>
+				<p class="ml-3">{{ event.endingDate ? event.endingDate|format_date('full') : '' }}</p>
+			{% endif %}
+			{% if event.hours != null %}
+				<h4>{{'event.hours'|trans({}, 'event')|capitalize}}</h4>
+				<p>{{ event.hours }}</p>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="text-center offset-1 col-10">{{ event.description|raw }}</div>
+	<div class="text-center mt-5">
+		<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}" title="Télécharger le programme de l'événement">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
+	</div>
+
+	<div class="row offset-1 col-10 mt-5 pt-5">
+		<h2 class=" ml-5 mb-3 font-weight-bold">{{ 'event.performances'|trans({}, 'event')|capitalize}}
+		</h2>
+		<table class="table table-sm table-striped table-bordered text-center">
+			<thead>
+				<tr>
+					<th>{{'general.date'|trans({}, 'general')|capitalize}}</th>
+					<th>{{'perf.company'|trans({}, 'perf')|capitalize}}</th>
+					<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
+					<th>
+						<a href="{{ path('performance_new', {'event_id': event.id}) }}" title="Ajouter une représentation à l'événement">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for performance in event.performances %}
+					<tr>
+						<td>
+							<div class="date-infos h-100 colored">
+								<p class="mb-0 font-weight-bold">{{ performance.date ? performance.date|format_date('medium') : '' }}</p>
+								<p>{{ performance.date ? performance.date|format_time('short') : '' }}</p>
+							</div>
+						</td>
+						<td>
+							<a class="text-reset" href="{{ path('display_company', {'id': performance.company.id})}}" title="Voir la compagnie">
+								<h4 class=" text-decoration-none font-weight-bold">{{ performance.company.name }}</h4>
+							</a>
+						</td>
+						<td>
+							<p>{{ performance.placeShow|title }}</p>
+							<p class="font-italic colored">{{ performance.cityShow }}</p>
+						</td>
+						<td>
+							<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit', {'id': performance.id, 'event_id': event.id}) }}" title="Modifier la représentation">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+							{% include ('/admin/performance/_delete_form.html.twig') %}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="8">{{'general.noRecords'|trans({}, 'general')}}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

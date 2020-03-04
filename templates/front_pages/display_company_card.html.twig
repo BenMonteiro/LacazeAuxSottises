@@ -1,0 +1,55 @@
+{% extends "front_templates/company_template.html.twig" %}
+
+{% block title %}
+	{{ company.name}}
+{% endblock %}
+
+{% block body %}
+	<div class="offset-2 col-8">
+
+		<div class="d-flex">
+			<div class="d-flex flex-column align-items-center my-3">
+				<div class="cubic-image-div">
+					<img class="image-frame" src="{{ asset('images/cadre.png') }}">
+					<img class="cubic-image" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
+				</div>
+			</div>
+			<div class="d-flex flex-column ml-4 mt-4">
+				{% if company.isHosted %}
+					<div>
+						<p class=" colored font-italic">
+							{{ 'company.is.hosted'|trans({}, 'company')|capitalize }}
+						</p>
+					</div>
+					<p>
+						{{ 'company.hosted'|trans({}, 'company')|capitalize}}
+						{{ company.isHostedFrom ? company.isHostedFrom|format_date('medium') : '' }}
+						<br>
+						{{ 'general.to'|trans({}, 'general')|capitalize}}
+						{{ company.isHostedUntil ? company.isHostedUntil|format_date('medium'): '' }}</p>
+				{% endif %}
+				<p class="colored">{{ company.showTitle }}
+					-
+					{{ company.duration }}{{'general.minutes'|trans({}, 'general') }}</p>
+				<p class="">{{ company.theme }}</p>
+				<p class="">{{ company.audience }}</p>
+
+
+			</div>
+		</div>
+		<div class="text-center my-5">{{ company.description|raw }}</div>
+		<p class="mb-3">
+			<small>{{ company.moreInfos|raw }}</small>
+		</p>
+		{% if company.website != null %}
+			<div>
+				<a class="" href="{{ company.website }}" title="Aller sur le site de la compagnie">{{'company.site'|trans({}, 'company')|capitalize }}</a>
+			</div>
+		{% endif %}
+
+		{% if company.website != null %}
+			<a class="" href="{{ company.videoLink}}" title="Voir une vidéo de la compagnie">{{'company.video'|trans({}, 'company')|capitalize }}</a>
+		{% endif %}
+
+	</div>
+{% endblock %}

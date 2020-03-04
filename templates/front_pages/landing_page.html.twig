@@ -1,0 +1,16 @@
+{% extends 'front_layout.html.twig' %}
+
+{% block title %}
+	{{'general.welcome'|trans({}, 'general')|title}}
+{% endblock %}
+
+{% block description %}
+	Lacaze aux sottises est une association culturelle béarnaise proposant divers spectacles et événements sur le térritoire béarnais
+{% endblock %}
+
+{% block body %}
+	{% set display = (season.programImage == null and sections == null and homeEvents == null and homePerfs == null) ? 'd-none' : 'd-block' %}
+	<a class="{{ display }} " href="{{ path('page_show', {'pageSlug': 'home'}) }}" title="Accéder au site de Lacaze aux sottises">
+		<div class="accessLink"></div>
+	</a>
+{% endblock %}

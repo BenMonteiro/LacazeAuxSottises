@@ -1,0 +1,5 @@
+
+App\Entity\PressDocument:
+    docs{1..5}: 
+        name: "<word()>"
+        fileType: '<randomElement(["image", "file"])>' 

@@ -1,0 +1,50 @@
+front:
+    home: Accueil
+    association: Lacaze...
+    season: Saison
+    festival: Festival
+    third-location: Tiers-Lieu
+    volunteering: Bénévolat
+    partners: Partenaires
+    support: Soutien
+    contact: + D'infos
+    asso: Lacaze...
+    presentation: Présentation
+    prog: Calendrier
+    hostedCompanies: Cies Accueillies
+    area-project: Projet de Territoire
+    cultural-actions: Actions Culturelles
+    tickets: billetterie solidaire
+    proMeeting: rencontres pro
+    funSpace: espace ludique
+    plus: les p'tits
+    ecoPlace: éco-lieu
+    shared-spaces: Espaces et services partagés
+    meetings: Les rendez-vous
+    curiosity: Ateliers de curiosité
+    plural-projects: Projets Pluriels
+    coop: Coopération Territoriale
+    team: Équipe
+    subscription: Adhésion
+    pro-meeting: Rencontres pro
+    arts-etc: Aux arts etc
+    infos: Infos pratiques
+
+back:
+    home: Accueil
+    association: Association
+    season: Saison
+    festival: Festival
+    third-location: Tiers-Lieu
+    volunteering: Bénévolat
+    support: Soutien
+    contact: + D'infos
+    companies: compagnies
+    events: Événements
+    performances: représentations
+    partners: Partenaires
+    partner: Partenaires
+    team: équipe
+    sections: pages
+    user: admins
+    pressDoc: Presse

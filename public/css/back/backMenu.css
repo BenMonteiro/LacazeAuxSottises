@@ -1,0 +1,35 @@
+nav {
+    height: 120px;
+}
+
+.nav-item a.nav-link.back-nav-link:hover {
+    color: black;
+}
+
+.dropdown-item:hover {
+    background-color: #DA291C;
+}
+
+#navbarNavDropdown.navbar-collapse.collapse.show {
+    z-index: 20;
+}
+
+
+.navbar-collapse {
+    background-color: inherit;
+}
+
+.nav-item a.nav-link.back-nav-link {
+    color: #DA291C;
+    font-size: 1.2em;
+    margin-right: 20px;
+    padding: 5px 10px;
+}
+
+nav>ul {
+    list-style: none;
+}
+
+.logo {
+    width: 100px;
+}

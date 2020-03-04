@@ -3,3 +3,9 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     exception_controller: null
+    form_themes: ['bootstrap_4_layout.html.twig']
+    globals:
+        months : ['Jan', 'Feb', 'Mar','Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        locale: "%locale%"
+        app_path_to_web: "%app_path_to_web%"
+        app_version: '%app_version%'
