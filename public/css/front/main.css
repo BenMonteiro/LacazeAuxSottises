@@ -9,18 +9,14 @@ body {
     overflow-x: hidden;
 }
 
-p,
-span,
-li,
+body p,
+body p span,
+body li,
 a {
     text-align: inherit;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1em;
     margin: 0
-}
-
-.text-justify {
-    margin-bottom: 0 !important;
 }
 
 .bg-colored {
@@ -185,7 +181,7 @@ div>img.titleBar {
 }
 
 .partnerLogo {
-    width: 70px
+    width: 50px
 }
 
 .image-frame {
@@ -258,18 +254,18 @@ div>img.titleBar {
 /*--------------------------------------------------------------------------------------Agenda------------------------------------------------------------------------------------------*/
 
 .nav-pills .nav-link {
-    color: #DA291C !important
+    color: #DA291C
 }
 
 .nav-pills .nav-link.active {
-    color: black !important;
+    color: black;
     background-color: #DA291C;
 }
 
 .nav-pills .nav-link:hover {
-    color: black !important;
+    color: black;
     background-color: #DA291C;
-    border: none !important
+    border: none
 }
 
 .agenda {
@@ -338,15 +334,4 @@ div>img.titleBar {
     width: 240px;
     height: 230px;
     z-index: 2;
-}
-
-/*--------------------------------------------------------------------------------------Tables------------------------------------------------------------------------------------------*/
-
-thead {
-    background-color: black;
-    color: #DA291C
-}
-
-.table td {
-    vertical-align: middle;
 }

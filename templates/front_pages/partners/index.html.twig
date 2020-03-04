@@ -5,7 +5,7 @@
 
 		{% include('/front_pages/_intro_section_template.html.twig') %}
 
-		<div id="partnersLogos" class="d-flex flex-wrap justify-content-around offset-md-2 col-md-8 mb-4">
+		<div id="partnersLogos" class="d-flex flex-wrap justify-content-around mb-4">
 			{% for partner in partners %}
 				{% if partner.logo.name %}
 					<div class="mb-2 mr-2">
@@ -24,7 +24,7 @@
 		<div class="text-center">
 			<img class="miniTitleBar" src="{{asset('images/trait-rouge.png')}}" alt="barre rouge">
 		</div>
-		<p class="offset-md-3 col-md-6">
+		<p class="offset-md-1 col-md-10">
 			{% for partner in partners %}
 				{% if partner.type == "prod_dist" %}
 					{% if loop.last %}
@@ -43,7 +43,7 @@
 		<div class="text-center">
 			<img class="miniTitleBar" src="{{asset('images/trait-rouge.png')}}" alt="barre rouge">
 		</div>
-		<p class="offset-md-3 col-md-6">
+		<p class="offset-md-1 col-md-10">
 			{% for partner in partners %}
 				{% if partner.type == "partners" %}
 					{% if loop.last %}
@@ -55,7 +55,7 @@
 			{% endfor %}
 		</p>
 
-		<div class="offset-md-2 col-md-8">
+		<div>
 			{% for section in sections %}
 				{% if section.name != 'intro' %}
 					<article class="my-5 text-sm-left text-center">
@@ -65,7 +65,7 @@
 						{% if section.subTitle %}
 							<h3 class="font-weight-bold colored">{{ section.subTitle }}</h3>
 						{% endif %}
-						<p>{{ section.content|raw}}</p>
+						<div class="mb-2 mt-3">{{ section.content|raw}}</div>
 					</article>
 				{% endif %}
 			{% endfor %}

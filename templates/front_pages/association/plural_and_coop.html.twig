@@ -7,7 +7,7 @@
 	{% if page.name == 'plural-projects' %}
 		{% set bg = 'bg-light' %}
 	{% endif %}
-	<div class="offset-2 col-8 {{ bg }} py-3 mb-3">
+	<div class="{{ bg }} py-3 mb-3">
 		{% for section in sections %}
 			{% if section.name == 'top' %}
 				<article class="col-12 text-center">
@@ -24,7 +24,7 @@
 		<div class='d-md-flex mt-3 align-items-center justify-content-around'>
 			{% for section in sections %}
 				{% if section.name == 'left' %}
-					<article class="text-center framedArticle dot col-md-6 mr-md-2">
+					<article class="text-center framedArticle dot col-md-5 mb-1">
 						{% if section.title %}
 							<h2 class=" colored">{{ section.title }}</h2>
 						{% endif %}
@@ -36,7 +36,7 @@
 				{% endif %}
 
 				{% if section.name == 'right' %}
-					<article class="text-center framedArticle red-dot col-md-6 ml-md-2">
+					<article class="text-center framedArticle red-dot col-md-5 mb-1">
 						{% if section.title %}
 							<h2 class=" colored">{{ section.title }}</h2>
 						{% endif %}
@@ -66,7 +66,7 @@
 
 	{% for section in sections %}
 		{% if section.name == 'last' %}
-			<article class="text-center framedArticle dash offset-2 col-8 my-3">
+			<article class="text-center framedArticle dash my-3">
 				{% if section.title %}
 					<h2 class="colored">{{ section.title }}</h2>
 				{% endif %}

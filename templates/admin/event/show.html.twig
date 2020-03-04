@@ -9,10 +9,10 @@
 		<div class="d-flex justify-content-center ">
 
 			<div class="btn-showView mr-1">
-				<a class="badge badge-secondary p-2 " href="{{ path('event_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+				<a class="badge badge-secondary p-2 " href="{{ path('event_index') }}" title="Retour à la page événement">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 			</div>
 			<div class="btn-showView ml-1">
-				<a class="badge badge-primary p-2" href="{{ path('event_edit', {'id': event.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+				<a class="badge badge-primary p-2" href="{{ path('event_edit', {'id': event.id}) }}" title="Modifier l'événement">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
 			</div>
 		</div>
 
@@ -20,7 +20,7 @@
 	</div>
 	<h1>{{ event.name }}</h1>
 	<div class="d-flex my-5">
-		<img class="miniImage offset-3 col-5 " src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}">
+		<img class="miniImage offset-3 col-5 " src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
 		<div class="offset-1 col-2 ">
 			{% if event.startingDate != null %}
 				<h4>{{'event.start'|trans({}, 'event')|capitalize}}</h4>
@@ -37,7 +37,7 @@
 
 	<div class="text-center offset-1 col-10">{{ event.description|raw }}</div>
 	<div class="text-center mt-5">
-		<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
+		<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}" title="Télécharger le programme de l'événement">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
 	</div>
 
 	<div class="row offset-1 col-10 mt-5 pt-5">
@@ -50,7 +50,7 @@
 					<th>{{'perf.company'|trans({}, 'perf')|capitalize}}</th>
 					<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
 					<th>
-						<a href="{{ path('performance_new', {'event_id': event.id}) }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+						<a href="{{ path('performance_new', {'event_id': event.id}) }}" title="Ajouter une représentation à l'événement">{{'general.create'|trans({}, 'general')|capitalize}}</a>
 					</th>
 				</tr>
 			</thead>
@@ -64,7 +64,7 @@
 							</div>
 						</td>
 						<td>
-							<a class="text-reset" href="{{ path('display_company', {'id': performance.company.id})}}">
+							<a class="text-reset" href="{{ path('display_company', {'id': performance.company.id})}}" title="Voir la compagnie">
 								<h4 class=" text-decoration-none font-weight-bold">{{ performance.company.name }}</h4>
 							</a>
 						</td>
@@ -73,7 +73,7 @@
 							<p class="font-italic colored">{{ performance.cityShow }}</p>
 						</td>
 						<td>
-							<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit', {'id': performance.id, 'event_id': event.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+							<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit', {'id': performance.id, 'event_id': event.id}) }}" title="Modifier la représentation">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
 							{% include ('/admin/performance/_delete_form.html.twig') %}
 						</td>
 					</tr>

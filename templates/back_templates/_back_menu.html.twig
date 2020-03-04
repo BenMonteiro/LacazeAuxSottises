@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 	{% if is_granted('ROLE_ADMIN') %}
-		<a class="navbar-brand" href="{{ path('admin_dashboard') }}"><img class='logo' src="{{asset('images/logo.jpg')}}" alt="logo association"></a>
+		<a class="navbar-brand" href="{{ path('admin_dashboard') }}" title="Aller à l'acceuil administration"><img class='logo' src="{{asset('images/logo.jpg')}}" alt="logo association"></a>
 	{% endif %}
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>

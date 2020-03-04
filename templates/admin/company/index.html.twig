@@ -9,7 +9,7 @@
 		<h1>{{'company.index'|trans({}, 'company')|title}}</h1>
 	</div>
 	{% set classDisplay = 'index' %}
-	{% if companies|length <= 1  %}
+	{% if companies|length <= 2  %}
 		{% set classDisplay = 'oneElement' %}
 	{% endif %}
 	<table class="table table-sm table-striped {{ classDisplay }} text-center mb-5 pb-5">
@@ -29,14 +29,14 @@
 				<th>{{'general.videoLink'|trans({}, 'general')|capitalize}}</th>
 				<th>{{'general.more.infos'|trans({}, 'general')|capitalize}}</th>
 				<th>
-					<a href="{{ path('company_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+					<a href="{{ path('company_new') }}" title="Ajouter une compagnie">{{'general.create'|trans({}, 'general')|capitalize}}</a>
 				</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for company in companies %}
 				<tr>
-					<td><img class="miniImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}"></td>
+					<td><img class="miniImage" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}"></td>
 					<td class="colored font-weight-bold">{{ company.name }}</td>
 					<td>{{ company.isHidden ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
 					<td class="font-italic">{{ company.showTitle}}</td>
@@ -44,25 +44,21 @@
 					<td>{{ company.theme}}</td>
 					<td>{{ company.duration ~ ' min'}}</td>
 					<td>{{ company.audience}}</td>
-					<td>{{ company.isHosted ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}
-					</td>
+					<td>{{ company.isHosted ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
 					<td>
 						{% if company.isHosted %}
-							<p>
-								{{ 'general.from'|trans({}, 'general')|capitalize}}
-								{{ company.isHostedFrom ? company.isHostedFrom|format_date('medium') : '' }}</p>
-							<p>
-								{{ 'general.to'|trans({}, 'general')|capitalize}}
-								{{ company.isHostedUntil ? company.isHostedUntil|format_date('medium'): '' }}</p>
+							<p>{{ 'general.from'|trans({}, 'general')|capitalize}}{{ company.isHostedFrom ? company.isHostedFrom|format_date('medium') : '' }}</p>
+							<p>{{ 'general.to'|trans({}, 'general')|capitalize}}{{ company.isHostedUntil ? company.isHostedUntil|format_date('medium'): '' }}</p>
 						{% endif %}
 					</td>
 					<td class="text-break">{{ company.website }}</td>
 					<td class="text-break">{{ company.videoLink }}</td>
 					<td>{{ company.moreInfos|slice(0,100)|raw }}...</td>
 					<td>
-						<a class="badge badge-secondary my-2 p-2" href="{{ path('company_show', {'id': company.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
-						<a class="badge badge-primary my-2 p-2" href="{{ path('company_edit', {'id': company.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
-						{{ include('admin/company/_delete_form.html.twig') }}</td>
+						<a class="badge badge-secondary my-2 p-2" href="{{ path('company_show', {'id': company.id}) }}" title="Voir un aperçu de la compagnie">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+						<a class="badge badge-primary my-2 p-2" href="{{ path('company_edit', {'id': company.id}) }}" title="Modifier une compagnie">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+						{{ include('admin/company/_delete_form.html.twig') }}
+					</td>
 				</tr>
 			{% else %}
 				<tr>

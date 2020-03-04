@@ -43,12 +43,12 @@
 		</p>
 		{% if company.website != null %}
 			<div>
-				<a class="" href="{{ company.website }}">{{'company.site'|trans({}, 'company')|capitalize }}</a>
+				<a class="" href="{{ company.website }}" title="Aller sur le site de la compagnie">{{'company.site'|trans({}, 'company')|capitalize }}</a>
 			</div>
 		{% endif %}
 
 		{% if company.website != null %}
-			<a class="" href="{{ company.videoLink}}">{{'company.video'|trans({}, 'company')|capitalize }}</a>
+			<a class="" href="{{ company.videoLink}}" title="Voir une vidéo de la compagnie">{{'company.video'|trans({}, 'company')|capitalize }}</a>
 		{% endif %}
 
 	</div>

@@ -2,13 +2,13 @@
 
 {% block body %}
 
-	<div class="d-flex justify-content-around  flex-wrap">
+	<div class="d-flex justify-content-around flex-wrap">
 		{% if homeEvents %}
 			{% for event in homeEvents %}
 				{% if event.startingDate|date('M') == 'now'|date('M') %}
 					<div class="col-md-4 col-sm-6 col-12 text-center my-3">
-						<a class="element-link d-flex flex-column justify-content-between" href="{{path('display_event',{'id':event.id})}}">
-							<div class="cubic-image-div mb-0">
+						<a class="element-link d-flex flex-column justify-content-between" href="{{path('display_event',{'id':event.id})}}" title="Voir le fiche de l'événement'">
+							<div class="cubic-image-div justify-content-center mb-0">
 								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
 								<img src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name)}}" class="cubic-image" alt="{{event.imageDescription}}">
 							</div>
@@ -26,9 +26,9 @@
 		{% if homePerfs %}
 			{% for perf in homePerfs %}
 				{% if perf.date|date('M') == 'now'|date('M') %}
-					<div class="col-lg-4 col-md-4 col-sm-6 col-12 text-center my-3">
-						<a class="element-link d-flex flex-column justify-content-between" href="{{path('display_company',{'id':perf.company.id})}}">
-							<div class="cubic-image-div mb-0">
+					<div class="col-md-4 col-sm-6 col-12 text-center my-3">
+						<a class="element-link d-flex flex-column justify-content-between" href="{{path('display_company',{'id':perf.company.id})}}" title="Voir le fiche de la compagnie">
+							<div class="cubic-image-div justify-content-center mb-0">
 								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
 								<img class="cubic-image" src="{{asset('images/uploads/company/' ~ perf.company.image.name)}}" alt="{{perf.company.imageDescription}}">
 							</div>
@@ -47,8 +47,8 @@
 			{% endfor %}
 		{% endif %}
 		<div class="col-lg-4 col-md-4 col-sm-6 col-12 text-center my-3">
-			<a class="element-link element-link d-flex flex-column justify-content-between" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}">
-				<div class="cubic-image-div mb-0">
+			<a class="element-link element-link d-flex flex-column justify-content-between" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}" title="Télécharger la plaquette de la saison">
+				<div class="cubic-image-div justify-content-center mb-0">
 					<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
 					<img class="cubic-image" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}" alt="{{season.imageDescription}}">
 				</div>
@@ -87,7 +87,7 @@
 								<h2 class="colored">{{ section.title|lower|capitalize }}</h2>
 								<p>{{ section.content|raw }}</p>
 								{% if section.image.name and section.image.mimeType == 'application/pdf' %}
-									<a class="text-break colored" href="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" download>{{'general.download_form'|trans({}, 'general')|capitalize}}</a>
+									<a class="text-break colored" href="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" download title="Télécharger le formulaire">{{'general.download_form'|trans({}, 'general')|capitalize}}</a>
 								{% endif %}
 							</div>
 						{% endif %}

@@ -90,13 +90,11 @@ class PageController extends AbstractController
      */
     public function displayEventCard(Event $event): Response
     {
-        $eventPerfs = $this->performanceRepository->findBy(['event' => $event], ['date' => 'ASC']);
 
         return $this->render('front_pages/display_event_card.html.twig', [
             'pages' => $this->pages,
             'tabs' => $this->tabs,
             'event' => $event,
-            'eventPerfs' => $eventPerfs
         ]);
     }
 }

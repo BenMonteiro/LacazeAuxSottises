@@ -10,7 +10,7 @@
 
 {% block body %}
 	{% set display = (season.programImage == null and sections == null and homeEvents == null and homePerfs == null) ? 'd-none' : 'd-block' %}
-	<a class="{{ display }} " href="{{ path('page_show', {'pageSlug': 'home'}) }}">
+	<a class="{{ display }} " href="{{ path('page_show', {'pageSlug': 'home'}) }}" title="Accéder au site de Lacaze aux sottises">
 		<div class="accessLink"></div>
 	</a>
 {% endblock %}

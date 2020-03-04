@@ -29,7 +29,7 @@
 				<th>{{'section.content'|trans({}, 'section')|capitalize}}</th>
 				<th>{{'section.image'|trans({}, 'section')|capitalize}}</th>
 				<th>
-					<a href="{{ path('section_new', {'page_id': page.id}) }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+					<a href="{{ path('section_new', {'page_id': page.id}) }}" title="Ajouter un article">{{'general.create'|trans({}, 'general')|capitalize}}</a>
 				</th>
 			</tr>
 		</thead>
@@ -43,8 +43,8 @@
 					<td>{{section.content|slice(0,100)|striptags}}...</td>
 					<td>{{section.image.name}}</td>
 					<td>
-						<a class="badge badge-secondary my-2 p-2" href="{{ path('section_show', {'id': section.id}) }}">{{'general.show'|trans({}, 'general')|capitalize}}</a>
-						<a class="badge badge-primary my-2 p-2" href="{{ path('section_edit', {'id': section.id, 'page_id': page.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+						<a class="badge badge-secondary my-2 p-2" href="{{ path('section_show', {'id': section.id}) }}" title="Voir un aperçu de l'article">{{'general.show'|trans({}, 'general')|capitalize}}</a>
+						<a class="badge badge-primary my-2 p-2" href="{{ path('section_edit', {'id': section.id, 'page_id': page.id}) }}" title="Modifier l'article">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
 						{{ include('admin/section/_delete_form.html.twig') }}
 					</td>
 				</tr>

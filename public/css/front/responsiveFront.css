@@ -32,10 +32,6 @@
         white-space: nowrap;
     }
 
-    .logo {
-        width: 100px;
-    }
-
     .nav-pills>li {
         width: 16%;
     }
@@ -61,17 +57,12 @@
         top: 0px;
     }
 
-    .nav-link:hover {
-        border: none !important;
-        color: #DA291C !important
-    }
-
     #titleLines {
         top: -45px;
     }
 
     .logo {
-        width: 75px !important;
+        width: 75px;
     }
 
     nav li {
@@ -90,10 +81,6 @@
 }
 
 @media all and (max-width:500px) {
-    .nav-link {
-        padding: 0 !important
-    }
-
     .tab-content {
         position: relative;
         top: 360px;

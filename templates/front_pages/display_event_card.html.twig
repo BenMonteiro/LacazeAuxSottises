@@ -28,8 +28,8 @@
 	</div>
 
 	<div class="text-center mt-5">
-		{% if event.programPDF %}
-			<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
+		{% if event.programPDF.name %}
+			<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}" title="Télécharger le programme de l'événement">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
 		{% endif %}
 	</div>
 {% endblock %}

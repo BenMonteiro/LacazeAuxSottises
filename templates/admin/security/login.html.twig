@@ -14,9 +14,9 @@
 			<div class="mb-3">
 				{{'log.connected_as'|trans({}, 'security')|capitalize}}
 				{{ app.user.username }},
-				<a href="{{ path('app_logout') }}">{{'log.logout'|trans({}, 'security')|capitalize}}</a>
+				<a href="{{ path('app_logout') }}" title="Deconnexion">{{'log.logout'|trans({}, 'security')|capitalize}}</a>
 				/
-				<a href="{{ path('admin_dashboard') }}">{{'log.dashboard'|trans({}, 'security')|capitalize}}</a>
+				<a href="{{ path('admin_dashboard') }}" title="Aller à l'accueil administration">{{'log.dashboard'|trans({}, 'security')|capitalize}}</a>
 			</div>
 		{% endif %}
 

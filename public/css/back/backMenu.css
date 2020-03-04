@@ -2,9 +2,8 @@ nav {
     height: 120px;
 }
 
-.back-nav-link:hover {
-    border: none !important;
-    color: black !important;
+.nav-item a.nav-link.back-nav-link:hover {
+    color: black;
 }
 
 .dropdown-item:hover {
@@ -12,7 +11,7 @@ nav {
 }
 
 #navbarNavDropdown.navbar-collapse.collapse.show {
-    z-index: 20 !important;
+    z-index: 20;
 }
 
 
@@ -20,16 +19,10 @@ nav {
     background-color: inherit;
 }
 
-.back-nav-link {
-    color: #DA291C !important;
+.nav-item a.nav-link.back-nav-link {
+    color: #DA291C;
     font-size: 1.2em;
     margin-right: 20px;
-    padding: 5px 10px !important;
-}
-
-.nav-tabs .nav-link.active {
-    border: solid black 1px !important;
-    border-bottom: none !important;
     padding: 5px 10px;
 }
 

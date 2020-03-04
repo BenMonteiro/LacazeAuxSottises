@@ -10,11 +10,11 @@
 		{{ include('admin/performance/_form.html.twig') }}
 
 		{% if event_id is not null %}
-			<a class="badge badge-secondary p-2" href="{{ path('event_show', {'id': event_id}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+			<a class="badge badge-secondary p-2" href="{{ path('event_show', {'id': event_id}) }}" title="Retour à la page événement de la représentation">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 		{% elseif company_id is not null %}
-			<a class="badge badge-secondary p-2" href="{{ path('company_show', {'id': company_id}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+			<a class="badge badge-secondary p-2" href="{{ path('company_show', {'id': company_id}) }}" title="Retour à la page compagnie de la représentation">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 		{% else %}
-			<a class="badge badge-secondary p-2" href="{{ path('performance_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+			<a class="badge badge-secondary p-2" href="{{ path('performance_index') }}" title="Retour à la page des représentations">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 		{% endif %}
 	</div>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block body %}
 
 	<img class=" d-md-block d-none redCircle" src="{{asset('images/TRAIT.rouge.jpg')}}" alt="cercle pointillé rouge">
-	<div class=" d-none offset-xl-2 col-xl-8 d-md-flex flex-wrap justify-content-around mb-5">
+	<div class=" d-none d-md-flex flex-wrap justify-content-around mb-5">
 		{% for section in sections %}
 			{% if section.image.name %}
 				<div class="d-flex flex-column align-items-center col-lg-4 col-sm-6 col-12 my-3">
@@ -15,7 +15,7 @@
 			{% endif %}
 		{% endfor %}
 	</div>
-	<div class="offset-md-2 col-md-8">
+	<div class="offset-md-1 col-md-10">
 		{% for section in sections %}
 			<article class="mb-5">
 				{% if section.title %}
@@ -24,7 +24,7 @@
 				{% if section.subTitle %}
 					<h3 class="mb-2">{{ section.subTitle }}</h3>
 				{% endif %}
-				<p class="text-justify">{{ section.content|raw}}</p>
+				<div class="text-justify mb-0">{{ section.content|raw}}</div>
 			</article>
 		{% endfor %}
 	</div>

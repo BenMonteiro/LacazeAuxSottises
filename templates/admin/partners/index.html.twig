@@ -20,18 +20,18 @@
 				<th>{{'partner.name'|trans({}, 'partners')|capitalize}}</th>
 				<th>{{'partner.type'|trans({}, 'partners')|capitalize}}</th>
 				<th>
-					<a href="{{ path('partners_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</th>
+					<a href="{{ path('partners_new') }}" title="Ajouter un partenaire">{{'general.create'|trans({}, 'general')|capitalize}}</th>
 				</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for partner in partners %}
 				<tr>
-					<td><img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}"></td>
+					<td><img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}"></td>
 					<td class="colored font-weight-bold">{{ partner.name }}</td>
 					<td>{{ ('partner.' ~ partner.type)|trans({}, 'partners')|capitalize }}</td>
 					<td>
-						<a class="badge badge-primary my-2 p-2" href="{{ path('partners_edit', {'id': partner.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+						<a class="badge badge-primary my-2 p-2" href="{{ path('partners_edit', {'id': partner.id}) }}" title="Modifier un partenaire">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
 						{{ include('admin/partners/_delete_form.html.twig') }}
 
 					</td>

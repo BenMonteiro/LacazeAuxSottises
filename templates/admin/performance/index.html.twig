@@ -24,7 +24,7 @@
 				<th>{{'perf.show.event'|trans({}, 'perf')|capitalize}}</th>
 				<th>{{'perf.highlight'|trans({}, 'perf')|capitalize}}</th>
 				<th>
-					<a href="{{ path('performance_new') }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+					<a href="{{ path('performance_new') }}" title="Ajouter une représentation">{{'general.create'|trans({}, 'general')|capitalize}}</a>
 				</th>
 			</tr>
 		</thead>
@@ -34,7 +34,7 @@
 					<td class="date-infos h-100 colored font-weight-bold">{{ performance.date ? performance.date|format_date('medium') : '' }}</td>
 					<td class="date-infos h-100 colored">{{ performance.date ? performance.date|date('H:i') : '' }}</td>
 					<td>
-						<a class="text-reset" href="{{ path('display_company', {'id': performance.company.id})}}">
+						<a class="text-reset" href="{{ path('display_company', {'id': performance.company.id})}}" title="Voir la compagnie">
 							<h4 class=" text-decoration-none font-weight-bold">{{ performance.company.name }}</h4>
 						</a>
 					</td>
@@ -46,7 +46,7 @@
 					<td>{{ performance.event}}</td>
 					<td>{{ performance.isHighlight ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
 					<td>
-						<a class="badge badge-primary my-2 p-2 text-center" href="{{ path('performance_edit', {'id': performance.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+						<a class="badge badge-primary my-2 p-2 text-center" href="{{ path('performance_edit', {'id': performance.id}) }}" title="Modifier la représentation">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
 						{{ include('admin/performance/_delete_form.html.twig') }}
 					</td>
 

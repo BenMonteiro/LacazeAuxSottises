@@ -8,10 +8,10 @@
 	<div class="offset-9 col-4 mt-5 mr-5 text-center ">
 		<div class="d-flex justify-content-center ">
 			<div class="btn-showView mr-1">
-				<a class="badge badge-secondary p-2 " href="{{ path('company_index') }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+				<a class="badge badge-secondary p-2 " href="{{ path('company_index') }}" title="Retour à la page compagnie">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 			</div>
 			<div class="btn-showView ml-1">
-				<a class="badge badge-primary p-2" href="{{ path('company_edit', {'id': company.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+				<a class="badge badge-primary p-2" href="{{ path('company_edit', {'id': company.id}) }}" title="Modifier une compagnie">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
 			</div>
 		</div>
 
@@ -67,7 +67,7 @@
 				<div>
 					<h4>{{'general.website'|trans({}, 'general')|capitalize}}
 						:</h4>
-					<a class="ml-3" href="{{ company.website }}">{{'company.site'|trans({}, 'company')|capitalize }}</a>
+					<a class="ml-3" href="{{ company.website }}" title="Site web compagnie">{{'company.site'|trans({}, 'company')|capitalize }}</a>
 				</div>
 			{% endif %}
 
@@ -75,13 +75,13 @@
 				<div>
 					<h4>{{'general.videoLink'|trans({}, 'general')|capitalize}}
 						:</h4>
-					<a class="ml-3" href="{{ company.videoLink}}">{{'company.video'|trans({}, 'company')|capitalize }}</a>
+					<a class="ml-3" href="{{ company.videoLink}}" title="Lien vers une vidéo de la compagnie">{{'company.video'|trans({}, 'company')|capitalize }}</a>
 				</div>
 			{% endif %}
 		</aside>
 		<div class="col-9 flex-column">
 			<div class="col-12 mb-5 ">
-				<img class="miniImage col-4 mt-5 mx-3 float-left" src="{{ asset('images/uploads/company/' ~ company.image.name) }}">
+				<img class="miniImage col-4 mt-5 mx-3 float-left" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
 				<div class="col-12 text-justify my-5 pt-5">{{ company.description|raw }}</div>
 			</div>
 
@@ -95,7 +95,7 @@
 							<th>{{'perf.show.place'|trans({}, 'perf')|capitalize}}</th>
 							<th>{{'perf.show.event'|trans({}, 'perf')|capitalize}}</th>
 							<th>
-								<a href="{{ path('performance_new', {'company_id': company.id}) }}">{{'general.create'|trans({}, 'general')|capitalize}}</a>
+								<a href="{{ path('performance_new', {'company_id': company.id}) }}" title="Ajouter une représentation à la compagnie">{{'general.create'|trans({}, 'general')|capitalize}}</a>
 							</th>
 						</tr>
 					</thead>
@@ -114,7 +114,7 @@
 								</td>
 								<td>{{ performance.event}}</td>
 								<td>
-									<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit',{'id': performance.id, 'company_id': company.id}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+									<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit',{'id': performance.id, 'company_id': company.id}) }}" title="Modifier la représentation">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
 									{% include ('/admin/performance/_delete_form.html.twig') %}
 								</td>
 

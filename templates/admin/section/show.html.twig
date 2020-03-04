@@ -8,10 +8,10 @@
 	<div class="offset-9 col-4 mt-5 mr-5 text-center ">
 		<div class="d-flex justify-content-center ">
 			<div class="btn-showView mr-1">
-				<a class="badge badge-secondary p-2" href="{{ path('page_list_show', {'id': section.belongToPageId}) }}">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+				<a class="badge badge-secondary p-2" href="{{ path('page_list_show', {'id': section.belongToPageId}) }}" title="Retour à la liste des article">{{'general.back'|trans({}, 'general')|capitalize}}</a>
 			</div>
 			<div class="btn-showView ml-1">
-				<a class="badge badge-primary p-2" href="{{ path('section_edit', {'id': section.id, 'page_id': section.belongToPageId}) }}">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
+				<a class="badge badge-primary p-2" href="{{ path('section_edit', {'id': section.id, 'page_id': section.belongToPageId}) }}" title="Modifier l'article">{{'general.edit'|trans({}, 'general')|capitalize}}</a>
 			</div>
 		</div>
 
@@ -35,7 +35,7 @@
 		</aside>
 		<div class="col-9 d-flex mt-5">
 			<div class=" col-lg-3 col-4 ">
-				<img class="miniImage" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}">
+				<img class="miniImage" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
 			</div>
 			<div class="col-7 flex-column">
 				{% if section.title != null %}
