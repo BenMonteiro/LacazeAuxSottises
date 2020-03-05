@@ -44,7 +44,7 @@ class Performance
     private $event;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $price;
 

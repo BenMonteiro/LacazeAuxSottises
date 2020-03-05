@@ -2,16 +2,16 @@
 
 {% block body %}
 
-	<div class="text-center">
+	<div class="text-center offset-md-2 col-md-8">
 		{% for section in sections %}
-			<article class="mb-5">
+			<article class="mb-3 text-left">
 				{% if section.title %}
-					<h2 class="colored">{{ section.title|lower|capitalize }}</h2>
+					<h2 class="mb-2 colored">{{ section.title|lower|capitalize }}</h2>
 				{% endif %}
 				{% if section.subTitle %}
 					<h3>{{ section.subTitle }}</h3>
 				{% endif %}
-				<p class="text-justify">{{ section.content|raw}}</p>
+				<div class="ul-ml">{{ section.content|raw}}</div>
 			</article>
 		{% endfor %}
 	</div>

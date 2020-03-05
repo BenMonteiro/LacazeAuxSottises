@@ -4,7 +4,7 @@
 
 	{% include('/front_pages/_intro_section_template.html.twig') %}
 
-	<ul class="nav nav-pills mt-2 offset-1 col-10 justify-content-between" id="pills-tab" role="tablist">
+	<ul class="nav nav-pills mt-2 offset-2 col-8 justify-content-between" id="pills-tab" role="tablist">
 		{% for month in months %}
 			{% set show = '' %}
 			{% if month == 'now'|date('M') %}
@@ -12,7 +12,7 @@
 			{% endif %}
 
 			<li class="nav-item">
-				<a class="nav-link {{ show }} text-center d-block" id="pills-{{month}}-tab" data-toggle="pill" href="#pills-{{month}}" role="tab" aria-controls="pills-{{month}}" aria-selected="true" title="Afficher les événements du mois de {{month|trans({}, 'general')}}">{{month|trans({}, 'general')}}</a>
+				<a class="nav-link {{ show }} text-center d-block font-weight-bold" id="pills-{{month}}-tab" data-toggle="pill" href="#pills-{{month}}" role="tab" aria-controls="pills-{{month}}" aria-selected="true" title="Afficher les événements du mois de {{month|trans({}, 'general')}}">{{month|trans({}, 'general')}}</a>
 			</li>
 		{% endfor %}
 	</ul>
@@ -44,9 +44,9 @@
 							<div class="text-center ">
 								<h2 class="text-decoration-none colored mb-0">{{ perf.date|format_date(pattern="EEEE d MMMM")|title}}
 								</h2>
-								<p class="text-dark font-weight-lighter font-italic mb-0">{{ perf.cityShow }}</p>
-								<h2 class="mb-0">{{ perf.company.name }},
-									{{ perf.company.showTitle}}</h2>
+								<p class="text-muted mb-0">{{ perf.cityShow }}</p>
+								<p class="mb-0">{{ perf.company.name }},
+									{{ perf.company.showTitle}}</p>
 							</div>
 						</a>
 					{% elseif perf.event != 'saison' and perf.event != 'Soirées du Tiers-Lieu' %}
@@ -54,8 +54,8 @@
 							<div class="text-center">
 								<h2 class="text-decoration-none colored mb-0">{{ perf.event.startingDate|format_date(pattern="EEEE d MMMM")|title }}
 								</h2>
-								<p class="text-dark font-weight-lighter font-italic mb-0">{{perf.event.place}}</p>
-								<h2>{{ perf.event.name }}</h2>
+								<p class="text-muted mb-0">{{perf.event.place}}</p>
+								<p>{{ perf.event.name }}</p>
 							</div>
 						</a>
 					{% endif %}

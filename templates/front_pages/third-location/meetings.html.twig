@@ -6,7 +6,7 @@
 			<h2 class="colored text-center font-weight-bold my-4">{{ 'general.third_location.prod_meetings'|trans({}, 'general') }}</h2>
 			{% for section in sections %}
 				{% if section.name == 'prod meeting' %}
-					<section class=" d-md-flex align-items-center justify-content-between offset-lg-1 col-lg-10 mb-3">
+					<section class=" d-md-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 						{% if section.image.name %}
 							<div class="d-flex flex-column align-items-center my-3">
 								<div class="cubic-image-div">
@@ -32,7 +32,7 @@
 			<h2 class="colored text-center font-weight-bold my-4">{{ 'general.third_location.nights'|trans({}, 'general') }}</h2>
 			{% for section in sections %}
 				{% if section.name == 'nights' %}
-					<section class=" d-sm-flex align-items-center justify-content-between offset-lg-1 col-lg-10 mb-3">
+					<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 						{% if section.image.name %}
 							<div class="d-flex flex-column align-items-center my-3">
 								<div class="cubic-image-div">
@@ -57,9 +57,9 @@
 
 		<div id="calendar" class="my-5">
 			<h2 class="colored text-center font-weight-bold">{{ 'general.third_location.program'|trans({}, 'general')|title }}</h2>
-			<ul class="d-flex justify-content-around flex-wrap list-unstyled">
+			<ul class="d-flex justify-content-around flex-wrap list-unstyled offset-2 col-8">
 				{% for placeEventPerf in placeEventPerfs %}
-					<li class=" d-flex flex-column align-items-center  col-xl-4 col-sm-6 col-12 mt-3">
+					<li class=" d-flex flex-column align-items-center col-lg-6 col-12 mt-3">
 						<a href="{{path('display_company', {'id': placeEventPerf.company.id })}}" title="Voir le fiche de la compagnie">
 							<div class="d-flex flex-column align-items-center mt-3">
 								<div class="cubic-image-div">
@@ -74,7 +74,7 @@
 								</p>
 								<p>{{ placeEventPerf.date|date('H') }}h{{ placeEventPerf.date|date('i') }}
 									-
-									{{ placeEventPerf.company.name|raw }}</p>
+									{{ placeEventPerf.company.theme|raw }}</p>
 							</div>
 						</a>
 					</li>
@@ -87,7 +87,7 @@
 			<h2 class="colored text-center font-weight-bold my-4">{{ 'general.third_location.visits'|trans({}, 'general') }}</h2>
 			{% for section in sections %}
 				{% if section.name == 'visit' %}
-					<section class=" d-md-flex justify-content-between offset-lg-1 col-lg-10 mb-3">
+					<section class=" d-md-flex justify-content-between offset-lg-2 col-lg-8 mb-3">
 						{% if section.image.name %}
 							<div class="d-flex flex-column my-3">
 								<div class="cubic-image-div justify-content-center">

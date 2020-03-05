@@ -14,7 +14,7 @@
 	</div>
 	{% for section in sections %}
 		{% if section.name != 'intro' %}
-			<section class=" d-md-flex align-items-center justify-content-between offset-lg-1 col-lg-10 mb-3">
+			<section class=" d-md-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 				<div class="">
 					{% if section.image.name %}
 						<div class="d-flex flex-column align-items-center my-3">
@@ -25,7 +25,7 @@
 						</div>
 					</div>
 				{% endif %}
-				<article class="d-flex col-md-7 flex-column text-md-left text-center">
+				<article class="d-flex flex-column text-md-left text-center">
 					{% if section.title %}
 						<h2 class=" h-100 colored">{{ section.title }}</h2>
 					{% endif %}

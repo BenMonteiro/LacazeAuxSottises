@@ -63,6 +63,7 @@ class PageDataProvider
             case 'home':
                 $data['homeEvents'] = $this->eventRepository->findMonthEvents();
                 $data['homePerfs'] = $this->performanceRepository->findMonthPerfs();
+                $data['placeEventPerfs'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'Soirées du Tiers-Lieu'])], ['date' => 'ASC']);
                 break;
             case 'saison/calendrier':
                 $data['performances'] = $this->performanceRepository->seasonPerfs();

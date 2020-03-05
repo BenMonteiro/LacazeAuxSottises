@@ -3,10 +3,10 @@
 {% block body %}
 
 	<img class=" d-md-block d-none redCircle" src="{{asset('images/TRAIT.rouge.jpg')}}" alt="cercle pointillé rouge">
-	<div class=" d-none d-md-flex flex-wrap justify-content-around mb-5">
+	<div class=" d-none d-md-flex flex-wrap justify-content-center mb-5">
 		{% for section in sections %}
 			{% if section.image.name %}
-				<div class="d-flex flex-column align-items-center col-lg-4 col-sm-6 col-12 my-3">
+				<div class="d-flex flex-column align-items-center my-3">
 					<div class="cubic-image-div">
 						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir autour de l'image">
 						<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
@@ -15,17 +15,33 @@
 			{% endif %}
 		{% endfor %}
 	</div>
-	<div class="offset-md-1 col-md-10">
+	<div class="offset-md-2 col-md-8">
 		{% for section in sections %}
-			<article class="mb-5">
-				{% if section.title %}
-					<h3 class="font-weight-bold colored mb-0">{{ section.title|lower|capitalize }}</h3>
-				{% endif %}
-				{% if section.subTitle %}
-					<h3 class="mb-2">{{ section.subTitle }}</h3>
-				{% endif %}
-				<div class="text-justify mb-0">{{ section.content|raw}}</div>
-			</article>
+			{% if section.name != "Chiffres" %}
+				<article class="mb-3 mx-5">
+					{% if section.title %}
+						<h3 class="font-weight-bold colored mx-0 mb-2">{{ section.title|lower|capitalize }}</h3>
+					{% endif %}
+					{% if section.subTitle %}
+						<h3 class="mb-2">{{ section.subTitle }}</h3>
+					{% endif %}
+					<div class="text-justify mb-0">{{ section.content|raw}}</div>
+				</article>
+			{% else %}
+				<div class=" my-5">
+					<article class=" framedArticle dot p-0 px-4 mx-5">
+						<div class="my-1">
+							{% if section.title %}
+								<h3 class="font-weight-bold colored mx-0 mb-0">{{ section.title|lower|capitalize }}</h3>
+							{% endif %}
+							{% if section.subTitle %}
+								<h3 class="mb-2">{{ section.subTitle }}</h3>
+							{% endif %}
+							<div class="text-justify mb-0">{{ section.content|raw}}</div>
+						</div>
+					</article>
+				</div>
+			{% endif %}
 		{% endfor %}
 	</div>
 {% endblock %}

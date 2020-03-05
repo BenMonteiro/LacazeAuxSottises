@@ -31,9 +31,7 @@ class PerformanceType extends AbstractType
             ->add('cityShow')
             ->add('placeShow')
             ->add('date')
-            ->add('price', MoneyType::class, [
-                'required' => false
-            ])
+            ->add('price')
             ->add('isHighlight')
             ->add('event', $options['eventFieldType'], $options['eventFieldOptions']);
 

@@ -6,14 +6,14 @@
 		{% include('/front_pages/_intro_section_template.html.twig') %}
 		{% for section in sections %}
 			{% if section.name != 'intro' %}
-				<section class=" d-md-flex align-items-center justify-content-between offset-lg-1 col-lg-10 mb-3">
+				<section class=" d-md-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 					<div class="d-flex flex-column align-items-center my-3">
 						<div class="cubic-image-div">
 							<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
 							<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
 						</div>
 					</div>
-					<article class="framedArticle red-dot h-100 col-md-7">
+					<article class="framedArticle red-dot h-100 mx-0 col-lg-7">
 						{% if section.title %}
 							<h2 class="colored">{{ section.title }}</h2>
 						{% endif %}

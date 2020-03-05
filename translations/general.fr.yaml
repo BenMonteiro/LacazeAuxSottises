@@ -28,7 +28,7 @@ general:
     name: nom
     firstName: prénom
     required: champs obligatoires
-    minutes: minutes
+    minutes: min
     more:
         infos: plus d'infos
     website: site web
@@ -50,6 +50,7 @@ general:
     no_perfs: pas de spectacles de prévus ce moi-ci
     seasonDoc: plaquette
     downloadDoc: télécharger la plaquette
+    askProg: demandez le programme !
     focusOn: zoom sur 
     date: date
     hour: heure
