@@ -5,14 +5,17 @@
 
 		{% include('/front_pages/_intro_section_template.html.twig') %}
 
-		<div id="partnersLogos" class="d-flex flex-wrap justify-content-around mb-4">
+		<div id="partnersLogos" class="d-flex flex-wrap justify-content-around offset-2 col-8 mb-4">
 			{% for partner in partners %}
-				{% if partner.logo.name %}
-					<div class="mb-2 mr-2">
-						<img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}">
-					</div>
+				{% if partner.type == "institution" %}
+					{% if partner.logo.name %}
+						<div class="mb-2 mr-2">
+							<a href="{{partner.website}}" title={{partner.name}}>
+								<img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}">
+							</a>
+						</div>
+					{% endif %}
 				{% endif %}
-
 			{% endfor %}
 		</div>
 
@@ -27,11 +30,13 @@
 		<p class="offset-md-1 col-md-10">
 			{% for partner in partners %}
 				{% if partner.type == "prod_dist" %}
-					{% if loop.last %}
-						{{ partner.name}}
-					{% else %}
-						{{ partner.name ~ ' /'}}
-					{% endif %}
+					<a href="{{partner.website}}" title="{{partner.name}}">
+						{% if loop.last %}
+							{{ partner.name}}
+						{% else %}
+							{{ partner.name ~ ' /'}}
+						{% endif %}
+					</a>
 				{% endif %}
 			{% endfor %}
 		</p>
@@ -46,16 +51,18 @@
 		<p class="offset-md-1 col-md-10">
 			{% for partner in partners %}
 				{% if partner.type == "partners" %}
-					{% if loop.last %}
-						{{ partner.name}}
-					{% else %}
-						{{ partner.name ~ ' /'}}
-					{% endif %}
+					<a href="{{partner.website}}" title="{{partner.name}}">
+						{% if loop.last %}
+							{{ partner.name}}
+						{% else %}
+							{{ partner.name ~ ' /'}}
+						{% endif %}
+					</a>
 				{% endif %}
 			{% endfor %}
 		</p>
 
-		<div class="offset-md-2 col-md-8">
+		<div class="offset-md-2 col-md-8 mb-3">
 			{% for section in sections %}
 				{% if section.name != 'intro' %}
 					<article class="my-5 text-sm-left text-center">

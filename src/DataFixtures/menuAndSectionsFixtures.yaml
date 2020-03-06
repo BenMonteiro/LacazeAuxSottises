@@ -139,40 +139,46 @@ App\Entity\FrontPage:
         pageSlug: $tab/$name
         template: 'shared_spaces'
         number: "19"
+    page_eco_place:
+        tab: "@tab_third-location"
+        name: "ecoPlace"
+        pageSlug: 'tiers-lieu/eco-lieu'
+        template: 'shared_spaces'
+        number: "20"
     page_meeting_place:
         tab: "@tab_third-location"
         name: "meetings"
         pageSlug: 'tiers-lieu/les-rendez-vous'
         template: 'meetings'
-        number: "20"
+        number: "21"
     page_curiosity_place:
         tab: "@tab_third-location"
         name: "curiosity"
         pageSlug: $tab/$name
         template: 'curiosity'
-        number: "21"
+        number: "22"
     page_volunteering:
         tab: "@tab_volunteering"
         name: "volunteering"
         pageSlug: $tab/$name
         template: 'index'
-        number: "22"
+        number: "23"
     page_partners:
         tab: "@tab_partners"
         name: "partners"
         pageSlug: 'partenaires/partenaires'
         template: 'index'
-        number: "23"
+        number: "24"
     page_support:
         tab: "@tab_support"
         name: "support"
         pageSlug: $tab/$name
-        number: "24"
+        number: "25"
     page_contact:
         tab: "@tab_contact"
         name: "contact"
         pageSlug: $tab/$name
-        number: "25"
+        number: "26"
 
 App\Entity\Section:
     section{1..120}:

@@ -18,6 +18,7 @@
 			<tr>
 				<th>{{'partner.logo'|trans({}, 'partners')|capitalize}}</th>
 				<th>{{'partner.name'|trans({}, 'partners')|capitalize}}</th>
+				<th>{{'general.website'|trans({}, 'general')|capitalize}}</th>
 				<th>{{'partner.type'|trans({}, 'partners')|capitalize}}</th>
 				<th>
 					<a href="{{ path('partners_new') }}" title="Ajouter un partenaire">{{'general.create'|trans({}, 'general')|capitalize}}</th>
@@ -29,6 +30,7 @@
 				<tr>
 					<td><img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}"></td>
 					<td class="colored font-weight-bold">{{ partner.name }}</td>
+					<td>{{partner.website}}</td>
 					<td>{{ ('partner.' ~ partner.type)|trans({}, 'partners')|capitalize }}</td>
 					<td>
 						<a class="badge badge-primary my-2 p-2" href="{{ path('partners_edit', {'id': partner.id}) }}" title="Modifier un partenaire">{{'general.edit'|trans({}, 'general')|capitalize}}</a>

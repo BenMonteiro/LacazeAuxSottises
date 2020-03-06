@@ -18,12 +18,15 @@ body {
 
 body p,
 body p span,
-body li,
-a {
+body li {
     text-align: inherit;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 0.9em;
     margin: 0
+}
+
+body a {
+    font-size: 1em;
 }
 
 body p,

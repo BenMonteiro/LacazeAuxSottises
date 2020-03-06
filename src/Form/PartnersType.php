@@ -15,10 +15,12 @@ class PartnersType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('website')
             ->add('type', ChoiceType::class, [
                 'choices' => array(
                     'partner.prod_dist' => 'prod_dist',
                     'partner.partners' => 'partners',
+                    'partner.institution' => 'institution'
                 ),
                 'choice_translation_domain' => 'partners'
             ])

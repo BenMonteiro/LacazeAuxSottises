@@ -33,7 +33,7 @@
 					<p class="">{{ company.theme }}</p>
 					<p>{{ company.duration }}
 						{{'general.minutes'|trans({}, 'general') }}</p>
-					<p class="">{{ company.audience }}</p>
+					<p class="mb-2">{{ company.audience }}</p>
 					{% if company.website != null %}
 						<p>
 							<a href="{{ company.website }}" title="Aller sur le site de la compagnie">{{'company.site'|trans({}, 'company')|capitalize }}</a>
@@ -57,11 +57,11 @@
 						-
 						{{perf.cityShow}}
 					</p>
-					<p>{{ perf.price ? perf.price|format_currency('EUR') : 'perf.free'|trans({}, 'perf')|capitalize }}</p>
+					<p>{{ perf.price|raw }}</p>
 				{% endfor %}
 			</div>
 		</div>
-		<div class="text-center my-5">{{ company.description|raw }}</div>
+		<div class="my-3">{{ company.description|raw }}</div>
 		<div class="mb-3">
 			{{ company.moreInfos|raw }}
 		</div>

@@ -14,12 +14,14 @@
 				<h2 class="mb-0">{{company.name}}</h2>
 				{% for perf in company.performances %}
 					{% if perf.event == 'Festival Fête des sottises !' or perf.event == 'Préambules sur le territoire' %}
-						<p class="font-italic colored m-0">
+						<p class="m-0">
 							{{perf.date|format_date('full')|capitalize}}<br>
 						</p>
 						<p class="m-0">
-							{{perf.placeShow}}
-							-
+							{% if perf.placeShow != perf.cityShow %}
+								{{perf.placeShow}}
+								-
+							{% endif %}
 							{{perf.cityShow}}
 						</p>
 					{% endif %}

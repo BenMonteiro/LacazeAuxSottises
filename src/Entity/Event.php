@@ -116,6 +116,11 @@ class Event
      */
     private $imageDescription;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $moreInfos;
+
     public function __construct()
     {
         $this->programPDF = new EmbeddedFile();
@@ -324,6 +329,18 @@ class Event
     public function setImageDescription(?string $imageDescription): self
     {
         $this->imageDescription = $imageDescription;
+
+        return $this;
+    }
+
+    public function getMoreInfos(): ?string
+    {
+        return $this->moreInfos;
+    }
+
+    public function setMoreInfos(?string $moreInfos): self
+    {
+        $this->moreInfos = $moreInfos;
 
         return $this;
     }
