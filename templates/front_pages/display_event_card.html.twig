@@ -4,16 +4,16 @@
 	{{ event.name }}
 {% endblock %}
 {% block body %}
-	<div class="offset-2 col-8 justify-content-between d-md-flex ">
+	<div class="offset-2 col-8 justify-content-center d-md-flex ">
 		{% if event.programImage.name %}
-			<div class="d-flex flex-column align-items-center ml-4 my-3">
+			<div class="d-flex flex-column align-items-center ml-md-4 my-3">
 				<div class="cubic-image-div">
 					<img class="image-frame" src="{{ asset('images/cadre.png') }}">
 					<img class="cubic-image" src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
 				</div>
 			</div>
 		{% endif %}
-		<div class="col-8 mt-4">
+		<div class="text-md-left text-center ml-4 mt-4">
 			<h2 class="colored mb-0">{{event.name}}</h2>
 			{% if event.startingDate != event.endingDate and event.endingDate is defined %}
 				<p class="font-weight-bold">{{'from'|trans({}, 'general')|capitalize}}
@@ -29,6 +29,7 @@
 	</div>
 
 	<div class="text-left my-3 offset-2 col-8">
+
 		<div class="ml-4">
 			<h2 class="font-weight-bold mb-4">{{'general.onProgram'|trans({},'general')}}</h2>
 			<div class="ml-0">{{ event.description|raw }}</div>

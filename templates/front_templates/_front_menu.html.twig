@@ -1,7 +1,7 @@
 {% block header %}
 	<nav class="navbar navbar-expand-md navbar-light bg-white fixed-top container">
 		<img class="cycliste" src="{{ asset('images/MONOCYCLISTE-PMS285.png')}}" alt="monocycliste">
-		<img class="cycliste-noir" src="{{ asset('images/MONOCYCLISTE-noir.png')}}" alt="monocycliste">
+		<img class="cycliste-noir d-md-block d-none" src="{{ asset('images/MONOCYCLISTE-noir.png')}}" alt="monocycliste">
 		<a class=" mt-md-4 mt-2 navbar-brand" href="{{ path('page_show', {'pageSlug': 'home'}) }}" title="Accueil"><img class='logo' src="{{asset('images/logo.jpg')}}" alt="logo association"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -11,9 +11,9 @@
 				{% for tab in tabs %}
 					{% set transform = '' %}
 					{% if tab.number == 3 %}
-						{% set transform = 'transform-10' %}
+						{% set transform = 'transform-5' %}
 					{% elseif tab.number == 6 %}
-						{% set transform = 'transform-350' %}
+						{% set transform = 'transform-355' %}
 					{% else %}
 						{% set transform = '' %}
 					{% endif %}

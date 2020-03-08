@@ -50,19 +50,19 @@ nav li {
     display: block;
 }
 
-.transform-10 {
+.transform-5 {
     transform: rotate(5deg);
 }
 
-.transform-350 {
+.transform-355 {
     transform: rotate(-5deg);
 }
 
-li.transform-10>a {
+li.transform-5>a {
     transform: rotate(-5deg);
 }
 
-li.transform-350>a {
+li.transform-355>a {
     transform: rotate(5deg);
 }
 

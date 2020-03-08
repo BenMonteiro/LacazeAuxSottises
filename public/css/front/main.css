@@ -7,13 +7,6 @@
 
 body {
     overflow-x: hidden;
-    background-image: url(public/images/FOND_CARRE_GAUCHE.jpg);
-    margin: 0;
-    padding: 0;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
 }
 
 body p,
@@ -64,26 +57,40 @@ div .ul-ml ul {
 
 .redCircle {
     position: absolute;
-    top: -300px;
+    top: 20px;
     right: -500px;
-    width: 900px;
+    width: 800px;
 }
 
-.homeRedCircle {
+.biColorCircle {
     position: absolute;
-    bottom: 90px;
-    right: 100px;
-    width: 500px;
-    z-index: -3;
-
+    top: 20px;
+    left: -500px;
+    width: 800px;
 }
 
-.pageBorder {
+.homeLeftCircle {
     position: absolute;
-    top: 750px;
-    left: 100px;
+    top: 300px;
+    left: -100px;
     width: 500px;
     z-index: -3;
+}
+
+.homeRightCircle {
+    position: absolute;
+    top: 800px;
+    right: -350px;
+    width: 700px;
+    z-index: -3;
+}
+
+.calendarCircle {
+    position: absolute;
+    top: -200px;
+    right: -350px;
+    width: 40%;
+    z-index: 2000;
 }
 
 a {
@@ -295,7 +302,8 @@ article h2 {
 /*--------------------------------------------------------------------------------------Agenda------------------------------------------------------------------------------------------*/
 
 .nav-pills .nav-link {
-    color: #DA291C
+    color: #DA291C;
+    padding: 0.5rem 0.8rem;
 }
 
 .nav-pills .nav-link.active {

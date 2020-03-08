@@ -21,10 +21,10 @@
 				</article>
 			{% endif %}
 		{% endfor %}
-		<div class="d-md-flex mt-3 align-items-start justify-content-center">
+		<div class="d-lg-flex mt-3 align-items-start justify-content-center">
 			{% for section in sections %}
 				{% if section.name == 'left' %}
-					<article class="text-center framedArticle dot col-md-6 mb-1 mx-1">
+					<article class="text-center framedArticle dot col-lg-6 mb-1 mx-1">
 						{% if section.title %}
 							<h2 class=" colored">{{ section.title }}</h2>
 						{% endif %}
@@ -36,7 +36,7 @@
 				{% endif %}
 
 				{% if section.name == 'right' %}
-					<article class="text-center framedArticle red-dot col-md-6 mb-1 mx-1">
+					<article class="text-center framedArticle red-dot col-lg-6 mb-1 mx-1">
 						{% if section.title %}
 							<h2 class="colored">{{ section.title }}</h2>
 						{% endif %}
@@ -66,7 +66,7 @@
 
 	{% for section in sections %}
 		{% if section.name == 'last' %}
-			<article class="text-center framedArticle dash offset-md-2 col-md-8">
+			<article class="text-center framedArticle dash">
 				{% if section.title %}
 					<h2 class="colored">{{ section.title }}</h2>
 				{% endif %}

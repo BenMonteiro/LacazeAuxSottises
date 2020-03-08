@@ -16,11 +16,27 @@
     .nav-pills>li {
         width: 16%;
     }
+
+    .redCircle {
+        width: 700px;
+    }
+
+    .biColorCircle {
+        width: 700px;
+    }
 }
 
 @media all and (max-width: 1001px) {
     .nav-link {
         margin-right: 0px;
+    }
+
+    .cycliste {
+        top: -25%;
+    }
+
+    .cycliste-noir {
+        top: 62%;
     }
 
     nav ul {
@@ -100,5 +116,14 @@
 
     .card-columns {
         column-count: 1;
+    }
+
+    nav li {
+        width: 30%;
+        margin: 0 1% 2% 1%
+    }
+
+    .transform-5 {
+        transform: none;
     }
 }
