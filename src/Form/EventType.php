@@ -21,6 +21,7 @@ class EventType extends AbstractType
             ->add('startingDate')
             ->add('endingDate')
             ->add('hours')
+            ->add('moreInfos')
             ->add('isHighlight')
             ->add('programPDFFile', VichFileType::class, [
                 'label' => 'Programme (format PDF)',

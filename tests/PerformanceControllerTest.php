@@ -28,7 +28,7 @@ class PerformanceControllerTest extends WebTestCase
         $this->client = static::createClient(
             [],
             [
-                'PHP_AUTH_USER' => 'test',
+                'PHP_AUTH_USER' => 'lacaze_admin',
                 'PHP_AUTH_PW' => 'test2020',
             ]
         );
@@ -42,7 +42,7 @@ class PerformanceControllerTest extends WebTestCase
         $this->dbConnect();
         $this->client->request('GET', $url);
 
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
     public function urlProvider()

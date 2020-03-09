@@ -3,6 +3,7 @@
 namespace App\Tests;
 
 use App\Entity\Company;
+use App\Entity\FrontPage;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CompanyControllerTest extends WebTestCase
@@ -28,7 +29,7 @@ class CompanyControllerTest extends WebTestCase
         $this->client = static::createClient(
             [],
             [
-                'PHP_AUTH_USER' => 'test',
+                'PHP_AUTH_USER' => 'lacaze_admin',
                 'PHP_AUTH_PW' => 'test2020',
             ]
         );
@@ -53,10 +54,15 @@ class CompanyControllerTest extends WebTestCase
             ->getRepository(Company::class)
             ->findOneBy([]);
 
+        $frontPage = $this->entityManager
+            ->getRepository(FrontPage::class)
+            ->findOneBy([]);
+
         $id = $company->getId();
+        $pageId = $frontPage->getId();
 
         yield ['/login'];
-        yield ['/admin/page/112'];
+        yield ['/admin/page/' . $pageId];
         yield ['/admin/dashboard'];
         yield ['/'];
         yield ['/company/' . $id];

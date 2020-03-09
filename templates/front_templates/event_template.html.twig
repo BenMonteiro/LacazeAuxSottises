@@ -10,6 +10,8 @@
 
 {% block pageTitle %}
 	<div id="pageTitleBar">
+		<img class=" d-md-block d-none redCircle" src="{{asset('images/redCircle.jpg')}}" alt="cercle pointillé rouge">
+		<img class=" d-md-block d-none biColorCircle" src="{{asset('images/bicolorCircle.jpg')}}" alt="cercle pointillé rouge et noir">
 		<div class="d-flex justify-content-center">
 			<h1 class="mt-3 pageTitle px-4 text-center">
 				{{event.name}}
@@ -17,20 +19,6 @@
 		</div>
 		<div class="titleLines">
 			<img class="titleBar" src="{{asset('images/title-bar.jpg')}}" alt="barre grise">
-			<div class="text-center">
-				<p class="m-0">
-					{% if event.startingDate != event.endingDate and event.endingDate is defined %}
-						{{'from'|trans({}, 'general')|capitalize}}
-						{{event.startingDate|format_date(pattern='d')}}
-						{{'to'|trans({}, 'general')}}
-						{{event.endingDate|format_date(pattern='d MMMM')|title}}
-					</p>
-				{% elseif (event.startingDate == event.endingDate or event.endingDate is null) and event.startingDate is defined %}
-					<p class="m-0">
-						{{event.startingDate|format_date('full')|title}}
-					</p>
-				{% endif %}
-			</div>
 		</div>
 
 	</div>

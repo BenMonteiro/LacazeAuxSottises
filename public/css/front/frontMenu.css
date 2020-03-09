@@ -10,7 +10,8 @@ nav {
     background-color: inherit;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-nav .nav-link:focus {
     color: white;
     font-size: 1em;
     padding: 5px 10px;
@@ -31,10 +32,11 @@ nav li {
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #DA291C
+    color: white
 }
 
-.navbar-light .navbar-nav .nav-link.active {
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show>.nav-link {
     color: #DA291C
 }
 
@@ -42,44 +44,52 @@ nav li {
     padding: 0 0 0 3px;
     margin-top: 0;
     border: none;
-    background-color: #DA291C;
 }
 
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
-.transform-10 {
+.transform-5 {
     transform: rotate(5deg);
 }
 
-.transform-350 {
+.transform-355 {
     transform: rotate(-5deg);
 }
 
-li.transform-10>a {
+li.transform-5>a {
     transform: rotate(-5deg);
 }
 
-li.transform-350>a {
+li.transform-355>a {
     transform: rotate(5deg);
 }
 
 .cycliste {
     position: relative;
     width: 50px;
-    left: 71.8%;
-    top: -15%;
+    left: 73%;
+    top: -9%;
     z-index: 50;
 }
 
+.cycliste-noir {
+    position: relative;
+    width: 50px;
+    left: 29%;
+    top: 57px;
+}
+
+
 .dropdown-item {
-    padding-left: 3px
+    padding-left: 3px;
+    line-height: 1em;
 }
 
 .dropdown-item:hover {
     border: none;
-    color: white;
+    color: black;
     background-color: transparent;
 }
 
@@ -88,9 +98,10 @@ nav>ul {
 }
 
 .fa-circle {
-    font-size: 0.5rem;
+    font-size: 0.3rem;
     position: relative;
-    bottom: 2px
+    bottom: 2px;
+    color: #DA291C
 }
 
 .logo {

@@ -44,7 +44,7 @@ class Performance
     private $event;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $price;
 
@@ -118,12 +118,12 @@ class Performance
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getPrice(): ?string
     {
         return $this->price;
     }
 
-    public function setPrice(?float $price): self
+    public function setPrice(?string $price): self
     {
         $this->price = $price;
 

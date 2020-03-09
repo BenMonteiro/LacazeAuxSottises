@@ -1,6 +1,42 @@
+@media all and (max-width: 1200px) {
+    nav li {
+        width: 20%;
+        margin: 0 2.5% 2% 2.5%
+    }
+
+    .cycliste {
+        top: -30%;
+    }
+
+    .cycliste-noir {
+        left: 40%;
+        top: 65%
+    }
+
+    .nav-pills>li {
+        width: 16%;
+    }
+
+    .redCircle {
+        width: 700px;
+    }
+
+    .biColorCircle {
+        width: 700px;
+    }
+}
+
 @media all and (max-width: 1001px) {
     .nav-link {
         margin-right: 0px;
+    }
+
+    .cycliste {
+        top: -25%;
+    }
+
+    .cycliste-noir {
+        top: 62%;
     }
 
     nav ul {
@@ -8,13 +44,10 @@
     }
 
     nav li {
-        width: 20%;
-        margin: 0 2.5% 2% 2.5%
+        width: 22%;
+        margin: 0 1% 2% 1%
     }
 
-    .cycliste {
-        top: 7%;
-    }
 
     .tab-pane a {
         margin: 0 10px 0 0;
@@ -31,11 +64,6 @@
     .tab-wrap {
         white-space: nowrap;
     }
-
-    .nav-pills>li {
-        width: 16%;
-    }
-
 }
 
 @media all and (max-width: 769px) {
@@ -65,11 +93,6 @@
         width: 75px;
     }
 
-    nav li {
-        width: 25%;
-        margin: 0 2.5% 2% 2.5%
-    }
-
     .miniTitleBar {
         width: 75%
     }
@@ -93,5 +116,14 @@
 
     .card-columns {
         column-count: 1;
+    }
+
+    nav li {
+        width: 30%;
+        margin: 0 1% 2% 1%
+    }
+
+    .transform-5 {
+        transform: none;
     }
 }

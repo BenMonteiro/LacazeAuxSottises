@@ -2,21 +2,22 @@
 
 {% block body %}
 
-	<div class="d-flex justify-content-around flex-wrap">
+	<div class="d-flex justify-content-around offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 flex-wrap">
 		{% if homeEvents %}
 			{% for event in homeEvents %}
 				{% if event.startingDate|date('M') == 'now'|date('M') %}
-					<div class="col-md-4 col-sm-6 col-12 text-center my-3">
-						<a class="element-link d-flex flex-column justify-content-between" href="{{path('display_event',{'id':event.id})}}" title="Voir le fiche de l'événement'">
+					<div class="text-center col-md-6 my-3">
+						<a class="element-link d-flex  flex-column justify-content-around mr-0" href="{{path('display_event',{'id':event.id})}}" title="Voir le fiche de l'événement'">
 							<div class="cubic-image-div justify-content-center mb-0">
 								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
 								<img src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name)}}" class="cubic-image" alt="{{event.imageDescription}}">
 							</div>
 						</a>
-						<h3>{{event.name}}</h3>
-						<p class="text-decoration-none text-muted my-1">
-							{{event.startingDate|format_date(pattern='EEEE dd')|capitalize}}
-							-
+						<h3 class="m-0">{{event.name}}</h3>
+						<p class="text-decoration-none text-muted ">
+							{{event.startingDate|format_date(pattern='EEEE d MMMM')|title}}
+						</p>
+						<p class="text-muted text-small text-center">
 							{{event.place}}
 						</p>
 					</div>
@@ -26,16 +27,20 @@
 		{% if homePerfs %}
 			{% for perf in homePerfs %}
 				{% if perf.date|date('M') == 'now'|date('M') %}
-					<div class="col-md-4 col-sm-6 col-12 text-center my-3">
-						<a class="element-link d-flex flex-column justify-content-between" href="{{path('display_company',{'id':perf.company.id})}}" title="Voir le fiche de la compagnie">
+					<div class="text-center col-md-6 my-3">
+						<a class="element-link d-flex flex-column justify-content-around mr-0" href="{{path('display_company',{'id':perf.company.id})}}" title="Voir le fiche de la compagnie">
 							<div class="cubic-image-div justify-content-center mb-0">
 								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
 								<img class="cubic-image" src="{{asset('images/uploads/company/' ~ perf.company.image.name)}}" alt="{{perf.company.imageDescription}}">
 							</div>
-							<h3>{{perf.company}}</h3>
-							<p class="text-decoration-none text-muted text-small text-center my-1">
-								{{perf.date|format_date(pattern='EEEE dd')|capitalize}}
-								-
+							{% if perf.event == 'Soirées du Tiers-Lieu' %}
+								<h3 class="m-0 ">{{perf.company.theme}}</h3>
+							{% else %}
+								<h3 class="m-0">{{perf.company}}</h3>
+							{% endif %}
+							<p class="text-decoration-none text-muted text-small text-center font-weight-normal">
+								{{perf.date|format_date(pattern='EEEE d MMMM')|title}}</p>
+							<p class=" text-muted text-small text-center font-weight-normal">
 								{{perf.cityShow}}
 							</p>
 							<p>
@@ -46,12 +51,14 @@
 				{% endif %}
 			{% endfor %}
 		{% endif %}
-		<div class="col-lg-4 col-md-4 col-sm-6 col-12 text-center my-3">
-			<a class="element-link element-link d-flex flex-column justify-content-between" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}" title="Télécharger la plaquette de la saison">
+		<div class="text-center col-md-6 my-3">
+			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}" title="Télécharger la plaquette de la saison">
 				<div class="cubic-image-div justify-content-center mb-0">
 					<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
 					<img class="cubic-image" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}" alt="{{season.imageDescription}}">
 				</div>
+				<p class="font-weight-normal">{{'general.askProg'|trans({}, 'general')|capitalize}}</p>
+
 			</a>
 		</div>
 	</div>
@@ -70,9 +77,9 @@
 			</div>
 			{% for section in sections %}
 
-				{% set homeFrame = (section.appearanceOrder is odd) ? ' framedArticle red-dash': 'framedArticle dot' %}
+				{% set homeFrame = (section.appearanceOrder is odd) ? ' framedArticle dash': 'framedArticle dot' %}
 
-				<div class="{{ homeFrame }} offset-2 col-8 p-2 mb-2">
+				<div class="{{ homeFrame }} offset-2 col-8 p-0 px-4 mb-4">
 					<div class="text-center">
 						{% if section.image.name and section.image.mimeType != 'application/pdf' %}
 							<div class="d-flex">
@@ -83,11 +90,11 @@
 								</div>
 							</div>
 						{% else %}
-							<div class="mt-2">
-								<h2 class="colored">{{ section.title|lower|capitalize }}</h2>
+							<div class="my-1">
+								<h2 class="mb-0 colored">{{ section.title|lower|capitalize }}</h2>
 								<p>{{ section.content|raw }}</p>
 								{% if section.image.name and section.image.mimeType == 'application/pdf' %}
-									<a class="text-break colored" href="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" download title="Télécharger le formulaire">{{'general.download_form'|trans({}, 'general')|capitalize}}</a>
+									<a class="text-break font-weight-bold" href="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" download title="Télécharger le formulaire">{{'general.download_form'|trans({}, 'general')|capitalize}}</a>
 								{% endif %}
 							</div>
 						{% endif %}
@@ -96,6 +103,4 @@
 			{% endfor %}
 		</div>
 	</div>
-	<img class=" d-md-block d-none homeRedCircle" src="{{asset('images/TRAIT.rouge.jpg')}}" alt="cercle pointillé rouge">
-	<img class=" d-md-block d-none pageBorder" src="{{asset('images/demi-carré.jpg')}}" alt="demi-carré rouge">
 {% endblock %}

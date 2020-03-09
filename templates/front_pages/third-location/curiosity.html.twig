@@ -4,46 +4,48 @@
 	<div class="container-fluid">
 
 		{% include('/front_pages/_intro_section_template.html.twig') %}
-
-		<h2 class="font-weight-bold colored mb-3">{{ 'general.third_location.all_year'|trans({}, 'general')|title }}</h2>
+		<div class="offset-2">
+			<h2 class="font-weight-bold colored ml-4 mb-3">{{ 'general.third_location.all_year'|trans({}, 'general')|title }}</h2>
+		</div>
 		{% for section in sections %}
 			{% if section.name == "all year" %}
-				<section class=" d-md-flex align-items-center justify-content-between offset-lg-1 col-lg-10 mb-3">
+				<section class=" d-md-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 					<div class="d-flex flex-column align-items-center my-3">
 						<div class="cubic-image-div">
 							<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
 							<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
 						</div>
 					</div>
-					<article class="h-100 col-md-7 text-md-left text-center">
+					<article class="h-100 framedArticle red-dot text-md-left text-center">
 						{% if section.title %}
 							<h2 class="colored">{{ section.title }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3>{{ section.subTitle }}</h3>
+							<h3 class="font-weight-bold ml-0">{{ section.subTitle }}</h3>
 						{% endif %}
-						<p>{{ section.content|raw}}</p>
+						<div>{{ section.content|raw}}</div>
 					</article>
 				</section>
 			{% endif %}
 		{% endfor %}
-
-		<h2 class="font-weight-bold colored mb-3">{{ 'general.third_location.punctual'|trans({}, 'general')|title }}</h2>
+		<div class="offset-2">
+			<h2 class="font-weight-bold colored ml-4 mb-3">{{ 'general.third_location.punctual'|trans({}, 'general')|title }}</h2>
+		</div>
 		{% for section in sections %}
 			{% if section.name == 'punctual' %}
-				<section class=" d-md-flex align-items-center justify-content-between offset-lg-1 col-lg-10 mb-3">
+				<section class=" d-md-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 					<div class="d-flex flex-column align-items-center my-3">
 						<div class="cubic-image-div">
 							<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
 							<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
 						</div>
 					</div>
-					<article class="h-100 col-md-7 text-md-left text-center">
+					<article class="h-100 framedArticle dash text-md-left text-center">
 						{% if section.title %}
 							<h2 class="colored">{{ section.title }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3>{{ section.subTitle }}</h3>
+							<h3 class="font-weight-bold ml-0">{{ section.subTitle }}</h3>
 						{% endif %}
 						<p>{{ section.content|raw}}</p>
 					</article>
@@ -51,22 +53,24 @@
 			{% endif %}
 		{% endfor %}
 
-		<h2 class="font-weight-bold colored mb-3">{{ 'general.third_location.do_it_yourself'|trans({}, 'general')|title }}</h2>
+		<div class="offset-2">
+			<h2 class="font-weight-bold colored ml-4 mb-3">{{ 'general.third_location.do_it_yourself'|trans({}, 'general')|title }}</h2>
+		</div>
 		{% for section in sections %}
 			{% if section.name == 'do it' %}
-				<section class=" d-md-flex align-items-center justify-content-between offset-lg-1 col-lg-10 mb-3">
+				<section class=" d-md-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 					<div class="d-flex flex-column align-items-center my-3">
 						<div class="cubic-image-div">
 							<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
 							<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
 						</div>
 					</div>
-					<article class="h-100 col-md-7 text-md-left text-center">
+					<article class="h-100 framedArticle red-dash text-md-left text-center">
 						{% if section.title %}
 							<h2 class="colored">{{ section.title }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3>{{ section.subTitle }}</h3>
+							<h3 class="font-weight-bold ml-0">{{ section.subTitle }}</h3>
 						{% endif %}
 						<p>{{ section.content|raw}}</p>
 					</article>

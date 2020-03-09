@@ -4,12 +4,12 @@
 
 	{% include('/front_pages/_intro_section_template.html.twig') %}
 
-	<div class="container-fluid offset-lg-1 col-lg-10 card-columns">
+	<div class=" offset-lg-2 col-lg-8  card-columns">
 		{% for section in sections %}
 			{% if section.name == 'content' %}
-				<article class="card bg-light p-3 text-center">
+				<article class="card bg-light p-3 text-center mx-0">
 					{% if section.title %}
-						<h2 class="text-center colored mb-0">{{ section.title }}</h2>
+						<h2 class="text-center colored mb-2">{{ section.title }}</h2>
 					{% endif %}
 					{% if section.subTitle %}
 						<h3>{{ section.subTitle }}</h3>

@@ -6,8 +6,8 @@ company:
     create: créer une nouvelle compagnie
     status: statut
     performances: représentations de la compagnie
-    site: aller vers le site de la compagnie
-    video: voir la vidéo
+    site: site de la compagnie
+    video: vidéo du spectacle
     hosted: en résidence du 
     host: en résidence
     hidden: compagnie masquée

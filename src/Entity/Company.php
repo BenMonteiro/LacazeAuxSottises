@@ -19,6 +19,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Company
 {
+
+    protected $url;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -353,9 +355,11 @@ class Company
 
     public function __toString()
     {
-        $uri = $_SERVER["REQUEST_URI"];
-        $url = parse_url($uri, PHP_URL_PATH);
-        if (preg_match('#festival/cies-accueillies#', $url)) {
+        if (isset($_SERVER["REQUEST_URI"])) {
+            $uri = $_SERVER["REQUEST_URI"];
+            $this->url = parse_url($uri, PHP_URL_PATH);
+        }
+        if (preg_match('#festival/cies-accueillies#', $this->url)) {
             if ($this->showTitle !== null) {
                 return $this->showTitle;
             } else {

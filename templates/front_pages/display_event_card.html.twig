@@ -4,32 +4,38 @@
 	{{ event.name }}
 {% endblock %}
 {% block body %}
-	<div class="offset-2 col-8 justify-content-between d-md-flex my-5">
+	<div class="offset-2 col-8 justify-content-center d-md-flex ">
 		{% if event.programImage.name %}
-			<div class="d-flex flex-column align-items-center my-3">
+			<div class="d-flex flex-column align-items-center ml-md-4 my-3">
 				<div class="cubic-image-div">
 					<img class="image-frame" src="{{ asset('images/cadre.png') }}">
 					<img class="cubic-image" src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
 				</div>
 			</div>
 		{% endif %}
-		<div class="col-8 mt-4">
+		<div class="text-md-left text-center ml-4 mt-4">
+			<h2 class="colored mb-0">{{event.name}}</h2>
 			{% if event.startingDate != event.endingDate and event.endingDate is defined %}
-				<p>{{'from'|trans({}, 'general')|capitalize}}
+				<p class="font-weight-bold">{{'from'|trans({}, 'general')|capitalize}}
 					{{event.startingDate|date('d')}}
 					{{'to'|trans({}, 'general')}}
 					{{event.endingDate|date('d M')}}</p>
 			{% elseif (event.startingDate == event.endingDate or event.endingDate is null) and event.startingDate is defined %}
-				<p>{{event.startingDate|format_date('full')|title}}</p>
+				<p class="font-weight-bold">{{event.startingDate|format_date('full')|title}}</p>
 			{% endif %}
-			<p class="mb-2">{{event.place}}</p>
-			<p>{{ event.description|raw }}</p>
+			<p class="mb-2 font-weight-bold text-muted">{{event.place}}</p>
+			<p>{{event.moreInfos|raw}}</p>
 		</div>
 	</div>
 
-	<div class="text-center mt-5">
-		{% if event.programPDF.name %}
-			<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}" title="Télécharger le programme de l'événement">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
-		{% endif %}
+	<div class="text-left my-3 offset-2 col-8">
+
+		<div class="ml-4">
+			<h2 class="font-weight-bold mb-4">{{'general.onProgram'|trans({},'general')}}</h2>
+			<div class="ml-0">{{ event.description|raw }}</div>
+			{% if event.programPDF.name %}
+				<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}" title="Télécharger le programme de l'événement">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
+			{% endif %}
+		</div>
 	</div>
 {% endblock %}

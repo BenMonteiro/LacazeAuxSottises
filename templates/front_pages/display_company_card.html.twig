@@ -6,15 +6,15 @@
 
 {% block body %}
 	<div class="offset-2 col-8">
-
-		<div class="d-flex">
-			<div class="d-flex flex-column align-items-center my-3">
+		<div class="d-md-flex justify-content-center">
+			<div class="d-flex flex-column align-items-center my-3 ml-md-5">
 				<div class="cubic-image-div">
 					<img class="image-frame" src="{{ asset('images/cadre.png') }}">
 					<img class="cubic-image" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
 				</div>
 			</div>
-			<div class="d-flex flex-column ml-4 mt-4">
+			<div class="text-md-left text-center ml-4 mt-4">
+				<h2 class="colored mb-0">{{company.name}}</h2>
 				{% if company.isHosted %}
 					<div>
 						<p class=" colored font-italic">
@@ -28,28 +28,42 @@
 						{{ 'general.to'|trans({}, 'general')|capitalize}}
 						{{ company.isHostedUntil ? company.isHostedUntil|format_date('medium'): '' }}</p>
 				{% endif %}
-				<p class="colored">{{ company.showTitle }}
-					-
-					{{ company.duration }}{{'general.minutes'|trans({}, 'general') }}</p>
-				<p class="">{{ company.theme }}</p>
-				<p class="">{{ company.audience }}</p>
+				<div class="mb-3">
+					<p class="mb-2 font-weight-bold">{{ company.showTitle }}</p>
+					<p class="">{{ company.theme }}</p>
+					<p>{{ company.duration }}
+						{{'general.minutes'|trans({}, 'general') }}</p>
+					<p class="mb-2">{{ company.audience }}</p>
+					{% if company.website != null %}
+						<p>
+							<a href="{{ company.website }}" title="Aller sur le site de la compagnie">{{'company.site'|trans({}, 'company')|capitalize }}</a>
+						</p>
+					{% endif %}
+					{% if company.website != null %}
+						<p>
+							<a class="" href="{{ company.videoLink}}" title="Voir une vidéo de la compagnie">{{'company.video'|trans({}, 'company')|capitalize }}</a>
+						</p>
 
+					{% endif %}
+				</div>
 
+				{% for perf in company.performances %}
+					<p class="m-0 colored">
+						{{perf.date|format_date('full')|capitalize}}<br>
+					</p>
+
+					<p class="m-0 text-muted">
+						{{perf.placeShow}}
+						-
+						{{perf.cityShow}}
+					</p>
+					<p>{{ perf.price|raw }}</p>
+				{% endfor %}
 			</div>
 		</div>
-		<div class="text-center my-5">{{ company.description|raw }}</div>
-		<p class="mb-3">
-			<small>{{ company.moreInfos|raw }}</small>
-		</p>
-		{% if company.website != null %}
-			<div>
-				<a class="" href="{{ company.website }}" title="Aller sur le site de la compagnie">{{'company.site'|trans({}, 'company')|capitalize }}</a>
-			</div>
-		{% endif %}
-
-		{% if company.website != null %}
-			<a class="" href="{{ company.videoLink}}" title="Voir une vidéo de la compagnie">{{'company.video'|trans({}, 'company')|capitalize }}</a>
-		{% endif %}
-
+		<div class="my-3">{{ company.description|raw }}</div>
+		<div class="mb-3">
+			{{ company.moreInfos|raw }}
+		</div>
 	</div>
 {% endblock %}
