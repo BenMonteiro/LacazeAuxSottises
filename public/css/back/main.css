@@ -18,7 +18,7 @@ img {
 .pagination ul {
     position: relative;
     top: 180%;
-    padding-bottom: 20px;
+    padding-bottom: 2em;
 }
 
 .pagination {
@@ -51,8 +51,7 @@ h3 {
 
 /*-----------------------------------------------------------------------------------------Images--------------------------------------------------------------------------------------------*/
 .miniImage {
-    border-radius: 80px;
-    width: 200px;
+    width: 150px;
     height: 150px;
 }
 
@@ -90,14 +89,14 @@ div[id^="company_performances_"]>div:first-child {
     height: 50px;
     text-align: center;
     z-index: 3;
-    padding-top: 20px;
+    padding-top: 1em;
 }
 
 .flash-message {
     height: 50px;
     text-align: center;
     z-index: 3;
-    padding-top: 20px;
+    padding-top: 1em;
 }
 
 .flash-notice {

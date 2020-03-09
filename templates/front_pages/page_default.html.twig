@@ -17,7 +17,7 @@
 	<div class="offset-md-2 col-md-8">
 		{% for section in sections %}
 			{% if section.name != "Chiffres" %}
-				<article class="mb-3 mx-5">
+				<article class="mb-3">
 					{% if section.title %}
 						<h3 class="font-weight-bold colored mx-0 mb-0">{{ section.title|lower|capitalize }}</h3>
 					{% endif %}
@@ -28,7 +28,7 @@
 				</article>
 			{% else %}
 				<div class=" my-5">
-					<article class=" framedArticle dot p-0 px-4 mx-5">
+					<article class=" framedArticle dot p-0 px-4">
 						<div class="my-1">
 							{% if section.title %}
 								<h3 class="font-weight-bold colored mx-0 mb-0">{{ section.title|lower|capitalize }}</h3>

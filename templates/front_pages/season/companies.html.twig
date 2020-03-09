@@ -2,7 +2,7 @@
 
 {% block body %}
 
-	<div class="d-flex justify-content-between offset-2 col-8 flex-wrap">
+	<div class="d-flex justify-content-center offset-2 col-8 flex-wrap">
 		{% for company in companies %}
 			<div class=" d-flex flex-column align-items-center col-lg-6 col-12 my-3">
 				<a class="element-link" href="{{path('display_company',{'id':company.id})}}" title="Voir le fiche de la compagnie">

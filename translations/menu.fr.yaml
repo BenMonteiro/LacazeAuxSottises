@@ -7,7 +7,7 @@ front:
     volunteering: Bénévolat
     partners: Partenaires
     support: Soutien
-    contact: + D'infos
+    more-infos: + D'infos
     asso: Lacaze...
     presentation: Présentation
     prog: Calendrier
@@ -38,7 +38,7 @@ back:
     third-location: Tiers-Lieu
     volunteering: Bénévolat
     support: Soutien
-    contact: + D'infos
+    more-infos: + D'infos
     companies: compagnies
     events: Événements
     performances: représentations

@@ -24,7 +24,7 @@ App\Entity\FrontTab:
         name: "support"
         number: "8"
     tab_contact:
-        name: "contact"
+        name: "more-infos"
         number: "9"
 
 
@@ -32,7 +32,7 @@ App\Entity\FrontPage:
     page_home:
         tab: "@tab_home"
         name: "home"
-        pageSlug: 'home'
+        pageSlug: 'accueil'
         template: 'home'
         number: "0"
     page_asso:
@@ -106,7 +106,8 @@ App\Entity\FrontPage:
     page_host_fest:
         tab: "@tab_festival"
         name: "hostedCompanies"
-        pageSlug: $tab/$name
+        pageSlug: 'festival/cies-accueillies'
+        template: 'companies'
         number: "13"
     page_meeting_fest:
         tab: "@tab_festival"
@@ -176,7 +177,7 @@ App\Entity\FrontPage:
         number: "25"
     page_contact:
         tab: "@tab_contact"
-        name: "contact"
+        name: "more-infos"
         pageSlug: $tab/$name
         number: "26"
 

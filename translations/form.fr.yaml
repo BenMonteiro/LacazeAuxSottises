@@ -29,22 +29,21 @@ Belong to page: Page
 Title: Titre
 Sub title: Sous-titre
 Appearance order: Ordre d'apparition dans la page
-Content: Texte du paragraph
+Content: Texte du paragraphe
 Year: Année
 Month: Mois
 Day: Jour
 Hour: Heure
 Minute: Minute
-association: L'Association
-season: La Saison
-festival: Le Festival
-third-location: Le Tiers-Lieu
-volunteering: Le Bénévolat
-partners: Nos Partenaires
-support: Nous Soutenir
-contact: Contact
+association: Association
+season: Saison
+festival: Festival
+third-location: Tiers-Lieu
+volunteering: Bénévolat
+partners: Partenaires
+support: Soutient
 home: Accueil
-asso: L'Asso
+asso: Lacaze
 plural-projects: Projets pluriels
 coop: Coopération térritoriale
 team: Équipe
@@ -58,8 +57,10 @@ pro-meeting: Rencontres pro
 arts-etc: Aux arts etc 
 infos: Infos pratiques
 shared-spaces: Espaces et services partagés
+ecoPlace: Eco-lieu
 meetings: Les rendez-vous
 curiosity: Ateliers de curiosité
+more-infos: + D'infos
 Is highlight : Mettre en "Actu du mois"
 Price: Prix
 Type: Type
