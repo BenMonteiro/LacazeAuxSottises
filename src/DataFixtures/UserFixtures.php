@@ -7,7 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
 
-class UserFixture extends Fixture
+class UserFixtures extends Fixture
 {
 
     private $encoder;
@@ -20,9 +20,18 @@ class UserFixture extends Fixture
     public function load(ObjectManager $manager)
     {
 
+        $admin = new User();
+        $admin->setUsername('lacaze_admin');
+        $admin->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
+
+        $password = $this->encoder->encodePassword($admin, 'test2020');
+        $admin->setPassword($password);
+
+        $manager->persist($admin);
+
         $user = new User();
-        $user->setUsername('lacaze_admin');
-        $user->setRoles(['ROLE_ADMIN']);
+        $user->setUsername('lacaze_user');
+        $user->setRoles(['ROLE_USER']);
 
         $password = $this->encoder->encodePassword($user, 'test2020');
         $user->setPassword($password);

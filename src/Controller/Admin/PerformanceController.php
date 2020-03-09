@@ -23,6 +23,7 @@ class PerformanceController extends AdminController
 {
     protected $companyId = null;
     protected $eventId = null;
+    protected $url = null;
 
     /**
      * @Route("/", name="performance_index", methods={"GET"})
@@ -42,30 +43,17 @@ class PerformanceController extends AdminController
     {
         if (isset($_SERVER["REQUEST_URI"])) {
             $uri = $_SERVER["REQUEST_URI"];
-            $url = parse_url($uri, PHP_URL_PATH);
-            if (preg_match('#admin/performance/new#', $url) and !isset($_GET['company_id'])) {
-                $companyFieldType = TextType::class;
-                $companyFieldOptions = [
-                    'invalid_message' => 'That is not a valid company',
-                    'attr' => [
-                        'class' => 'js-company-autocomplete',
-                        'data-autocomplete-url' => $router->generate('utility_companies')
-                    ]
-                ];
-            } else {
-                $companyFieldType = EntityType::class;
-                $companyFieldOptions = [
-                    'class' => Company::class,
-                    // Thanks to this attribute, the field is rightly prefilled
-                    'choice_attr' => function ($choice, $key, $value) {
-                        if (isset($_GET['company_id']) && $value === $_GET['company_id']) {
-                            return ['selected' => ''];
-                        } else {
-                            return [];
-                        }
-                    }
-                ];
-            }
+            $this->url = parse_url($uri, PHP_URL_PATH);
+        }
+        if (preg_match('#admin/performance/new#', $this->url) and !isset($_GET['company_id'])) {
+            $companyFieldType = TextType::class;
+            $companyFieldOptions = [
+                'invalid_message' => 'That is not a valid company',
+                'attr' => [
+                    'class' => 'js-company-autocomplete',
+                    'data-autocomplete-url' => $router->generate('utility_companies')
+                ]
+            ];
         } else {
             $companyFieldType = EntityType::class;
             $companyFieldOptions = [
@@ -100,7 +88,7 @@ class PerformanceController extends AdminController
         $form = $this->createForm(PerformanceType::class, $performance, [
             'companyFieldType' => $companyFieldType,
             'companyFieldOptions' => $companyFieldOptions,
-            'url' => $url,
+            'url' => $this->url,
             'eventFieldType' => $eventFieldType,
             'eventFieldOptions' => $eventFieldOptions
         ]);

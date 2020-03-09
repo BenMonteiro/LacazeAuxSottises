@@ -42,7 +42,7 @@ class PerformanceControllerTest extends WebTestCase
         $this->dbConnect();
         $this->client->request('GET', $url);
 
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
     public function urlProvider()

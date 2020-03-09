@@ -7,12 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class PressDocControllerTest extends WebTestCase
 {
-
     /**
      * @var \Doctrine\ORM\EntityManager
      */
     private $entityManager;
     private $client;
+
 
     protected function setUp(): void
     {
@@ -71,17 +71,17 @@ class PressDocControllerTest extends WebTestCase
 
         $doc = $this->entityManager
             ->getRepository(PressDocument::class)
-            ->findOneBy(['name' => 'xxx.pdf']);
+            ->findOneBy(['name' => 'bleu.pdf']);
 
-        $this->assertSelectorTextContains('p', $doc->getName());
+        $this->assertSelectorTextContains('body', $doc->getName());
     }
 
     public function testDeletePressDoc()
     {
         $doc = $this->entityManager
             ->getRepository(PressDocument::class)
-            ->findOneBy(['name' => 'xxx.pdf']);
-        $this->assertSame('xxx.pdf', $doc->getName());
+            ->findOneBy(['name' => 'bleu.pdf']);
+        $this->assertSame('bleu.pdf', $doc->getName());
 
         $docId = $doc->getId();
 
@@ -104,8 +104,8 @@ class PressDocControllerTest extends WebTestCase
             'add' => [
                 'press_document' =>
                 [
-                    'press_document[name]' => 'xxx.pdf',
-                    'press_document[tyoe]' => 'file',
+                    'press_document[name]' => 'bleu.pdf',
+                    'press_document[fileType]' => 'file',
                 ]
             ],
         ];

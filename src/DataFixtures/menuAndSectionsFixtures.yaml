@@ -78,7 +78,7 @@ App\Entity\FrontPage:
     page_host_saison:
         tab: "@tab_season"
         name: "hostedCompanies"
-        pageSlug: $tab/$name
+        pageSlug: saison/cies-accueillies
         template: 'companies'
         number: "8"
     page_area_project:
