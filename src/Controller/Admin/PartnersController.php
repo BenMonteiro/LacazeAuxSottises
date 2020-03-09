@@ -9,6 +9,8 @@ use App\Controller\Admin\AdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 /**
  * @Route("admin/partners")
@@ -18,10 +20,17 @@ class PartnersController extends AdminController
     /**
      * @Route("/", name="partners_index", methods={"GET"})
      */
-    public function index(PartnersRepository $partnersRepository): Response
+    public function index(PartnersRepository $partnersRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $partners = $partnersRepository->findAll();
+        $partners = $paginator->paginate(
+            $partners,
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/partners/index.html.twig', [
-            'partners' => $partnersRepository->findAll(),
+            'partners' => $partners,
             'tabs' => $this->tabList,
         ]);
     }

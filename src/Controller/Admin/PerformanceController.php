@@ -15,6 +15,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Company;
 use Symfony\Component\Routing\RouterInterface;
 use App\Entity\Event;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 /**
  * @Route("admin/performance")
@@ -28,10 +30,17 @@ class PerformanceController extends AdminController
     /**
      * @Route("/", name="performance_index", methods={"GET"})
      */
-    public function index(PerformanceRepository $performanceRepository): Response
+    public function index(PerformanceRepository $performanceRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $performances = $performanceRepository->findBy([], ['date' => 'ASC']);
+        $performances = $paginator->paginate(
+            $performances,
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/performance/index.html.twig', [
-            'performances' => $performanceRepository->findBy([], ['date' => 'ASC']),
+            'performances' => $performances,
             'tabs' => $this->tabList,
         ]);
     }

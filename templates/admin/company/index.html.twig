@@ -8,11 +8,12 @@
 	<div id="adminPageTitle">
 		<h1>{{'company.index'|trans({}, 'company')|title}}</h1>
 	</div>
+
 	{% set classDisplay = 'index' %}
 	{% if companies|length <= 2  %}
 		{% set classDisplay = 'oneElement' %}
 	{% endif %}
-	<table class="table table-sm table-striped {{ classDisplay }} text-center mb-5 pb-5">
+	<table class="table table-sm table-striped {{ classDisplay }} text-center h-100 mb-5 pb-5">
 		<thead>
 			<tr>
 				<th>{{'general.image'|trans({}, 'general')|capitalize}}</th>
@@ -67,4 +68,7 @@
 			{% endfor %}
 		</tbody>
 	</table>
+	<div class="pagination">
+		{{ knp_pagination_render(companies) }}
+	</div>
 {% endblock %}

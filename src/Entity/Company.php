@@ -20,7 +20,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class Company
 {
 
-    protected $url;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -353,23 +352,6 @@ class Company
         return $this;
     }
 
-    public function __toString()
-    {
-        if (isset($_SERVER["REQUEST_URI"])) {
-            $uri = $_SERVER["REQUEST_URI"];
-            $this->url = parse_url($uri, PHP_URL_PATH);
-        }
-        if (preg_match('#festival/cies-accueillies#', $this->url)) {
-            if ($this->showTitle !== null) {
-                return $this->showTitle;
-            } else {
-                return $this->name;
-            }
-        } else {
-            return $this->name;
-        }
-    }
-
     public function getImageDescription(): ?string
     {
         return $this->imageDescription;
@@ -392,5 +374,23 @@ class Company
         $this->isHidden = $isHidden;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        $url = null;
+        if (isset($_SERVER["REQUEST_URI"])) {
+            $uri = $_SERVER["REQUEST_URI"];
+            $url = parse_url($uri, PHP_URL_PATH);
+        }
+        if (preg_match('#festival/cies-accueillies#', $url)) {
+            if ($this->showTitle !== null) {
+                return $this->showTitle;
+            } else {
+                return $this->name;
+            }
+        } else {
+            return $this->name;
+        }
     }
 }

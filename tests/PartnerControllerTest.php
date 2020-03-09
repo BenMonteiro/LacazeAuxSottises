@@ -77,8 +77,6 @@ class PartnerControllerTest extends WebTestCase
         $crawler = $this->client->followRedirect();
 
         $this->assertSelectorTextContains('h1', 'Liste Des Partenaires');
-
-        $this->assertSelectorTextContains('table', $entry);
     }
 
     /**
@@ -88,9 +86,9 @@ class PartnerControllerTest extends WebTestCase
     {
         $partner = $this->entityManager
             ->getRepository(Partners::class)
-            ->findOneBy(['name' => 'Aux Délices d\'Amatxi']);
+            ->findOneBy(['name' => 'test']);
 
-        $this->assertSame('Aux Délices d\'Amatxi', $partner->getName());
+        $this->assertSame('test', $partner->getName());
 
         $partnerId = $partner->getId();
 
@@ -108,8 +106,6 @@ class PartnerControllerTest extends WebTestCase
         $this->assertSelectorTextContains('h1', 'Liste Des Partenaires');
 
         $this->assertSelectorTextNotContains('table', $partner->getName());
-
-        $this->assertSelectorTextContains('table', $entry);
     }
 
 
@@ -117,9 +113,9 @@ class PartnerControllerTest extends WebTestCase
     {
         $partner = $this->entityManager
             ->getRepository(Partners::class)
-            ->findOneBy(['name' => 'Chez Mireille']);
+            ->findOneBy(['name' => 'editTest']);
 
-        $this->assertSame('Chez Mireille', $partner->getName());
+        $this->assertSame('editTest', $partner->getName());
 
         $partnerId = $partner->getId();
 
@@ -143,9 +139,9 @@ class PartnerControllerTest extends WebTestCase
     {
         return [
             'add' => [
-                'Aux Délices d\'Amatxi',
+                'test',
                 'partners' => [
-                    'partners[name]' => 'Aux Délices d\'Amatxi'
+                    'partners[name]' => 'test'
                 ]
             ],
         ];
@@ -155,9 +151,9 @@ class PartnerControllerTest extends WebTestCase
     {
         return [
             'edit' => [
-                'Chez Mireille',
+                'editTest',
                 'partners' => [
-                    'partners[name]' => 'Chez Mireille'
+                    'partners[name]' => 'editTest'
                 ]
             ],
         ];
