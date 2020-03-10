@@ -10,7 +10,7 @@
 				{% if partner.type == "institution" %}
 					{% if partner.logo.name %}
 						<div class="mb-2 mr-2">
-							<a href="{{partner.website}}" title={{partner.name}}>
+							<a href="{{partner.website}}" title={{partner.name}} target="blank">
 								<img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}">
 							</a>
 						</div>
@@ -30,7 +30,7 @@
 		<p class="offset-md-1 col-md-10">
 			{% for partner in partners %}
 				{% if partner.type == "prod_dist" %}
-					<a href="{{partner.website}}" title="{{partner.name}}">
+					<a href="{{partner.website}}" title="{{partner.name}}" target="blank">
 						{% if loop.last %}
 							{{ partner.name}}
 						{% else %}
@@ -51,7 +51,7 @@
 		<p class="offset-md-1 col-md-10">
 			{% for partner in partners %}
 				{% if partner.type == "partners" %}
-					<a href="{{partner.website}}" title="{{partner.name}}">
+					<a href="{{partner.website}}" title="{{partner.name}}" target="blank">
 						{% if loop.last %}
 							{{ partner.name}}
 						{% else %}

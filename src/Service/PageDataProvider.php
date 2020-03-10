@@ -58,7 +58,6 @@ class PageDataProvider
      */
     private function completeViewData($page, $data)
     {
-
         switch ($page) {
             case 'accueil':
                 $data['homeEvents'] = $this->eventRepository->findMonthEvents();

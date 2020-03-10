@@ -16,8 +16,6 @@ img {
 }
 
 .pagination ul {
-    position: relative;
-    top: 180%;
     padding-bottom: 2em;
 }
 
@@ -41,9 +39,8 @@ h3 {
 }
 
 #adminPageTitle {
-    position: fixed;
     text-align: center;
-    top: 170px;
+    margin-top: 170px;
     width: 100%;
     z-index: 20;
     background-color: white;
@@ -108,37 +105,6 @@ div[id^="company_performances_"]>div:first-child {
 }
 
 /*--------------------------------------------------------------------------------------Tables-----------------------------------------------------------------------------------------*/
-
-
-table.index thead {
-    position: sticky;
-    top: 250px;
-}
-
-table.index tbody {
-    position: relative;
-    top: 250px;
-}
-
-table.oneElement {
-    position: relative;
-    top: 250px;
-}
-
-table.oneSection {
-    position: relative;
-    top: 300px;
-}
-
-table.sectionList thead {
-    position: sticky;
-    top: 300px;
-}
-
-table.sectionList tbody {
-    position: relative;
-    top: 300px;
-}
 
 thead {
     background-color: black;

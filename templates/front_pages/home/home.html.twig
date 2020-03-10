@@ -13,8 +13,8 @@
 								<img src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name)}}" class="cubic-image" alt="{{event.imageDescription}}">
 							</div>
 						</a>
-						<h3 class="m-0">{{event.name}}</h3>
-						<p class="text-decoration-none text-muted ">
+						<h3 class="m-0 colored">{{event.name}}</h3>
+						<p class="text-decoration-none">
 							{{event.startingDate|format_date(pattern='EEEE d MMMM')|title}}
 						</p>
 						<p class="text-muted text-small text-center">
@@ -34,11 +34,11 @@
 								<img class="cubic-image" src="{{asset('images/uploads/company/' ~ perf.company.image.name)}}" alt="{{perf.company.imageDescription}}">
 							</div>
 							{% if perf.event == 'Soirées du Tiers-Lieu' %}
-								<h3 class="m-0 ">{{perf.company.theme}}</h3>
+								<h3 class="m-0 colored">{{perf.company.theme}}</h3>
 							{% else %}
-								<h3 class="m-0">{{perf.company}}</h3>
+								<h3 class="m-0 colored">{{perf.company}}</h3>
 							{% endif %}
-							<p class="text-decoration-none text-muted text-small text-center font-weight-normal">
+							<p class="text-decoration-none  text-small text-center font-weight-normal">
 								{{perf.date|format_date(pattern='EEEE d MMMM')|title}}</p>
 							<p class=" text-muted text-small text-center font-weight-normal">
 								{{perf.cityShow}}
@@ -94,7 +94,7 @@
 								<h2 class="mb-0 colored">{{ section.title|lower|capitalize }}</h2>
 								<p>{{ section.content|raw }}</p>
 								{% if section.image.name and section.image.mimeType == 'application/pdf' %}
-									<a class="text-break font-weight-bold" href="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" download title="Télécharger le formulaire">{{'general.download_form'|trans({}, 'general')|capitalize}}</a>
+									<a class="download-form" href="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" download title="Télécharger le formulaire">{{'general.download_form'|trans({}, 'general')|capitalize}}</a>
 								{% endif %}
 							</div>
 						{% endif %}
