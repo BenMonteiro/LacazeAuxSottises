@@ -10,7 +10,7 @@
 				{% if partner.type == "institution" %}
 					{% if partner.logo.name %}
 						<div class="mb-2 mr-2">
-							<a href="{{partner.website}}" title={{partner.name}} target="blank">
+							<a href="{{partner.website}}" title="{{partner.name}}" target="blank">
 								<img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}">
 							</a>
 						</div>
