@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200308154633 extends AbstractMigration
+final class Version20200311201451 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -31,7 +31,7 @@ final class Version20200308154633 extends AbstractMigration
         $this->addSql('CREATE TABLE press_document (id INT AUTO_INCREMENT NOT NULL, updated_at DATETIME DEFAULT NULL, name VARCHAR(255) NOT NULL, file_type VARCHAR(255) NOT NULL, document_name VARCHAR(255) DEFAULT NULL, document_original_name VARCHAR(255) DEFAULT NULL, document_mime_type VARCHAR(255) DEFAULT NULL, document_size INT DEFAULT NULL, document_dimensions LONGTEXT DEFAULT NULL COMMENT \'(DC2Type:simple_array)\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE section (id INT AUTO_INCREMENT NOT NULL, belong_to_page_id INT NOT NULL, name VARCHAR(255) NOT NULL, title VARCHAR(255) DEFAULT NULL, sub_title VARCHAR(255) DEFAULT NULL, appearance_order INT NOT NULL, content LONGTEXT NOT NULL, updated_at DATETIME DEFAULT NULL, image_description VARCHAR(255) DEFAULT NULL, image_name VARCHAR(255) DEFAULT NULL, image_original_name VARCHAR(255) DEFAULT NULL, image_mime_type VARCHAR(255) DEFAULT NULL, image_size INT DEFAULT NULL, image_dimensions LONGTEXT DEFAULT NULL COMMENT \'(DC2Type:simple_array)\', INDEX IDX_2D737AEFD261FDD1 (belong_to_page_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE team (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, first_name VARCHAR(255) NOT NULL, role VARCHAR(255) NOT NULL, email VARCHAR(255) DEFAULT NULL, updated_at DATETIME DEFAULT NULL, photo_name VARCHAR(255) DEFAULT NULL, photo_original_name VARCHAR(255) DEFAULT NULL, photo_mime_type VARCHAR(255) DEFAULT NULL, photo_size INT DEFAULT NULL, photo_dimensions LONGTEXT DEFAULT NULL COMMENT \'(DC2Type:simple_array)\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649F85E0677 (username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(180) NOT NULL, roles LONGTEXT NOT NULL, password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649F85E0677 (username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE front_page ADD CONSTRAINT FK_2CDA0C4C8D0C9323 FOREIGN KEY (tab_id) REFERENCES front_tab (id)');
         $this->addSql('ALTER TABLE performance ADD CONSTRAINT FK_82D79681979B1AD6 FOREIGN KEY (company_id) REFERENCES company (id)');
         $this->addSql('ALTER TABLE performance ADD CONSTRAINT FK_82D7968171F7E88B FOREIGN KEY (event_id) REFERENCES event (id)');
