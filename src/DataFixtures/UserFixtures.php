@@ -22,7 +22,7 @@ class UserFixtures extends Fixture
 
         $admin = new User();
         $admin->setUsername('lacaze_admin');
-        $admin->setRoles('ROLE_ADMIN');
+        $admin->setRoles(['ROLE_ADMIN']);
 
         $password = $this->encoder->encodePassword($admin, 'test2020');
         $admin->setPassword($password);
@@ -31,7 +31,7 @@ class UserFixtures extends Fixture
 
         $user = new User();
         $user->setUsername('lacaze_user');
-        $user->setRoles('ROLE_USER');
+        $user->setRoles(['ROLE_USER']);
 
         $password = $this->encoder->encodePassword($user, 'test2020');
         $user->setPassword($password);

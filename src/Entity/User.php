@@ -69,7 +69,7 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(string $roles): self
+    public function setRoles(array $roles): self
     {
         $this->roles = json_encode($roles);
 
