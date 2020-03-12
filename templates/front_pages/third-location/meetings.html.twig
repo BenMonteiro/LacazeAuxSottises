@@ -8,10 +8,10 @@
 					<section class=" d-md-flex align-items-start justify-content-between offset-lg-2 col-lg-8 mb-5">
 						{% if section.image.name %}
 							<div class="d-flex flex-column align-items-center my-3">
-								<div class="cubic-image-div">
-									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+								<figure class="cubic-image-div">
+									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 									<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-								</div>
+								</figure>
 							</div>
 						{% endif %}
 						<article class="d-flex flex-column mt-4 framedArticle dot text-md-left text-center">
@@ -33,10 +33,10 @@
 					<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 						{% if section.image.name %}
 							<div class="d-flex flex-column align-items-center my-3">
-								<div class="cubic-image-div">
-									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+								<figure class="cubic-image-div">
+									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 									<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-								</div>
+								</figure>
 							</div>
 						{% endif %}
 						<article class="h-100 text-center framedArticle red-dash">
@@ -59,12 +59,12 @@
 				{% for placeEventPerf in placeEventPerfs %}
 					<li class=" d-flex flex-column align-items-center col-lg-6 col-12 mt-3">
 						<div class="d-flex flex-column align-items-center mt-3">
-							<div class="cubic-image-div">
-								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+							<figure class="cubic-image-div">
+								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 								<img class="cubic-image" src="{{ asset('images/uploads/company/' ~ placeEventPerf.company.image.name) }}" alt="{{placeEventPerf.company.imageDescription}}">
-							</div>
+							</figure>
 						</div>
-						<div class="font-weight-bold text-center">
+						<figcaption class="font-weight-bold text-center">
 							<p>{{ placeEventPerf.date|format_date(pattern='EEEE dd MMMM')|capitalize }}
 								-
 								{{ placeEventPerf.date|date('H') }}h{{ placeEventPerf.date|date('i') }}</p>
@@ -73,7 +73,7 @@
 							</p>
 							<p class="colored">
 								{{ placeEventPerf.company.theme|raw }}</p>
-						</div>
+						</figcaption>
 					</li>
 
 				{% endfor %}
@@ -86,10 +86,10 @@
 					<section class=" d-md-flex align-content-start justify-content-between offset-lg-2 col-lg-8 mb-3">
 						{% if section.image.name %}
 							<div class="d-flex flex-column my-3">
-								<div class="cubic-image-div justify-content-center">
-									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+								<figure class="cubic-image-div justify-content-center">
+									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 									<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-								</div>
+								</figure>
 							</div>
 						{% endif %}
 						<article class="d-flex flex-column mt-4 framedArticle dot text-md-left text-center">

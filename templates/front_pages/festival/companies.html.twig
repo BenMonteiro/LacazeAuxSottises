@@ -6,26 +6,28 @@
 		{% for company in companies %}
 			<div class=" d-flex flex-column align-items-center col-lg-6 col-12 my-3">
 				<a class="element-link" href="{{path('display_company',{'id':company.id})}}" title="Voir le fiche de la compagnie">
-					<div class="cubic-image-div mb-0">
-						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+					<figure class="cubic-image-div mb-0">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 						<img class="cubic-image" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
-					</div>
+					</figure>
 				</a>
-				<h2 class="mb-0 colored">{{company.name}}</h2>
-				{% for perf in company.performances %}
-					{% if perf.event == 'Festival Fête des sottises !' or perf.event == 'Préambules sur le territoire' %}
-						<p class="m-0">
-							{{perf.date|format_date('full')|capitalize}}<br>
-						</p>
-						<p class="m-0 text-muted">
-							{% if perf.placeShow != perf.cityShow %}
-								{{perf.placeShow}}
-								-
-							{% endif %}
-							{{perf.cityShow}}
-						</p>
-					{% endif %}
-				{% endfor %}
+				<figcaption class="text-center">
+					<h2 class="mb-0 colored">{{company.name}}</h2>
+					{% for perf in company.performances %}
+						{% if perf.event == 'Festival Fête des sottises !' or perf.event == 'Préambules sur le territoire' %}
+							<p class="m-0">
+								{{perf.date|format_date('full')|capitalize}}<br>
+							</p>
+							<p class="m-0 text-muted">
+								{% if perf.placeShow != perf.cityShow %}
+									{{perf.placeShow}}
+									-
+								{% endif %}
+								{{perf.cityShow}}
+							</p>
+						{% endif %}
+					{% endfor %}
+				</figcaption>
 			</div>
 		{% endfor %}
 	</div>

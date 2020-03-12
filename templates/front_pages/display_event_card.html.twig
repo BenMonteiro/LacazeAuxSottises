@@ -7,10 +7,10 @@
 	<div class="offset-2 col-8 justify-content-center d-md-flex ">
 		{% if event.programImage.name %}
 			<div class="d-flex flex-column align-items-center ml-md-4 my-3">
-				<div class="cubic-image-div">
-					<img class="image-frame" src="{{ asset('images/cadre.png') }}">
+				<figure class="cubic-image-div">
+					<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir de l'image" aria-hidden="true">
 					<img class="cubic-image" src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
-				</div>
+				</figure>
 			</div>
 		{% endif %}
 		<div class="text-md-left text-center ml-4 mt-4">
