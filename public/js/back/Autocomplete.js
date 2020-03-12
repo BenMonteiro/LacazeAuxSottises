@@ -13,7 +13,9 @@ export default class Autocomplete {
                 }, [{
                     source: function (query, cb) {
                         $.ajax({
-                            url: autocompleteUrl + '?query=' + query
+                            url: autocompleteUrl,
+                            type: 'GET',
+                            data: 'query=' + query
                         }).then(function (data) {
                             cb(data.companies);
                         });
