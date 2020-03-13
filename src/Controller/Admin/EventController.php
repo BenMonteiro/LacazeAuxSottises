@@ -9,6 +9,8 @@ use App\Controller\Admin\AdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 /**
  * @Route("/admin/event")
@@ -18,10 +20,17 @@ class EventController extends AdminController
     /**
      * @Route("/", name="event_index", methods={"GET"})
      */
-    public function index(EventRepository $eventRepository): Response
+    public function index(EventRepository $eventRepository, PaginatorInterface $paginator, Request $request): Response
     {
+
+        $events = $eventRepository->findBy([], ['startingDate' => 'ASC']);
+        $events = $paginator->paginate(
+            $events,
+            $request->query->getInt('page', 1),
+            10
+        );
         return $this->render('admin/event/index.html.twig', [
-            'events' => $eventRepository->findBy([], ['startingDate' => 'ASC']),
+            'events' => $events,
             'tabs' => $this->tabList,
         ]);
     }

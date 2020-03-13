@@ -5,24 +5,36 @@
 
 		{% include('/front_pages/_intro_section_template.html.twig') %}
 		{% for section in sections %}
-			{% if section.name != 'intro' %}
-				<section class=" d-md-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
-					<div class="d-flex flex-column align-items-center my-3">
-						<div class="cubic-image-div">
-							<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+			{% if section.name != 'intro' and section.name != 'intro bénévolat' %}
+				<section class=" d-md-flex align-items-start justify-content-between offset-lg-2 col-lg-8 mb-3">
+					<div class="d-flex flex-column align-items-start my-3">
+						<figure class="cubic-image-div">
+							<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 							<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-						</div>
+						</figure>
 					</div>
-					<article class="framedArticle red-dot h-100 mx-0 col-lg-7">
+					<article class="d-flex flex-column mt-4 framedArticle dot text-md-left text-center">
 						{% if section.title %}
-							<h2 class="colored mb-2">{{ section.title }}</h2>
+							<h2 class="colored mb-1">{{ section.title|raw }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3>{{ section.subTitle }}</h3>
+							<h3 class="font-weight-bold mb-2 text-left m-0">{{ section.subTitle|raw }}</h3>
 						{% endif %}
 						<p class="text-justify">{{ section.content|raw}}</p>
 					</article>
 				</section>
+			{% elseif section.name == 'intro bénévolat' %}
+				<div class="offset-md-2 col-md-8 mb-3 text-center">
+					<article>
+						{% if section.title %}
+							<h2 class="mb-2">{{ section.title|raw }}</h2>
+						{% endif %}
+						{% if section.subTitle %}
+							<h3>{{ section.subTitle|raw }}</h3>
+						{% endif %}
+						<p>{{ section.content|raw }}</p>
+					</article>
+				</div>
 			{% endif %}
 		{% endfor %}
 	</div>

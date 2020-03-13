@@ -9,18 +9,18 @@
 				<section class=" d-md-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 					{% if section.image.name %}
 						<div class="d-flex flex-column align-items-center my-3">
-							<div class="cubic-image-div">
-								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+							<figure class="cubic-image-div">
+								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 								<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-							</div>
+							</figure>
 						</div>
 					{% endif %}
 					<article class="framedArticle red-dot h-100 mx-0">
 						{% if section.title %}
-							<h2 class="colored mb-2">{{ section.title }}</h2>
+							<h2 class="colored mb-2">{{ section.title|raw }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3>{{ section.subTitle }}</h3>
+							<h3>{{ section.subTitle|raw }}</h3>
 						{% endif %}
 						<div class="text-justify ul-ml">{{ section.content|raw}}</div>
 					</article>

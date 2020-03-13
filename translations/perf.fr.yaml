@@ -7,7 +7,6 @@ perf:
     index: liste des représentations
     company: Nom de la compagnie
     price: prix
-    free: prix libre
     highlight: actu du mois ?
     show:
         city: ville

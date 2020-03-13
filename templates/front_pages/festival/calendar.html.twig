@@ -5,7 +5,7 @@
 	{% include('/front_pages/_intro_section_template.html.twig') %}
 
 	<div class="offset-2 col-8">
-		<h2 class="text-center">
+		<h2 class="text-left">
 			{{'general.prelude'|trans({}, 'general')|capitalize}}
 		</h2>
 		<div class="d-flex flex-wrap justify-content-center mb-4">
@@ -16,19 +16,22 @@
 						</h2>
 						<p>{{preludePerfs.date|date('H')}}h{{preludePerfs.date|date('i')}}
 							|
-							{{ preludePerfs.cityShow }}
+							{{ preludePerfs.cityShow|raw }}
 							|
-							{{ preludePerfs.placeShow }}</p>
-						<p>{{ preludePerfs.company }},
-							{{ preludePerfs.company.showTitle}}</p>
+							{{ preludePerfs.placeShow|raw }}</p>
+						<p>{{ preludePerfs.company|raw }}
+							-
+							{{ preludePerfs.company.showTitle|raw}}</p>
 						<p>
-							{{preludePerfs.company.duration}}
-							{{'general.minutes'|trans({}, 'general') }}</p>
+							<span class="font-italic">
+								{{preludePerfs.company.theme|raw}}
+							</span>
+						</p>
 					</div>
 				</a>
 			{% endfor %}
 		</div>
-		<h2 class="text-center">
+		<h2 class="text-left">
 			{{'general.fest'|trans({}, 'general')|capitalize}}
 		</h2>
 		<div class="mb-3">
@@ -42,16 +45,18 @@
 							{% if date|format_date('full') == festPerf.date|format_date('full') %}
 								<a class="m-0" href="{{ path('display_company', {'id': festPerf.company.id}) }}" title="Voir le fiche de la compagnie">
 									<div class="d-flex">
-										<h2 class="text-muted mr-2">{{festPerf.date|date('H')}}h{{festPerf.date|date('i')}}</h2>
-										<h3>
-											{{ festPerf.company }}
-											{% if festPerf.company.showTitle %}
+										<h2 class="text-grey mr-2 mb-0 font-weight-normal">{{festPerf.date|date('H')}}h{{festPerf.date|date('i')}}</h2>
+										<p>
+											{{ festPerf.company|raw }}
+											{% if festPerf.company.showTitle|raw %}
 												-
-												<span class="font-italic">
-													{{ festPerf.company.showTitle}}
-												</span>
+												{{ festPerf.company.showTitle|raw}}
 											{% endif %}
-										</h3>
+											-
+											<span class="font-italic">
+												{{festPerf.company.theme|raw|capitalize}}
+											</span>
+										</p>
 									</div>
 								</a>
 							{% endif %}

@@ -9,6 +9,7 @@ use App\Controller\Admin\AdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/admin/company")
@@ -18,10 +19,18 @@ class CompanyController extends AdminController
     /**
      * @Route("/", name="company_index", methods={"GET"})
      */
-    public function index(CompanyRepository $companyRepository): Response
+    public function index(CompanyRepository $companyRepository, PaginatorInterface $paginator, Request $request): Response
     {
+
+        $companies = $companyRepository->findBy([], ['name' => 'ASC']);
+        $companies = $paginator->paginate(
+            $companies,
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/company/index.html.twig', [
-            'companies' => $companyRepository->findBy([], ['name' => 'ASC']),
+            'companies' => $companies,
             'tabs' => $this->tabList
         ]);
     }

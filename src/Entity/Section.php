@@ -8,10 +8,17 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Entity\File as EmbeddedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SectionRepository")
  * @Vich\Uploadable
+ * @UniqueEntity(
+ *      fields={"belongToPage", "appearanceOrder"},
+ *      errorPath="appearanceOrder",
+ *      message="Cette valeur est déjà utilisé pour cette page"
+ * )
+ * 
  */
 class Section
 {

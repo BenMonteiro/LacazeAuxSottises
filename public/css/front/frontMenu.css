@@ -68,17 +68,17 @@ li.transform-355>a {
 
 .cycliste {
     position: relative;
-    width: 50px;
+    width: 43px;
     left: 73%;
-    top: -9%;
+    top: -6%;
     z-index: 50;
 }
 
 .cycliste-noir {
     position: relative;
-    width: 50px;
+    width: 43px;
     left: 29%;
-    top: 57px;
+    top: 54px;
 }
 
 
@@ -98,7 +98,7 @@ nav>ul {
 }
 
 .fa-circle {
-    font-size: 0.3rem;
+    font-size: 5px;
     position: relative;
     bottom: 2px;
     color: #DA291C

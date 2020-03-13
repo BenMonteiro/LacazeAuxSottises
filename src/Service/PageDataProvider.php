@@ -58,9 +58,8 @@ class PageDataProvider
      */
     private function completeViewData($page, $data)
     {
-
         switch ($page) {
-            case 'home':
+            case 'accueil':
                 $data['homeEvents'] = $this->eventRepository->findMonthEvents();
                 $data['homePerfs'] = $this->performanceRepository->findMonthPerfs();
                 $data['placeEventPerfs'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'Soirées du Tiers-Lieu'])], ['date' => 'ASC']);

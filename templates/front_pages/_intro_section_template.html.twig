@@ -3,12 +3,12 @@
 		<div class="offset-md-2 col-md-8 mb-5 text-center">
 			<article>
 				{% if section.title %}
-					<h2>{{ section.title }}</h2>
+					<h2 class="mb-2">{{ section.title|raw }}</h2>
 				{% endif %}
 				{% if section.subTitle %}
-					<h3>{{ section.subTitle }}</h3>
+					<h3>{{ section.subTitle|raw }}</h3>
 				{% endif %}
-				<p>{{ section.content|raw }}</p>
+				<div>{{ section.content|raw }}</div>
 			</article>
 		</div>
 	{% endif %}

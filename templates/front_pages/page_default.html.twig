@@ -1,5 +1,6 @@
 {% extends "front_templates/page_template.html.twig" %}
 
+
 {% block body %}
 	<div class=" d-none d-md-flex flex-wrap justify-content-center mb-5">
 		{% for section in sections %}
@@ -16,9 +17,9 @@
 	<div class="offset-md-2 col-md-8">
 		{% for section in sections %}
 			{% if section.name != "Chiffres" %}
-				<article class="mb-3 mx-5">
+				<article class="mb-3">
 					{% if section.title %}
-						<h3 class="font-weight-bold colored mx-0 mb-0">{{ section.title|lower|capitalize }}</h3>
+						<h3 class="font-weight-bold colored mx-0 mb-0">{{ section.title|raw|capitalize }}</h3>
 					{% endif %}
 					{% if section.subTitle %}
 						<h3 class="mb-2 ml-0">{{ section.subTitle }}</h3>
@@ -27,13 +28,13 @@
 				</article>
 			{% else %}
 				<div class=" my-5">
-					<article class=" framedArticle dot p-0 px-4 mx-5">
+					<article class=" framedArticle dot p-0 px-4">
 						<div class="my-1">
 							{% if section.title %}
-								<h3 class="font-weight-bold colored mx-0 mb-0">{{ section.title|lower|capitalize }}</h3>
+								<h3 class="font-weight-bold colored mx-0 mb-0">{{ section.title|raw|capitalize }}</h3>
 							{% endif %}
 							{% if section.subTitle %}
-								<h3 class="mb-2">{{ section.subTitle }}</h3>
+								<h3 class="mb-2">{{ section.subTitle|raw }}</h3>
 							{% endif %}
 							<div class="text-justify ul-ml mb-0">{{ section.content|raw}}</div>
 						</div>

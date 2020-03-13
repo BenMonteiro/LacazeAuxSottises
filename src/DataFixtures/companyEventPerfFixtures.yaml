@@ -29,8 +29,15 @@ App\Entity\Event:
         description: "<paragraph(3, true)>"
         isHighlight: false
         imageDescription: "image"
+    event_festPrelude:
+        name: "Préambules sur le territoire"
+        startingDate: '<dateTimeBetween("now", "+ 300 days")>'
+        endingDate: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
+        place: "<city()>"
+        isHighlight: true
+        imageDescription: "image"
     event_fest:
-        name: "festival"
+        name: "Festival Fête des sottises !"
         startingDate: '<dateTimeBetween("now", "+ 300 days")>'
         endingDate: '<dateTimeBetween($startingDate, $startingDate "+ 2 days ")>'
         place: "<city()>"
@@ -42,7 +49,7 @@ App\Entity\Event:
         imageDescription: "image"
 
 App\Entity\Performance:
-    performance{1..50}:
+    performance{1..70}:
         company: "@company*"
         cityShow: "<city()>"
         placeShow: "<streetAddress()>"

@@ -5,21 +5,21 @@
 		<div>
 			{% for section in sections %}
 				{% if section.name == 'prod meeting' %}
-					<section class=" d-md-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-5">
+					<section class=" d-md-flex align-items-start justify-content-between offset-lg-2 col-lg-8 mb-5">
 						{% if section.image.name %}
 							<div class="d-flex flex-column align-items-center my-3">
-								<div class="cubic-image-div">
-									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+								<figure class="cubic-image-div">
+									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 									<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-								</div>
+								</figure>
 							</div>
 						{% endif %}
-						<article class="my-5 framedArticle dot text-md-left text-center">
+						<article class="d-flex flex-column mt-4 framedArticle dot text-md-left text-center">
 							{% if section.title %}
-								<h2 class="colored mb-3">{{ section.title }}</h2>
+								<h2 class="colored mb-3">{{ section.title|raw }}</h2>
 							{% endif %}
 							{% if section.subTitle %}
-								<h3>{{ section.subTitle }}</h3>
+								<h3>{{ section.subTitle|raw }}</h3>
 							{% endif %}
 							<p>{{ section.content|raw}}</p>
 						</article>
@@ -33,18 +33,18 @@
 					<section class=" d-sm-flex align-items-center justify-content-between offset-lg-2 col-lg-8 mb-3">
 						{% if section.image.name %}
 							<div class="d-flex flex-column align-items-center my-3">
-								<div class="cubic-image-div">
-									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+								<figure class="cubic-image-div">
+									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 									<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-								</div>
+								</figure>
 							</div>
 						{% endif %}
 						<article class="h-100 text-center framedArticle red-dash">
 							{% if section.title %}
-								<h2 class="colored mb-3">{{ section.title }}</h2>
+								<h2 class="colored mb-3">{{ section.title|raw }}</h2>
 							{% endif %}
 							{% if section.subTitle %}
-								<h3>{{ section.subTitle }}</h3>
+								<h3>{{ section.subTitle|raw }}</h3>
 							{% endif %}
 							<p class="">{{ section.content|raw}}</p>
 						</article>
@@ -59,21 +59,21 @@
 				{% for placeEventPerf in placeEventPerfs %}
 					<li class=" d-flex flex-column align-items-center col-lg-6 col-12 mt-3">
 						<div class="d-flex flex-column align-items-center mt-3">
-							<div class="cubic-image-div">
-								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+							<figure class="cubic-image-div">
+								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 								<img class="cubic-image" src="{{ asset('images/uploads/company/' ~ placeEventPerf.company.image.name) }}" alt="{{placeEventPerf.company.imageDescription}}">
-							</div>
+							</figure>
 						</div>
-						<div class="font-weight-bold text-center">
+						<figcaption class="font-weight-bold text-center">
 							<p>{{ placeEventPerf.date|format_date(pattern='EEEE dd MMMM')|capitalize }}
 								-
 								{{ placeEventPerf.date|date('H') }}h{{ placeEventPerf.date|date('i') }}</p>
 							<p>
 								{{ placeEventPerf.price|raw }}
 							</p>
-							<p>
+							<p class="colored">
 								{{ placeEventPerf.company.theme|raw }}</p>
-						</div>
+						</figcaption>
 					</li>
 
 				{% endfor %}
@@ -83,21 +83,21 @@
 		<div>
 			{% for section in sections %}
 				{% if section.name == 'visit' %}
-					<section class=" d-md-flex justify-content-between offset-lg-2 col-lg-8 mb-3">
+					<section class=" d-md-flex align-content-start justify-content-between offset-lg-2 col-lg-8 mb-3">
 						{% if section.image.name %}
 							<div class="d-flex flex-column my-3">
-								<div class="cubic-image-div justify-content-center">
-									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+								<figure class="cubic-image-div justify-content-center">
+									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 									<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-								</div>
+								</figure>
 							</div>
 						{% endif %}
-						<article class="h-100 framedArticle dot text-md-left text-center">
+						<article class="d-flex flex-column mt-4 framedArticle dot text-md-left text-center">
 							{% if section.title %}
-								<h2 class="colored mb-3">{{ section.title }}</h2>
+								<h2 class="colored mb-3">{{ section.title|raw }}</h2>
 							{% endif %}
 							{% if section.subTitle %}
-								<h3>{{ section.subTitle }}</h3>
+								<h3>{{ section.subTitle|raw }}</h3>
 							{% endif %}
 							<div class="ml-0">{{ section.content|raw}}</div>
 						</article>
@@ -105,4 +105,5 @@
 				{% endif %}
 			{% endfor %}
 		</div>
-	{% endblock %}
+	</div>
+{% endblock %}

@@ -15,6 +15,14 @@ img {
     font-size: 1.3rem;
 }
 
+.pagination ul {
+    padding-bottom: 2em;
+}
+
+.pagination {
+    justify-content: center;
+}
+
 /*-----------------------------------------------------------------------------------------Titles--------------------------------------------------------------------------------------------*/
 h1 {
     text-align: center;
@@ -31,9 +39,8 @@ h3 {
 }
 
 #adminPageTitle {
-    position: fixed;
     text-align: center;
-    top: 170px;
+    margin-top: 170px;
     width: 100%;
     z-index: 20;
     background-color: white;
@@ -41,8 +48,7 @@ h3 {
 
 /*-----------------------------------------------------------------------------------------Images--------------------------------------------------------------------------------------------*/
 .miniImage {
-    border-radius: 80px;
-    width: 200px;
+    width: 150px;
     height: 150px;
 }
 
@@ -80,14 +86,14 @@ div[id^="company_performances_"]>div:first-child {
     height: 50px;
     text-align: center;
     z-index: 3;
-    padding-top: 20px;
+    padding-top: 1em;
 }
 
 .flash-message {
     height: 50px;
     text-align: center;
     z-index: 3;
-    padding-top: 20px;
+    padding-top: 1em;
 }
 
 .flash-notice {
@@ -100,37 +106,6 @@ div[id^="company_performances_"]>div:first-child {
 
 /*--------------------------------------------------------------------------------------Tables-----------------------------------------------------------------------------------------*/
 
-
-table.index thead {
-    position: sticky;
-    top: 250px;
-}
-
-table.index tbody {
-    position: relative;
-    top: 250px;
-}
-
-table.oneElement {
-    position: relative;
-    top: 250px;
-}
-
-table.oneSection {
-    position: relative;
-    top: 300px;
-}
-
-table.sectionList thead {
-    position: sticky;
-    top: 300px;
-}
-
-table.sectionList tbody {
-    position: relative;
-    top: 300px;
-}
-
 thead {
     background-color: black;
     z-index: 10;
@@ -142,13 +117,6 @@ thead {
     border: none;
     vertical-align: middle;
     padding: 0.8rem 0.3rem;
-}
-
-/*------------------------------------------------------------------------------------Press---------------------------------------------------------------------------------------*/
-
-.press-index {
-    position: relative;
-    top: 300px;
 }
 
 /*------------------------------------------------------------------------------------Dashboard---------------------------------------------------------------------------------------*/

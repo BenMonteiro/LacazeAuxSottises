@@ -6,10 +6,10 @@
 		{% for section in sections %}
 			<article class="mb-3 text-left">
 				{% if section.title %}
-					<h2 class="mb-2 colored">{{ section.title|lower|capitalize }}</h2>
+					<h2 class="mb-2 colored">{{ section.title|striptags|capitalize }}</h2>
 				{% endif %}
 				{% if section.subTitle %}
-					<h3>{{ section.subTitle }}</h3>
+					<h3>{{ section.subTitle|raw }}</h3>
 				{% endif %}
 				<div class="ul-ml">{{ section.content|raw}}</div>
 			</article>
@@ -19,10 +19,10 @@
 		{% for section in sections %}
 			{% if section.image.name %}
 				<div class=" d-flex flex-column align-items-center justify-content-between col-lg-3 col-md-4 col-sm-6 col-12 my-3">
-					<div class="cubic-image-div mb-0">
-						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image">
+					<figure class="cubic-image-div mb-0">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 						<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
-					</div>
+					</figure>
 				</div>
 			{% endif %}
 		{% endfor %}

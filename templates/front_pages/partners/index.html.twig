@@ -10,7 +10,7 @@
 				{% if partner.type == "institution" %}
 					{% if partner.logo.name %}
 						<div class="mb-2 mr-2">
-							<a href="{{partner.website}}" title={{partner.name}}>
+							<a href="{{partner.website}}" title="{{partner.name}}" target="blank">
 								<img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}">
 							</a>
 						</div>
@@ -25,14 +25,14 @@
 			</h2>
 		</div>
 		<div class="text-center">
-			<img class="miniTitleBar" src="{{asset('images/trait-rouge.png')}}" alt="barre rouge">
+			<img class="miniTitleBar" src="{{asset('images/trait-rouge.png')}}" alt="barre rouge" aria-hidden="true">
 		</div>
 		<p class="offset-md-1 col-md-10">
 			{% for partner in partners %}
 				{% if partner.type == "prod_dist" %}
-					<a href="{{partner.website}}" title="{{partner.name}}">
+					<a href="{{partner.website}}" title="{{partner.name}}" target="blank">
 						{% if loop.last %}
-							{{ partner.name}}
+							{{ partner.name|raw}}
 						{% else %}
 							{{ partner.name ~ ' /'}}
 						{% endif %}
@@ -46,14 +46,14 @@
 			</h2>
 		</div>
 		<div class="text-center">
-			<img class="miniTitleBar" src="{{asset('images/trait-rouge.png')}}" alt="barre rouge">
+			<img class="miniTitleBar" src="{{asset('images/trait-rouge.png')}}" alt="barre rouge" aria-hidden="true">
 		</div>
 		<p class="offset-md-1 col-md-10">
 			{% for partner in partners %}
 				{% if partner.type == "partners" %}
-					<a href="{{partner.website}}" title="{{partner.name}}">
+					<a href="{{partner.website}}" title="{{partner.name}}" target="blank">
 						{% if loop.last %}
-							{{ partner.name}}
+							{{ partner.name|raw}}
 						{% else %}
 							{{ partner.name ~ ' /'}}
 						{% endif %}
@@ -62,15 +62,15 @@
 			{% endfor %}
 		</p>
 
-		<div class="offset-md-2 col-md-8 mb-3">
+		<div class="offset-md-2 col-md-8 my-5">
 			{% for section in sections %}
 				{% if section.name != 'intro' %}
-					<article class="my-5 text-sm-left text-center">
+					<article class=" text-sm-left text-center">
 						{% if section.title %}
-							<h2 class="font-weight-bold colored mb-0">{{ section.title|lower|capitalize }}</h2>
+							<h2 class="font-weight-bold colored mb-0">{{ section.title|raw|capitalize }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3 class="font-weight-bold colored">{{ section.subTitle }}</h3>
+							<h3 class="font-weight-bold mx-0">{{ section.subTitle|raw }}</h3>
 						{% endif %}
 						<div class="mb-2 mt-3">{{ section.content|raw}}</div>
 					</article>

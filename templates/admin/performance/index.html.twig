@@ -42,7 +42,7 @@
 						<p>{{ performance.placeShow|title }}</p>
 						<p class="font-italic colored">{{ performance.cityShow }}</p>
 					</td>
-					<td>{{ performance.price ? performance.price|format_currency('EUR') : 'perf.free'|trans({}, 'perf')|capitalize }}</td>
+					<td>{{ performance.price|raw }}</td>
 					<td>{{ performance.event}}</td>
 					<td>{{ performance.isHighlight ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
 					<td>
@@ -58,4 +58,7 @@
 			{% endfor %}
 		</tbody>
 	</table>
+	<div class="pagination">
+		{{ knp_pagination_render(performances) }}
+	</div>
 {% endblock %}
