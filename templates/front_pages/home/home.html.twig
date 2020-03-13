@@ -14,12 +14,12 @@
 							</figure>
 						</a>
 						<figcaption class="text-center">
-							<h3 class="m-0 colored">{{event.name}}</h3>
+							<h3 class="m-0 colored">{{event.name|raw}}</h3>
 							<p class="text-decoration-none">
 								{{event.startingDate|format_date(pattern='EEEE d MMMM')|title}}
 							</p>
-							<p class="text-muted text-small text-center">
-								{{event.place}}
+							<p class="text-grey text-small text-center">
+								{{event.place|raw}}
 							</p>
 						</figcaption>
 					</div>
@@ -37,17 +37,17 @@
 							</figure>
 							<figcaption class="text-center">
 								{% if perf.event == 'Soirées du Tiers-Lieu' %}
-									<h3 class="m-0 colored">{{perf.company.theme}}</h3>
+									<h3 class="m-0 colored">{{perf.company.theme|raw}}</h3>
 								{% else %}
-									<h3 class="m-0 colored">{{perf.company}}</h3>
+									<h3 class="m-0 colored">{{perf.company|raw}}</h3>
 								{% endif %}
 								<p class="text-decoration-none  text-small text-center font-weight-normal">
 									{{perf.date|format_date(pattern='EEEE d MMMM')|title}}</p>
-								<p class=" text-muted text-small text-center font-weight-normal">
-									{{perf.cityShow}}
+								<p class=" text-grey text-small text-center font-weight-normal">
+									{{perf.cityShow|raw}}
 								</p>
 								<p>
-									<small>{{perf.company.showTitle}}</small>
+									<small>{{perf.company.showTitle|raw}}</small>
 								</p>
 							</figcaption>
 						</a>
@@ -90,13 +90,13 @@
 							<div class="d-flex">
 								<img class=" col-md-4 d-none d-md-block mb-2" src=" {{asset('images/uploads/paragraphImage/' ~ section.image.name)}} " alt=" {{section.imageDescription}} ">
 								<div class="col-md-8 text-left mt-2">
-									<h2 class=" colored">{{ section.title|lower|capitalize }}</h2>
+									<h2 class=" colored">{{ section.title|raw|capitalize }}</h2>
 									<p>{{ section.content|raw }}</p>
 								</div>
 							</div>
 						{% else %}
 							<div class="my-1">
-								<h2 class="mb-0 colored">{{ section.title|lower|capitalize }}</h2>
+								<h2 class="mb-0 colored">{{ section.title|raw|capitalize }}</h2>
 								<p>{{ section.content|raw }}</p>
 								{% if section.image.name and section.image.mimeType == 'application/pdf' %}
 									<a class="download-form" href="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" download title="Télécharger le formulaire">{{'general.download_form'|trans({}, 'general')|capitalize}}</a>

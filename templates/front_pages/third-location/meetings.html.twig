@@ -16,10 +16,10 @@
 						{% endif %}
 						<article class="d-flex flex-column mt-4 framedArticle dot text-md-left text-center">
 							{% if section.title %}
-								<h2 class="colored mb-3">{{ section.title }}</h2>
+								<h2 class="colored mb-3">{{ section.title|raw }}</h2>
 							{% endif %}
 							{% if section.subTitle %}
-								<h3>{{ section.subTitle }}</h3>
+								<h3>{{ section.subTitle|raw }}</h3>
 							{% endif %}
 							<p>{{ section.content|raw}}</p>
 						</article>
@@ -41,10 +41,10 @@
 						{% endif %}
 						<article class="h-100 text-center framedArticle red-dash">
 							{% if section.title %}
-								<h2 class="colored mb-3">{{ section.title }}</h2>
+								<h2 class="colored mb-3">{{ section.title|raw }}</h2>
 							{% endif %}
 							{% if section.subTitle %}
-								<h3>{{ section.subTitle }}</h3>
+								<h3>{{ section.subTitle|raw }}</h3>
 							{% endif %}
 							<p class="">{{ section.content|raw}}</p>
 						</article>
@@ -94,10 +94,10 @@
 						{% endif %}
 						<article class="d-flex flex-column mt-4 framedArticle dot text-md-left text-center">
 							{% if section.title %}
-								<h2 class="colored mb-3">{{ section.title }}</h2>
+								<h2 class="colored mb-3">{{ section.title|raw }}</h2>
 							{% endif %}
 							{% if section.subTitle %}
-								<h3>{{ section.subTitle }}</h3>
+								<h3>{{ section.subTitle|raw }}</h3>
 							{% endif %}
 							<div class="ml-0">{{ section.content|raw}}</div>
 						</article>

@@ -18,10 +18,10 @@
 					</div>
 					<article class="d-flex flex-column mt-4 framedArticle red-dot text-md-left text-center">
 						{% if section.title %}
-							<h2 class="colored mb-0">{{ section.title }}</h2>
+							<h2 class="colored mb-0">{{ section.title|raw }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3 class="font-weight-bold ml-0 mt-0">{{ section.subTitle }}</h3>
+							<h3 class="font-weight-bold ml-0 mt-0">{{ section.subTitle|raw }}</h3>
 						{% endif %}
 						<div>{{ section.content|raw}}</div>
 					</article>
@@ -42,10 +42,10 @@
 					</div>
 					<article class="d-flex flex-column mt-4 framedArticle dash text-md-left text-center">
 						{% if section.title %}
-							<h2 class="colored">{{ section.title }}</h2>
+							<h2 class="colored">{{ section.title|raw }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3 class="font-weight-bold ml-0 mt-0">{{ section.subTitle }}</h3>
+							<h3 class="font-weight-bold ml-0 mt-0">{{ section.subTitle|raw }}</h3>
 						{% endif %}
 						<p>{{ section.content|raw}}</p>
 					</article>
@@ -67,10 +67,10 @@
 					</div>
 					<article class="d-flex flex-column mt-4 framedArticle red-dash text-md-left text-center">
 						{% if section.title %}
-							<h2 class="colored mb-0">{{ section.title }}</h2>
+							<h2 class="colored mb-0">{{ section.title|raw }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3 class="font-weight-bold ml-0 mt-0">{{ section.subTitle }}</h3>
+							<h3 class="font-weight-bold ml-0 mt-0">{{ section.subTitle|raw}}</h3>
 						{% endif %}
 						<p>{{ section.content|raw}}</p>
 					</article>

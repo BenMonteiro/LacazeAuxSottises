@@ -17,10 +17,10 @@
 					{% endif %}
 					<article class="framedArticle red-dot h-100 mx-0">
 						{% if section.title %}
-							<h2 class="colored mb-2">{{ section.title }}</h2>
+							<h2 class="colored mb-2">{{ section.title|raw }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3>{{ section.subTitle }}</h3>
+							<h3>{{ section.subTitle|raw }}</h3>
 						{% endif %}
 						<div class="text-justify ul-ml">{{ section.content|raw}}</div>
 					</article>

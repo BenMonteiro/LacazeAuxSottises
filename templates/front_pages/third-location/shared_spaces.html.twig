@@ -15,10 +15,10 @@
 					</div>
 					<article class="d-flex flex-column mt-4 framedArticle dot text-md-left text-center">
 						{% if section.title %}
-							<h2 class="colored mb-2">{{ section.title }}</h2>
+							<h2 class="colored mb-2">{{ section.title|raw }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3>{{ section.subTitle }}</h3>
+							<h3>{{ section.subTitle|raw }}</h3>
 						{% endif %}
 						<p class="text-justify">{{ section.content|raw}}</p>
 					</article>

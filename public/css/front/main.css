@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'MyriadPro';
-    src: url(/public/polices/MyriadPro-Regular.otf)
+    src: url("/public/polices/MyriadPro-Regular.otf")
 }
 
 body {
@@ -92,6 +92,10 @@ a:hover {
     font-weight: bold;
 }
 
+.text-grey {
+    color: rgba(111, 107, 107, 0.748);
+}
+
 /*--------------------------------------------------------------------------------------Landing Page------------------------------------------------------------------------------------------*/
 
 .accessLink {
@@ -102,7 +106,7 @@ a:hover {
     right: 0;
     background-color: transparent;
     z-index: 999;
-    background-image: url(/images/landingPagePic.jpg);
+    background-image: url("/images/landingPagePic.jpg");
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
@@ -120,10 +124,6 @@ h4,
 h5,
 .pageTitle {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-h1 {
-    margin: 1rem auto;
 }
 
 h2 {

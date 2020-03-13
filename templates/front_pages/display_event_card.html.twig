@@ -14,7 +14,7 @@
 			</div>
 		{% endif %}
 		<div class="text-md-left text-center ml-4 mt-4">
-			<h2 class="colored mb-0">{{event.name}}</h2>
+			<h2 class="colored mb-0">{{event.name|raw}}</h2>
 			{% if event.startingDate != event.endingDate and event.endingDate is defined %}
 				<p class="font-weight-bold">{{'from'|trans({}, 'general')|capitalize}}
 					{{event.startingDate|date('d')}}
@@ -23,7 +23,7 @@
 			{% elseif (event.startingDate == event.endingDate or event.endingDate is null) and event.startingDate is defined %}
 				<p class="font-weight-bold">{{event.startingDate|format_date('full')|title}}</p>
 			{% endif %}
-			<p class="mb-2 font-weight-bold text-muted">{{event.place}}</p>
+			<p class="mb-2 font-weight-bold text-grey">{{event.place}}</p>
 			<p>{{event.moreInfos|raw}}</p>
 		</div>
 	</div>

@@ -9,10 +9,10 @@
 			{% if section.name == 'content' %}
 				<article class="card bg-light p-3 text-center mx-0">
 					{% if section.title %}
-						<h2 class="text-center colored mb-2">{{ section.title }}</h2>
+						<h2 class="text-center colored mb-2">{{ section.title|raw }}</h2>
 					{% endif %}
 					{% if section.subTitle %}
-						<h3>{{ section.subTitle }}</h3>
+						<h3>{{ section.subTitle|raw }}</h3>
 					{% endif %}
 					<div class="mb-0">{{ section.content|raw }}</div>
 				</article>

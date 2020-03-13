@@ -6,10 +6,10 @@
 		{% for section in sections %}
 			<article class="mb-3 text-left">
 				{% if section.title %}
-					<h2 class="mb-2 colored">{{ section.title|lower|capitalize }}</h2>
+					<h2 class="mb-2 colored">{{ section.title|striptags|capitalize }}</h2>
 				{% endif %}
 				{% if section.subTitle %}
-					<h3>{{ section.subTitle }}</h3>
+					<h3>{{ section.subTitle|raw }}</h3>
 				{% endif %}
 				<div class="ul-ml">{{ section.content|raw}}</div>
 			</article>

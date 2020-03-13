@@ -43,9 +43,9 @@
 							<div class="text-center ">
 								<h2 class="text-decoration-none colored mb-0">{{ perf.date|format_date(pattern="EEEE d MMMM")|title}}
 								</h2>
-								<p class="text-muted mb-0">{{ perf.cityShow }}</p>
-								<p class="mb-0">{{ perf.company.name }},
-									{{ perf.company.showTitle}}</p>
+								<p class="text-grey mb-0">{{ perf.cityShow|raw }}</p>
+								<p class="mb-0">{{ perf.company.name|raw }},
+									{{ perf.company.showTitle|raw}}</p>
 							</div>
 						</a>
 					{% elseif perf.event != 'saison' and perf.event != 'Soirées du Tiers-Lieu' %}
@@ -53,8 +53,8 @@
 							<div class="text-center">
 								<h2 class="text-decoration-none colored mb-0">{{ perf.event.startingDate|format_date(pattern="EEEE d MMMM")|title }}
 								</h2>
-								<p class="text-muted mb-0">{{perf.event.place}}</p>
-								<p>{{ perf.event.name }}</p>
+								<p class="text-grey mb-0">{{perf.event.place|raw}}</p>
+								<p>{{ perf.event.name|raw }}</p>
 							</div>
 						</a>
 					{% endif %}
