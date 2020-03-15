@@ -17,7 +17,7 @@
 					{% if section.subTitle %}
 						<h3 class="font-weight-bold">{{ section.subTitle|raw|capitalize }}</h3>
 					{% endif %}
-					<p>{{ section.content|raw }}</p>
+					<div>{{ section.content|raw }}</div>
 				</article>
 			{% endif %}
 		{% endfor %}
@@ -43,7 +43,7 @@
 						{% if section.subTitle %}
 							<h3 class="font-weight-bold mx-0 mb-2">{{ section.subTitle|raw|capitalize }}</h3>
 						{% endif %}
-						<p>{{ section.content|raw }}</p>
+						<div>{{ section.content|raw }}</div>
 					</article>
 				{% endif %}
 			{% endfor %}
@@ -58,7 +58,7 @@
 					{% if section.subTitle %}
 						<p class="font-weight-bold">{{ section.subTitle|raw|capitalize }}</p>
 					{% endif %}
-					<p class="mb-1">{{ section.content|raw }}</p>
+					<div class="mb-1">{{ section.content|raw }}</div>
 				</article>
 			{% endif %}
 		{% endfor %}

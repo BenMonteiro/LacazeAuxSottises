@@ -8,8 +8,8 @@
 	<h1>
 		{{'press.create'|trans({}, 'press')|title}}
 	</h1>
-
-	{{ include('admin/press_document/_form.html.twig') }}
-
-	<a class="badge badge-secondary p-2" href="{{ path('press_document_index') }}" title="Retour aux documents">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+	<div class="ml-3">
+		{{ include('admin/press_document/_form.html.twig') }}
+		<a class="badge badge-secondary p-2" href="{{ path('press_document_index') }}" title="Retour aux documents">{{'general.back'|trans({}, 'general')|capitalize}}</a>
+	</div>
 {% endblock %}

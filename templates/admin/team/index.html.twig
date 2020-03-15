@@ -30,8 +30,8 @@
 			{% for team in teams %}
 				<tr>
 					<td><img class="memberPhoto" src="{{ asset('images/uploads/memberPhoto/' ~ team.photo.name) }}" alt="{{team.firstName}} {{team.name}}"></td>
-					<td>{{ team.name }}</td>
-					<td>{{ team.firstName }}</td>
+					<td>{{ team.name|raw }}</td>
+					<td>{{ team.firstName|raw }}</td>
 					<td>{{ ('member.role.' ~ team.role)|trans({}, 'team')|capitalize}}</td>
 					<td>{{ team.email }}</td>
 					<td>

@@ -28,8 +28,12 @@
 		<tbody>
 			{% for partner in partners %}
 				<tr>
-					<td><img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}"></td>
-					<td class="colored font-weight-bold">{{ partner.name }}</td>
+					<td>
+						{% if partner.logo.name %}
+							<img class="partnerLogo" src="{{ asset('images/uploads/partnerLogo/' ~ partner.logo.name) }}" alt="{{partner.name}}">
+						{% endif %}
+					</td>
+					<td class="colored font-weight-bold">{{ partner.name|raw }}</td>
 					<td>{{partner.website}}</td>
 					<td>{{ ('partner.' ~ partner.type)|trans({}, 'partners')|capitalize }}</td>
 					<td>

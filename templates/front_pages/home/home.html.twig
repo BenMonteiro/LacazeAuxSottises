@@ -8,20 +8,23 @@
 				{% if event.startingDate|date('M') == 'now'|date('M') %}
 					<div class="text-center col-md-6 my-3">
 						<a class="element-link d-flex  flex-column justify-content-around mr-0" href="{{path('display_event',{'id':event.id})}}" title="Voir le fiche de l'événement'">
-							<figure class="cubic-image-div justify-content-center mb-0">
-								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
-								<img src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name)}}" class="cubic-image" alt="{{event.imageDescription}}">
+							<figure>
+								<div class="cubic-image-div justify-content-center mb-0">
+									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+									<img src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name)}}" class="cubic-image" alt="{{event.imageDescription}}">
+								</div>
+								<figcaption class="text-center">
+									<h3 class="m-0 colored">{{event.name|raw}}</h3>
+									<p class="text-decoration-none">
+										{{event.startingDate|format_date(pattern='EEEE d MMMM')|title}}
+									</p>
+									<p class="text-grey text-center">
+										{{event.place|raw}}
+									</p>
+								</figcaption>
 							</figure>
 						</a>
-						<figcaption class="text-center">
-							<h3 class="m-0 colored">{{event.name|raw}}</h3>
-							<p class="text-decoration-none">
-								{{event.startingDate|format_date(pattern='EEEE d MMMM')|title}}
-							</p>
-							<p class="text-grey text-small text-center">
-								{{event.place|raw}}
-							</p>
-						</figcaption>
+
 					</div>
 				{% endif %}
 			{% endfor %}
@@ -31,25 +34,27 @@
 				{% if perf.date|date('M') == 'now'|date('M') %}
 					<div class="text-center col-md-6 my-3">
 						<a class="element-link d-flex flex-column justify-content-around mr-0" href="{{path('display_company',{'id':perf.company.id})}}" title="Voir le fiche de la compagnie">
-							<figure class="cubic-image-div justify-content-center mb-0">
-								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
-								<img class="cubic-image" src="{{asset('images/uploads/company/' ~ perf.company.image.name)}}" alt="{{perf.company.imageDescription}}">
+							<figure>
+								<div class="cubic-image-div justify-content-center mb-0">
+									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+									<img class="cubic-image" src="{{asset('images/uploads/company/' ~ perf.company.image.name)}}" alt="{{perf.company.imageDescription}}">
+								</div>
+								<figcaption class="text-center">
+									{% if perf.event == 'Soirées du Tiers-Lieu' %}
+										<h3 class="m-0 colored">{{perf.company.theme|raw}}</h3>
+									{% else %}
+										<h3 class="m-0 colored">{{perf.company|raw}}</h3>
+									{% endif %}
+									<p class="text-decoration-none text-small text-center font-weight-normal">
+										{{perf.date|format_date(pattern='EEEE d MMMM')|title}}</p>
+									<p class=" text-grey text-small text-center font-weight-normal">
+										{{perf.cityShow|raw}}
+									</p>
+									<p>
+										<small>{{perf.company.showTitle|raw}}</small>
+									</p>
+								</figcaption>
 							</figure>
-							<figcaption class="text-center">
-								{% if perf.event == 'Soirées du Tiers-Lieu' %}
-									<h3 class="m-0 colored">{{perf.company.theme|raw}}</h3>
-								{% else %}
-									<h3 class="m-0 colored">{{perf.company|raw}}</h3>
-								{% endif %}
-								<p class="text-decoration-none  text-small text-center font-weight-normal">
-									{{perf.date|format_date(pattern='EEEE d MMMM')|title}}</p>
-								<p class=" text-grey text-small text-center font-weight-normal">
-									{{perf.cityShow|raw}}
-								</p>
-								<p>
-									<small>{{perf.company.showTitle|raw}}</small>
-								</p>
-							</figcaption>
 						</a>
 					</div>
 				{% endif %}
@@ -57,13 +62,16 @@
 		{% endif %}
 		<div class="text-center col-md-6 my-3">
 			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}" title="Télécharger la plaquette de la saison">
-				<figure class="cubic-image-div justify-content-center mb-0">
-					<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
-					<img class="cubic-image" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}" alt="{{season.imageDescription}}">
+				<figure>
+					<div class="cubic-image-div justify-content-center mb-0">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+						<img class="cubic-image" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}" alt="{{season.imageDescription}}">
+					</div>
+					<figcaption>
+						<p class="font-weight-normal">{{'general.askProg'|trans({}, 'general')|capitalize}}</p>
+					</figcaption>
 				</figure>
-				<figcaption>
-					<p class="font-weight-normal">{{'general.askProg'|trans({}, 'general')|capitalize}}</p>
-				</figcaption>
+
 			</a>
 		</div>
 	</div>
@@ -91,13 +99,13 @@
 								<img class=" col-md-4 d-none d-md-block mb-2" src=" {{asset('images/uploads/paragraphImage/' ~ section.image.name)}} " alt=" {{section.imageDescription}} ">
 								<div class="col-md-8 text-left mt-2">
 									<h2 class=" colored">{{ section.title|raw|capitalize }}</h2>
-									<p>{{ section.content|raw }}</p>
+									<div>{{ section.content|raw }}</div>
 								</div>
 							</div>
 						{% else %}
 							<div class="my-1">
 								<h2 class="mb-0 colored">{{ section.title|raw|capitalize }}</h2>
-								<p>{{ section.content|raw }}</p>
+								<div>{{ section.content|raw }}</div>
 								{% if section.image.name and section.image.mimeType == 'application/pdf' %}
 									<a class="download-form" href="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" download title="Télécharger le formulaire">{{'general.download_form'|trans({}, 'general')|capitalize}}</a>
 								{% endif %}
