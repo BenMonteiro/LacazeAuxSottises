@@ -11,6 +11,7 @@ use Vich\UploaderBundle\Entity\File as EmbeddedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Service\FindUrlService;
 
 
 /**
@@ -378,11 +379,9 @@ class Company
 
     public function __toString()
     {
-        $url = null;
-        if (isset($_SERVER["REQUEST_URI"])) {
-            $uri = $_SERVER["REQUEST_URI"];
-            $url = parse_url($uri, PHP_URL_PATH);
-        }
+        $findUrlService = new FindUrlService;
+        $url = $findUrlService->findUrl();
+
         if (preg_match('#festival/cies-accueillies#', $url)) {
             if ($this->showTitle !== null) {
                 return $this->showTitle;

@@ -48,7 +48,7 @@
 								<div class="card-text text-center">
 									<p class="mb-0">{{ 'dashboard.next_event'|trans({}, 'adminPage')|capitalize }}:</p>
 									<p class="mb-0">
-										<span class="stat">{{ nextEvent.name }}</span>
+										<span class="stat">{{ nextEvent.name|raw }}</span>
 									</p>
 									<p>{{ 'dashboard.from_date'|trans({}, 'adminPage') }}
 										<span class="stat-bis">{{ nextEvent.starting_date|format_date('full') }}</span>

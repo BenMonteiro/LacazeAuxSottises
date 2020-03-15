@@ -15,7 +15,9 @@ export default class Autocomplete {
                         $.ajax({
                             url: autocompleteUrl,
                             type: 'GET',
-                            data: 'query=' + query
+                            data: {
+                                'query': query
+                            }
                         }).then(function (data) {
                             cb(data.companies);
                         });

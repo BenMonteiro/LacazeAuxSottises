@@ -18,8 +18,12 @@ class EventType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('place')
-            ->add('startingDate')
-            ->add('endingDate')
+            ->add('startingDate', null, [
+                'placeholder' => "-",
+            ])
+            ->add('endingDate', null, [
+                'placeholder' => "-",
+            ])
             ->add('hours')
             ->add('moreInfos')
             ->add('isHighlight')

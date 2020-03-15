@@ -20,7 +20,7 @@
 	</div>
 	<h1>{{ event.name }}</h1>
 	<div class="d-flex my-5">
-		<img class="miniImage offset-3 col-5 " src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
+		<img class="miniImage offset-5 col-2" src="{{asset('images/uploads/eventProgram/' ~ event.programImage.name) }}" alt="{{event.imageDescription}}">
 		<div class="offset-1 col-2 ">
 			{% if event.startingDate != null %}
 				<h4>{{'event.start'|trans({}, 'event')|capitalize}}</h4>
@@ -65,12 +65,12 @@
 						</td>
 						<td>
 							<a class="text-reset" href="{{ path('display_company', {'id': performance.company.id})}}" title="Voir la compagnie">
-								<h4 class=" text-decoration-none font-weight-bold">{{ performance.company.name }}</h4>
+								<h4 class=" text-decoration-none font-weight-bold">{{ performance.company.name|raw }}</h4>
 							</a>
 						</td>
 						<td>
-							<p>{{ performance.placeShow|title }}</p>
-							<p class="font-italic colored">{{ performance.cityShow }}</p>
+							<p>{{ performance.placeShow|raw|title }}</p>
+							<p class="font-italic colored">{{ performance.cityShow|raw }}</p>
 						</td>
 						<td>
 							<a class="badge badge-primary p-2 my-2" href="{{ path('performance_edit', {'id': performance.id, 'event_id': event.id}) }}" title="Modifier la représentation">{{'general.edit'|trans({}, 'general')|capitalize}}</a>

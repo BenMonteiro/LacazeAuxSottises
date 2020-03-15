@@ -20,7 +20,7 @@
 						{% if section.subTitle %}
 							<h3 class="font-weight-bold mb-2 text-left m-0">{{ section.subTitle|raw }}</h3>
 						{% endif %}
-						<p class="text-justify">{{ section.content|raw}}</p>
+						<div class="text-justify">{{ section.content|raw}}</div>
 					</article>
 				</section>
 			{% elseif section.name == 'intro bénévolat' %}
@@ -32,7 +32,7 @@
 						{% if section.subTitle %}
 							<h3>{{ section.subTitle|raw }}</h3>
 						{% endif %}
-						<p>{{ section.content|raw }}</p>
+						<div>{{ section.content|raw }}</div>
 					</article>
 				</div>
 			{% endif %}

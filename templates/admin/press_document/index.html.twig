@@ -26,7 +26,7 @@
 							<img class="fileImage img-thumbnail" src="{{ asset('images/uploads/pressDocs/' ~ press_document.document.name) }}" alt="image à télécharger">
 						{% endif %}
 					</div>
-					<p class="text-break">{{ press_document.name }}</p>
+					<p class="text-break">{{ press_document.name|raw }}</p>
 					<a class="text-break" href="{{ asset('images/uploads/pressDocs/' ~ press_document.document.name) }}" download title="document à télécharger">{{press_document.document.name}}</a>
 					{% if is_granted('ROLE_ADMIN') %}
 						{{ include('admin/press_document/_delete_form.html.twig') }}

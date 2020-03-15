@@ -39,7 +39,7 @@ class Performance
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Event", inversedBy="performances", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $event;
 

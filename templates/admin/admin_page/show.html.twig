@@ -36,11 +36,11 @@
 		<tbody>
 			{% for section in sections %}
 				<tr>
-					<td>{{section.name}}</td>
-					<td>{{section.title}}</td>
-					<td>{{section.subTitle}}</td>
+					<td>{{section.name|raw}}</td>
+					<td>{{section.title|raw}}</td>
+					<td>{{section.subTitle|raw}}</td>
 					<td>{{section.appearanceOrder}}</td>
-					<td>{{section.content|slice(0,100)|striptags}}...</td>
+					<td>{{section.content|slice(0,100)|raw}}...</td>
 					<td>{{section.image.name}}</td>
 					<td>
 						<a class="badge badge-secondary my-2 p-2" href="{{ path('section_show', {'id': section.id}) }}" title="Voir un aperçu de l'article">{{'general.show'|trans({}, 'general')|capitalize}}</a>

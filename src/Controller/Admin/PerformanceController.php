@@ -88,7 +88,6 @@ class PerformanceController extends AdminController
                     return [];
                 }
             }
-
         ];
 
 

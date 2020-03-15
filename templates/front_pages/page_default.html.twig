@@ -34,7 +34,7 @@
 								<h3 class="font-weight-bold colored mx-0 mb-0">{{ section.title|raw|capitalize }}</h3>
 							{% endif %}
 							{% if section.subTitle %}
-								<h3 class="mb-2">{{ section.subTitle|raw }}</h3>
+								<h3 class="mb-2">{{ section.subTitle|striptags }}</h3>
 							{% endif %}
 							<div class="text-justify ul-ml mb-0">{{ section.content|raw}}</div>
 						</div>

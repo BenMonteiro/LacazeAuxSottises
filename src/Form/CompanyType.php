@@ -34,8 +34,12 @@ class CompanyType extends AbstractType
             ->add('duration')
             ->add('audience')
             ->add('isHosted')
-            ->add('isHostedFrom')
-            ->add('isHostedUntil')
+            ->add('isHostedFrom', null, [
+                'placeholder' => "-",
+            ])
+            ->add('isHostedUntil', null, [
+                'placeholder' => "-",
+            ])
             ->add('moreInfos')
             ->add('website')
             ->add('videoLink')
