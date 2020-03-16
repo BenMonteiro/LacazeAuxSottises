@@ -55,28 +55,25 @@
 
 		<div id="calendar" class="my-5">
 			<h2 class="colored text-center font-weight-bold mb-0">{{ 'general.third_location.program'|trans({}, 'general')|title }}</h2>
-			<ul class="d-flex justify-content-around flex-wrap list-unstyled offset-2 col-8">
+			<ul class="d-flex justify-content-center flex-wrap list-unstyled offset-2 col-8">
 				{% for placeEventPerf in placeEventPerfs %}
 					<li class=" d-flex flex-column align-items-center col-lg-6 col-12 mt-3">
-						<div class="d-flex flex-column align-items-center mt-3">
-							<figure>
-								<div class="cubic-image-div">
-									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
-									<img class="cubic-image" src="{{ asset('images/uploads/company/' ~ placeEventPerf.company.image.name) }}" alt="{{placeEventPerf.company.imageDescription}}">
+						<figure class="d-flex flex-column align-items-center mt-3">
+							<div class="cubic-image-div">
+								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+								<img class="cubic-image" src="{{ asset('images/uploads/company/' ~ placeEventPerf.company.image.name) }}" alt="{{placeEventPerf.company.imageDescription}}">
+							</div>
+							<figcaption class="font-weight-bold text-center">
+								<p>{{ placeEventPerf.date|format_date(pattern='EEEE dd MMMM')|capitalize }}
+									-
+									{{ placeEventPerf.date|date('H') }}h{{ placeEventPerf.date|date('i') }}</p>
+								<div>
+									{{ placeEventPerf.price|raw }}
 								</div>
-								<figcaption class="font-weight-bold text-center">
-									<p>{{ placeEventPerf.date|format_date(pattern='EEEE dd MMMM')|capitalize }}
-										-
-										{{ placeEventPerf.date|date('H') }}h{{ placeEventPerf.date|date('i') }}</p>
-									<div>
-										{{ placeEventPerf.price|raw }}
-									</div>
-									<p class="colored">
-										{{ placeEventPerf.company.theme|raw }}</p>
-								</figcaption>
-							</figure>
-						</div>
-
+								<p class="colored">
+									{{ placeEventPerf.company.theme|raw }}</p>
+							</figcaption>
+						</figure>
 					</li>
 
 				{% endfor %}

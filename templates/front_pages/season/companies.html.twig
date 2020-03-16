@@ -4,10 +4,10 @@
 
 	<div class="d-flex justify-content-center offset-2 col-8 flex-wrap">
 		{% for company in companies %}
-			<div class=" d-flex flex-column align-items-center col-lg-6 col-12 my-3">
+			<div class=" d-flex justify-content-center col-lg-6 col-12 my-3">
 				<a class="element-link" href="{{path('display_company',{'id':company.id})}}" title="Voir le fiche de la compagnie">
-					<figure>
-						<div class="cubic-image-div mb-0">
+					<figure class="d-flex flex-column align-items-center">
+						<div class=" cubic-image-div mb-0">
 							<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 							<img class="cubic-image" src="{{ asset('images/uploads/company/' ~ company.image.name) }}" alt="{{company.imageDescription}}">
 						</div>
