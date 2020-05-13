@@ -24,7 +24,6 @@
 								</figcaption>
 							</figure>
 						</a>
-
 					</div>
 				{% endif %}
 			{% endfor %}
@@ -57,12 +56,50 @@
 				{% endif %}
 			{% endfor %}
 		{% endif %}
+	</div>
+	<div class="d-flex justify-content-around offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 flex-wrap">
+		<div class="text-center col-12">
+			<div class="d-flex justify-content-center">
+				<h1 class="my-3 pageTitle px-4 text-center">
+					{{'general.all_year'|trans({}, 'general')|capitalize}}
+				</h1>
+			</div>
+			<div>
+				<img class="sectionTitleBar" src="{{asset('images/title-bar.jpg')}}" alt="barre grise" aria-hidden="true">
+			</div>
+		</div>
+		<div class="text-center col-md-6 my-3">
+			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{path('page_show', {'pageSlug': 'tiers-lieu/eco-lieu'}) }}" title="Voir les différents ateliers">
+				<figure>
+					<div class="cubic-image-div justify-content-center mb-0">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+						<img class="cubic-image" src="{{asset('images/web.d.jardin.peda.jpg')}}" alt="jardin de la maison lacaze">
+					</div>
+					<figcaption>
+						<h3 class="m-0 colored">{{'front.ecoPlace'|trans({}, 'menu')|capitalize}}</h3>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
+		<div class="text-center col-md-6 my-3">
+			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{path('page_show', {'pageSlug': 'tiers-lieu/presentation'}) }}" title="Voir les différents ateliers">
+				<figure>
+					<div class="cubic-image-div justify-content-center mb-0">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+						<img class="cubic-image" src="{{asset('images/maison_lacaze.jpg')}}" alt="Maison lacaze">
+					</div>
+					<figcaption>
+						<h3 class="m-0 colored">{{'front.third-location'|trans({}, 'menu')|capitalize}}</h3>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
 		<div class="text-center col-md-6 my-3">
 			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{path('page_show', {'pageSlug': 'tiers-lieu/les-ateliers-de-curiosites'}) }}" title="Voir les différents ateliers">
 				<figure>
 					<div class="cubic-image-div justify-content-center mb-0">
 						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
-						<img class="cubic-image" src="{{asset('images/maison_lacaze.jpg')}}" alt="{{season.imageDescription}}">
+						<img class="cubic-image" src="{{asset('images/web.33.jpg')}}" alt="Enfants dans un jardin ">
 					</div>
 					<figcaption>
 						<h3 class="m-0 colored">{{'general.recurentEventsTitle'|trans({}, 'general')|capitalize}}</h3>
@@ -70,6 +107,31 @@
 					</figcaption>
 				</figure>
 			</a>
+		</div>
+		<div class="text-center col-md-6 my-3">
+			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{path('page_show', {'pageSlug': 'tiers-lieu/les-rendez-vous'}) }}" title="Voir les différents ateliers">
+				<figure>
+					<div class="cubic-image-div justify-content-center mb-0">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+						<img class="cubic-image" src="{{asset('images/chorales.jpg')}}" alt="Chanteurs de plusieurs chorales">
+					</div>
+					<figcaption>
+						<h3 class="m-0 colored">{{'general.third_location.meetings'|trans({}, 'general')|capitalize}}</h3>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
+	</div>
+	<div class="d-flex justify-content-around offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 flex-wrap">
+		<div class="text-center col-12">
+			<div class="d-flex justify-content-center">
+				<h1 class="my-3 pageTitle px-4 text-center">
+					{{'general.askProg'|trans({}, 'general')|capitalize}}
+				</h1>
+			</div>
+			<div>
+				<img class="sectionTitleBar" src="{{asset('images/title-bar.jpg')}}" alt="barre grise" aria-hidden="true">
+			</div>
 		</div>
 		<div class="text-center col-md-6 my-3">
 			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}" title="Télécharger la plaquette de la saison">
