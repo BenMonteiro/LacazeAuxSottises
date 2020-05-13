@@ -7,7 +7,7 @@
 			{% for event in homeEvents %}
 				{% if event.startingDate|date('M') == 'now'|date('M') %}
 					<div class="text-center col-md-6 my-3">
-						<a class="element-link d-flex  flex-column justify-content-around mr-0" href="{{path('display_event',{'id':event.id})}}" title="Voir le fiche de l'événement'">
+						<a class="element-link d-flex  flex-column justify-content-around mr-0" href="{{path('display_event',{'id':event.id})}}" title="Voir la fiche de l'événement">
 							<figure>
 								<div class="cubic-image-div justify-content-center mb-0">
 									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
@@ -33,7 +33,7 @@
 			{% for perf in homePerfs %}
 				{% if perf.date|date('M') == 'now'|date('M') %}
 					<div class="text-center col-md-6 my-3">
-						<a class="element-link d-flex flex-column justify-content-around mr-0" href="{{path('display_company',{'id':perf.company.id})}}" title="Voir le fiche de la compagnie">
+						<a class="element-link d-flex flex-column justify-content-around mr-0" href="{{path('display_company',{'id':perf.company.id})}}" title="Voir la fiche de la compagnie">
 							<figure>
 								<div class="cubic-image-div justify-content-center mb-0">
 									<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
@@ -45,13 +45,10 @@
 									{% else %}
 										<h3 class="m-0 colored">{{perf.company|raw}}</h3>
 									{% endif %}
-									<p class="text-decoration-none text-small text-center font-weight-normal">
+									<p class="text-decoration-none text-small text-center">
 										{{perf.date|format_date(pattern='EEEE d MMMM')|title}}</p>
-									<p class=" text-grey text-small text-center font-weight-normal">
+									<p class=" text-grey text-small text-center">
 										{{perf.cityShow|raw}}
-									</p>
-									<p>
-										<small>{{perf.company.showTitle|raw}}</small>
 									</p>
 								</figcaption>
 							</figure>
@@ -60,6 +57,20 @@
 				{% endif %}
 			{% endfor %}
 		{% endif %}
+		<div class="text-center col-md-6 my-3">
+			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{path('page_show', {'pageSlug': 'tiers-lieu/les-ateliers-de-curiosites'}) }}" title="Voir les différents ateliers">
+				<figure>
+					<div class="cubic-image-div justify-content-center mb-0">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+						<img class="cubic-image" src="{{asset('images/maison_lacaze.jpg')}}" alt="{{season.imageDescription}}">
+					</div>
+					<figcaption>
+						<h3 class="m-0 colored">{{'general.recurentEventsTitle'|trans({}, 'general')|capitalize}}</h3>
+						<p class="font-weight-normal">{{'general.recurentEvents'|trans({}, 'general')|capitalize}}</p>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
 		<div class="text-center col-md-6 my-3">
 			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}" title="Télécharger la plaquette de la saison">
 				<figure>
@@ -80,9 +91,9 @@
 		<div class="text-center col-12">
 			<div>
 				<div class="d-flex justify-content-center">
-					<h2 class="mt-3 pageTitle px-4">
+					<h1 class="my-3 pageTitle px-4 text-center">
 						{{'general.focusOn'|trans({}, 'general')|capitalize}}
-					</h2>
+					</h1>
 				</div>
 				<div>
 					<img class="sectionTitleBar" src="{{asset('images/title-bar.jpg')}}" alt="barre grise" aria-hidden="true">

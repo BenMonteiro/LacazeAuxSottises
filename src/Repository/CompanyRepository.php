@@ -40,18 +40,18 @@ class CompanyRepository extends ServiceEntityRepository
                 ['name' => 'ASC']
             );
 
-        $festCompanies = [];
+        $seasonCompanies = [];
 
         foreach ($companies as $company) {
             $companyPerfs = $company->getPerformances();
             foreach ($companyPerfs as $companyPerf) {
                 if ($companyPerf->getEvent() != 'Festival Fête des sottises !' and $companyPerf->getEvent() != 'Préambules sur le territoire') {
-                    array_push($festCompanies, $company);
+                    array_push($seasonCompanies, $company);
                 }
             }
         }
 
-        $uniqueCompany = array_unique($festCompanies);
+        $uniqueCompany = array_unique($seasonCompanies);
 
         return $uniqueCompany;
     }

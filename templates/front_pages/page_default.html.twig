@@ -19,7 +19,7 @@
 			{% if section.name != "Chiffres" %}
 				<article class="mb-3">
 					{% if section.title %}
-						<h3 class="font-weight-bold colored mx-0 mb-0">{{ section.title|raw|capitalize }}</h3>
+						<h3 class="font-weight-bold colored mx-0 mb-1">{{ section.title|raw|capitalize }}</h3>
 					{% endif %}
 					{% if section.subTitle %}
 						<h3 class="mb-2 ml-0">{{ section.subTitle }}</h3>
@@ -31,7 +31,7 @@
 					<article class=" framedArticle dot p-0 px-4">
 						<div class="my-1">
 							{% if section.title %}
-								<h3 class="font-weight-bold colored mx-0 mb-0">{{ section.title|raw|capitalize }}</h3>
+								<h3 class="font-weight-bold colored mx-0 mb-1">{{ section.title|raw|capitalize }}</h3>
 							{% endif %}
 							{% if section.subTitle %}
 								<h3 class="mb-2">{{ section.subTitle|striptags }}</h3>

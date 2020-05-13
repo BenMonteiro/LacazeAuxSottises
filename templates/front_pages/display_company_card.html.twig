@@ -48,6 +48,9 @@
 				</div>
 
 				{% for perf in company.performances %}
+					{% if perf.event != 'saison '%}
+						<p class="font-weight-bold">{{perf.event}}</p>
+					{% endif %}
 					<p class="m-0 colored">
 						{{perf.date|format_date('full')|capitalize}}<br>
 					</p>

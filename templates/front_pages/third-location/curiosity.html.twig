@@ -5,7 +5,7 @@
 
 		{% include('/front_pages/_intro_section_template.html.twig') %}
 		<div class="offset-2">
-			<h2 class="font-weight-bold colored ml-4 mb-3">{{ 'general.third_location.all_year'|trans({}, 'general')|capitalize }}</h2>
+			<h2 class="font-weight-bold ml-4 mb-3">{{ 'general.third_location.all_year'|trans({}, 'general')|capitalize }}</h2>
 		</div>
 		{% for section in sections %}
 			{% if section.name == "all year" %}
@@ -29,7 +29,7 @@
 			{% endif %}
 		{% endfor %}
 		<div class="offset-2">
-			<h2 class="font-weight-bold colored ml-4 mb-3">{{ 'general.third_location.punctual'|trans({}, 'general')|capitalize }}</h2>
+			<h2 class="font-weight-bold  ml-4 mb-3">{{ 'general.third_location.punctual'|trans({}, 'general')|capitalize }}</h2>
 		</div>
 		{% for section in sections %}
 			{% if section.name == 'punctual' %}
@@ -54,7 +54,7 @@
 		{% endfor %}
 
 		<div class="offset-2">
-			<h2 class="font-weight-bold colored ml-4 mb-3">{{ 'general.third_location.do_it_yourself'|trans({}, 'general')|capitalize }}</h2>
+			<h2 class="font-weight-bold  ml-4 mb-3">{{ 'general.third_location.do_it_yourself'|trans({}, 'general')|capitalize }}</h2>
 		</div>
 		{% for section in sections %}
 			{% if section.name == 'do it' %}

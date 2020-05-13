@@ -12,10 +12,10 @@
 			{% if section.name == 'top' %}
 				<article class="text-center mb-5">
 					{% if section.title %}
-						<h2 class="colored">{{ section.title|raw }}</h2>
+						<h2 class="colored mb-1">{{ section.title|raw }}</h2>
 					{% endif %}
 					{% if section.subTitle %}
-						<h3 class="font-weight-bold">{{ section.subTitle|raw|capitalize }}</h3>
+						<h4 class="font-weight-bold">{{ section.subTitle|raw|capitalize }}</h4>
 					{% endif %}
 					<div>{{ section.content|raw }}</div>
 				</article>
@@ -24,19 +24,19 @@
 		<div class="d-lg-flex mt-3 align-items-start justify-content-center">
 			{% for section in sections %}
 				{% if section.name == 'left' %}
-					<article class="text-center framedArticle dot col-lg-6 mb-1 m-0">
+					<article class="text-center framedArticle dot col-lg-6 mb-1 m-0 mx-1">
 						{% if section.title %}
 							<h2 class=" colored">{{ section.title|raw }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
-							<h3 class="font-weight-bold mx-0 mb-2">{{ section.subTitle|raw|capitalize }}</h3>
+							<p class="font-weight-bold mx-0 mb-2">{{ section.subTitle|raw|capitalize }}</p>
 						{% endif %}
 						<div class="text-left m-0">{{ section.content|raw }}</div>
 					</article>
 				{% endif %}
 
 				{% if section.name == 'right' %}
-					<article class="text-center framedArticle red-dot col-lg-6 mb-1 m-0">
+					<article class="text-center framedArticle red-dot col-lg-6 mb-1 m-0 mx-1">
 						{% if section.title %}
 							<h2 class="colored">{{ section.title|raw }}</h2>
 						{% endif %}

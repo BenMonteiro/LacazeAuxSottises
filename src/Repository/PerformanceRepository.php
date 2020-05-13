@@ -7,6 +7,7 @@ use App\Repository\EventRepository;
 use App\Repository\CompanyRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use App\Service\SortDataService;
 
 /**
  * @method Performance|null find($id, $lockMode = null, $lockVersion = null)
@@ -43,20 +44,22 @@ class PerformanceRepository extends ServiceEntityRepository
         $perfEvents = [];
 
         foreach ($performances as $perf) {
-            if ($perf->getEvent() == 'saison') {
+            if ($perf->getEvent() == 'saison' or $perf->getEvent() == 'Soirées du Tiers-Lieu') {
                 array_push($seasonPerfs, $perf);
-            } elseif ($perf->getEvent() != 'saison') {
+            } else {
                 array_push($perfEvents, $perf);
             }
         };
 
+        $sortData = new SortDataService();
+
         $perfUniqueEvents =  array_unique($perfEvents);
         $perfs =  array_merge($seasonPerfs, $perfUniqueEvents);
 
-        asort($perfs);
-
+        uasort($perfs, [$sortData, "orderByDate"]);
         return $perfs;
     }
+    //appel de la fonction avec notre tableau $list, $list contiendra ensuite les "User" trié par date.
 
     public function festDates()
     {

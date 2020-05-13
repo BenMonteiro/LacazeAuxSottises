@@ -3,15 +3,6 @@
 {% block body %}
 
 	{% include('/front_pages/_intro_section_template.html.twig') %}
-
-	<div class="d-flex text-center justify-content-center">
-		<h2 class="mt-3 pageTitle px-4">
-			{{'general.be_volunteer'|trans({}, 'general')|capitalize}}
-		</h2>
-	</div>
-	<div class="text-center">
-		<img class="miniTitleBar" src="{{asset('images/trait-rouge.png')}}" alt="barre rouge" aria-hidden="true">
-	</div>
 	{% for section in sections %}
 		{% if section.name != 'intro' %}
 			<section class=" d-md-flex align-items-start justify-content-between offset-lg-2 col-lg-8 mb-3">

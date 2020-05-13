@@ -19,7 +19,7 @@
 				<p class="font-weight-bold">{{'from'|trans({}, 'general')|capitalize}}
 					{{event.startingDate|date('d')}}
 					{{'to'|trans({}, 'general')}}
-					{{event.endingDate|date('d M')}}</p>
+					{{event.endingDate|format_date(pattern='d M')}}</p>
 			{% elseif (event.startingDate == event.endingDate or event.endingDate is null) and event.startingDate is defined %}
 				<p class="font-weight-bold">{{event.startingDate|format_date('full')|title}}</p>
 			{% endif %}

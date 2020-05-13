@@ -36,9 +36,11 @@
 	</div>
 
 	<div class="text-center offset-1 col-10">{{ event.description|raw }}</div>
-	<div class="text-center mt-5">
-		<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}" title="Télécharger le programme de l'événement">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
-	</div>
+	{% if event.programPDF.name %}
+		<div class="text-center mt-5">
+			<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}" title="Télécharger le programme de l'événement">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
+		</div>
+	{% endif %}
 
 	<div class="row offset-1 col-10 mt-5 pt-5">
 		<h2 class=" ml-5 mb-3 font-weight-bold">{{ 'event.performances'|trans({}, 'event')|capitalize}}

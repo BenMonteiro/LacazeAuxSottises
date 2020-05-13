@@ -38,18 +38,19 @@
 
 			<div class="tab-pane fade {{ show }} offset-2 col-8" id="pills-{{month}}" role="tabpanel" aria-labelledby="pills-{{month}}-tab">
 				{% for perf in monthPerfs %}
-					{% if perf.event == 'saison' %}
-						<a class="element-link" href="{{ path('display_company', {'id': perf.company.id}) }}" title="Voir le fiche de la compagnie">
+					{% if perf.event == 'saison' or perf.event == 'Soirées du Tiers-Lieu' %}
+						<a class="element-link" href="{{ path('display_company', {'id': perf.company.id}) }}" title="Voir la fiche de la compagnie">
 							<div class="text-center ">
 								<h2 class="text-decoration-none colored mb-0">{{ perf.date|format_date(pattern="EEEE d MMMM")|title}}
 								</h2>
+								<p>{{perf.event}}</p>
 								<p class="text-grey mb-0">{{ perf.cityShow|raw }}</p>
 								<p class="mb-0">{{ perf.company.name|raw }},
 									{{ perf.company.showTitle|raw}}</p>
 							</div>
 						</a>
-					{% elseif perf.event != 'saison' and perf.event != 'Soirées du Tiers-Lieu' %}
-						<a class="element-link" href="{{ path('display_event', {'id': perf.event.id}) }}" title="Voir le fiche de l'événement">
+					{% else %}
+						<a class="element-link" href="{{ path('display_event', {'id': perf.event.id}) }}" title="Voir la fiche de l'événement">
 							<div class="text-center">
 								<h2 class="text-decoration-none colored mb-0">{{ perf.event.startingDate|format_date(pattern="EEEE d MMMM")|title }}
 								</h2>
