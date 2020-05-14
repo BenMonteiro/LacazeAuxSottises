@@ -43,7 +43,9 @@
 							<div class="text-center ">
 								<h2 class="text-decoration-none colored mb-0">{{ perf.date|format_date(pattern="EEEE d MMMM")|title}}
 								</h2>
-								<p>{{perf.event}}</p>
+								{% if perf.event != 'saison' %}
+									<p>{{perf.event}}</p>
+								{% endif %}
 								<p class="text-grey mb-0">{{ perf.cityShow|raw }}</p>
 								<p class="mb-0">{{ perf.company.name|raw }},
 									{{ perf.company.showTitle|raw}}</p>
@@ -52,8 +54,15 @@
 					{% else %}
 						<a class="element-link" href="{{ path('display_event', {'id': perf.event.id}) }}" title="Voir la fiche de l'événement">
 							<div class="text-center">
-								<h2 class="text-decoration-none colored mb-0">{{ perf.event.startingDate|format_date(pattern="EEEE d MMMM")|title }}
-								</h2>
+								{% if perf.event.endingDate and perf.event.endingDate != perf.event.startingDate %}
+									<h2 class="text-decoration-none colored mb-0">{{'from'|trans({}, 'general')|capitalize}}
+										{{perf.event.startingDate|format_date(pattern='EEEE d')|title}}
+										{{'to'|trans({}, 'general')}}
+										{{perf.event.endingDate|format_date(pattern='EEEE d MMMM')|title}}</h2>
+								{% else %}
+									<h2 class="text-decoration-none colored mb-0">{{ perf.date|format_date(pattern="EEEE d MMMM")|title}}
+									</h2>
+								{% endif %}
 								<p class="text-grey mb-0">{{perf.event.place|raw}}</p>
 								<p>{{ perf.event.name|raw }}</p>
 							</div>

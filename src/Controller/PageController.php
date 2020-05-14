@@ -8,6 +8,7 @@ use App\Repository\FrontTabRepository;
 use App\Repository\SectionRepository;
 use App\Entity\Event;
 use App\Entity\Company;
+use App\Repository\CompanyRepository;
 use App\Repository\EventRepository;
 use App\Repository\PerformanceRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -88,13 +89,14 @@ class PageController extends AbstractController
     /**
      * @Route("event/{id<\d+>}", name="display_event", methods={"GET"})
      */
-    public function displayEventCard(Event $event): Response
+    public function displayEventCard(Event $event, PerformanceRepository $performanceRepository): Response
     {
 
         return $this->render('front_pages/display_event_card.html.twig', [
             'pages' => $this->pages,
             'tabs' => $this->tabs,
             'event' => $event,
+            'performances' => $performanceRepository->findBy(['event' => $event], ['date' => 'ASC']),
         ]);
     }
 }

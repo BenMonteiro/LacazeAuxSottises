@@ -19,7 +19,7 @@
 				<p class="font-weight-bold">{{'from'|trans({}, 'general')|capitalize}}
 					{{event.startingDate|date('d')}}
 					{{'to'|trans({}, 'general')}}
-					{{event.endingDate|format_date(pattern='d M')}}</p>
+					{{event.endingDate|format_date(pattern='d MMMM')|title}}</p>
 			{% elseif (event.startingDate == event.endingDate or event.endingDate is null) and event.startingDate is defined %}
 				<p class="font-weight-bold">{{event.startingDate|format_date('full')|title}}</p>
 			{% endif %}
@@ -32,7 +32,38 @@
 
 		<div class="ml-4">
 			<h2 class="font-weight-bold mb-4">{{'general.onProgram'|trans({},'general')}}</h2>
-			<div class="ml-0">{{ event.description|raw }}</div>
+			{% for perf in performances %}
+				{% if perf.company != 'Autre' %}
+					<div class="mb-4">
+						<p class="colored">
+							{% if perf.event.endingDate %}
+								{{perf.date|format_date(pattern='EEEE d')|capitalize }}
+								à
+								{{ perf.date|format_date(pattern='H')}}h
+								{% if  perf.date|format_date(pattern='mm') != 00 %}
+									{{ perf.date|format_date(pattern='mm')}}
+								{% endif %}
+							{% else %}
+								{{ perf.date|format_date(pattern='H')}}h
+								{% if  perf.date|format_date(pattern='mm') != 00 %}
+									{{ perf.date|format_date(pattern='mm')}}
+								{% endif %}
+							{% endif %}
+							-
+							{{perf.company|raw}}
+						</p>
+						<div class="font-weight-bold mb-2">
+							<p>{{perf.company.showTitle|raw}}</p>
+							<p>{{perf.company.theme|raw}}</p>
+							<p>{{perf.company.duration}}min</p>
+							<p>{{perf.company.audience|raw}}</p>
+						</div>
+						<p>{{ perf.company.description|raw}}</p>
+					</div>
+				{% else %}
+					{{event.description|raw}}
+				{% endif %}
+			{% endfor %}
 			{% if event.programPDF.name %}
 				<a href="{{ asset('images/uploads/eventProgram/' ~ event.programPDF.name) }}" title="Télécharger le programme de l'événement">{{ 'event.prog.upload'|trans({}, 'event')|capitalize }}</a>
 			{% endif %}

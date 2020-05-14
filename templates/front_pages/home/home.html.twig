@@ -162,10 +162,7 @@
 				</div>
 			</div>
 			{% for section in sections %}
-
-				{% set homeFrame = (section.appearanceOrder is odd) ? ' framedArticle dash': 'framedArticle dot' %}
-
-				<div class="{{ homeFrame }} offset-2 col-8 p-0 px-4 mb-4">
+				<div class="framedArticle dot offset-2 col-8 p-0 px-4 mb-4">
 					<div class="text-center">
 						{% if section.image.name and section.image.mimeType != 'application/pdf' %}
 							<div class="d-flex">
