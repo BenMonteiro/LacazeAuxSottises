@@ -45,7 +45,7 @@ class PageDataProvider
             'page' => $frontPage,
             'pages' => $this->pages,
             'tabs' => $this->tabs,
-            'sections' => $this->sectionRepository->findBy(['belongToPage' => $frontPage], ['appearanceOrder' => 'ASC']),
+            'sections' => $this->sectionRepository->findBy(['belongToPage' => $frontPage, 'isHidden' => false], ['appearanceOrder' => 'ASC']),
             'season' => $this->eventRepository->findOneBy(['name' => 'saison']),
         ];
 

@@ -1,11 +1,12 @@
 section:
-    edit: modifier un paragraphe
-    index: liste des paragraphes
-    create: créer un nouveau paragraphe
-    pageSlug: page
-    title: titre
-    subTitle: sous-titre
-    appearanceOrder: Ordre d'apparition
-    content: contenu
-    image: image
-    name: nom du paragraphe
+  edit: modifier un paragraphe
+  index: liste des paragraphes
+  create: créer un nouveau paragraphe
+  pageSlug: page
+  title: titre
+  subTitle: sous-titre
+  appearanceOrder: Ordre d'apparition
+  content: contenu
+  image: image
+  name: nom du paragraphe
+  isHidden: Masquer

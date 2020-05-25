@@ -17,6 +17,7 @@ class SectionType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('isHidden')
             ->add('belongToPage', EntityType::class, [
                 'class' => FrontPage::class,
                 'choice_label' => 'name',

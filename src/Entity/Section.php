@@ -94,6 +94,11 @@ class Section
      */
     private $imageDescription;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isHidden;
+
     public function __construct()
     {
         $this->image = new EmbeddedFile();
@@ -231,6 +236,18 @@ class Section
     public function setImageDescription(?string $imageDescription): self
     {
         $this->imageDescription = $imageDescription;
+
+        return $this;
+    }
+
+    public function getIsHidden(): ?bool
+    {
+        return $this->isHidden;
+    }
+
+    public function setIsHidden(bool $isHidden): self
+    {
+        $this->isHidden = $isHidden;
 
         return $this;
     }

@@ -23,6 +23,7 @@
 		<thead>
 			<tr>
 				<th>{{'section.name'|trans({}, 'section')|capitalize}}</th>
+				<th>{{'section.isHidden'|trans({}, 'section')|capitalize}}</th>
 				<th>{{'section.title'|trans({}, 'section')|capitalize}}</th>
 				<th>{{'section.subTitle'|trans({}, 'section')|capitalize}}</th>
 				<th>{{'section.appearanceOrder'|trans({}, 'section')|capitalize}}</th>
@@ -37,6 +38,7 @@
 			{% for section in sections %}
 				<tr>
 					<td>{{section.name|raw}}</td>
+					<td>{{ section.isHidden ? '<i class="fas fa-check text-success"></i>' : '<i class="fas fa-times text-danger"></i>' }}</td>
 					<td>{{section.title|raw}}</td>
 					<td>{{section.subTitle|raw}}</td>
 					<td>{{section.appearanceOrder}}</td>
