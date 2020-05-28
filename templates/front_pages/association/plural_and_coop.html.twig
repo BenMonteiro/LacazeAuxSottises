@@ -26,7 +26,7 @@
 				{% if section.name == 'left' %}
 					<article class="text-center framedArticle dot col-lg-6 mb-1 m-0 mx-1">
 						{% if section.title %}
-							<h2 class=" colored">{{ section.title|raw }}</h2>
+							<h2 class=" colored">{{ section.title|raw|capitalize }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
 							<p class="font-weight-bold mx-0 mb-2">{{ section.subTitle|raw|capitalize }}</p>
@@ -38,12 +38,12 @@
 				{% if section.name == 'right' %}
 					<article class="text-center framedArticle red-dot col-lg-6 mb-1 m-0 mx-1">
 						{% if section.title %}
-							<h2 class="colored">{{ section.title|raw }}</h2>
+							<h2 class="colored">{{ section.title|raw|capitalize }}</h2>
 						{% endif %}
 						{% if section.subTitle %}
 							<h3 class="font-weight-bold mx-0 mb-2">{{ section.subTitle|raw|capitalize }}</h3>
 						{% endif %}
-						<div>{{ section.content|raw }}</div>
+						<div class="text-left">{{ section.content|raw }}</div>
 					</article>
 				{% endif %}
 			{% endfor %}
@@ -53,7 +53,7 @@
 			{% if section.name == 'bottom' %}
 				<article class="text-center framedArticle solid m-0 mt-1">
 					{% if section.title %}
-						<h2 class="colored">{{ section.title|raw }}</h2>
+						<h2 class="colored">{{ section.title|raw|capitalize }}</h2>
 					{% endif %}
 					{% if section.subTitle %}
 						<p class="font-weight-bold">{{ section.subTitle|raw|capitalize }}</p>
@@ -66,7 +66,7 @@
 			{% if section.name == 'last' %}
 				<article class="text-center framedArticle dash m-0 mt-1">
 					{% if section.title %}
-						<h2 class="colored">{{ section.title|raw }}</h2>
+						<h2 class="colored">{{ section.title|raw|capitalize }}</h2>
 					{% endif %}
 					{% if section.subTitle %}
 						<h3 class="font-weight-bold mx-0 mb-2">{{ section.subTitle|raw|capitalize }}</h3>

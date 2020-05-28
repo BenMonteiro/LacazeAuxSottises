@@ -29,7 +29,7 @@ front:
   pro-meeting: Rencontres pro
   arts-etc: Aux arts etc
   infos: Infos pratiques
-  Agenda: Agenda
+  agenda: Agenda
 
 back:
   home: Accueil
@@ -49,4 +49,4 @@ back:
   sections: pages
   user: admins
   pressDoc: Presse
-  Agenda: Agenda
+  agenda: Agenda

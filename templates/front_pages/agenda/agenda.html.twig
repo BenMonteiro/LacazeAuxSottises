@@ -1,0 +1,81 @@
+{% extends "front_templates/page_template.html.twig" %}
+
+{% block body %}
+
+	{% include('/front_pages/_intro_section_template.html.twig') %}
+	<ul class="nav nav-pills mt-2 offset-sm-2 col-sm-8 justify-content-center p-0" id="pills-tab" role="tablist">
+		{% for month in months %}
+			{% set show = '' %}
+			{% if month == 'now'|date('M') %}
+				{% set show = 'active show' %}
+			{% endif %}
+
+			<li class="nav-item text-center">
+				<a class="nav-link {{ show }} text-center d-block font-weight-bold" id="pills-{{month}}-tab" data-toggle="pill" href="#pills-{{month}}" role="tab" aria-controls="pills-{{month}}" aria-selected="true" title="Afficher les événements du mois de {{month|trans({}, 'general')}}">{{month|trans({}, 'general')}}</a>
+			</li>
+		{% endfor %}
+	</ul>
+
+
+	<div class="tab-content agenda mb-3" id="pills-tabContent">
+
+		<div class="mt-4 offset-3 col-6">
+			<img class="calendarBar" src="{{asset('images/trait-rouge.png')}}" alt="barre rouge" aria-hidden="true">
+		</div>
+		{% for month in months %}
+			{% set show = '' %}
+			{% if month == 'now'|date('M') %}
+				{% set show = 'active show' %}
+			{% endif %}
+
+
+			{% set monthPerfs = [] %}
+			{% for perf in performances  %}
+				{% if (perf.date|date('M') == month)%}
+					{% set monthPerfs = monthPerfs|merge([perf])  %}
+				{% endif %}
+			{% endfor %}
+
+			<div class="tab-pane fade {{ show }} offset-2 col-8" id="pills-{{month}}" role="tabpanel" aria-labelledby="pills-{{month}}-tab">
+				{% for perf in monthPerfs %}
+					{% if perf.event == 'saison' or perf.event == 'Soirées du Tiers-Lieu' %}
+						<a class="element-link" href="{{ path('display_company', {'id': perf.company.id}) }}" title="Voir la fiche de la compagnie">
+							<div class="text-center ">
+								<h2 class="text-decoration-none colored mb-0">
+									{{ perf.date|format_date(pattern="EEEE d MMMM")|title}}
+								</h2>
+								{% if perf.event != 'saison' %}
+									<p>{{perf.event}}</p>
+								{% endif %}
+								<p class="text-grey mb-0">{{ perf.cityShow|raw }}</p>
+								<p class="mb-0">{{ perf.company.name|raw }},
+									{{ perf.company.showTitle|raw}}</p>
+							</div>
+						</a>
+					{% else %}
+						<a class="element-link" href="{{ path('display_event', {'id': perf.event.id}) }}" title="Voir la fiche de l'événement">
+							<div class="text-center">
+								{% if perf.event.endingDate and perf.event.endingDate != perf.event.startingDate %}
+									<h2 class="text-decoration-none colored mb-0">{{'from'|trans({}, 'general')|capitalize}}
+										{{perf.event.startingDate|format_date(pattern='EEEE d')|title}}
+										{{'to'|trans({}, 'general')}}
+										{{perf.event.endingDate|format_date(pattern='EEEE d MMMM')|title}}</h2>
+								{% else %}
+									<h2 class="text-decoration-none colored mb-0">{{ perf.date|format_date(pattern="EEEE d MMMM")|title}}
+									</h2>
+								{% endif %}
+								<p class="text-grey mb-0">{{perf.event.place|raw}}</p>
+								<p>{{ perf.event.name|raw }}</p>
+							</div>
+						</a>
+					{% endif %}
+				{% endfor %}
+
+				{% if monthPerfs|length == 0 %}
+					<p class="mt-5 text-center">{{'general.no_events'|trans({}, 'general')|capitalize}}</p>
+				{% endif %}
+
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

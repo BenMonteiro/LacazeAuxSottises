@@ -121,6 +121,11 @@ class Event
      */
     private $moreInfos;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isSeasonalEvent;
+
     public function __construct()
     {
         $this->programPDF = new EmbeddedFile();
@@ -316,11 +321,6 @@ class Event
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
-
     public function getImageDescription(): ?string
     {
         return $this->imageDescription;
@@ -343,5 +343,22 @@ class Event
         $this->moreInfos = $moreInfos;
 
         return $this;
+    }
+
+    public function getIsSeasonalEvent(): ?bool
+    {
+        return $this->isSeasonalEvent;
+    }
+
+    public function setIsSeasonalEvent(bool $isSeasonalEvent): self
+    {
+        $this->isSeasonalEvent = $isSeasonalEvent;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

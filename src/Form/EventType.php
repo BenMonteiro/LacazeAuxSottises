@@ -16,6 +16,7 @@ class EventType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('isSeasonalEvent')
             ->add('description')
             ->add('place')
             ->add('startingDate', null, [

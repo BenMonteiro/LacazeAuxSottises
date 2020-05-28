@@ -8,6 +8,7 @@ use App\Repository\CompanyRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use App\Service\SortDataService;
+use phpDocumentor\Reflection\Types\This;
 
 /**
  * @method Performance|null find($id, $lockMode = null, $lockVersion = null)
@@ -37,7 +38,7 @@ class PerformanceRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function seasonPerfs()
+    public function agendaPerfs()
     {
         $performances = $this->findBy([], ['date' => 'ASC']);
         $seasonPerfs = [];
@@ -59,7 +60,53 @@ class PerformanceRepository extends ServiceEntityRepository
         uasort($perfs, [$sortData, "orderByDate"]);
         return $perfs;
     }
-    //appel de la fonction avec notre tableau $list, $list contiendra ensuite les "User" trié par date.
+
+    public function seasonPerfs()
+    {
+        $performances = $this->findBy(
+            [
+                'event' => $this->eventRepository->findBy(['name' => 'saison']),
+                'event' => $this->eventRepository->findBy(['isSeasonalEvent' => true])
+            ],
+            ['date' => 'ASC']
+        );
+        $seasonPerfs = [];
+        $perfEvents = [];
+
+        foreach ($performances as $perf) {
+            if ($perf->getEvent() == 'saison') {
+                array_push($seasonPerfs, $perf);
+            } else {
+                array_push($perfEvents, $perf);
+            }
+        };
+
+        $sortData = new SortDataService();
+
+        $perfUniqueEvents =  array_unique($perfEvents);
+        $perfs =  array_merge($seasonPerfs, $perfUniqueEvents);
+
+        uasort($perfs, [$sortData, "orderByDate"]);
+        return $perfs;
+    }
+
+    public function findSeasonMonth()
+    {
+        $perfs = $this->seasonPerfs();
+
+        $monthes = [];
+
+        foreach ($perfs as $perf) {
+            $perf = $perf->getDate();
+            $perfMonth = date_format($perf, 'M');
+
+            array_push($monthes, $perfMonth);
+        }
+
+        $uniqueMonth = array_unique($monthes);
+
+        return $uniqueMonth;
+    }
 
     public function festDates()
     {
