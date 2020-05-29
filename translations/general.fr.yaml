@@ -51,6 +51,8 @@ general:
   seasonDoc: plaquette
   downloadDoc: télécharger la plaquette
   askProg: demandez le programme !
+  seasonProg: Programme de la saison
+  ecoPlaceProg: Programme de l'éco-lieu
   focusOn: zoom sur
   date: date
   hour: heure

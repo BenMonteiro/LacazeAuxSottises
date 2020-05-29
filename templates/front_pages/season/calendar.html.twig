@@ -19,50 +19,56 @@
 										<div class="d-flex">
 											<div class="flex-column col-3">
 												<h2 class=" text-grey mb-0 font-weight-normal">{{perf.date|format_date(pattern="EEEE d")|title}}
-													-
-													{{perf.date|date('H')}}h{{perf.date|date('i')}}</h2>
-											</div>
-											<div class="flex-column">
-												<p>
-													{{ perf.company|raw }}
-													{% if perf.company.showTitle|raw %}
-														-
-														{{ perf.company.showTitle|raw}}
-													{% endif %}
-												</p>
-												<p class="font-italic">
-													{{perf.company.theme|raw|capitalize}}
-												</p>
-											</div>
-										</div>
-									</a>
-								{% endif %}
-							</div>
-						{% else %}
-							<div class="text-left">
-								{% if month|format_date(pattern='MMMM') == perf.date|format_date(pattern='MMMM') %}
-									<a class="m-0" href="{{ path('display_event', {'id': perf.event.id}) }}" title="Voir la fiche de la compagnie">
-										<div class="d-flex">
-											<div class="flex-column col-3">
-												<h2 class=" text-grey mb-0 font-weight-normal">{{perf.date|format_date(pattern="EEEE d")|title}}</h2>
-											</div>
-											<div class="flex-column">
-												<p>
-													{{ perf.event|raw }}
-												</p>
-												<p class="font-italic">
-													{{perf.event.place|raw}}
-												</p>
+												</div>
+												<div class="flex-column">
+													<p>
+														{{ perf.company|raw }}
+														{% if perf.company.showTitle|raw %}
+															-
+															{{ perf.company.showTitle|raw}}
+															-
+														{% endif %}
+														{% if perf.company.isHosted %}
+															{{ 'company.is.hosted'|trans({}, 'company')|capitalize}}
+															-
+														{% endif %}
 
+														<span class="font-italic">
+															{{perf.cityShow}}
+														</span>
+													</p>
+
+												</div>
 											</div>
-										</div>
-									</a>
-								{% endif %}
-							</div>
-						{% endif %}
-					{% endfor %}
-				</div>
-			{% endfor %}
+										</a>
+									{% endif %}
+								</div>
+							{% else %}
+								<div class="text-left">
+									{% if month|format_date(pattern='MMMM') == perf.date|format_date(pattern='MMMM') %}
+										<a class="m-0" href="{{ path('display_event', {'id': perf.event.id}) }}" title="Voir la fiche de la compagnie">
+											<div class="d-flex">
+												<div class="flex-column col-3">
+													<h2 class=" text-grey mb-0 font-weight-normal">{{perf.date|format_date(pattern="EEEE d")|title}}</h2>
+												</div>
+												<div class="flex-column">
+													<p>
+														{{ perf.event|raw }}
+														-
+														<span class="font-italic">
+															{{perf.event.place|raw}}
+														</span>
+													</p>
+
+												</div>
+											</div>
+										</a>
+									{% endif %}
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
 		</div>
-	</div>
-{% endblock %}
+	{% endblock %}

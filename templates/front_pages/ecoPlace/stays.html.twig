@@ -1,0 +1,36 @@
+{% extends "front_templates/page_template.html.twig" %}
+
+
+{% block body %}
+	<div class="offset-md-2 col-md-8">
+		{% for section in sections %}
+			{% if section.image.name is empty %}
+				<article class="mb-3">
+					{% if section.title %}
+						<h3 class="font-weight-bold colored mx-0 mb-1">{{ section.title|raw|capitalize }}</h3>
+					{% endif %}
+					{% if section.subTitle %}
+						<h3 class="mb-2 ml-0">{{ section.subTitle }}</h3>
+					{% endif %}
+					<div class="text-justify ul-ml mb-0">{{ section.content|raw}}</div>
+				</article>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	<div class="offset-1 col-10 d-md-flex flex-wrap justify-content-center mb-5">
+		{% for section in sections %}
+			{% if section.image.name %}
+				<figure class="d-flex flex-column align-items-center my-3 p-0">
+					<div class="cubic-image-div mb-0">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+						<img src="{{asset('images/uploads/paragraphImage/' ~ section.image.name)}}" class="cubic-image" alt="{{section.imageDescription}}">
+					</div>
+					<figcaption class="text-center">
+						<h3 class="m-0 colored">{{section.title|raw}}</h3>
+					</figcaption>
+				</figure>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}

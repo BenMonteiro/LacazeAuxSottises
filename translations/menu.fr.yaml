@@ -7,30 +7,36 @@ front:
   volunteering: Bénévolat
   partners: Partenaires
   support: Soutien
-  more-infos: + d'infos
+  more-infos: Contact
   asso: Lacaze...
   presentation: Présentation
   prog: Calendrier
-  hostedCompanies: Cies Accueillies
-  area-project: Projet de Territoire
-  cultural-actions: Actions Culturelles
+  hostedCompanies: Cies accueillies
+  area-project: Projet de territoire
+  cultural-actions: Actions culturelles
   tickets: billetterie solidaire
   proMeeting: rencontres pro
   funSpace: espace ludique
   plus: les p'tits
   ecoPlace: Éco-lieu
-  shared-spaces: Espaces et services partagés
-  meetings: Rendez-vous
+  shared-spaces: Espaces partagés
+  meetings: Soirées du Tiers-Lieu
   curiosity: Ateliers de curiosité
-  plural-projects: Projet Pluriel
-  coop: Coopération Territoriale
+  rental: Location de matériel
+  plural-projects: Projet pluriel
+  coop: Coopération territoriale
   team: Équipe
   subscription: Adhésion
   pro-meeting: Rencontres pro
   arts-etc: Aux arts etc
   infos: Infos pratiques
   agenda: Agenda
-
+  learningApproach: Démarche pédagogique
+  animation: Animations
+  ressources-center: Centre de ressources
+  stays: Séjours
+  visits: Visites du jardin
+  vegetables: Légumes et plants
 back:
   home: Accueil
   association: Association
@@ -39,14 +45,16 @@ back:
   third-location: Tiers-Lieu
   volunteering: Bénévolat
   support: Soutien
-  more-infos: + D'infos
+  more-infos: Contact
   companies: compagnies
   events: Événements
   performances: représentations
   partners: Partenaires
   partner: Partenaires
-  team: équipe
+  team: Équipe
   sections: pages
   user: admins
   pressDoc: Presse
   agenda: Agenda
+  ecoPlace: Éco-lieu
+  vegetables: Légumes et plants

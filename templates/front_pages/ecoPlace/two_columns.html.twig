@@ -1,0 +1,49 @@
+{% extends "front_templates/page_template.html.twig" %}
+
+{% block body %}
+	<div class="container-fluid">
+
+		{% include('/front_pages/_intro_section_template.html.twig') %}
+		{% if page.name == 'presentation' %}
+			<div class="offset-lg-2 col-lg-8 text-center">
+				<a class="download-form" href="{{asset('images/BD_PLANCHE_VERTE_LACAZE_PLAQUETTE_ECO LIEU_BATOK.pdf')}}" title="Télécharger la plaquette">Télécharger ici la plaquette de l'éco-lieu</a>
+			</div>
+		{% endif %}
+
+		{% for section in sections %}
+			{% if section.name != 'intro' %}
+				<section class=" d-md-flex align-items-start offset-lg-2 col-lg-8 mb-3">
+					{% if section.image.name %}
+
+						<div class="d-flex flex-column align-items-center my-3">
+							<figure class="cubic-image-div">
+								<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+								<img class="cubic-image" src="{{ asset('images/uploads/paragraphImage/' ~ section.image.name) }}" alt="{{section.imageDescription}}">
+							</figure>
+						</div>
+						<article class="d-flex flex-column mt-4 framedArticle dot text-md-left text-center">
+							{% if section.title %}
+								<h2 class="colored mb-2">{{ section.title|raw }}</h2>
+							{% endif %}
+							{% if section.subTitle %}
+								<h3>{{ section.subTitle|raw }}</h3>
+							{% endif %}
+							<div class="text-justify">{{ section.content|raw}}</div>
+						</article>
+					{% else %}
+						<article class="my-5 framedArticle dot text-center">
+							{% if section.title %}
+								<h2 class="colored mb-2">{{ section.title|raw }}</h2>
+							{% endif %}
+							{% if section.subTitle %}
+								<h3>{{ section.subTitle|raw }}</h3>
+							{% endif %}
+							<div class="text-justify">{{ section.content|raw}}</div>
+						</article>
+					{% endif %}
+				</section>
+
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}

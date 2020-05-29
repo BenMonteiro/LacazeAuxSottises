@@ -108,19 +108,6 @@
 				</figure>
 			</a>
 		</div>
-		<div class="text-center col-md-6 my-3">
-			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{path('page_show', {'pageSlug': 'tiers-lieu/les-rendez-vous'}) }}" title="Voir les différents ateliers">
-				<figure>
-					<div class="cubic-image-div justify-content-center mb-0">
-						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
-						<img class="cubic-image" src="{{asset('images/chorales.jpg')}}" alt="Chanteurs de plusieurs chorales">
-					</div>
-					<figcaption>
-						<h3 class="m-0 colored">{{'general.third_location.meetings'|trans({}, 'general')|capitalize}}</h3>
-					</figcaption>
-				</figure>
-			</a>
-		</div>
 	</div>
 	<div class="d-flex justify-content-around offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 flex-wrap">
 		<div class="text-center col-12">
@@ -134,17 +121,29 @@
 			</div>
 		</div>
 		<div class="text-center col-md-6 my-3">
-			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}" title="Télécharger la plaquette de la saison">
+			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{asset('images/uploads/eventProgram/' ~ season.programPDF.name)}}" title="Télécharger la plaquette">
 				<figure>
 					<div class="cubic-image-div justify-content-center mb-0">
 						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
 						<img class="cubic-image" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}" alt="{{season.imageDescription}}">
 					</div>
 					<figcaption>
-						<p class="font-weight-normal">{{'general.askProg'|trans({}, 'general')|capitalize}}</p>
+						<p class="font-weight-normal">{{'general.seasonProg'|trans({}, 'general')|capitalize}}</p>
 					</figcaption>
 				</figure>
-
+			</a>
+		</div>
+		<div class="text-center col-md-6 my-3">
+			<a class="element-link element-link d-flex flex-column justify-content-around mr-0" href="{{asset('images/BD_PLANCHE_VERTE_LACAZE_PLAQUETTE_ECO LIEU_BATOK.pdf')}}" title="Télécharger la plaquette">
+				<figure>
+					<div class="cubic-image-div justify-content-center mb-0">
+						<img class="image-frame" src="{{ asset('images/cadre.png') }}" alt="cadre noir entourant l'image" aria-hidden="true">
+						<img class="cubic-image" src="{{asset('images/uploads/eventProgram/' ~ season.programImage.name)}}" alt="{{season.imageDescription}}">
+					</div>
+					<figcaption>
+						<p class="font-weight-normal">{{'general.ecoPlaceProg'|trans({}, 'general')|capitalize}}</p>
+					</figcaption>
+				</figure>
 			</a>
 		</div>
 	</div>

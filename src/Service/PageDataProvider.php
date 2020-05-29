@@ -82,10 +82,10 @@ class PageDataProvider
             case 'festival/cies-accueillies':
                 $data['companies'] = $this->companyRepository->findFestCompanies();;
                 break;
-            case 'tiers-lieu/les-rendez-vous':
+            case 'tiers-lieu/soirees-du-tiers-lieu':
                 $data['placeEventPerfs'] = $this->performanceRepository->findBy(['event' => $this->eventRepository->findBy(['name' => 'Soirées du Tiers-Lieu'])], ['date' => 'ASC']);
                 break;
-            case 'partenaires/partenaires':
+            case 'soutient':
                 $data['partners'] = $this->partnersRepository->findAll();
                 break;
         }
