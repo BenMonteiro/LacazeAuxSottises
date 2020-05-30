@@ -14,5 +14,8 @@
 				<div class="text-justify ul-ml mb-0">{{ section.content|raw}}</div>
 			</article>
 		{% endfor %}
+		{% for section in sections %}
+			<img class="col-12 mt-3 p-0" src="{{asset('images/uploads/paragraphImage/' ~ section.image.name)}}" alt="{{section.imageDescription}}">
+		{% endfor %}
 	</div>
 {% endblock %}
