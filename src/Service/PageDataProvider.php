@@ -72,7 +72,7 @@ class PageDataProvider
                 $data['performances'] = $this->performanceRepository->seasonPerfs();
                 break;
             case 'saison/cies-accueillies':
-                $data['companies'] = $this->companyRepository->findSeasonCompanies();
+                $data['perfs'] = $this->performanceRepository->findBy(['company' => $this->companyRepository->findBy(['isHidden' => false])], ['date' => 'ASC']);
                 break;
             case 'festival/calendrier':
                 $data['festDates'] = $this->performanceRepository->festDates();
